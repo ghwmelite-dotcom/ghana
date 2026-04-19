@@ -1,435 +1,146 @@
 ---
 /**
- * Hero — photographic, full-bleed, national scale.
+ * Hero — gov.rw-aligned: text-forward, integrated search, quiet photograph.
  *
- * Visual language: Independence Arch (Black Star Square, Accra) as the full
- * backdrop — "AD 1957" etched above its columns, the Black Star crowning it.
- * A dark feathered scrim on the left carries the typography; orchestrated
- * gold threads trace across on load; a quiet constellation of smaller stars
- * floats over the upper sky.
+ * Composition:
+ *   - White section with generous vertical spacing.
+ *   - Eyebrow + huge sans tagline + short lede + prominent search box, all
+ *     left-aligned in a 62rem container.
+ *   - A muted landscape photograph sits to the right on desktop, offset and
+ *     sized to balance the text column without dominating it.
+ *   - No constellation, no gold threads, no ken-burns — gov.rw's hero is
+ *     calm and workmanlike.
  *
- * Kente lives on as the three-segment underline under the word "Ghana"
- * (green · gold · red). The richer Kente treatments remain in the stats
- * band, marquee, and tile threads.
- *
- * Motion: photo fades in with a gentle zoom-out (ken-burns), text wipes
- * through a clip-path curtain, gold threads stroke in, constellation
- * twinkles. Every animation respects `prefers-reduced-motion: reduce`.
+ * The one Ghanaian signature here is the mini-Kente underline on "Ghana"
+ * (green · gold · red); everything else is flat, clean, restrained.
  */
 import { Image } from 'astro:assets';
 import heroArch from '../assets/photos/independence-arch.png';
-
-interface Props {
-  lede?: string;
-}
-const {
-  lede = 'Every service the government offers, every announcement it makes — in one place.',
-} = Astro.props;
-
-const STAR_PATH =
-  'M 100 14 L 122.4 80.9 L 193.1 80.9 L 135.4 122.2 L 157.8 189.1 L 100 147.8 L 42.2 189.1 L 64.6 122.2 L 6.9 80.9 L 77.6 80.9 Z';
-
-const constellation: ReadonlyArray<{ x: number; y: number; size: number; twinkle?: number }> = [
-  { x: 8, y: 12, size: 8 },
-  { x: 18, y: 28, size: 6, twinkle: 0 },
-  { x: 32, y: 8, size: 9 },
-  { x: 44, y: 20, size: 5 },
-  { x: 56, y: 6, size: 7, twinkle: 1 },
-  { x: 72, y: 24, size: 6 },
-  { x: 86, y: 10, size: 8, twinkle: 2 },
-  { x: 94, y: 30, size: 5 },
-];
 ---
 
 <section class="hero" aria-labelledby="hero-title">
-  <!-- Full-bleed photograph — Independence Arch. -->
-  <div class="hero__photo-wrap" aria-hidden="true">
-    <Image
-      src={heroArch}
-      alt=""
-      widths={[640, 960, 1440, 1920, 2560]}
-      sizes="100vw"
-      loading="eager"
-      fetchpriority="high"
-      quality={78}
-      class="hero__photo"
-    />
-  </div>
-
-  <!-- Layered darkening scrims so the photo reads beneath typography. -->
-  <div class="hero__scrim-base" aria-hidden="true"></div>
-  <div class="hero__scrim-text" aria-hidden="true"></div>
-
-  <!-- Quiet constellation in the sky region. -->
-  <div class="hero__sky" aria-hidden="true">
-    {
-      constellation.map((s) => (
-        <svg
-          class={`star-sm${s.twinkle !== undefined ? ` star-sm--twinkle-${s.twinkle}` : ''}`}
-          viewBox="0 0 200 200"
-          style={`--x:${s.x}%; --y:${s.y}%; --s:${s.size}px;`}
-          preserveAspectRatio="xMidYMid meet"
-        >
-          <path d={STAR_PATH} fill="rgba(252,209,22,0.55)" />
-        </svg>
-      ))
-    }
-  </div>
-
-  <!-- Three gold threads stroke in in orchestrated succession. -->
-  <svg class="hero__threads" viewBox="0 0 1200 600" preserveAspectRatio="none" aria-hidden="true">
-    <defs>
-      <linearGradient id="thread-a" x1="0" x2="1" y1="0" y2="0">
-        <stop offset="0%" stop-color="rgba(252,209,22,0)"></stop>
-        <stop offset="35%" stop-color="rgba(252,209,22,0.88)"></stop>
-        <stop offset="65%" stop-color="rgba(252,209,22,0.88)"></stop>
-        <stop offset="100%" stop-color="rgba(252,209,22,0)"></stop>
-      </linearGradient>
-      <linearGradient id="thread-b" x1="0" x2="1" y1="0" y2="0">
-        <stop offset="0%" stop-color="rgba(252,209,22,0)"></stop>
-        <stop offset="40%" stop-color="rgba(252,209,22,0.55)"></stop>
-        <stop offset="60%" stop-color="rgba(252,209,22,0.55)"></stop>
-        <stop offset="100%" stop-color="rgba(252,209,22,0)"></stop>
-      </linearGradient>
-      <linearGradient id="thread-c" x1="0" x2="1" y1="0" y2="0">
-        <stop offset="0%" stop-color="rgba(206,17,38,0)"></stop>
-        <stop offset="45%" stop-color="rgba(206,17,38,0.38)"></stop>
-        <stop offset="55%" stop-color="rgba(206,17,38,0.38)"></stop>
-        <stop offset="100%" stop-color="rgba(206,17,38,0)"></stop>
-      </linearGradient>
-    </defs>
-    <path
-      class="thread thread--a"
-      d="M 0 480 Q 300 320 600 380 T 1200 200"
-      fill="none"
-      stroke="url(#thread-a)"
-      stroke-width="1.5"
-      stroke-linecap="round"></path>
-    <path
-      class="thread thread--b"
-      d="M 0 560 Q 360 460 680 500 T 1200 360"
-      fill="none"
-      stroke="url(#thread-b)"
-      stroke-width="1"
-      stroke-linecap="round"></path>
-    <path
-      class="thread thread--c"
-      d="M 0 280 Q 280 180 580 220 T 1200 80"
-      fill="none"
-      stroke="url(#thread-c)"
-      stroke-width="0.75"
-      stroke-linecap="round"></path>
-  </svg>
-
-  <div class="hero__inner">
-    <p class="hero__eyebrow">
-      <span class="hero__eyebrow-dot" aria-hidden="true"></span>
-      Akwaaba · Republic of Ghana
-    </p>
-    <h1 id="hero-title" class="hero__title">
-      <span class="hero__line"><span class="hero__line-inner">One government.</span></span>
-      <span class="hero__line"><span class="hero__line-inner">One people.</span></span>
-      <span class="hero__line"
-        ><span
-          class="hero__line-inner"
-          set:html={'One <span class="hero__accent">Ghana</span>.'}
-        /></span
-      >
-    </h1>
-    <p class="hero__lede">{lede}</p>
-    <form action="/search/" method="get" role="search" class="hero__search">
-      <label class="sr-only" for="hero-q">Search gov.gh</label>
-      <input
-        id="hero-q"
-        name="q"
-        type="search"
-        placeholder="I am looking for…"
-        autocomplete="off"
+  <div class="hero__grid">
+    <div class="hero__text">
+      <p class="hero__eyebrow">
+        <span aria-hidden="true" class="hero__eyebrow-star"></span>
+        Akwaaba · Republic of Ghana
+      </p>
+      <h1 id="hero-title" class="hero__title">
+        Welcome to <span class="hero__accent">Ghana</span>.
+      </h1>
+      <p class="hero__lede">
+        The official digital portal of the Government of Ghana. Every service, every ministry, every
+        announcement — in one place.
+      </p>
+      <form action="/search/" method="get" role="search" class="hero__search">
+        <label class="sr-only" for="hero-q">Search the government of Ghana</label>
+        <span aria-hidden="true" class="hero__search-icon">
+          <svg viewBox="0 0 20 20" width="18" height="18" fill="none">
+            <circle cx="9" cy="9" r="6" stroke="currentColor" stroke-width="1.6"></circle>
+            <path
+              d="M13.5 13.5 L17 17"
+              stroke="currentColor"
+              stroke-width="1.6"
+              stroke-linecap="round"></path>
+          </svg>
+        </span>
+        <input
+          id="hero-q"
+          name="q"
+          type="search"
+          placeholder="Search services, ministries, news…"
+          autocomplete="off"
+        />
+        <button type="submit">Search</button>
+      </form>
+    </div>
+    <figure class="hero__photo-wrap" aria-hidden="true">
+      <Image
+        src={heroArch}
+        alt=""
+        widths={[480, 720, 960, 1280]}
+        sizes="(min-width: 64rem) 480px, 100vw"
+        loading="eager"
+        fetchpriority="high"
+        quality={78}
+        class="hero__photo"
       />
-      <button type="submit">
-        <span>Search</span>
-        <svg viewBox="0 0 16 16" aria-hidden="true" width="14" height="14">
-          <path
-            d="M6 11 L11 6 M6 6 h5 v5"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="1.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"></path>
-        </svg>
-      </button>
-    </form>
-    <p class="hero__caption" aria-hidden="true">
-      <span class="hero__caption-label">Black Star Square</span>
-      <span class="hero__caption-sep">·</span>
-      <span>Accra · Independence Arch, A.D. 1957</span>
-    </p>
-  </div>
-
-  <div class="hero__scroll" aria-hidden="true">
-    <span class="hero__scroll-label">Explore</span>
-    <span class="hero__scroll-dot"></span>
+      <figcaption class="hero__photo-caption">
+        Black Star Square · Independence Arch, A.D. 1957
+      </figcaption>
+    </figure>
   </div>
 </section>
 
 <style>
   .hero {
+    background: #ffffff;
+    padding: clamp(3rem, 7vw, 6rem) clamp(1.25rem, 4vw, 3rem);
     position: relative;
-    overflow: hidden;
-    /* Fill the ENTIRE viewport edge-to-edge. The opaque site header overlays
-       the top of the hero; since the Independence Arch photo has sky at the
-       top, nothing important is lost. Cascading fallbacks:
-         - 100vh: every browser (may leave a gap on mobile when address bar
-           collapses — harmless at the bottom of the hero)
-         - 100svh: Safari ≥15 — small viewport, no mobile UI gap
-         - 100dvh: modern browsers — adjusts live as mobile UI shows/hides
-       Final min-height value wins where supported. */
-    min-height: 640px;
-    min-height: 100vh;
-    min-height: 100svh;
-    min-height: 100dvh;
-    display: grid;
-    align-items: center;
-    background: #001008;
     isolation: isolate;
-    color: #fffef9;
+    border-bottom: 1px solid #edeae2;
   }
-
-  /* Full-bleed photograph. Uses `object-position` to keep the arch and star
-     composition centre-right on wider viewports and a bit right on mobile so
-     the monument stays in frame when text covers the left 55%. */
-  .hero__photo-wrap {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    overflow: hidden;
+  .hero__grid {
+    max-width: 80rem;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: clamp(2rem, 4vw, 3rem);
+    align-items: center;
   }
-  .hero__photo-wrap :global(img.hero__photo) {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    /* Shift focal point slightly down so the arch + star crown read below
-       the opaque site header overlay (which occupies the top ~128px). */
-    object-position: 55% 58%;
-    transform: scale(1.04);
-    animation: kenBurns 18s ease-out forwards;
-  }
-  @keyframes kenBurns {
-    from {
-      transform: scale(1.1);
-    }
-    to {
-      transform: scale(1.02);
+  @media (min-width: 64rem) {
+    .hero__grid {
+      grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+      gap: clamp(3rem, 6vw, 5rem);
     }
   }
 
-  /* Base scrim — darkens the entire photo to keep colour tone cohesive. */
-  .hero__scrim-base {
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-    background: linear-gradient(
-      180deg,
-      rgba(0, 16, 8, 0.35) 0%,
-      rgba(0, 16, 8, 0.15) 30%,
-      rgba(0, 16, 8, 0.55) 100%
-    );
+  .hero__text {
+    max-width: 44rem;
   }
-
-  /* Stronger scrim only under the text, feathered out to the right. */
-  .hero__scrim-text {
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-    background:
-      radial-gradient(
-        ellipse 62% 75% at 22% 50%,
-        rgba(0, 16, 8, 0.85) 0%,
-        rgba(0, 16, 8, 0.25) 50%,
-        transparent 72%
-      ),
-      linear-gradient(100deg, rgba(0, 16, 8, 0.65) 0%, transparent 55%);
-  }
-
-  /* Constellation. */
-  .hero__sky {
-    position: absolute;
-    inset: 0;
-    z-index: 2;
-    pointer-events: none;
-  }
-  .star-sm {
-    position: absolute;
-    left: var(--x);
-    top: var(--y);
-    width: var(--s);
-    height: var(--s);
-    opacity: 0.55;
-    transform: translate(-50%, -50%);
-    filter: drop-shadow(0 0 6px rgba(252, 209, 22, 0.4));
-    animation: starDrift 14s ease-in-out infinite alternate;
-  }
-  .star-sm--twinkle-0 {
-    animation: twinkle 4.5s ease-in-out 0.2s infinite;
-    opacity: 0.7;
-  }
-  .star-sm--twinkle-1 {
-    animation: twinkle 6.2s ease-in-out 1.1s infinite;
-    opacity: 0.75;
-  }
-  .star-sm--twinkle-2 {
-    animation: twinkle 5.1s ease-in-out 2.4s infinite;
-    opacity: 0.85;
-  }
-  @keyframes starDrift {
-    from {
-      transform: translate(-50%, -50%) translateY(0);
-    }
-    to {
-      transform: translate(-50%, -50%) translateY(-6px);
-    }
-  }
-  @keyframes twinkle {
-    0%,
-    100% {
-      opacity: 0.4;
-      transform: translate(-50%, -50%) scale(1);
-    }
-    50% {
-      opacity: 1;
-      transform: translate(-50%, -50%) scale(1.35);
-    }
-  }
-
-  /* Gold threads. */
-  .hero__threads {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 2;
-    pointer-events: none;
-    mix-blend-mode: screen;
-  }
-  .thread {
-    stroke-dasharray: 1800;
-    stroke-dashoffset: 1800;
-    animation: drawThread 2.6s cubic-bezier(0.2, 0.9, 0.3, 1) forwards;
-  }
-  .thread--a {
-    animation-delay: 0.5s;
-  }
-  .thread--b {
-    animation-delay: 0.8s;
-  }
-  .thread--c {
-    animation-delay: 1.1s;
-  }
-  @keyframes drawThread {
-    to {
-      stroke-dashoffset: 0;
-    }
-  }
-
-  .hero__inner {
-    position: relative;
-    z-index: 3;
-    /* Pad the top a little extra so the eyebrow never collides with the
-       opaque header overlay, and pad the bottom enough for the caption and
-       scroll affordance to live below the search box. */
-    padding: clamp(7rem, 14vh, 10rem) clamp(1.5rem, 5vw, 4.5rem) clamp(5rem, 10vh, 7rem);
-    max-width: 62rem;
-  }
-
   .hero__eyebrow {
-    font-size: 0.75rem;
-    letter-spacing: 0.3em;
-    color: #fcd116;
+    font-size: 0.8125rem;
+    letter-spacing: 0.14em;
+    color: #005a35;
     text-transform: uppercase;
     margin: 0 0 1.25rem;
+    font-weight: 600;
     display: inline-flex;
     align-items: center;
     gap: 0.625rem;
-    font-weight: 600;
-    opacity: 0;
-    animation: rise 0.8s cubic-bezier(0.2, 0.9, 0.3, 1) 0.2s forwards;
   }
-  .hero__eyebrow-dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
+  .hero__eyebrow-star {
+    width: 8px;
+    height: 8px;
     background: #fcd116;
-    box-shadow: 0 0 12px rgba(252, 209, 22, 0.7);
-    animation: eyebrowDotPulse 2.8s ease-in-out 1.6s infinite;
-  }
-  @keyframes eyebrowDotPulse {
-    0%,
-    100% {
-      box-shadow: 0 0 12px rgba(252, 209, 22, 0.6);
-      transform: scale(1);
-    }
-    50% {
-      box-shadow: 0 0 22px rgba(252, 209, 22, 0.95);
-      transform: scale(1.25);
-    }
+    display: inline-block;
+    /* A tiny 5-pointed star as pseudo-marker, kept with clip-path. */
+    clip-path: polygon(
+      50% 0%,
+      61% 35%,
+      98% 35%,
+      68% 57%,
+      79% 91%,
+      50% 70%,
+      21% 91%,
+      32% 57%,
+      2% 35%,
+      39% 35%
+    );
   }
 
   .hero__title {
-    font-family: Georgia, 'Playfair Display', 'Source Serif Pro', serif;
-    font-size: clamp(2.5rem, 7.5vw, 6rem);
-    line-height: 0.96;
+    font-size: clamp(2.5rem, 5vw, 4.25rem);
     font-weight: 700;
-    letter-spacing: -0.02em;
-    margin: 0 0 1.5rem;
-    color: #fffef9;
-    text-shadow: 0 3px 36px rgba(0, 0, 0, 0.6);
+    letter-spacing: -0.022em;
+    line-height: 1.02;
+    color: #0a0f1f;
+    margin: 0 0 1.25rem;
   }
-  .hero__line {
-    display: block;
-    overflow: hidden;
-    clip-path: inset(0 100% 0 0);
-    animation: curtain 0.95s cubic-bezier(0.2, 0.9, 0.3, 1) forwards;
-  }
-  .hero__line:nth-child(1) {
-    animation-delay: 0.35s;
-  }
-  .hero__line:nth-child(2) {
-    animation-delay: 0.6s;
-  }
-  .hero__line:nth-child(3) {
-    animation-delay: 0.85s;
-  }
-  @keyframes curtain {
-    to {
-      clip-path: inset(0 0 0 0);
-    }
-  }
-  .hero__line-inner {
-    display: inline-block;
-    transform: translateY(20px);
-    opacity: 0.4;
-    animation: lineLift 0.95s cubic-bezier(0.2, 0.9, 0.3, 1) forwards;
-  }
-  .hero__line:nth-child(1) .hero__line-inner {
-    animation-delay: 0.35s;
-  }
-  .hero__line:nth-child(2) .hero__line-inner {
-    animation-delay: 0.6s;
-  }
-  .hero__line:nth-child(3) .hero__line-inner {
-    animation-delay: 0.85s;
-  }
-  @keyframes lineLift {
-    to {
-      transform: translateY(0);
-      opacity: 1;
-    }
-  }
-
   .hero__accent {
     position: relative;
+    color: #005a35;
     display: inline-block;
-    color: #fcd116;
   }
   .hero__accent::after {
     content: '';
@@ -437,7 +148,7 @@ const constellation: ReadonlyArray<{ x: number; y: number; size: number; twinkle
     left: 0;
     right: 0;
     bottom: 0.02em;
-    height: 0.14em;
+    height: 0.1em;
     background: linear-gradient(
       90deg,
       #006b3f 0%,
@@ -447,203 +158,107 @@ const constellation: ReadonlyArray<{ x: number; y: number; size: number; twinkle
       #ce1126 66%,
       #ce1126 100%
     );
-    transform-origin: left;
-    transform: scaleX(0);
-    animation: drawUnderline 1.1s cubic-bezier(0.2, 0.9, 0.3, 1) 1.45s forwards;
-  }
-  @keyframes drawUnderline {
-    to {
-      transform: scaleX(1);
-    }
   }
 
   .hero__lede {
-    font-family: Georgia, serif;
-    font-style: italic;
-    font-size: clamp(1rem, 1.6vw, 1.25rem);
+    font-size: clamp(1.0625rem, 1.35vw, 1.25rem);
     line-height: 1.55;
-    max-width: 38ch;
-    color: rgba(255, 253, 245, 0.92);
-    margin: 0 0 2.25rem;
-    opacity: 0;
-    text-shadow: 0 2px 18px rgba(0, 0, 0, 0.5);
-    animation: rise 0.9s cubic-bezier(0.2, 0.9, 0.3, 1) 1.25s forwards;
+    color: #384251;
+    max-width: 44ch;
+    margin: 0 0 2rem;
   }
 
   .hero__search {
-    display: flex;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
     align-items: stretch;
     gap: 0;
-    background: rgba(255, 253, 245, 0.08);
-    border: 1px solid rgba(252, 209, 22, 0.45);
-    border-radius: 2px;
+    background: #fff;
+    border: 1.5px solid #0a0f1f;
+    border-radius: 4px;
+    max-width: 40rem;
     overflow: hidden;
-    max-width: 34rem;
-    backdrop-filter: blur(10px);
     transition:
-      border-color 250ms ease,
-      box-shadow 250ms ease;
-    opacity: 0;
-    animation: rise 0.9s cubic-bezier(0.2, 0.9, 0.3, 1) 1.6s forwards;
+      border-color 180ms ease,
+      box-shadow 180ms ease;
   }
   .hero__search:focus-within {
-    border-color: #fcd116;
-    box-shadow: 0 0 0 3px rgba(252, 209, 22, 0.28);
+    border-color: #005a35;
+    box-shadow: 0 0 0 3px rgba(252, 209, 22, 0.35);
+  }
+  .hero__search-icon {
+    display: inline-flex;
+    align-items: center;
+    padding: 0 0 0 1rem;
+    color: #5b5f68;
   }
   .hero__search input {
     flex: 1;
     border: 0;
-    padding: 0.95rem 1.125rem;
+    padding: 0.95rem 0.75rem 0.95rem 0.75rem;
     font: inherit;
     font-size: 0.9375rem;
-    color: #fffef9;
+    color: #0a0f1f;
     background: transparent;
+    min-width: 0;
   }
   .hero__search input::placeholder {
-    color: rgba(255, 253, 245, 0.62);
+    color: #6b7280;
   }
   .hero__search input:focus {
     outline: none;
   }
   .hero__search button {
     border: 0;
-    background: linear-gradient(135deg, #006b3f 0%, #004527 100%);
-    color: #fffef9;
+    background: #005a35;
+    color: #fff;
     padding: 0 1.5rem;
     font: inherit;
     font-size: 0.875rem;
     font-weight: 600;
-    letter-spacing: 0.02em;
+    letter-spacing: 0.01em;
     cursor: pointer;
-    min-width: 44px;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    transition: background 200ms ease;
-    border-left: 1px solid rgba(252, 209, 22, 0.45);
+    transition: background 180ms ease;
   }
   .hero__search button:hover,
   .hero__search button:focus-visible {
-    background: linear-gradient(135deg, #007d48 0%, #005a35 100%);
-  }
-  .hero__search button svg {
-    transition: transform 200ms ease;
-  }
-  .hero__search button:hover svg {
-    transform: translate(1px, -1px);
+    background: #004527;
   }
 
-  /* Subtle photo caption — credits the location. */
-  .hero__caption {
-    position: absolute;
-    bottom: clamp(1.25rem, 3vw, 2rem);
-    left: clamp(1.5rem, 5vw, 4.5rem);
-    font-size: 0.6875rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: rgba(255, 253, 245, 0.55);
+  .hero__photo-wrap {
     margin: 0;
-    display: inline-flex;
-    gap: 0.5rem;
-    align-items: center;
-    font-weight: 500;
-    opacity: 0;
-    animation: rise 0.9s cubic-bezier(0.2, 0.9, 0.3, 1) 2s forwards;
+    position: relative;
+    aspect-ratio: 4 / 5;
+    border-radius: 6px;
+    overflow: hidden;
+    background: #edeae2;
+    box-shadow: 0 20px 50px -20px rgba(0, 40, 24, 0.25);
+    max-height: 620px;
   }
-  .hero__caption-label {
-    color: rgba(252, 209, 22, 0.85);
-    font-weight: 600;
+  .hero__photo-wrap :global(img.hero__photo) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 55% 50%;
   }
-  .hero__caption-sep {
-    color: rgba(255, 253, 245, 0.35);
-  }
-
-  /* Scroll affordance. */
-  .hero__scroll {
+  .hero__photo-caption {
     position: absolute;
-    bottom: 1.75rem;
-    right: clamp(1.5rem, 5vw, 4.5rem);
-    z-index: 3;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
-    color: rgba(255, 253, 245, 0.55);
+    bottom: 12px;
+    left: 14px;
+    right: 14px;
     font-size: 0.6875rem;
-    letter-spacing: 0.3em;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
+    color: #fff;
     font-weight: 600;
-    opacity: 0;
-    animation: rise 1s cubic-bezier(0.2, 0.9, 0.3, 1) 2.1s forwards;
+    padding: 6px 10px;
+    background: rgba(10, 15, 31, 0.65);
+    backdrop-filter: blur(6px);
+    border-radius: 2px;
   }
-  .hero__scroll-dot {
-    width: 2px;
-    height: 32px;
-    background: linear-gradient(180deg, rgba(252, 209, 22, 0.8) 0%, transparent 100%);
-    animation: scrollDot 2.4s ease-in-out infinite;
-  }
-  @keyframes scrollDot {
-    0%,
-    100% {
-      transform: translateY(0);
-      opacity: 0.4;
-    }
-    50% {
-      transform: translateY(6px);
-      opacity: 1;
-    }
-  }
-  @media (max-width: 48rem) {
-    .hero__scroll {
-      display: none;
-    }
-    .hero__caption {
-      font-size: 0.625rem;
-    }
-  }
-
-  @keyframes rise {
-    from {
-      opacity: 0;
-      transform: translateY(24px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .hero__photo-wrap :global(img.hero__photo) {
-      transform: scale(1);
-      animation: none;
-    }
-    .star-sm,
-    .hero__eyebrow-dot,
-    .hero__scroll-dot {
-      animation: none !important;
-    }
-    .hero__line {
-      clip-path: none;
-      animation: none;
-    }
-    .hero__line-inner,
-    .hero__eyebrow,
-    .hero__lede,
-    .hero__search,
-    .hero__caption,
-    .hero__scroll {
-      opacity: 1;
-      transform: none;
-      animation: none;
-    }
-    .thread {
-      stroke-dashoffset: 0;
-      animation: none;
-    }
-    .hero__accent::after {
-      transform: scaleX(1);
-      animation: none;
+  @media (max-width: 64rem) {
+    .hero__photo-wrap {
+      max-height: 420px;
     }
   }
 

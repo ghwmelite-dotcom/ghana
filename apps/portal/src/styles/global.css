@@ -1,11 +1,12 @@
 /*
- * Global styles — portal-wide.
+ * Global styles — portal-wide. gov.rw-aligned: sans-first typography, white
+ * background dominant, minimal ornament, card-driven layouts.
  *
- * Depends on tokens exported by @gh/gh-ds/tokens.css, which BaseLayout imports
- * before this file. Uses only token variables, no arbitrary values.
+ * Depends on tokens exported by @gh/gh-ds/tokens.css which BaseLayout imports
+ * before this file.
  */
 
-/* ─── Reset: box-sizing, margin, image fluidity ─────────────────── */
+/* ─── Reset ─────────────────────────────────────────────────────── */
 *,
 *::before,
 *::after {
@@ -33,12 +34,15 @@ html {
 
 body {
   min-height: 100svh;
-  background: var(--color-surface);
-  color: var(--color-text-default);
-  font-family: var(--font-body);
-  font-size: var(--font-size-base);
-  font-weight: var(--font-weight-regular);
-  line-height: var(--line-height-body);
+  background: #ffffff;
+  color: #111827;
+  /* Sans-first — Inter self-hosted via @gh/gh-ds/fonts plus system fallbacks. */
+  font-family:
+    Inter, 'Noto Sans', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
+    sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.55;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
@@ -51,72 +55,61 @@ svg {
   height: auto;
 }
 
-/* Skip link is owned by `@gh/gh-ds/SkipLink`. */
-
-/* ─── Focus-visible default — applies everywhere a more specific rule does not ─── */
+/* ─── Focus default ─────────────────────────────────────────────── */
 :focus-visible {
-  outline: var(--border-width-focus) solid var(--color-focus-ring);
+  outline: 3px solid #fcd116;
   outline-offset: 2px;
-  border-radius: var(--radius-sm);
+  border-radius: 2px;
 }
 
 main:focus {
   outline: none;
 }
 
-/* ─── Landmark rhythm ────────────────────────────────────────────── */
 main {
   display: block;
-  max-width: 72rem;
-  margin: 0 auto;
-  padding: var(--space-8) var(--space-4) var(--space-12);
 }
 
-@media (min-width: 48rem) {
-  main {
-    padding: var(--space-16) var(--space-8) var(--space-20);
-  }
+/* ─── Headings — sans, no Georgia ──────────────────────────────── */
+h1,
+h2,
+h3,
+h4 {
+  font-family: inherit;
+  color: #0f172a;
+  letter-spacing: -0.015em;
+  line-height: 1.15;
 }
 
-/* ─── Headings ───────────────────────────────────────────────────── */
 h1 {
-  font-family: var(--font-display);
-  font-weight: var(--font-weight-bold);
-  font-size: var(--font-size-4xl);
-  line-height: var(--line-height-display);
-  letter-spacing: -0.02em;
-  margin-bottom: var(--space-4);
-}
-
-@media (min-width: 48rem) {
-  h1 {
-    font-size: var(--font-size-5xl);
-  }
+  font-weight: 700;
+  font-size: clamp(2rem, 4vw, 2.75rem);
 }
 
 h2 {
-  font-family: var(--font-display);
-  font-weight: var(--font-weight-bold);
-  font-size: var(--font-size-2xl);
-  line-height: var(--line-height-heading);
-  margin-top: var(--space-12);
-  margin-bottom: var(--space-4);
+  font-weight: 700;
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
 }
 
-/* ─── Links ──────────────────────────────────────────────────────── */
+h3 {
+  font-weight: 600;
+  font-size: clamp(1.125rem, 1.6vw, 1.25rem);
+  line-height: 1.25;
+}
+
+/* ─── Links ─────────────────────────────────────────────────────── */
 a {
-  color: var(--color-link);
+  color: #005a35;
   text-decoration: underline;
-  text-underline-offset: 0.15em;
-  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.18em;
+  text-decoration-thickness: 1px;
+  transition: text-decoration-thickness 160ms ease;
 }
 
 a:hover {
-  text-decoration-thickness: 0.15em;
+  text-decoration-thickness: 2px;
 }
 
 a:visited {
-  color: var(--color-link-visited);
+  color: #004527;
 }
-
-/* Flag-rule strip is owned by `@gh/gh-ds/Header`. */

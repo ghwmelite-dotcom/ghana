@@ -1,120 +1,118 @@
 ---
 /**
- * Life-stage tiles — the primary category nav on the homepage.
+ * Life-stage tiles — gov.rw-aligned 4-column card grid.
  *
- * Each tile carries a per-stage Kente thread (vertical on the left) that
- * shimmers on hover, a distinctive monochrome mark (no emoji), and an
- * editorial serif label.
+ * Each tile is a clean white card with a simple line-icon in the top-left,
+ * a sans heading, a short descriptor, and a "Read more →" link. Hover
+ * subtly lifts and tints the top border green.
  */
 interface Tile {
   href: string;
   label: string;
   descriptor: string;
-  colour: 'green' | 'red' | 'gold' | 'ink';
-  mark: 'live' | 'work' | 'business' | 'visit';
+  icon: 'live' | 'work' | 'business' | 'visit';
 }
 
 const tiles: ReadonlyArray<Tile> = [
   {
     href: '/services/live/',
-    label: 'Live',
-    descriptor: 'Identity · health · housing · family',
-    colour: 'green',
-    mark: 'live',
+    label: 'Live in Ghana',
+    descriptor: 'Identity, health, housing, family — everyday services for citizens and residents.',
+    icon: 'live',
   },
   {
     href: '/services/work/',
-    label: 'Work',
-    descriptor: 'Tax · pensions · professional permits',
-    colour: 'red',
-    mark: 'work',
+    label: 'Work in Ghana',
+    descriptor: 'Tax, pensions, professional permits, national service postings.',
+    icon: 'work',
   },
   {
     href: '/services/business/',
-    label: 'Do business',
-    descriptor: 'Register · license · trade · grow',
-    colour: 'gold',
-    mark: 'business',
+    label: 'Do business in Ghana',
+    descriptor: 'Register a company, obtain licences, file returns, import and export.',
+    icon: 'business',
   },
   {
     href: '/services/visit/',
-    label: 'Visit',
-    descriptor: 'Passports · visas · diaspora',
-    colour: 'ink',
-    mark: 'visit',
+    label: 'Visit Ghana',
+    descriptor: 'Passports, visas, residence permits, diaspora and Year of Return.',
+    icon: 'visit',
   },
 ];
 ---
 
-<section aria-labelledby="life-stage-heading" class="tiles">
+<section class="tiles" aria-labelledby="tiles-heading">
   <div class="tiles__inner">
     <header class="tiles__head">
-      <p class="tiles__eyebrow">Find what you need</p>
-      <h2 id="life-stage-heading" class="tiles__title">Start with a moment of your life.</h2>
+      <p class="tiles__eyebrow">Services</p>
+      <h2 id="tiles-heading" class="tiles__title">Start with a moment of your life.</h2>
+      <p class="tiles__lede">
+        Every service the Government of Ghana offers, grouped by what you need to do.
+      </p>
     </header>
+
     <div class="tiles__grid">
       {
         tiles.map((tile) => (
-          <a href={tile.href} class={`tile tile--${tile.colour}`}>
-            <span class="tile__thread" aria-hidden="true" />
-            <span class="tile__mark" aria-hidden="true">
-              {tile.mark === 'live' && (
+          <a href={tile.href} class="tile">
+            <span class="tile__icon" aria-hidden="true">
+              {tile.icon === 'live' && (
                 <svg viewBox="0 0 32 32" width="28" height="28" fill="none">
-                  <circle cx="16" cy="12" r="5" stroke="currentColor" stroke-width="1.5" />
+                  <circle cx="16" cy="11" r="5" stroke="currentColor" stroke-width="1.6" />
                   <path
-                    d="M6 28 Q 6 18 16 18 T 26 28"
+                    d="M5 28 Q 5 17 16 17 T 27 28"
                     stroke="currentColor"
-                    stroke-width="1.5"
+                    stroke-width="1.6"
                     stroke-linecap="round"
                   />
                 </svg>
               )}
-              {tile.mark === 'work' && (
+              {tile.icon === 'work' && (
                 <svg viewBox="0 0 32 32" width="28" height="28" fill="none">
                   <path
-                    d="M6 10 L16 4 L26 10 L26 26 L18 26 L18 18 L14 18 L14 26 L6 26 Z"
+                    d="M5 10 h22 v17 h-22 z M11 10 v-3 h10 v3"
                     stroke="currentColor"
-                    stroke-width="1.5"
+                    stroke-width="1.6"
                     stroke-linejoin="round"
+                  />
+                  <path d="M5 18 h22" stroke="currentColor" stroke-width="1.6" />
+                </svg>
+              )}
+              {tile.icon === 'business' && (
+                <svg viewBox="0 0 32 32" width="28" height="28" fill="none">
+                  <path
+                    d="M6 27 V13 L13 13 V8 L19 8 V15 L26 15 V27 Z"
+                    stroke="currentColor"
+                    stroke-width="1.6"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M10 27 v-4 h3 v4 M16 27 v-4 h3 v4 M22 27 v-4 h2 v4"
+                    stroke="currentColor"
+                    stroke-width="1.4"
                   />
                 </svg>
               )}
-              {tile.mark === 'business' && (
+              {tile.icon === 'visit' && (
                 <svg viewBox="0 0 32 32" width="28" height="28" fill="none">
                   <path
-                    d="M6 26 L6 12 L13 12 L13 6 L19 6 L19 14 L26 14 L26 26 Z"
+                    d="M4 17 L27 7 L23 18 L17 17 L13 22 L11 17 Z"
                     stroke="currentColor"
-                    stroke-width="1.5"
-                    stroke-linejoin="round"
-                  />
-                  <path
-                    d="M11 26 L11 20 L15 20 L15 26 M21 26 L21 20 L25 20 L25 26"
-                    stroke="currentColor"
-                    stroke-width="1.5"
-                  />
-                </svg>
-              )}
-              {tile.mark === 'visit' && (
-                <svg viewBox="0 0 32 32" width="28" height="28" fill="none">
-                  <path
-                    d="M4 18 L26 6 L24 18 L16 16 L12 22 L11 18 L4 18 Z"
-                    stroke="currentColor"
-                    stroke-width="1.5"
+                    stroke-width="1.6"
                     stroke-linejoin="round"
                   />
                 </svg>
               )}
             </span>
-            <div class="tile__body">
-              <div class="tile__label">{tile.label}</div>
-              <div class="tile__descriptor">{tile.descriptor}</div>
-            </div>
-            <span class="tile__arrow" aria-hidden="true">
-              <svg viewBox="0 0 16 16" width="16" height="16" fill="none">
+            <h3 class="tile__label">{tile.label}</h3>
+            <p class="tile__descriptor">{tile.descriptor}</p>
+            <span class="tile__more" aria-hidden="true">
+              Explore
+              <svg viewBox="0 0 16 16" width="12" height="12" fill="none">
                 <path
-                  d="M4 8 h8 M8 4 l4 4 -4 4"
+                  d="M3 8 h10 M9 4 l4 4 -4 4"
                   stroke="currentColor"
-                  stroke-width="1.5"
+                  stroke-width="1.6"
                   stroke-linecap="round"
                   stroke-linejoin="round"
                 />
@@ -129,41 +127,47 @@ const tiles: ReadonlyArray<Tile> = [
 
 <style>
   .tiles {
-    background: #faf7f2;
-    padding: 0;
+    background: #f7f7f5;
+    padding: clamp(3rem, 6vw, 5rem) clamp(1.25rem, 4vw, 3rem);
+    border-bottom: 1px solid #edeae2;
   }
   .tiles__inner {
     max-width: 80rem;
     margin: 0 auto;
-    padding: clamp(3rem, 6vw, 5.5rem) clamp(1.25rem, 4vw, 3rem);
   }
   .tiles__head {
-    margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
-    max-width: 44ch;
+    max-width: 50ch;
+    margin-bottom: clamp(1.75rem, 3vw, 2.5rem);
   }
   .tiles__eyebrow {
     font-size: 0.75rem;
-    letter-spacing: 0.3em;
-    color: #820b18;
+    letter-spacing: 0.2em;
+    color: #005a35;
     text-transform: uppercase;
     font-weight: 600;
-    margin: 0 0 0.75rem;
+    margin: 0 0 0.625rem;
   }
   .tiles__title {
-    font-family: Georgia, 'Playfair Display', serif;
-    font-size: clamp(1.625rem, 3vw, 2.25rem);
-    line-height: 1.1;
-    color: #002818;
+    font-size: clamp(1.5rem, 2.6vw, 2rem);
+    font-weight: 700;
+    color: #0a0f1f;
+    margin: 0 0 0.625rem;
+    letter-spacing: -0.015em;
+  }
+  .tiles__lede {
+    color: #384251;
+    max-width: 52ch;
     margin: 0;
-    letter-spacing: -0.01em;
+    font-size: 1rem;
+    line-height: 1.55;
   }
 
   .tiles__grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 0.875rem;
+    gap: 1rem;
   }
-  @media (min-width: 40rem) {
+  @media (min-width: 36rem) {
     .tiles__grid {
       grid-template-columns: repeat(2, 1fr);
     }
@@ -175,139 +179,70 @@ const tiles: ReadonlyArray<Tile> = [
   }
 
   .tile {
-    position: relative;
-    display: grid;
-    grid-template-columns: auto 1fr auto;
-    align-items: center;
-    gap: 1rem;
-    padding: 1.375rem 1.25rem 1.375rem 1.75rem;
-    background: #fffef9;
+    background: #fff;
     border: 1px solid #e5e0d6;
-    border-radius: 2px;
+    border-top: 3px solid #005a35;
+    border-radius: 4px;
+    padding: 1.5rem 1.375rem 1.375rem;
     text-decoration: none;
-    color: #1a1a1a;
-    min-height: 88px;
-    overflow: hidden;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    min-height: 220px;
     transition:
-      transform 280ms cubic-bezier(0.2, 0.9, 0.3, 1),
-      box-shadow 280ms cubic-bezier(0.2, 0.9, 0.3, 1),
-      border-color 280ms ease;
+      transform 200ms cubic-bezier(0.2, 0.9, 0.3, 1),
+      box-shadow 200ms ease,
+      border-top-color 200ms ease;
   }
   .tile:hover,
   .tile:focus-visible {
     transform: translateY(-3px);
-    box-shadow: 0 12px 32px rgba(0, 40, 24, 0.12);
-    border-color: rgba(0, 90, 53, 0.3);
+    box-shadow: 0 14px 32px -16px rgba(0, 40, 24, 0.18);
+    border-top-color: #fcd116;
   }
   .tile:focus-visible {
     outline: 3px solid #fcd116;
     outline-offset: 3px;
   }
-
-  /* The Kente thread — a vertical multi-colour strip on the left of every tile.
-     Each colour variant positions the same weave pattern but at a different
-     vertical offset so the "dominant" thread differs per life stage. */
-  .tile__thread {
-    position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    width: 6px;
-    background: repeating-linear-gradient(
-      180deg,
-      #006b3f 0 18px,
-      #fcd116 18px 26px,
-      #ce1126 26px 44px,
-      #0b0b0f 44px 52px
-    );
-    opacity: 0.9;
-    transition: width 280ms cubic-bezier(0.2, 0.9, 0.3, 1);
-  }
-  .tile:hover .tile__thread,
-  .tile:focus-visible .tile__thread {
-    width: 10px;
-  }
-  .tile--green .tile__thread {
-    background-position: 0 0;
-  }
-  .tile--red .tile__thread {
-    background-position: 0 -22px;
-  }
-  .tile--gold .tile__thread {
-    background-position: 0 -44px;
-  }
-  .tile--ink .tile__thread {
-    background-position: 0 -66px;
-  }
-
-  .tile__mark {
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    background: #faf7f2;
-    border: 1px solid #e5e0d6;
+  .tile__icon {
+    color: #005a35;
     display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    transition:
-      background 240ms ease,
-      border-color 240ms ease,
-      color 240ms ease;
-  }
-  .tile--green .tile__mark {
-    color: #004527;
-  }
-  .tile--red .tile__mark {
-    color: #820b18;
-  }
-  .tile--gold .tile__mark {
-    color: #8a7008;
-  }
-  .tile--ink .tile__mark {
-    color: #1a1a1a;
-  }
-  .tile:hover .tile__mark,
-  .tile:focus-visible .tile__mark {
-    background: #fff;
-    border-color: currentColor;
-  }
-
-  .tile__body {
-    min-width: 0;
+    margin-bottom: 1rem;
   }
   .tile__label {
-    font-family: Georgia, 'Playfair Display', serif;
-    font-weight: 700;
     font-size: 1.125rem;
-    line-height: 1.1;
-    margin-bottom: 0.2rem;
-    color: #002818;
-    letter-spacing: -0.005em;
+    font-weight: 600;
+    color: #0a0f1f;
+    margin: 0 0 0.5rem;
+    line-height: 1.25;
   }
   .tile__descriptor {
-    font-size: 0.8125rem;
-    color: #5b5f68;
-    line-height: 1.35;
+    font-size: 0.9375rem;
+    color: #384251;
+    line-height: 1.45;
+    margin: 0 0 1.25rem;
+    flex: 1;
   }
-
-  .tile__arrow {
-    color: #5b5f68;
-    transition:
-      color 240ms ease,
-      transform 280ms cubic-bezier(0.2, 0.9, 0.3, 1);
+  .tile__more {
     display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #005a35;
+    text-decoration: none;
   }
-  .tile:hover .tile__arrow,
-  .tile:focus-visible .tile__arrow {
-    color: #004527;
-    transform: translate(2px, -2px);
+  .tile__more svg {
+    transition: transform 200ms cubic-bezier(0.2, 0.9, 0.3, 1);
+  }
+  .tile:hover .tile__more svg,
+  .tile:focus-visible .tile__more svg {
+    transform: translateX(3px);
   }
 
   @media (prefers-reduced-motion: reduce) {
     .tile,
-    .tile__thread,
-    .tile__mark,
-    .tile__arrow {
+    .tile__more svg {
       transition: none;
     }
     .tile:hover,

@@ -1,0 +1,123 @@
+---
+/**
+ * "Get to know Ghana" — introductory block with a single "Learn more" link,
+ * gov.rw's equivalent sits directly below the 4 tiles.
+ */
+import { Image } from 'astro:assets';
+import coatOfArms from '../assets/photos/coat-of-arms.png';
+---
+
+<section class="know" aria-labelledby="know-heading">
+  <div class="know__inner">
+    <figure class="know__crest" aria-hidden="true">
+      <Image src={coatOfArms} alt="" widths={[160, 240]} sizes="120px" quality={90} />
+    </figure>
+    <div class="know__body">
+      <p class="know__eyebrow">About the Republic</p>
+      <h2 id="know-heading" class="know__title">Get to know Ghana.</h2>
+      <p class="know__lede">
+        Home to 32 million people across 16 regions, Ghana was the first sub-Saharan African country
+        to gain independence from colonial rule. Today it is a stable constitutional democracy, a
+        West African trade hub, and the proud host of the African Continental Free Trade Area
+        Secretariat. Our motto, chosen at independence in 1957, still stands:
+        <em>Freedom and Justice.</em>
+      </p>
+      <a href="/about/" class="know__cta">
+        Learn more about Ghana
+        <svg viewBox="0 0 16 16" width="14" height="14" fill="none" aria-hidden="true">
+          <path
+            d="M3 8 h10 M9 4 l4 4 -4 4"
+            stroke="currentColor"
+            stroke-width="1.6"
+            stroke-linecap="round"
+            stroke-linejoin="round"></path>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .know {
+    background: #ffffff;
+    padding: clamp(3rem, 6vw, 5rem) clamp(1.25rem, 4vw, 3rem);
+    border-bottom: 1px solid #edeae2;
+  }
+  .know__inner {
+    max-width: 72rem;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    align-items: center;
+  }
+  @media (min-width: 48rem) {
+    .know__inner {
+      grid-template-columns: 160px minmax(0, 1fr);
+      gap: 3rem;
+    }
+  }
+  .know__crest {
+    margin: 0;
+    max-width: 140px;
+  }
+  .know__crest :global(img) {
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 8px 22px rgba(0, 40, 24, 0.12));
+  }
+  .know__body {
+    max-width: 56ch;
+  }
+  .know__eyebrow {
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    color: #005a35;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin: 0 0 0.5rem;
+  }
+  .know__title {
+    font-size: clamp(1.5rem, 2.6vw, 2rem);
+    font-weight: 700;
+    color: #0a0f1f;
+    margin: 0 0 0.875rem;
+    letter-spacing: -0.015em;
+  }
+  .know__lede {
+    font-size: 1.0625rem;
+    line-height: 1.6;
+    color: #384251;
+    margin: 0 0 1.25rem;
+  }
+  .know__lede em {
+    color: #005a35;
+    font-style: italic;
+    font-weight: 500;
+  }
+  .know__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: #005a35;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    padding-bottom: 2px;
+    transition:
+      border-color 180ms ease,
+      transform 180ms ease;
+  }
+  .know__cta:hover,
+  .know__cta:focus-visible {
+    border-bottom-color: #005a35;
+  }
+  .know__cta:hover svg,
+  .know__cta:focus-visible svg {
+    transform: translateX(3px);
+  }
+  .know__cta svg {
+    transition: transform 200ms cubic-bezier(0.2, 0.9, 0.3, 1);
+  }
+</style>

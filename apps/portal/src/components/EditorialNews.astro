@@ -1,18 +1,25 @@
 ---
 /**
- * Editorial news strip — NYT-stacked composition. One lead article in
- * generous editorial type, three side articles as a column. A thin Kente
- * hairline separates them.
+ * Latest updates — gov.rw's news list. A section heading, then a vertical
+ * stack of news cards, each with an optional thumbnail, a category tag, a
+ * headline, a short preview, and a publish date.
  */
+import { Image } from 'astro:assets';
 import { getCollection, type CollectionEntry } from 'astro:content';
+import accraMarket from '../assets/photos/accra-market.png';
+import nkrumahBlackStar from '../assets/photos/nkrumah-black-star.png';
+import independenceArch from '../assets/photos/independence-arch.png';
+import nkrumahMemorial from '../assets/photos/nkrumah-memorial.png';
 
 const all: CollectionEntry<'news'>[] = (await getCollection('news')).sort(
   (a: CollectionEntry<'news'>, b: CollectionEntry<'news'>) =>
     b.data.publishedAt.getTime() - a.data.publishedAt.getTime(),
 );
+const items = all.slice(0, 4);
 
-const lead = all[0];
-const side = all.slice(1, 4);
+// Rotate a small pool of placeholder thumbnails until each news entry has
+// its own heroImage authored into the content collection.
+const placeholders = [accraMarket, nkrumahBlackStar, independenceArch, nkrumahMemorial];
 
 const formatter = new Intl.DateTimeFormat('en-GB', {
   day: 'numeric',
@@ -30,15 +37,17 @@ const ministryLabel = (slug: string) =>
 <section class="news" aria-labelledby="news-heading">
   <div class="news__inner">
     <header class="news__head">
-      <p class="news__eyebrow">Latest from government</p>
-      <h2 id="news-heading" class="news__title">Announcements, decisions, and updates.</h2>
+      <div>
+        <p class="news__eyebrow">Latest updates</p>
+        <h2 id="news-heading" class="news__title">From across government.</h2>
+      </div>
       <a href="/news/" class="news__more">
-        All news
+        View all news
         <svg viewBox="0 0 16 16" width="12" height="12" fill="none" aria-hidden="true">
           <path
             d="M3 8 h10 M9 4 l4 4 -4 4"
             stroke="currentColor"
-            stroke-width="1.5"
+            stroke-width="1.6"
             stroke-linecap="round"
             stroke-linejoin="round"></path>
         </svg>
@@ -46,62 +55,39 @@ const ministryLabel = (slug: string) =>
     </header>
 
     {
-      lead && (
-        <>
-          <article class="lead">
-            <a
-              href={`/news/${lead.data.publishedAt.getFullYear()}/${lead.slug}/`}
-              class="lead__link"
-            >
-              <p class="lead__meta">
-                <span class="lead__ministry">{ministryLabel(lead.data.ministry)}</span>
-                <span class="lead__sep" aria-hidden="true">
-                  ·
-                </span>
-                <time datetime={lead.data.publishedAt.toISOString()}>
-                  {formatter.format(lead.data.publishedAt)}
-                </time>
-              </p>
-              <h3 class="lead__title">{lead.data.title}</h3>
-              <p class="lead__lede">{lead.data.lede}</p>
-              <span class="lead__cta">
-                Read more
-                <svg viewBox="0 0 16 16" width="14" height="14" fill="none" aria-hidden="true">
-                  <path
-                    d="M3 8 h10 M9 4 l4 4 -4 4"
-                    stroke="currentColor"
-                    stroke-width="1.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+      items.length === 0 ? (
+        <p class="news__empty">News will appear here as it is published.</p>
+      ) : (
+        <ul class="news__list">
+          {items.map((n, i) => (
+            <li class="news-item">
+              <a
+                href={`/news/${n.data.publishedAt.getFullYear()}/${n.slug}/`}
+                class="news-item__link"
+              >
+                <figure class="news-item__thumb" aria-hidden="true">
+                  <Image
+                    src={placeholders[i % placeholders.length]}
+                    alt=""
+                    widths={[240, 360, 480]}
+                    sizes="(min-width: 48rem) 220px, 100vw"
+                    quality={72}
                   />
-                </svg>
-              </span>
-            </a>
-          </article>
-
-          <div class="divider" aria-hidden="true" />
-
-          <ul class="side">
-            {side.map((entry: CollectionEntry<'news'>) => (
-              <li>
-                <a
-                  href={`/news/${entry.data.publishedAt.getFullYear()}/${entry.slug}/`}
-                  class="side__link"
-                >
-                  <p class="side__meta">
-                    <span class="side__ministry">{ministryLabel(entry.data.ministry)}</span>
-                    <span aria-hidden="true">·</span>
-                    <time datetime={entry.data.publishedAt.toISOString()}>
-                      {formatter.format(entry.data.publishedAt)}
+                </figure>
+                <div class="news-item__body">
+                  <p class="news-item__meta">
+                    <span class="news-item__tag">{ministryLabel(n.data.ministry)}</span>
+                    <time datetime={n.data.publishedAt.toISOString()}>
+                      {formatter.format(n.data.publishedAt)}
                     </time>
                   </p>
-                  <h4 class="side__title">{entry.data.title}</h4>
-                  <p class="side__lede">{entry.data.lede}</p>
-                </a>
-              </li>
-            ))}
-          </ul>
-        </>
+                  <h3 class="news-item__title">{n.data.title}</h3>
+                  <p class="news-item__lede">{n.data.lede}</p>
+                </div>
+              </a>
+            </li>
+          ))}
+        </ul>
       )
     }
   </div>
@@ -109,250 +95,162 @@ const ministryLabel = (slug: string) =>
 
 <style>
   .news {
-    background: #faf7f2;
+    background: #f7f7f5;
+    padding: clamp(3rem, 6vw, 5rem) clamp(1.25rem, 4vw, 3rem);
+    border-bottom: 1px solid #edeae2;
   }
   .news__inner {
     max-width: 80rem;
     margin: 0 auto;
-    padding: clamp(3rem, 6vw, 5rem) clamp(1.25rem, 4vw, 3rem);
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: clamp(1.5rem, 3vw, 2.5rem);
   }
-  @media (min-width: 64rem) {
-    .news__inner {
-      grid-template-columns: minmax(0, 1.2fr) 1px minmax(0, 1fr);
-      align-items: start;
-    }
-  }
-
   .news__head {
-    grid-column: 1 / -1;
-    display: grid;
-    grid-template-columns: 1fr auto;
-    align-items: baseline;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
     gap: 1rem;
+    margin-bottom: clamp(1.75rem, 3vw, 2.5rem);
   }
   .news__eyebrow {
     font-size: 0.75rem;
-    letter-spacing: 0.3em;
-    color: #820b18;
+    letter-spacing: 0.2em;
+    color: #005a35;
     text-transform: uppercase;
     font-weight: 600;
     margin: 0 0 0.5rem;
-    grid-column: 1;
-    grid-row: 1;
   }
   .news__title {
-    font-family: Georgia, 'Playfair Display', serif;
-    font-size: clamp(1.625rem, 3vw, 2.25rem);
-    line-height: 1.1;
-    color: #002818;
+    font-size: clamp(1.5rem, 2.6vw, 2rem);
+    font-weight: 700;
+    color: #0a0f1f;
     margin: 0;
-    letter-spacing: -0.01em;
-    grid-column: 1;
-    grid-row: 2;
+    letter-spacing: -0.015em;
   }
   .news__more {
-    grid-column: 2;
-    grid-row: 1 / 3;
-    align-self: end;
     display: inline-flex;
     align-items: center;
-    gap: 0.375rem;
+    gap: 0.4rem;
     font-size: 0.875rem;
-    color: #004527;
-    text-decoration: none;
     font-weight: 600;
-    padding: 0.25rem 0;
+    color: #005a35;
+    text-decoration: none;
     border-bottom: 1px solid transparent;
-    transition: border-color 200ms ease;
+    padding-bottom: 2px;
   }
   .news__more:hover,
   .news__more:focus-visible {
-    border-color: #004527;
+    border-bottom-color: #005a35;
   }
 
-  /* Lead article — editorial, big. */
-  .lead {
-    grid-column: 1;
-  }
-  .lead__link {
-    display: block;
-    text-decoration: none;
-    color: inherit;
-    position: relative;
-  }
-  .lead__meta {
-    font-size: 0.75rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: #820b18;
-    font-weight: 600;
-    margin: 0 0 0.75rem;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    align-items: center;
-  }
-  .lead__ministry {
-    color: #820b18;
-  }
-  .lead__sep {
-    color: #e5e0d6;
-  }
-  .lead__meta time {
-    color: #5b5f68;
-    letter-spacing: 0.03em;
-    text-transform: none;
-    font-weight: 500;
-  }
-  .lead__title {
-    font-family: Georgia, 'Playfair Display', serif;
-    font-size: clamp(1.625rem, 3.2vw, 2.5rem);
-    line-height: 1.1;
-    font-weight: 700;
-    color: #002818;
-    margin: 0 0 0.875rem;
-    letter-spacing: -0.01em;
-    transition: color 200ms ease;
-  }
-  .lead__lede {
-    font-family: Georgia, serif;
-    font-style: italic;
-    font-size: 1.0625rem;
-    line-height: 1.55;
-    color: #3e424a;
-    margin: 0 0 1.25rem;
-    max-width: 60ch;
-  }
-  .lead__cta {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.375rem;
-    font-size: 0.875rem;
-    font-weight: 600;
-    color: #004527;
-    transition: transform 220ms cubic-bezier(0.2, 0.9, 0.3, 1);
-  }
-  .lead__link:hover .lead__title,
-  .lead__link:focus-visible .lead__title {
-    color: #004527;
-  }
-  .lead__link:hover .lead__cta,
-  .lead__link:focus-visible .lead__cta {
-    transform: translateX(3px);
-  }
-  .lead__link:focus-visible {
-    outline: 3px solid #fcd116;
-    outline-offset: 4px;
-  }
-
-  /* Vertical divider — a slim Kente rule between lead and side. */
-  .divider {
-    display: none;
-  }
-  @media (min-width: 64rem) {
-    .divider {
-      display: block;
-      grid-column: 2;
-      align-self: stretch;
-      width: 1px;
-      background: linear-gradient(
-        180deg,
-        transparent 0%,
-        #e5e0d6 8%,
-        #fcd116 50%,
-        #e5e0d6 92%,
-        transparent 100%
-      );
-    }
-  }
-
-  /* Side column. */
-  .side {
+  .news__list {
     list-style: none;
     padding: 0;
     margin: 0;
-    grid-column: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 1.25rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
   }
-  @media (min-width: 64rem) {
-    .side {
-      grid-column: 3;
-    }
-  }
-  .side li {
-    border-bottom: 1px solid #e5e0d6;
-    padding-bottom: 1.25rem;
-  }
-  .side li:last-child {
-    border-bottom: 0;
-    padding-bottom: 0;
-  }
-  .side__link {
-    display: block;
+
+  .news-item__link {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 1rem;
+    background: #fff;
+    border: 1px solid #edeae2;
+    border-radius: 4px;
     text-decoration: none;
     color: inherit;
+    transition:
+      transform 200ms cubic-bezier(0.2, 0.9, 0.3, 1),
+      box-shadow 200ms ease,
+      border-color 200ms ease;
   }
-  .side__meta {
-    font-size: 0.6875rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    margin: 0 0 0.4rem;
-    display: flex;
-    gap: 0.4rem;
+  @media (min-width: 48rem) {
+    .news-item__link {
+      grid-template-columns: 200px minmax(0, 1fr);
+      align-items: start;
+    }
+  }
+  .news-item__link:hover,
+  .news-item__link:focus-visible {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px -14px rgba(0, 40, 24, 0.16);
+    border-color: #005a35;
+  }
+  .news-item__link:focus-visible {
+    outline: 3px solid #fcd116;
+    outline-offset: 3px;
+  }
+  .news-item__thumb {
+    margin: 0;
+    aspect-ratio: 16 / 10;
+    border-radius: 3px;
+    overflow: hidden;
+    background: #edeae2;
+  }
+  .news-item__thumb :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .news-item__body {
+    padding: 0.25rem 0;
+  }
+  .news-item__meta {
+    display: inline-flex;
     align-items: center;
+    gap: 0.75rem;
+    font-size: 0.75rem;
+    margin: 0 0 0.5rem;
+    flex-wrap: wrap;
   }
-  .side__ministry {
-    color: #820b18;
+  .news-item__tag {
+    background: #005a35;
+    color: #fff;
+    padding: 3px 8px;
+    border-radius: 2px;
     font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    font-size: 0.6875rem;
   }
-  .side__meta time {
+  .news-item__meta time {
     color: #5b5f68;
-    font-weight: 500;
-    letter-spacing: 0.03em;
-    text-transform: none;
+    letter-spacing: 0.02em;
   }
-  .side__title {
-    font-family: Georgia, serif;
+  .news-item__title {
     font-size: 1.0625rem;
-    line-height: 1.2;
+    line-height: 1.3;
     font-weight: 600;
-    color: #002818;
+    color: #0a0f1f;
     margin: 0 0 0.375rem;
-    transition: color 200ms ease;
   }
-  .side__lede {
-    font-size: 0.875rem;
-    line-height: 1.45;
-    color: #5b5f68;
+  .news-item__lede {
+    font-size: 0.9375rem;
+    color: #384251;
+    line-height: 1.5;
     margin: 0;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
-  .side__link:hover .side__title,
-  .side__link:focus-visible .side__title {
-    color: #004527;
-  }
-  .side__link:focus-visible {
-    outline: 3px solid #fcd116;
-    outline-offset: 3px;
+  .news__empty {
+    padding: 1.5rem;
+    text-align: center;
+    color: #5b5f68;
+    background: #fff;
+    border: 1px dashed #e5e0d6;
+    border-radius: 3px;
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .lead__cta,
-    .lead__title,
-    .side__title,
-    .news__more {
+    .news-item__link {
       transition: none;
     }
-    .lead__link:hover .lead__cta,
-    .lead__link:focus-visible .lead__cta {
+    .news-item__link:hover,
+    .news-item__link:focus-visible {
       transform: none;
     }
   }

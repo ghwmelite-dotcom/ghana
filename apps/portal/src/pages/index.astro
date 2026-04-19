@@ -1,88 +1,35 @@
 ---
 /**
- * gov.gh homepage — composed from atmospheric blocks.
+ * gov.gh homepage — gov.rw-aligned composition.
  *
- * Order: Kente-weave Hero → Stats band → Life-stage tiles → Editorial
- * most-requested → Editorial news → Ministries marquee → closing motto.
+ * Section order mirrors gov.rw:
+ *   1. Hero (text-forward, integrated search, quiet photo)
+ *   2. Life-stage tile grid (4 tiles with line icons)
+ *   3. "Get to know Ghana" intro block with crest + learn-more
+ *   4. Most-used services portal grid (3 cards with icons)
+ *   5. Latest updates — news cards with thumbnails
+ *   6. Ministries quick-access grid
  *
- * Each block is its own component under apps/portal/src/components/.
- * CSS-only animations throughout (plus a small IntersectionObserver in
- * StatsBand for counter animation). Every motion respects
- * `prefers-reduced-motion: reduce`. Weight budget: ≤ 80 KB gzipped.
+ * Deliberately excluded: stats band, scrolling marquee, closing motto,
+ * orchestrated gold threads, constellation. gov.rw is calm.
  */
 import HomepageLayout from '../layouts/HomepageLayout.astro';
 import Hero from '../components/Hero.astro';
-import StatsBand from '../components/StatsBand.astro';
 import LifeStageTiles from '../components/LifeStageTiles.astro';
-import MostRequestedEditorial from '../components/MostRequestedEditorial.astro';
+import GetToKnowGhana from '../components/GetToKnowGhana.astro';
+import ServicePortalGrid from '../components/ServicePortalGrid.astro';
 import EditorialNews from '../components/EditorialNews.astro';
-import MinistriesMarquee from '../components/MinistriesMarquee.astro';
+import MinistriesRow from '../components/MinistriesRow.astro';
 ---
 
 <HomepageLayout
   title="Home"
-  description="The national portal of the Republic of Ghana. Every service the government offers, every announcement it makes — in one place."
+  description="The official digital portal of the Government of Ghana. Every service, every ministry, every announcement — in one place."
 >
   <Hero />
-  <StatsBand />
   <LifeStageTiles />
-  <MostRequestedEditorial />
+  <GetToKnowGhana />
+  <ServicePortalGrid />
   <EditorialNews />
-  <MinistriesMarquee />
-
-  <section class="motto" aria-labelledby="motto-heading">
-    <div class="motto__inner">
-      <span class="motto__rule" aria-hidden="true"></span>
-      <h2 id="motto-heading" class="motto__title">
-        <span class="motto__word">Ghana</span>
-        <span class="motto__word">first.</span>
-        <span class="motto__word motto__word--gold">Always.</span>
-      </h2>
-      <p class="motto__sub">Freedom and Justice · 1957</p>
-    </div>
-  </section>
+  <MinistriesRow />
 </HomepageLayout>
-
-<style>
-  .motto {
-    background: #faf7f2;
-    padding: clamp(3.5rem, 7vw, 6rem) clamp(1.25rem, 4vw, 3rem);
-    text-align: center;
-  }
-  .motto__inner {
-    max-width: 56rem;
-    margin: 0 auto;
-  }
-  .motto__rule {
-    display: block;
-    width: 64px;
-    height: 2px;
-    background: linear-gradient(90deg, #006b3f 0%, #fcd116 50%, #ce1126 100%);
-    margin: 0 auto 2rem;
-  }
-  .motto__title {
-    font-family: Georgia, 'Playfair Display', serif;
-    font-size: clamp(2rem, 5vw, 3.5rem);
-    line-height: 1.05;
-    font-weight: 700;
-    letter-spacing: -0.015em;
-    color: #002818;
-    margin: 0 0 1rem;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.4em;
-  }
-  .motto__word--gold {
-    color: #b8960c;
-    font-style: italic;
-  }
-  .motto__sub {
-    font-size: 0.75rem;
-    letter-spacing: 0.3em;
-    color: #5b5f68;
-    text-transform: uppercase;
-    margin: 0;
-    font-weight: 600;
-  }
-</style>

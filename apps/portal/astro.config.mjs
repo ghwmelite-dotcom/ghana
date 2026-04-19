@@ -1,5 +1,6 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
+import sitemap from '@astrojs/sitemap';
 
 /**
  * gov.gh root portal — static output for Cloudflare Pages.
@@ -15,9 +16,24 @@ export default defineConfig({
   build: {
     inlineStylesheets: 'auto',
   },
-  // Prefetch intentionally disabled in PR 3 — only one page exists.
-  // Re-enable with defaultStrategy: 'hover' when ministries/ lands.
-  prefetch: false,
+  integrations: [
+    sitemap({
+      // Exclude generated internal Pagefind assets + the 404 page.
+      filter: (page) => !page.includes('/pagefind/') && !page.endsWith('/404/'),
+      i18n: {
+        defaultLocale: 'en',
+        locales: {
+          en: 'en',
+          tw: 'tw',
+        },
+      },
+    }),
+  ],
+  // Hover-prefetch is safe now that dozens of pages exist. Faster nav; no
+  // preload noise because limit is 1 inflight prefetch per hover.
+  prefetch: {
+    defaultStrategy: 'hover',
+  },
   devToolbar: {
     enabled: false,
   },

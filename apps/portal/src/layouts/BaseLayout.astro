@@ -4,12 +4,14 @@
  *
  * Responsibilities:
  *   - <!doctype html> + <html lang>.
- *   - Meta tags: charset, viewport, theme-color, description, Open Graph.
+ *   - Meta tags: charset, viewport, theme-color, description, Open Graph,
+ *     Twitter card, canonical URL.
+ *   - RSS feed discovery link.
  *   - Token sheet from @gh/gh-ds, inlined by Astro when small enough.
  *   - Preload the two most critical font weights so first paint doesn't FOUT.
  *   - Skip-link anchor (visually hidden until focused).
- *   - Header, slot for page content, Footer.
- *   - No JavaScript. If a future page needs an island, it imports it itself.
+ *   - Kente stripe, Header, slot for page content, Footer.
+ *   - Cloudflare Web Analytics beacon (gated by PUBLIC_CF_ANALYTICS_TOKEN env).
  */
 
 import '@gh/gh-ds/tokens.css';
@@ -36,6 +38,13 @@ interface Props {
 
 const { title, description, lang = 'en', noindex = false } = Astro.props;
 const htmlTitle = `${title} — gov.gh`;
+const canonical = new URL(Astro.url.pathname, Astro.site).toString();
+const ogImage = new URL('/og-image.png', Astro.site).toString();
+
+// Cloudflare Web Analytics beacon. Configure PUBLIC_CF_ANALYTICS_TOKEN in
+// Cloudflare Pages env. When unset, the beacon script is omitted — no
+// placeholder tag, no console spam.
+const cfAnalyticsToken = import.meta.env.PUBLIC_CF_ANALYTICS_TOKEN;
 ---
 
 <!doctype html>
@@ -45,17 +54,51 @@ const htmlTitle = `${title} — gov.gh`;
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#006B3F" />
     <meta name="description" content={description} />
+    <meta name="generator" content={Astro.generator} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="Government of Ghana — News"
+      href="/news/feed.xml"
+    />
+    <link rel="sitemap" type="application/xml" href="/sitemap-index.xml" />
+
+    <!-- Open Graph -->
+    <meta property="og:site_name" content="gov.gh — Government of Ghana" />
     <meta property="og:title" content={htmlTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
-    {noindex && <meta name="robots" content="noindex, nofollow" />}
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:locale" content={lang === 'tw' ? 'tw_GH' : 'en_GH'} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <!-- Twitter card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={htmlTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
 
     <!-- Preload the two body-text weights most likely to render above the fold. -->
     <link rel="preload" href="/fonts/noto-sans-400.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/fonts/noto-sans-700.woff2" as="font" type="font/woff2" crossorigin />
 
     <title>{htmlTitle}</title>
+
+    {
+      cfAnalyticsToken && (
+        <script
+          is:inline
+          defer
+          src="https://static.cloudflareinsights.com/beacon.min.js"
+          data-cf-beacon={`{"token": "${cfAnalyticsToken}"}`}
+        />
+      )
+    }
   </head>
   <body>
     <KenteStripe />

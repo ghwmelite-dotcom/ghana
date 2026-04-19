@@ -26,8 +26,8 @@ keyServices:
 ## What we do
 
 The Ministry of Works and Housing builds and maintains Ghana's public
-infrastructure. The Public Works Department manages government buildings
-and public facilities. The State Housing Company develops affordable homes
-so more Ghanaians can own where they live. We also coordinate with local
-government on physical planning to ensure communities grow in an orderly,
-safe way. Our vision is a Ghana where every family has a decent, secure home.
+infrastructure. The Public Works Department manages government buildings and
+public facilities. The State Housing Company develops affordable homes so more
+Ghanaians can own where they live. We also coordinate with local government on
+physical planning to ensure communities grow in an orderly, safe way. Our vision
+is a Ghana where every family has a decent, secure home.

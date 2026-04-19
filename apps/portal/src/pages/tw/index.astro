@@ -1,0 +1,106 @@
+---
+/**
+ * Twi homepage stub — one of 5 Twi pages that ship in v1 per spec §6.3.
+ * The full Twi translation is a v1.1 follow-up. This page establishes the
+ * routing shape so consumers know /tw/ exists and works.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout lang="tw" title="Akwaaba" description="Ghana aban no portal.">
+  <div class="tw-home">
+    <p class="eyebrow">· Akwaaba ·</p>
+    <h1>Aban baako.<br />Ɔman baako.<br /><span class="gold">Ghana baako.</span></h1>
+    <p class="lede">
+      Dwumadie a aban yɛ ma ɔmanfoɔ nyinaa — baabi baako. Yɛde Twi ka kakra. Deɛ aka no, kɔ Engiresi
+      kasa mu.
+    </p>
+    <p class="fallback">
+      <strong>Yɛgu so reyɛ Twi no.</strong> Sɛ wo hwehwɛ nsɛm pii a, kɔ
+      <a href="/">English version</a>.
+    </p>
+
+    <nav aria-label="Nkrato akuo" class="stages">
+      <a href="/tw/services/live/">Te ase</a>
+      <a href="/tw/services/work/">Adwuma</a>
+      <a href="/tw/services/business/">Adetɔn</a>
+      <a href="/tw/services/visit/">Sra</a>
+    </nav>
+  </div>
+</BaseLayout>
+
+<style>
+  .tw-home {
+    max-width: 48rem;
+    margin: 0 auto;
+    padding: 2.5rem 1.25rem 4rem;
+  }
+  .eyebrow {
+    font-size: 0.75rem;
+    letter-spacing: 0.25em;
+    color: #820b18;
+    text-transform: uppercase;
+    margin: 0 0 0.75rem;
+  }
+  h1 {
+    font-family: Georgia, 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3.25rem);
+    line-height: 1.05;
+    color: #004527;
+    margin: 0 0 1rem;
+  }
+  .gold {
+    color: #b8960c;
+  }
+  .lede {
+    font-size: 1.125rem;
+    color: #3e424a;
+    max-width: 44ch;
+    margin: 0 0 1.5rem;
+  }
+  .fallback {
+    padding: 0.875rem 1rem;
+    background: #fff8e1;
+    border-left: 3px solid #fcd116;
+    border-radius: 3px;
+    font-size: 0.875rem;
+    color: #3e424a;
+    margin: 0 0 2rem;
+  }
+  .fallback a {
+    color: #004527;
+    text-decoration: underline;
+  }
+  .stages {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+  }
+  @media (min-width: 40rem) {
+    .stages {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  .stages a {
+    display: block;
+    background: #fff;
+    border: 1px solid #e5e0d6;
+    border-left: 3px solid #005a35;
+    border-radius: 3px;
+    padding: 1rem;
+    text-align: center;
+    text-decoration: none;
+    color: #004527;
+    font-family: Georgia, serif;
+    font-weight: 600;
+    min-height: 44px;
+  }
+  .stages a:hover,
+  .stages a:focus-visible {
+    background: #faf7f2;
+  }
+  .stages a:focus-visible {
+    outline: 3px solid #fcd116;
+    outline-offset: 2px;
+  }
+</style>

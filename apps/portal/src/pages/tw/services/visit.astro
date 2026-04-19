@@ -1,0 +1,61 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  lang="tw"
+  title="Sra"
+  description="Dwumadie ma ahɔhoɔ ne Ghanafoɔ a wɔwɔ aman foforɔ so."
+>
+  <div class="tw">
+    <p class="eyebrow">· Sra ·</p>
+    <h1>Ahɔhoɔ ne diaspora dwumadie</h1>
+    <p class="lede">
+      Passport, visa, citizenship mmienu, residence, work permit. Ahɔhoɔ nyinaa, akwaaba!
+    </p>
+    <p class="fallback">
+      <strong>Twi nsɛm pii yɛ v1.1 ho.</strong> Sɛ wo hwehwɛ dwumadie nyinaa nsɛm a, kɔ <a
+        href="/services/visit/">English version</a
+      >.
+    </p>
+  </div>
+</BaseLayout>
+
+<style>
+  .tw {
+    max-width: 40rem;
+    margin: 0 auto;
+    padding: 1.5rem 1.25rem 4rem;
+  }
+  .eyebrow {
+    font-size: 0.75rem;
+    letter-spacing: 0.25em;
+    color: #820b18;
+    text-transform: uppercase;
+    margin: 0 0 0.75rem;
+  }
+  h1 {
+    font-family: Georgia, serif;
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    line-height: 1.1;
+    color: #004527;
+    margin: 0 0 0.75rem;
+  }
+  .lede {
+    font-size: 1.125rem;
+    color: #3e424a;
+    margin: 0 0 1.5rem;
+  }
+  .fallback {
+    padding: 0.875rem 1rem;
+    background: #fff8e1;
+    border-left: 3px solid #fcd116;
+    border-radius: 3px;
+    font-size: 0.875rem;
+    color: #3e424a;
+  }
+  .fallback a {
+    color: #004527;
+    text-decoration: underline;
+  }
+</style>

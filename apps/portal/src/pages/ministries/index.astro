@@ -1,8 +1,47 @@
 ---
-import Layout from '../../layouts/BaseLayout.astro';
+import { getCollection, type CollectionEntry } from 'astro:content';
+import BoilerplatePageLayout from '../../layouts/BoilerplatePageLayout.astro';
+import MinistryDirectoryEntry from '../../components/MinistryDirectoryEntry.astro';
+
+const ministries: CollectionEntry<'ministries'>[] = (await getCollection('ministries')).sort(
+  (a: CollectionEntry<'ministries'>, b: CollectionEntry<'ministries'>) =>
+    a.data.name.localeCompare(b.data.name),
+);
 ---
 
-<Layout title="Ministries" description="All 21 ministries of Ghana.">
-  <h1>Ministries</h1>
-  <p>The 21 ministries of government. Populated in plan 2.</p>
-</Layout>
+<BoilerplatePageLayout
+  title="Ministries"
+  description="The 21 ministries of the Executive branch of the Government of Ghana."
+  lede={`All ${ministries.length} ministries of Ghana's Executive, sorted alphabetically. Click any ministry for its mandate, departments, and contact details.`}
+>
+  <ul class="ministries">
+    {
+      ministries.map((entry) => (
+        <li>
+          <MinistryDirectoryEntry entry={entry} />
+        </li>
+      ))
+    }
+  </ul>
+</BoilerplatePageLayout>
+
+<style>
+  .ministries {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+  @media (min-width: 40rem) {
+    .ministries {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (min-width: 64rem) {
+    .ministries {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+</style>

@@ -28,9 +28,9 @@ keyServices:
 
 ## What we do
 
-The Ministry of Foreign Affairs represents Ghana on the world stage. We
-manage our embassies, high commissions, and consulates in over 50 countries.
-We help Ghanaians living abroad access consular services, including passport
-renewal and dual citizenship registration. We also process visa applications
-from foreign nationals seeking to visit Ghana and drive Ghana's integration
-into ECOWAS and the African Union.
+The Ministry of Foreign Affairs represents Ghana on the world stage. We manage
+our embassies, high commissions, and consulates in over 50 countries. We help
+Ghanaians living abroad access consular services, including passport renewal and
+dual citizenship registration. We also process visa applications from foreign
+nationals seeking to visit Ghana and drive Ghana's integration into ECOWAS and
+the African Union.

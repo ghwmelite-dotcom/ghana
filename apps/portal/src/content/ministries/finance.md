@@ -29,9 +29,9 @@ keyServices:
 
 ## What we do
 
-The Ministry of Finance steers Ghana's economy through sound fiscal policy.
-We coordinate the annual budget, manage public debt, and set tax policy.
-We oversee the Ghana Revenue Authority, which collects income tax and VAT,
-and the Controller and Accountant-General, which disburses public funds.
-Our goal is a financially stable Ghana where every cedi of public money
-is accounted for transparently.
+The Ministry of Finance steers Ghana's economy through sound fiscal policy. We
+coordinate the annual budget, manage public debt, and set tax policy. We oversee
+the Ghana Revenue Authority, which collects income tax and VAT, and the
+Controller and Accountant-General, which disburses public funds. Our goal is a
+financially stable Ghana where every cedi of public money is accounted for
+transparently.

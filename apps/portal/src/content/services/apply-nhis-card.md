@@ -4,9 +4,9 @@ title: Apply for a National Health Insurance card
 lifeStage: live
 topics: [health-insurance, nhis, health]
 lede: >-
-  Register with the National Health Insurance Scheme (NHIS) and get your
-  health insurance card. Your card gives you access to free or subsidised
-  healthcare at accredited facilities across Ghana.
+  Register with the National Health Insurance Scheme (NHIS) and get your health
+  insurance card. Your card gives you access to free or subsidised healthcare at
+  accredited facilities across Ghana.
 priority: 4
 eligibility:
   - text: >-
@@ -26,8 +26,8 @@ cost:
   unit: annual premium (basic)
   notes: >-
     Children under 18, adults aged 70 and above, pregnant women, and SSNIT
-    contributors are exempt from the annual premium. Fees are reviewed
-    annually by the National Health Insurance Authority.
+    contributors are exempt from the annual premium. Fees are reviewed annually
+    by the National Health Insurance Authority.
 timeline: Card typically issued within 5 working days after registration.
 agency:
   name: National Health Insurance Authority
@@ -41,8 +41,8 @@ sourceOfTruth: https://nhis.gov.gh
 ## Before you apply
 
 Check whether you qualify for an exemption — children, the elderly, pregnant
-women, and SSNIT contributors pay no annual premium. Gather your Ghana Card
-and one passport photograph before visiting your nearest NHIA district office.
+women, and SSNIT contributors pay no annual premium. Gather your Ghana Card and
+one passport photograph before visiting your nearest NHIA district office.
 
 ## Step by step
 
@@ -54,5 +54,5 @@ and one passport photograph before visiting your nearest NHIA district office.
 ## After you apply
 
 Present your NHIS card at any accredited health facility to access covered
-services. Renew your membership each year before it expires to avoid a break
-in coverage. You can renew at any NHIA office or through the *929# USSD code.
+services. Renew your membership each year before it expires to avoid a break in
+coverage. You can renew at any NHIA office or through the \*929# USSD code.

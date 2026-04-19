@@ -4,18 +4,18 @@ title: Register a cooperative society
 lifeStage: business
 topics: [cooperative, business-registration, agriculture]
 lede: >-
-  Register a cooperative society with the Department of Cooperatives under
-  the Cooperative Societies Decree, 1968 (NLCD 252). Registration gives your
-  group legal status to own property, enter contracts, and access credit.
+  Register a cooperative society with the Department of Cooperatives under the
+  Cooperative Societies Decree, 1968 (NLCD 252). Registration gives your group
+  legal status to own property, enter contracts, and access credit.
 priority: 5
 eligibility:
   - text: >-
-      You are a group of at least 10 persons (or 3 cooperatives for a
-      secondary cooperative) forming a society for a common economic purpose.
+      You are a group of at least 10 persons (or 3 cooperatives for a secondary
+      cooperative) forming a society for a common economic purpose.
   - text: >-
-      All founding members must be at least 18 years old and agree on a
-      set of model by-laws covering the society's objectives, membership
-      rules, and governance.
+      All founding members must be at least 18 years old and agree on a set of
+      model by-laws covering the society's objectives, membership rules, and
+      governance.
 youWillNeed:
   - List of at least 10 founding members with their Ghana Cards
   - Draft by-laws of the cooperative (the Department can provide a model)
@@ -56,11 +56,11 @@ by-laws template to speed up the process.
 4. Submit the application form, minutes, by-laws, and member list to the
    District Department of Cooperatives office.
 5. Pay the registration fee.
-6. The Department reviews, registers the society, and issues a certificate
-   of registration.
+6. The Department reviews, registers the society, and issues a certificate of
+   registration.
 
 ## After you register
 
-Open a bank account in the cooperative's name using the certificate. File
-annual returns with the Department. The Department may conduct supervisory
-inspections to ensure the cooperative operates within its by-laws.
+Open a bank account in the cooperative's name using the certificate. File annual
+returns with the Department. The Department may conduct supervisory inspections
+to ensure the cooperative operates within its by-laws.

@@ -27,9 +27,9 @@ keyServices:
 
 ## What we do
 
-The Ministry of Health protects and improves the health of every Ghanaian.
-We oversee the Ghana Health Service, which runs hospitals and clinics across
-the country. The National Health Insurance Authority provides the NHIS card
-so you can access healthcare without paying out of pocket at the point of
-service. The Food and Drugs Authority keeps medicines, food, and medical
-devices safe and effective. Our goal is universal health coverage by 2030.
+The Ministry of Health protects and improves the health of every Ghanaian. We
+oversee the Ghana Health Service, which runs hospitals and clinics across the
+country. The National Health Insurance Authority provides the NHIS card so you
+can access healthcare without paying out of pocket at the point of service. The
+Food and Drugs Authority keeps medicines, food, and medical devices safe and
+effective. Our goal is universal health coverage by 2030.

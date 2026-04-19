@@ -5,16 +5,16 @@ lifeStage: live
 topics: [change-of-name, identity, rgd]
 lede: >-
   Legally change your name by deed poll or statutory declaration through the
-  Registrar-General's Department. Once registered, you can update your
-  Ghana Card, passport, and other official documents.
+  Registrar-General's Department. Once registered, you can update your Ghana
+  Card, passport, and other official documents.
 priority: 5
 eligibility:
   - text: >-
       You are a Ghanaian citizen aged 18 or above applying to change your own
       name.
   - text: >-
-      You are a parent or guardian applying to change the name of a child
-      under 18 in your care.
+      You are a parent or guardian applying to change the name of a child under
+      18 in your care.
 youWillNeed:
   - Ghana Card (original)
   - Birth certificate
@@ -27,9 +27,9 @@ cost:
   currency: GHS
   unit: deed poll registration
   notes: >-
-    Gazette publication of the name change is optional but recommended for
-    major legal purposes. Gazette fees are additional. Contact the
-    Registrar-General's Department for current Gazette charges.
+    Gazette publication of the name change is optional but recommended for major
+    legal purposes. Gazette fees are additional. Contact the Registrar-General's
+    Department for current Gazette charges.
 timeline: >-
   Registration of deed poll typically completed within 5 working days after
   submission.
@@ -44,9 +44,9 @@ sourceOfTruth: https://rgd.gov.gh
 
 ## Before you apply
 
-Have a licensed solicitor prepare the deed poll or statutory declaration
-before visiting the Registrar-General's Department. The document must state
-your old name, your new name, and the reason for the change.
+Have a licensed solicitor prepare the deed poll or statutory declaration before
+visiting the Registrar-General's Department. The document must state your old
+name, your new name, and the reason for the change.
 
 ## Step by step
 
@@ -60,5 +60,5 @@ your old name, your new name, and the reason for the change.
 ## After you apply
 
 Use your certificate to update your Ghana Card at any NIA centre, and your
-passport through the Ghana Immigration Service. Notify your employer, bank,
-and other institutions of the change.
+passport through the Ghana Immigration Service. Notify your employer, bank, and
+other institutions of the change.

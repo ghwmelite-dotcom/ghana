@@ -24,10 +24,10 @@ keyServices: []
 
 ## What we do
 
-The Ministry of Sanitation and Water Resources delivers clean water and
-better sanitation across Ghana. Ghana Water Company Limited provides treated
-pipe-borne water to urban areas. The Community Water and Sanitation Agency
-extends water and sanitation infrastructure to rural and peri-urban
-communities. We run national campaigns to eliminate open defecation and
-improve hand-washing practices. Safe water and sanitation save lives —
-especially for children under five.
+The Ministry of Sanitation and Water Resources delivers clean water and better
+sanitation across Ghana. Ghana Water Company Limited provides treated pipe-borne
+water to urban areas. The Community Water and Sanitation Agency extends water
+and sanitation infrastructure to rural and peri-urban communities. We run
+national campaigns to eliminate open defecation and improve hand-washing
+practices. Safe water and sanitation save lives — especially for children under
+five.

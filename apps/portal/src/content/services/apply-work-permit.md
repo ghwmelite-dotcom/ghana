@@ -4,8 +4,8 @@ title: Apply for a Ghana work permit
 lifeStage: visit
 topics: [work-permit, immigration, gis, employment]
 lede: >-
-  Foreign nationals must hold a valid work permit before taking up employment
-  in Ghana. The Ghana Immigration Service issues work permits jointly with the
+  Foreign nationals must hold a valid work permit before taking up employment in
+  Ghana. The Ghana Immigration Service issues work permits jointly with the
   Ministry of the Interior under the Immigration Act, 2000 (Act 573).
 priority: 4
 eligibility:
@@ -21,8 +21,8 @@ youWillNeed:
   - Curriculum vitae (CV) and academic or professional certificates
   - Quota approval from the Ghana Immigration Service (for employers in
     regulated industries)
-  - Evidence that the role could not be filled by a Ghanaian national
-    (if required by quota rules)
+  - Evidence that the role could not be filled by a Ghanaian national (if
+    required by quota rules)
   - Medical certificate from a GIS-approved facility
   - Two passport photographs (35mm × 45mm, white background)
 cost:
@@ -31,11 +31,11 @@ cost:
   unit: work permit (initial 2-year term)
   notes: >-
     Fees vary by sector and permit duration. Managerial and executive roles
-    attract higher fees. The employer is responsible for paying the permit
-    fee. Contact the Ghana Immigration Service for the current fee schedule.
+    attract higher fees. The employer is responsible for paying the permit fee.
+    Contact the Ghana Immigration Service for the current fee schedule.
 timeline: >-
-  Work permit applications are processed within 15 to 30 working days after
-  all documents are submitted by the employer.
+  Work permit applications are processed within 15 to 30 working days after all
+  documents are submitted by the employer.
 agency:
   name: Ghana Immigration Service
   url: https://gis.gov.gh
@@ -54,8 +54,8 @@ employer.
 
 ## Step by step
 
-1. Your employer obtains quota approval from the Ghana Immigration Service
-   (if required).
+1. Your employer obtains quota approval from the Ghana Immigration Service (if
+   required).
 2. Your employer submits the work permit application on your behalf with all
    supporting documents and the fee.
 3. You attend a biometrics appointment at the GIS office when notified.
@@ -64,6 +64,6 @@ employer.
 
 ## After you receive your permit
 
-Your work permit is tied to your employer. If you change employer, a new
-permit is required. Renew at least 3 months before expiry. Keep a copy of
-your permit at your workplace at all times.
+Your work permit is tied to your employer. If you change employer, a new permit
+is required. Renew at least 3 months before expiry. Keep a copy of your permit
+at your workplace at all times.

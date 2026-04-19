@@ -1,0 +1,101 @@
+---
+/**
+ * One entry in the ministries directory — renders the ministry's name, short
+ * name, mandate excerpt, minister line, and a link to the detail page.
+ *
+ * Used by /ministries/ to compose the 21-entry index.
+ */
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  entry: CollectionEntry<'ministries'>;
+}
+const { entry } = Astro.props;
+const { data } = entry;
+const slug = entry.slug;
+const excerpt =
+  data.mandate.length > 160 ? data.mandate.slice(0, 157).trimEnd() + '…' : data.mandate;
+---
+
+<article class="ministry-entry">
+  <div class="ministry-entry__head">
+    <h2 class="ministry-entry__name">
+      <a href={`/ministries/${slug}/`}>{data.name}</a>
+    </h2>
+    {data.shortName && <span class="ministry-entry__short">{data.shortName}</span>}
+  </div>
+  <p class="ministry-entry__mandate">{excerpt}</p>
+  {
+    data.minister && (
+      <p class="ministry-entry__minister">
+        <span class="ministry-entry__label">Minister:</span> {data.minister}
+      </p>
+    )
+  }
+</article>
+
+<style>
+  .ministry-entry {
+    background: #fff;
+    border: 1px solid #e5e0d6;
+    border-left: 3px solid #005a35;
+    border-radius: 3px;
+    padding: 1.125rem 1.25rem;
+    height: 100%;
+  }
+  .ministry-entry__head {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.5rem;
+  }
+  .ministry-entry__name {
+    margin: 0;
+    font-family: Georgia, serif;
+    font-size: 1.0625rem;
+    line-height: 1.25;
+    font-weight: 600;
+  }
+  .ministry-entry__name a {
+    color: #004527;
+    text-decoration: none;
+  }
+  .ministry-entry__name a:hover,
+  .ministry-entry__name a:focus-visible {
+    text-decoration: underline;
+    text-decoration-thickness: 0.1em;
+    text-underline-offset: 0.15em;
+  }
+  .ministry-entry__name a:focus-visible {
+    outline: 3px solid #fcd116;
+    outline-offset: 2px;
+  }
+  .ministry-entry__short {
+    font-size: 0.6875rem;
+    letter-spacing: 0.05em;
+    color: #5b5f68;
+    padding: 2px 6px;
+    background: #faf7f2;
+    border: 1px solid #e5e0d6;
+    border-radius: 2px;
+  }
+  .ministry-entry__mandate {
+    font-size: 0.875rem;
+    color: #2b2e34;
+    line-height: 1.5;
+    margin: 0 0 0.5rem;
+  }
+  .ministry-entry__minister {
+    font-size: 0.75rem;
+    color: #5b5f68;
+    margin: 0;
+  }
+  .ministry-entry__label {
+    color: #5b5f68;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 0.6875rem;
+    font-weight: 600;
+  }
+</style>

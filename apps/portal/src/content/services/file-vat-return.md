@@ -5,13 +5,13 @@ lifeStage: work
 topics: [vat, tax, gra]
 lede: >-
   File your monthly or quarterly Value Added Tax (VAT) return with the Ghana
-  Revenue Authority (GRA). All VAT-registered businesses must file on time
-  to avoid penalties.
+  Revenue Authority (GRA). All VAT-registered businesses must file on time to
+  avoid penalties.
 priority: 7
 eligibility:
   - text: >-
-      You are a business or individual registered for VAT with the Ghana
-      Revenue Authority, with annual taxable turnover above the VAT registration
+      You are a business or individual registered for VAT with the Ghana Revenue
+      Authority, with annual taxable turnover above the VAT registration
       threshold (GH₵ 200,000 per year as at 2026).
 youWillNeed:
   - VAT Registration Certificate number
@@ -23,10 +23,10 @@ cost:
   currency: GHS
   unit: filing
   notes: >-
-    Filing is free. VAT net payable (output VAT minus input VAT) is due by
-    the last working day of the month following the return period.
-    Late filing attracts a penalty of GH₵ 500 per month. Late payment
-    attracts a 10% surcharge plus interest.
+    Filing is free. VAT net payable (output VAT minus input VAT) is due by the
+    last working day of the month following the return period. Late filing
+    attracts a penalty of GH₵ 500 per month. Late payment attracts a 10%
+    surcharge plus interest.
 timeline: >-
   Returns are filed and accepted online instantly. Payment is due by the last
   working day of the following month.
@@ -41,9 +41,9 @@ sourceOfTruth: https://gra.gov.gh
 
 ## Before you file
 
-Reconcile your sales ledger and purchase ledger for the return period.
-Confirm that all tax invoices are correctly formatted with your VAT
-registration number before claiming input VAT.
+Reconcile your sales ledger and purchase ledger for the return period. Confirm
+that all tax invoices are correctly formatted with your VAT registration number
+before claiming input VAT.
 
 ## Step by step
 
@@ -57,6 +57,6 @@ registration number before claiming input VAT.
 
 ## After you file
 
-Keep all supporting invoices for at least 6 years. GRA may select your
-returns for audit at any time. If you discover an error after filing,
-file an amended return promptly to avoid penalties.
+Keep all supporting invoices for at least 6 years. GRA may select your returns
+for audit at any time. If you discover an error after filing, file an amended
+return promptly to avoid penalties.

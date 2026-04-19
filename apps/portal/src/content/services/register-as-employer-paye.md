@@ -27,7 +27,8 @@ cost:
     Registration is free. Monthly PAYE remittances are due by the 15th of the
     following month. Late remittances attract a penalty of 10% of the tax due
     plus interest.
-timeline: Employer PAYE registration is typically completed within 2 working days.
+timeline:
+  Employer PAYE registration is typically completed within 2 working days.
 agency:
   name: Ghana Revenue Authority
   url: https://gra.gov.gh
@@ -55,5 +56,5 @@ system that calculates PAYE using the current GRA income tax bands.
 ## After you register
 
 File monthly PAYE returns even in months when no salaries are paid. Issue each
-employee an annual P9A payslip summary. Keep payroll records for at least
-6 years in case of audit.
+employee an annual P9A payslip summary. Keep payroll records for at least 6
+years in case of audit.

@@ -24,11 +24,10 @@ keyServices: []
 
 ## What we do
 
-The Ministry of Information is the government's voice to the people.
-The Ghana Information Services Department runs community information centres
-and produces official government publications. The Ghana Broadcasting
-Corporation operates GTV and regional radio stations that reach communities
-across all sixteen regions. We coordinate press briefings, official
-announcements, and government campaigns so citizens always know what their
-government is doing and why. Transparent communication builds the trust
-Ghana's democracy depends on.
+The Ministry of Information is the government's voice to the people. The Ghana
+Information Services Department runs community information centres and produces
+official government publications. The Ghana Broadcasting Corporation operates
+GTV and regional radio stations that reach communities across all sixteen
+regions. We coordinate press briefings, official announcements, and government
+campaigns so citizens always know what their government is doing and why.
+Transparent communication builds the trust Ghana's democracy depends on.

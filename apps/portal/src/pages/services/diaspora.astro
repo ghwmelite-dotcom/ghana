@@ -1,8 +1,99 @@
 ---
-import Layout from '../../layouts/BaseLayout.astro';
+import { getCollection, type CollectionEntry } from 'astro:content';
+import BoilerplatePageLayout from '../../layouts/BoilerplatePageLayout.astro';
+import Card from '@gh/gh-ds/Card';
+
+const DIASPORA_SLUGS = new Set([
+  'apply-dual-citizenship',
+  'renew-passport',
+  'apply-ghana-visa',
+  'apply-visa-on-arrival',
+  'apply-residence-permit',
+]);
+
+const allServices: CollectionEntry<'services'>[] = await getCollection('services');
+const diasporaServices: CollectionEntry<'services'>[] = allServices
+  .filter((s: CollectionEntry<'services'>) => DIASPORA_SLUGS.has(s.slug))
+  .sort(
+    (a: CollectionEntry<'services'>, b: CollectionEntry<'services'>) =>
+      a.data.priority - b.data.priority,
+  );
 ---
 
-<Layout title="Diaspora" description="Services for Ghanaians abroad.">
-  <h1>Ghanaian diaspora</h1>
-  <p>Curated for Ghanaians living abroad. Populated in plan 2.</p>
-</Layout>
+<BoilerplatePageLayout
+  title="For Ghanaians abroad"
+  description="Services curated for the Ghanaian diaspora — dual citizenship, passports, visas, residence, and the Year of Return."
+  lede="Wherever you are in the world, Ghana is home. These are the services most diaspora Ghanaians need — and a warm invitation to return."
+>
+  <section class="block">
+    <h2>The Year of Return — and Beyond</h2>
+    <p>
+      In 2019 Ghana invited every person of African descent to come home. Over one million visitors
+      answered. The Beyond the Return decade (2020–2030) continues that invitation with easier
+      citizenship paths, diaspora investment channels, and an active programme of Ghanaian-mission
+      engagement on six continents.
+    </p>
+    <p>
+      Whether you hold Ghanaian citizenship already, are claiming it by descent, or are visiting for
+      the first time, the services below are the most common places to start.
+    </p>
+  </section>
+
+  <section class="block">
+    <h2>Most-needed services</h2>
+    {
+      diasporaServices.length === 0 ? (
+        <p>Services are being curated. Check back soon.</p>
+      ) : (
+        <ul class="cards">
+          {diasporaServices.map((s) => (
+            <li>
+              <Card
+                title={s.data.title}
+                description={s.data.lede}
+                href={`/services/${s.slug}/`}
+                headingLevel="h3"
+              />
+            </li>
+          ))}
+        </ul>
+      )
+    }
+  </section>
+
+  <section class="block">
+    <h2>Reach your nearest Ghanaian mission</h2>
+    <p>
+      Ghana maintains over 50 embassies, high commissions, and consulates-general worldwide. Each
+      can process passport renewals, issue emergency travel documents, register births of Ghanaians
+      born abroad, and certify documents. Find yours through the
+      <a href="/ministries/foreign-affairs/">Ministry of Foreign Affairs and Regional Integration</a
+      >.
+    </p>
+  </section>
+</BoilerplatePageLayout>
+
+<style>
+  .block {
+    margin-bottom: 2rem;
+  }
+  .block h2 {
+    font-family: Georgia, serif;
+    font-size: 1.375rem;
+    color: #004527;
+    margin: 0 0 0.75rem;
+  }
+  .cards {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+  @media (min-width: 48rem) {
+    .cards {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+</style>

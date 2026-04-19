@@ -5,14 +5,14 @@ lifeStage: business
 topics: [annual-returns, company, orc]
 lede: >-
   File your company's annual returns with the Office of the Registrar of
-  Companies (ORC) each year. Filing keeps your company in good standing
-  and is required by the Companies Act, 2019 (Act 992).
+  Companies (ORC) each year. Filing keeps your company in good standing and is
+  required by the Companies Act, 2019 (Act 992).
 priority: 6
 eligibility:
   - text: >-
-      You are a director or authorised officer of a company registered in
-      Ghana. All companies — private limited, public limited, and
-      companies limited by guarantee — must file annual returns.
+      You are a director or authorised officer of a company registered in Ghana.
+      All companies — private limited, public limited, and companies limited by
+      guarantee — must file annual returns.
 youWillNeed:
   - Company registration number
   - Registered company address and contact details
@@ -25,13 +25,12 @@ cost:
   currency: GHS
   unit: annual filing
   notes: >-
-    Filing fees vary by company type and share capital. Late filing attracts
-    a penalty fee plus accruing interest from the due date. Contact the ORC
-    for the current penalty schedule.
+    Filing fees vary by company type and share capital. Late filing attracts a
+    penalty fee plus accruing interest from the due date. Contact the ORC for
+    the current penalty schedule.
 timeline: >-
-  Online submissions are processed within 2 to 3 working days.
-  Annual returns are due within 12 months of incorporation and each
-  subsequent anniversary.
+  Online submissions are processed within 2 to 3 working days. Annual returns
+  are due within 12 months of incorporation and each subsequent anniversary.
 agency:
   name: Office of the Registrar of Companies
   url: https://orc.gov.gh
@@ -44,8 +43,8 @@ sourceOfTruth: https://orc.gov.gh
 ## Before you file
 
 Prepare your updated directors and shareholders register and confirm the
-company's registered address is still current. Have your financial statements
-or summary accounts ready for the filing period.
+company's registered address is still current. Have your financial statements or
+summary accounts ready for the filing period.
 
 ## Step by step
 
@@ -61,5 +60,5 @@ or summary accounts ready for the filing period.
 ## After you file
 
 Keep your ORC filing confirmation with your company records. Your company's
-good-standing status is visible to the public on the ORC portal. A company
-that fails to file for 3 consecutive years may be struck off the register.
+good-standing status is visible to the public on the ORC portal. A company that
+fails to file for 3 consecutive years may be struck off the register.

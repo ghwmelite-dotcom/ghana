@@ -10,10 +10,9 @@ email: info@mot.gov.gh
 website: https://www.mot.gov.gh
 address: P.O. Box M57, Accra
 mandate: >
-  The Ministry of Transport regulates and develops Ghana's air, sea, rail,
-  and road transport sectors. It ensures safe, efficient, and affordable
-  movement of people and goods across the country and through its ports and
-  airports.
+  The Ministry of Transport regulates and develops Ghana's air, sea, rail, and
+  road transport sectors. It ensures safe, efficient, and affordable movement of
+  people and goods across the country and through its ports and airports.
 departments:
   - Driver and Vehicle Licensing Authority (DVLA)
   - Civil Aviation Authority (GCAA)
@@ -28,7 +27,7 @@ keyServices:
 
 The Ministry of Transport keeps Ghana moving safely. The Driver and Vehicle
 Licensing Authority registers vehicles and issues driving licences. The Civil
-Aviation Authority regulates all flights in Ghanaian airspace. Ghana Ports
-and Harbours Authority manages Tema and Takoradi ports, which handle the bulk
-of Ghana's trade. We also develop rail and promote road safety so fewer lives
-are lost on our roads each year.
+Aviation Authority regulates all flights in Ghanaian airspace. Ghana Ports and
+Harbours Authority manages Tema and Takoradi ports, which handle the bulk of
+Ghana's trade. We also develop rail and promote road safety so fewer lives are
+lost on our roads each year.

@@ -4,14 +4,14 @@ title: Claim your SSNIT pension benefit
 lifeStage: work
 topics: [ssnit, pension, retirement]
 lede: >-
-  Apply to receive your monthly SSNIT pension when you reach retirement age,
-  or claim invalidity or survivors' benefits if you or your dependants qualify.
+  Apply to receive your monthly SSNIT pension when you reach retirement age, or
+  claim invalidity or survivors' benefits if you or your dependants qualify.
 priority: 3
 eligibility:
   - text: >-
-      You are a SSNIT member aged 60 (or 55 for early retirement) with at
-      least 180 months (15 years) of total contributions under the National
-      Pensions Act, 2008 (Act 766).
+      You are a SSNIT member aged 60 (or 55 for early retirement) with at least
+      180 months (15 years) of total contributions under the National Pensions
+      Act, 2008 (Act 766).
   - text: >-
       You are applying for invalidity benefit after at least 12 months of
       contributions and a certified permanent incapacity to work.
@@ -30,12 +30,12 @@ cost:
   currency: GHS
   unit: application
   notes: >-
-    There is no fee to apply for pension. Monthly benefit amounts are
-    calculated based on the number of qualifying contributions and your
-    average emoluments. SSNIT will provide a benefit estimate on request.
+    There is no fee to apply for pension. Monthly benefit amounts are calculated
+    based on the number of qualifying contributions and your average emoluments.
+    SSNIT will provide a benefit estimate on request.
 timeline: >-
-  Standard pension applications are processed within 30 to 45 working days
-  after all documents are accepted.
+  Standard pension applications are processed within 30 to 45 working days after
+  all documents are accepted.
 agency:
   name: Social Security and National Insurance Trust
   url: https://ssnit.org.gh
@@ -49,14 +49,14 @@ sourceOfTruth: https://ssnit.org.gh
 
 Request your full contribution statement from SSNIT at least 3 months before
 your expected retirement date. Confirm that all contributions are correctly
-recorded — any gaps must be resolved with your former employers before
-the claim is filed.
+recorded — any gaps must be resolved with your former employers before the claim
+is filed.
 
 ## Step by step
 
 1. Visit any SSNIT branch office with your full set of documents.
-2. Complete the pension application form with the assistance of a SSNIT
-   officer if needed.
+2. Complete the pension application form with the assistance of a SSNIT officer
+   if needed.
 3. Submit all documents and receive an acknowledgement slip with a reference
    number.
 4. SSNIT will review and compute your benefit and notify you of the outcome.
@@ -65,5 +65,5 @@ the claim is filed.
 ## After you apply
 
 SSNIT pays pensions monthly to your registered bank account. Notify SSNIT
-promptly if you change your bank account. Annual proof-of-life checks may
-be required to continue receiving payments.
+promptly if you change your bank account. Annual proof-of-life checks may be
+required to continue receiving payments.

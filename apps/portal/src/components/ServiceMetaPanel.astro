@@ -21,7 +21,8 @@ const cost = new Intl.NumberFormat('en-GH', {
   <dl>
     <dt>Cost</dt>
     <dd>
-      {cost} <span class="unit">({data.cost.unit})</span>
+      {cost}
+      <span class="unit">({data.cost.unit})</span>
       {data.cost.notes && <p class="notes">{data.cost.notes}</p>}
     </dd>
     <dt>Timeline</dt>

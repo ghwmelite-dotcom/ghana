@@ -13,7 +13,6 @@ const lifeStage = z.enum(['live', 'work', 'business', 'visit']);
 const services = defineCollection({
   type: 'content',
   schema: z.object({
-    slug: z.string().regex(/^[a-z0-9-]+$/),
     title: z.string().min(4).max(120),
     lifeStage,
     topics: z.array(z.string()).min(1),

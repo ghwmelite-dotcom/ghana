@@ -37,9 +37,9 @@ const lifeStageLabels: Record<string, string> = {
         <p class="lede">{data.lede}</p>
         <slot />
       </article>
-      <aside>
+      <div class="service__meta">
         <ServiceMetaPanel data={data} />
-      </aside>
+      </div>
     </div>
   </div>
 </BaseLayout>

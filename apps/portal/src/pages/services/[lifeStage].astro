@@ -36,11 +36,11 @@ const lede = ledes[lifeStage as string] ?? '';
 const servicesInStage = (
   await getCollection(
     'services',
-    ({ data }: CollectionEntry<'services'>) => data.lifeStage === lifeStage
+    ({ data }: CollectionEntry<'services'>) => data.lifeStage === lifeStage,
   )
 ).sort(
   (a: CollectionEntry<'services'>, b: CollectionEntry<'services'>) =>
-    a.data.priority - b.data.priority
+    a.data.priority - b.data.priority,
 );
 ---
 
@@ -63,8 +63,8 @@ const servicesInStage = (
             <Card
               title={s.data.title}
               description={s.data.lede}
-              href={`/services/${s.data.slug}/`}
-              headingLevel="h3"
+              href={`/services/${s.slug}/`}
+              headingLevel="h2"
             />
           </li>
         ))}

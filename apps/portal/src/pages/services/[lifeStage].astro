@@ -1,9 +1,12 @@
 ---
 /**
  * Life-stage category landing — /services/live|work|business|visit.
- * v1 stub: prerenders the 4 known stages. Full implementation in PR C.
+ * Filters the services collection by lifeStage and renders a grid of
+ * @gh/gh-ds Card components, ordered by service priority.
  */
-import Layout from '../../layouts/BaseLayout.astro';
+import { getCollection, type CollectionEntry } from 'astro:content';
+import CategoryLandingLayout from '../../layouts/CategoryLandingLayout.astro';
+import Card from '@gh/gh-ds/Card';
 
 export function getStaticPaths() {
   return [
@@ -21,11 +24,67 @@ const titles: Record<string, string> = {
   business: 'Do business',
   visit: 'Visit',
 };
+const ledes: Record<string, string> = {
+  live: 'Services for everyday life — identity, health, housing, family.',
+  work: 'Services for work — tax, jobs, pensions, professional licensing.',
+  business: 'Services for running a business — registration, licences, trade.',
+  visit: 'Services for visitors and diaspora — visa, passports, tourism.',
+};
 const label = titles[lifeStage as string] ?? 'Services';
+const lede = ledes[lifeStage as string] ?? '';
+
+const servicesInStage = (
+  await getCollection(
+    'services',
+    ({ data }: CollectionEntry<'services'>) => data.lifeStage === lifeStage
+  )
+).sort(
+  (a: CollectionEntry<'services'>, b: CollectionEntry<'services'>) =>
+    a.data.priority - b.data.priority
+);
 ---
 
-<Layout title={label} description={`Services for when you ${label.toLowerCase()}.`}>
-  <h1>{label}</h1>
-  <p>Services in this category land here. Full content in plan 2.</p>
-  <p><a href="/services/">← All services</a></p>
-</Layout>
+<CategoryLandingLayout
+  title={label}
+  description={lede}
+  lede={lede}
+  breadcrumbs={[
+    { href: '/', label: 'Home' },
+    { href: '/services/', label: 'Services' },
+  ]}
+>
+  {
+    servicesInStage.length === 0 ? (
+      <p>Services in this category are being authored. Check back soon.</p>
+    ) : (
+      <ul class="services">
+        {servicesInStage.map((s: CollectionEntry<'services'>) => (
+          <li>
+            <Card
+              title={s.data.title}
+              description={s.data.lede}
+              href={`/services/${s.data.slug}/`}
+              headingLevel="h3"
+            />
+          </li>
+        ))}
+      </ul>
+    )
+  }
+</CategoryLandingLayout>
+
+<style>
+  .services {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+  @media (min-width: 48rem) {
+    .services {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+</style>

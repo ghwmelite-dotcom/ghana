@@ -1,0 +1,19 @@
+# Normalise every text file to LF on commit AND in the working tree.
+# Ensures Windows checkouts don't get CRLF applied by autocrlf, which breaks
+# Prettier's format:check and produces noisy commits for cross-platform
+# contributors. Binary files are left alone by `* text=auto`.
+* text=auto eol=lf
+
+# Explicitly binary — never touched.
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.gif  binary
+*.webp binary
+*.avif binary
+*.ico  binary
+*.pdf  binary
+*.woff binary
+*.woff2 binary
+*.ttf  binary
+*.otf  binary

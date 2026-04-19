@@ -1,0 +1,18 @@
+---
+/**
+ * Homepage-only layout. The hero and life-stage tiles want to be full-bleed,
+ * so we don't constrain the slot — pages compose blocks with their own
+ * width controls.
+ */
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+  title: string;
+  description: string;
+}
+const { title, description } = Astro.props;
+---
+
+<BaseLayout title={title} description={description}>
+  <slot />
+</BaseLayout>

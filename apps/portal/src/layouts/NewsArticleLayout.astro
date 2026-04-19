@@ -1,0 +1,73 @@
+---
+/**
+ * News article — single reading column, editorial.
+ */
+import BaseLayout from './BaseLayout.astro';
+import Breadcrumb from '@gh/gh-ds/Breadcrumb';
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  entry: CollectionEntry<'news'>;
+}
+const { entry } = Astro.props as Props;
+const { data } = entry;
+const formatter = new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+---
+
+<BaseLayout title={data.title} description={data.lede}>
+  <div class="news">
+    <Breadcrumb
+      items={[
+        { href: '/', label: 'Home' },
+        { href: '/news/', label: 'News' },
+      ]}
+      current={data.title}
+    />
+    <article class="article">
+      <p class="eyebrow">{data.ministry.toUpperCase()} · {formatter.format(data.publishedAt)}</p>
+      <h1>{data.title}</h1>
+      <p class="lede">{data.lede}</p>
+      <slot />
+      <footer class="byline">By {data.author}</footer>
+    </article>
+  </div>
+</BaseLayout>
+
+<style>
+  .news {
+    max-width: 72rem;
+    margin: 0 auto;
+    padding: 1.5rem 1.25rem 4rem;
+  }
+  .article {
+    max-width: 40rem;
+    margin: 1.5rem auto 0;
+  }
+  .eyebrow {
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    color: #820b18;
+    font-weight: 600;
+    margin: 0 0 0.5rem;
+  }
+  h1 {
+    font-family: Georgia, serif;
+    font-size: clamp(1.75rem, 4vw, 2.75rem);
+    line-height: 1.1;
+    margin: 0 0 0.75rem;
+    color: #004527;
+  }
+  .lede {
+    font-size: 1.25rem;
+    color: #3e424a;
+    font-style: italic;
+    margin: 0 0 1.75rem;
+  }
+  .byline {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid #e5e0d6;
+    font-size: 0.875rem;
+    color: #5b5f68;
+  }
+</style>

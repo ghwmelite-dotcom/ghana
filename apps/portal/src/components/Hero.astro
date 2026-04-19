@@ -1,0 +1,155 @@
+---
+/**
+ * Homepage Hero — cultural close-up image (one of three: Kente macro, cocoa
+ * pods, brass scales) per spec §4.4. Tagline + lede overlaid on a dark scrim
+ * for contrast. Search box anchored to the bottom of the hero. Full-bleed.
+ *
+ * v1 ships with a solid-colour placeholder hero. PR D2 swaps in real images
+ * once they land in apps/portal/src/assets/hero/ from PR D1.
+ */
+interface Props {
+  /** Tagline — Georgia display serif, allow line breaks via <br/>. */
+  tagline: string;
+  /** Short sub-head under the tagline. */
+  lede: string;
+  /** Which of the 3 heroes to render (used post-D1). */
+  variant?: 'kente' | 'cocoa' | 'brass';
+}
+
+const { tagline, lede, variant = 'kente' } = Astro.props;
+const credits: Record<NonNullable<Props['variant']>, string> = {
+  kente: 'Kente weaving · Bonwire',
+  cocoa: 'Cocoa pods · Kumasi region',
+  brass: 'Brass scales · Ashanti craft',
+};
+---
+
+<section class="hero" aria-labelledby="hero-title">
+  <!-- TODO(D2): swap placeholder for <Image src={heroVariant[variant]} ... /> -->
+  <div class="hero__image hero__image--placeholder" aria-hidden="true"></div>
+  <div class="hero__scrim"></div>
+  <div class="hero__content">
+    <p class="hero__eyebrow">· Akwaaba ·</p>
+    <h1 id="hero-title" set:html={tagline}></h1>
+    <p class="hero__lede">{lede}</p>
+    <form action="/search/" method="get" role="search" class="hero__search">
+      <label class="sr-only" for="hero-q">Search the portal</label>
+      <input
+        id="hero-q"
+        name="q"
+        type="search"
+        placeholder="I am looking for…"
+        autocomplete="off"
+      />
+      <button type="submit">Search</button>
+    </form>
+  </div>
+  <p class="hero__credit">{credits[variant]}</p>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    overflow: hidden;
+    min-height: 60vh;
+    max-height: 680px;
+    display: grid;
+  }
+  .hero__image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .hero__image--placeholder {
+    background: linear-gradient(135deg, #2b2e34 0%, #004527 60%, #001a0e 100%);
+  }
+  .hero__scrim {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0, 26, 14, 0.25) 0%, rgba(0, 26, 14, 0.7) 100%);
+  }
+  .hero__content {
+    position: relative;
+    padding: 3rem 1.5rem 5rem;
+    max-width: 48rem;
+    margin: auto 0;
+    color: #faf7f2;
+  }
+  .hero__eyebrow {
+    font-size: 0.75rem;
+    letter-spacing: 0.25em;
+    color: #fcd116;
+    text-transform: uppercase;
+    margin: 0 0 0.75rem;
+  }
+  h1 {
+    font-family: Georgia, 'Playfair Display', serif;
+    font-size: clamp(2.25rem, 6vw, 4rem);
+    line-height: 1.02;
+    font-weight: 600;
+    margin: 0 0 1rem;
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+  }
+  .hero__lede {
+    font-size: clamp(1rem, 1.4vw, 1.25rem);
+    max-width: 36ch;
+    margin: 0 0 2rem;
+    opacity: 0.92;
+  }
+  .hero__search {
+    display: flex;
+    gap: 0;
+    background: #fff;
+    border-radius: 4px;
+    overflow: hidden;
+    max-width: 32rem;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+  }
+  .hero__search input {
+    flex: 1;
+    border: 0;
+    padding: 0.875rem 1rem;
+    font: inherit;
+    color: #2b2e34;
+    background: transparent;
+  }
+  .hero__search input:focus {
+    outline: 3px solid #fcd116;
+    outline-offset: -3px;
+  }
+  .hero__search button {
+    border: 0;
+    background: #005a35;
+    color: #fff;
+    padding: 0 1.25rem;
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    min-width: 44px;
+  }
+  .hero__search button:hover {
+    background: #004527;
+  }
+  .hero__credit {
+    position: absolute;
+    bottom: 0.5rem;
+    right: 0.75rem;
+    font-size: 0.625rem;
+    color: rgba(255, 255, 255, 0.65);
+    margin: 0;
+    letter-spacing: 0.05em;
+  }
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+</style>

@@ -1,0 +1,108 @@
+---
+/**
+ * Right-rail panel on every service page. Presents cost / timeline / agency /
+ * apply-URL in a dense, scannable format — the "key facts" summary citizens
+ * often want without reading the full page.
+ */
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  data: CollectionEntry<'services'>['data'];
+}
+const { data } = Astro.props;
+const cost = new Intl.NumberFormat('en-GH', {
+  style: 'currency',
+  currency: data.cost.currency,
+}).format(data.cost.amount);
+---
+
+<aside class="meta" aria-labelledby="service-meta-heading">
+  <h2 id="service-meta-heading" class="sr-only">Service details</h2>
+  <dl>
+    <dt>Cost</dt>
+    <dd>
+      {cost} <span class="unit">({data.cost.unit})</span>
+      {data.cost.notes && <p class="notes">{data.cost.notes}</p>}
+    </dd>
+    <dt>Timeline</dt>
+    <dd>{data.timeline}</dd>
+    <dt>Agency</dt>
+    <dd>
+      <a href={data.agency.url}>{data.agency.name}</a>
+      {data.agency.phone && <p class="phone">{data.agency.phone}</p>}
+    </dd>
+  </dl>
+  <a href={data.applyUrl} class="apply">Apply on the official site →</a>
+  <p class="source">
+    Official source: <a href={data.sourceOfTruth}>{new URL(data.sourceOfTruth).hostname}</a>
+  </p>
+</aside>
+
+<style>
+  .meta {
+    background: #fff;
+    border: 1px solid #e5e0d6;
+    border-radius: 3px;
+    padding: 1.25rem;
+    font-size: 0.875rem;
+  }
+  dl {
+    margin: 0;
+  }
+  dt {
+    font-weight: 600;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #5b5f68;
+    margin-top: 0.75rem;
+  }
+  dt:first-of-type {
+    margin-top: 0;
+  }
+  dd {
+    margin: 0.25rem 0 0;
+  }
+  .unit,
+  .phone,
+  .notes {
+    display: block;
+    font-size: 0.75rem;
+    color: #5b5f68;
+    margin-top: 0.125rem;
+  }
+  .apply {
+    display: block;
+    margin-top: 1.25rem;
+    padding: 0.625rem 1rem;
+    background: #005a35;
+    color: #fff;
+    text-decoration: none;
+    text-align: center;
+    border-radius: 3px;
+    font-weight: 600;
+    min-height: 44px;
+  }
+  .apply:hover {
+    background: #004527;
+  }
+  .source {
+    margin-top: 1rem;
+    font-size: 0.6875rem;
+    color: #5b5f68;
+  }
+  .source a {
+    color: inherit;
+  }
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+</style>

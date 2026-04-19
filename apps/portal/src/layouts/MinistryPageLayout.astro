@@ -1,0 +1,93 @@
+---
+/**
+ * Ministry — two-column with contact rail on the right, mandate + body on left.
+ */
+import BaseLayout from './BaseLayout.astro';
+import Breadcrumb from '@gh/gh-ds/Breadcrumb';
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  entry: CollectionEntry<'ministries'>;
+}
+const { entry } = Astro.props as Props;
+const { data } = entry;
+---
+
+<BaseLayout title={data.name} description={data.mandate.slice(0, 160)}>
+  <div class="ministry">
+    <Breadcrumb
+      items={[
+        { href: '/', label: 'Home' },
+        { href: '/ministries/', label: 'Ministries' },
+      ]}
+      current={data.name}
+    />
+    <header>
+      <h1>{data.name}</h1>
+      <p class="mandate">{data.mandate}</p>
+    </header>
+    <div class="ministry__grid">
+      <section class="main">
+        <slot />
+      </section>
+      <aside class="contact">
+        <h2>Contact</h2>
+        <dl>
+          {data.minister && (<><dt>Minister</dt><dd>{data.minister}</dd></>)}
+          {data.phone && (<><dt>Phone</dt><dd>{data.phone}</dd></>)}
+          {data.email && (<><dt>Email</dt><dd><a href={`mailto:${data.email}`}>{data.email}</a></dd></>)}
+          {data.website && (<><dt>Website</dt><dd><a href={data.website}>{data.website}</a></dd></>)}
+          {data.address && (<><dt>Address</dt><dd>{data.address}</dd></>)}
+        </dl>
+      </aside>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .ministry {
+    max-width: 72rem;
+    margin: 0 auto;
+    padding: 1.5rem 1.25rem 4rem;
+  }
+  h1 {
+    font-family: Georgia, serif;
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    color: #004527;
+    margin: 1.5rem 0 0.75rem;
+  }
+  .mandate {
+    font-size: 1.125rem;
+    color: #3e424a;
+    max-width: 54ch;
+    margin: 0 0 2rem;
+  }
+  .ministry__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2rem;
+  }
+  @media (min-width: 56rem) {
+    .ministry__grid {
+      grid-template-columns: minmax(0, 1fr) 18rem;
+    }
+  }
+  .contact h2 {
+    font-family: Georgia, serif;
+    font-size: 1.25rem;
+    margin: 0 0 0.5rem;
+  }
+  .contact dl {
+    margin: 0;
+  }
+  .contact dt {
+    font-weight: 600;
+    margin-top: 0.75rem;
+    font-size: 0.875rem;
+    color: #5b5f68;
+  }
+  .contact dd {
+    margin: 0.125rem 0 0;
+    font-size: 0.9375rem;
+  }
+</style>

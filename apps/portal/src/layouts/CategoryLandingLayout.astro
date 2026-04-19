@@ -1,0 +1,52 @@
+---
+/**
+ * Category landing — /services/live|work|business|visit and /services/diaspora.
+ * Layout: breadcrumb, big serif title + lede, then the page slot (typically
+ * a grid of service cards).
+ */
+import BaseLayout from './BaseLayout.astro';
+import Breadcrumb from '@gh/gh-ds/Breadcrumb';
+
+interface Props {
+  title: string;
+  description: string;
+  lede: string;
+  breadcrumbs: Array<{ href: string; label: string }>;
+}
+const { title, description, lede, breadcrumbs } = Astro.props;
+---
+
+<BaseLayout title={title} description={description}>
+  <div class="category">
+    <Breadcrumb items={breadcrumbs} current={title} />
+    <header class="category__header">
+      <h1>{title}</h1>
+      <p class="lede">{lede}</p>
+    </header>
+    <slot />
+  </div>
+</BaseLayout>
+
+<style>
+  .category {
+    max-width: 72rem;
+    margin: 0 auto;
+    padding: 1.5rem 1.25rem 4rem;
+  }
+  .category__header {
+    margin: 1.5rem 0 2rem;
+  }
+  .category__header h1 {
+    font-family: Georgia, 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3rem);
+    line-height: 1.05;
+    color: #004527;
+    margin: 0 0 0.75rem;
+  }
+  .lede {
+    font-size: 1.125rem;
+    color: #3e424a;
+    max-width: 54ch;
+    margin: 0;
+  }
+</style>

@@ -1,0 +1,59 @@
+---
+/**
+ * Boilerplate layout for About / Accessibility / Privacy / Contact / Diaspora
+ * and the search-results page. Long-form centred reading column.
+ */
+import BaseLayout from './BaseLayout.astro';
+import Breadcrumb from '@gh/gh-ds/Breadcrumb';
+
+interface Props {
+  title: string;
+  description: string;
+  lede?: string;
+  updatedAt?: Date;
+}
+const { title, description, lede, updatedAt } = Astro.props;
+const formatter = new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+---
+
+<BaseLayout title={title} description={description}>
+  <div class="boilerplate">
+    <Breadcrumb items={[{ href: '/', label: 'Home' }]} current={title} />
+    <article>
+      <h1>{title}</h1>
+      {lede && <p class="lede">{lede}</p>}
+      <slot />
+      {updatedAt && <p class="updated">Last updated {formatter.format(updatedAt)}.</p>}
+    </article>
+  </div>
+</BaseLayout>
+
+<style>
+  .boilerplate {
+    max-width: 40rem;
+    margin: 0 auto;
+    padding: 1.5rem 1.25rem 4rem;
+  }
+  article {
+    margin-top: 1.5rem;
+  }
+  h1 {
+    font-family: Georgia, serif;
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    line-height: 1.1;
+    color: #004527;
+    margin: 0 0 0.75rem;
+  }
+  .lede {
+    font-size: 1.125rem;
+    color: #3e424a;
+    margin: 0 0 1.5rem;
+  }
+  .updated {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid #e5e0d6;
+    font-size: 0.875rem;
+    color: #5b5f68;
+  }
+</style>

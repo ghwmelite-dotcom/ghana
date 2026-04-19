@@ -1,11 +1,11 @@
 ---
 import { getCollection, type CollectionEntry } from 'astro:content';
-import Layout from '../../layouts/BaseLayout.astro';
+import MinistryPageLayout from '../../layouts/MinistryPageLayout.astro';
 
 export async function getStaticPaths() {
   const all = await getCollection('ministries');
   return all.map((entry: CollectionEntry<'ministries'>) => ({
-    params: { slug: entry.data.slug },
+    params: { slug: entry.slug },
     props: { entry },
   }));
 }
@@ -17,8 +17,6 @@ const { entry } = Astro.props as Props;
 const { Content } = await entry.render();
 ---
 
-<Layout title={entry.data.name} description={entry.data.mandate.slice(0, 160)}>
-  <h1>{entry.data.name}</h1>
-  <p>{entry.data.mandate}</p>
+<MinistryPageLayout entry={entry}>
   <Content />
-</Layout>
+</MinistryPageLayout>

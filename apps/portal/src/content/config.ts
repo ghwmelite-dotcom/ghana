@@ -42,7 +42,6 @@ const services = defineCollection({
 const news = defineCollection({
   type: 'content',
   schema: z.object({
-    slug: z.string().regex(/^[a-z0-9-]+$/),
     title: z.string().min(4).max(160),
     lede: z.string().min(20).max(400),
     publishedAt: z.coerce.date(),
@@ -56,7 +55,6 @@ const news = defineCollection({
 const ministries = defineCollection({
   type: 'content',
   schema: z.object({
-    slug: z.string().regex(/^[a-z0-9-]+$/),
     name: z.string().min(4),
     shortName: z.string().optional(),
     minister: z.string().optional(),
@@ -75,7 +73,6 @@ const ministries = defineCollection({
 const pages = defineCollection({
   type: 'content',
   schema: z.object({
-    slug: z.string().regex(/^[a-z0-9-]+$/),
     title: z.string(),
     lede: z.string(),
     updatedAt: z.coerce.date(),

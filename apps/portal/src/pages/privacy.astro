@@ -1,8 +1,17 @@
 ---
-import Layout from '../layouts/BaseLayout.astro';
+import { getEntry } from 'astro:content';
+import BoilerplatePageLayout from '../layouts/BoilerplatePageLayout.astro';
+
+const entry = await getEntry('pages', 'privacy');
+if (!entry) throw new Error('pages/privacy.md missing');
+const { Content } = await entry.render();
 ---
 
-<Layout title="Privacy" description="How gov.gh handles your information.">
-  <h1>Privacy</h1>
-  <p>Privacy notice lands in plan 2.</p>
-</Layout>
+<BoilerplatePageLayout
+  title={entry.data.title}
+  description={entry.data.lede}
+  lede={entry.data.lede}
+  updatedAt={entry.data.updatedAt}
+>
+  <Content />
+</BoilerplatePageLayout>

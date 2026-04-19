@@ -1,8 +1,17 @@
 ---
-import Layout from '../layouts/BaseLayout.astro';
+import { getEntry } from 'astro:content';
+import BoilerplatePageLayout from '../layouts/BoilerplatePageLayout.astro';
+
+const entry = await getEntry('pages', 'accessibility');
+if (!entry) throw new Error('pages/accessibility.md missing');
+const { Content } = await entry.render();
 ---
 
-<Layout title="Accessibility" description="Accessibility statement for gov.gh.">
-  <h1>Accessibility</h1>
-  <p>Accessibility statement lands in plan 2.</p>
-</Layout>
+<BoilerplatePageLayout
+  title={entry.data.title}
+  description={entry.data.lede}
+  lede={entry.data.lede}
+  updatedAt={entry.data.updatedAt}
+>
+  <Content />
+</BoilerplatePageLayout>

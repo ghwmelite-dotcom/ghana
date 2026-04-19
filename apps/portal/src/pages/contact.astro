@@ -1,8 +1,17 @@
 ---
-import Layout from '../layouts/BaseLayout.astro';
+import { getEntry } from 'astro:content';
+import BoilerplatePageLayout from '../layouts/BoilerplatePageLayout.astro';
+
+const entry = await getEntry('pages', 'contact');
+if (!entry) throw new Error('pages/contact.md missing');
+const { Content } = await entry.render();
 ---
 
-<Layout title="Contact" description="How to reach the Office of the Head of Civil Service.">
-  <h1>Contact</h1>
-  <p>Contact details land in plan 2.</p>
-</Layout>
+<BoilerplatePageLayout
+  title={entry.data.title}
+  description={entry.data.lede}
+  lede={entry.data.lede}
+  updatedAt={entry.data.updatedAt}
+>
+  <Content />
+</BoilerplatePageLayout>

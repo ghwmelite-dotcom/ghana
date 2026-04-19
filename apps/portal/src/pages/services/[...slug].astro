@@ -9,7 +9,7 @@
  * getStaticPaths excludes any slug that collides with a sibling static page
  * (a-z, diaspora, live, work, business, visit).
  */
-import { getCollection } from 'astro:content';
+import { getCollection, type CollectionEntry } from 'astro:content';
 import Layout from '../../layouts/BaseLayout.astro';
 
 const RESERVED = new Set(['a-z', 'diaspora', 'live', 'work', 'business', 'visit']);
@@ -17,14 +17,17 @@ const RESERVED = new Set(['a-z', 'diaspora', 'live', 'work', 'business', 'visit'
 export async function getStaticPaths() {
   const all = await getCollection('services');
   return all
-    .filter((entry) => !RESERVED.has(entry.data.slug))
-    .map((entry) => ({
+    .filter((entry: CollectionEntry<'services'>) => !RESERVED.has(entry.data.slug))
+    .map((entry: CollectionEntry<'services'>) => ({
       params: { slug: entry.data.slug },
       props: { entry },
     }));
 }
 
-const { entry } = Astro.props;
+interface Props {
+  entry: CollectionEntry<'services'>;
+}
+const { entry } = Astro.props as Props;
 const { Content } = await entry.render();
 ---
 

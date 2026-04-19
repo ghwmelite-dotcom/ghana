@@ -1,10 +1,10 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection, type CollectionEntry } from 'astro:content';
 import Layout from '../../../layouts/BaseLayout.astro';
 
 export async function getStaticPaths() {
   const all = await getCollection('news');
-  return all.map((entry) => ({
+  return all.map((entry: CollectionEntry<'news'>) => ({
     params: {
       year: String(entry.data.publishedAt.getFullYear()),
       slug: entry.data.slug,
@@ -13,7 +13,10 @@ export async function getStaticPaths() {
   }));
 }
 
-const { entry } = Astro.props;
+interface Props {
+  entry: CollectionEntry<'news'>;
+}
+const { entry } = Astro.props as Props;
 const { Content } = await entry.render();
 ---
 

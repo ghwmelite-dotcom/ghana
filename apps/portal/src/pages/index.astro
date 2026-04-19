@@ -1,25 +1,20 @@
 ---
 /**
- * gov.gh homepage — gov.rw-aligned composition.
+ * gov.gh homepage — "gov.rw structure, Ghanaian soul."
  *
- * Section order mirrors gov.rw:
- *   1. Hero (text-forward, integrated search, quiet photo)
- *   2. Life-stage tile grid (4 tiles with line icons)
- *   3. "Get to know Ghana" intro block with crest + learn-more
- *   4. Most-used services portal grid (3 cards with icons)
- *   5. Latest updates — news cards with thumbnails
- *   6. Ministries quick-access grid
- *
- * Deliberately excluded: stats band, scrolling marquee, closing motto,
- * orchestrated gold threads, constellation. gov.rw is calm.
+ * Section order: dramatic photographic hero → dark welcome strip with crest
+ * and facts → life-stage tile grid → 3-card service portal → heritage
+ * monuments gallery → news row → ministries directory → closing motto.
  */
 import HomepageLayout from '../layouts/HomepageLayout.astro';
 import Hero from '../components/Hero.astro';
+import WelcomeStrip from '../components/WelcomeStrip.astro';
 import LifeStageTiles from '../components/LifeStageTiles.astro';
-import GetToKnowGhana from '../components/GetToKnowGhana.astro';
 import ServicePortalGrid from '../components/ServicePortalGrid.astro';
+import MonumentsGallery from '../components/MonumentsGallery.astro';
 import EditorialNews from '../components/EditorialNews.astro';
 import MinistriesRow from '../components/MinistriesRow.astro';
+import ClosingMotto from '../components/ClosingMotto.astro';
 ---
 
 <HomepageLayout
@@ -27,9 +22,11 @@ import MinistriesRow from '../components/MinistriesRow.astro';
   description="The official digital portal of the Government of Ghana. Every service, every ministry, every announcement — in one place."
 >
   <Hero />
+  <WelcomeStrip />
   <LifeStageTiles />
-  <GetToKnowGhana />
   <ServicePortalGrid />
+  <MonumentsGallery />
   <EditorialNews />
   <MinistriesRow />
+  <ClosingMotto />
 </HomepageLayout>

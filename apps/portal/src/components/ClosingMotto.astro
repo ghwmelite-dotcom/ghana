@@ -1,0 +1,77 @@
+---
+/**
+ * Closing motto — the final "Freedom and Justice" moment. Centered
+ * composition with the coat of arms, flag-colour rule, and the 1957 motto.
+ * Warm, dignified, understated.
+ */
+import { Image } from 'astro:assets';
+import coatOfArms from '../assets/photos/coat-of-arms.png';
+---
+
+<section class="motto" aria-labelledby="motto-heading">
+  <div class="motto__inner">
+    <figure class="motto__crest" aria-hidden="true">
+      <Image src={coatOfArms} alt="" widths={[120, 180]} sizes="80px" quality={90} />
+    </figure>
+    <span class="motto__rule" aria-hidden="true"></span>
+    <h2 id="motto-heading" class="motto__title">Freedom and Justice.</h2>
+    <p class="motto__sub">Republic of Ghana · Since 1957</p>
+  </div>
+</section>
+
+<style>
+  .motto {
+    background: #ffffff;
+    padding: clamp(4rem, 8vw, 6rem) clamp(1.25rem, 4vw, 3rem);
+    text-align: center;
+    border-bottom: 1px solid #edeae2;
+  }
+  .motto__inner {
+    max-width: 44rem;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+  .motto__crest {
+    margin: 0;
+    width: 72px;
+  }
+  .motto__crest :global(img) {
+    width: 100%;
+    height: auto;
+  }
+  .motto__rule {
+    display: block;
+    width: 120px;
+    height: 3px;
+    background: linear-gradient(
+      90deg,
+      #006b3f 0%,
+      #006b3f 33%,
+      #fcd116 33%,
+      #fcd116 66%,
+      #ce1126 66%,
+      #ce1126 100%
+    );
+    margin: 0.5rem 0 0.5rem;
+    border-radius: 1px;
+  }
+  .motto__title {
+    font-size: clamp(1.875rem, 4vw, 2.75rem);
+    font-weight: 700;
+    color: #005a35;
+    margin: 0;
+    letter-spacing: -0.015em;
+    line-height: 1.05;
+  }
+  .motto__sub {
+    font-size: 0.75rem;
+    letter-spacing: 0.25em;
+    color: #5b5f68;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin: 0;
+  }
+</style>

@@ -1,120 +1,154 @@
 ---
 /**
- * Hero — gov.rw-aligned: text-forward, integrated search, quiet photograph.
+ * Hero — photographic, dominant, gov.rw-calm in motion but rich in scale.
  *
- * Composition:
- *   - White section with generous vertical spacing.
- *   - Eyebrow + huge sans tagline + short lede + prominent search box, all
- *     left-aligned in a 62rem container.
- *   - A muted landscape photograph sits to the right on desktop, offset and
- *     sized to balance the text column without dominating it.
- *   - No constellation, no gold threads, no ken-burns — gov.rw's hero is
- *     calm and workmanlike.
- *
- * The one Ghanaian signature here is the mini-Kente underline on "Ghana"
- * (green · gold · red); everything else is flat, clean, restrained.
+ * Composition: Independence Arch covers the full viewport behind a dark
+ * gradient scrim. Centered text column with eyebrow, large sans tagline,
+ * italic lede, and search bar. A subtle flag-rule underline draws the one
+ * Ghanaian signature under the word "Ghana". Ken-burns zoom over 18s
+ * gives the image breath without orchestrated motion.
  */
 import { Image } from 'astro:assets';
 import heroArch from '../assets/photos/independence-arch.png';
 ---
 
 <section class="hero" aria-labelledby="hero-title">
-  <div class="hero__grid">
-    <div class="hero__text">
-      <p class="hero__eyebrow">
-        <span aria-hidden="true" class="hero__eyebrow-star"></span>
-        Akwaaba · Republic of Ghana
-      </p>
-      <h1 id="hero-title" class="hero__title">
-        Welcome to <span class="hero__accent">Ghana</span>.
-      </h1>
-      <p class="hero__lede">
-        The official digital portal of the Government of Ghana. Every service, every ministry, every
-        announcement — in one place.
-      </p>
-      <form action="/search/" method="get" role="search" class="hero__search">
-        <label class="sr-only" for="hero-q">Search the government of Ghana</label>
-        <span aria-hidden="true" class="hero__search-icon">
-          <svg viewBox="0 0 20 20" width="18" height="18" fill="none">
-            <circle cx="9" cy="9" r="6" stroke="currentColor" stroke-width="1.6"></circle>
-            <path
-              d="M13.5 13.5 L17 17"
-              stroke="currentColor"
-              stroke-width="1.6"
-              stroke-linecap="round"></path>
-          </svg>
-        </span>
-        <input
-          id="hero-q"
-          name="q"
-          type="search"
-          placeholder="Search services, ministries, news…"
-          autocomplete="off"
-        />
-        <button type="submit">Search</button>
-      </form>
-    </div>
-    <figure class="hero__photo-wrap" aria-hidden="true">
-      <Image
-        src={heroArch}
-        alt=""
-        widths={[480, 720, 960, 1280]}
-        sizes="(min-width: 64rem) 480px, 100vw"
-        loading="eager"
-        fetchpriority="high"
-        quality={78}
-        class="hero__photo"
+  <div class="hero__photo-wrap" aria-hidden="true">
+    <Image
+      src={heroArch}
+      alt=""
+      widths={[640, 960, 1440, 1920, 2560]}
+      sizes="100vw"
+      loading="eager"
+      fetchpriority="high"
+      quality={80}
+      class="hero__photo"
+    />
+  </div>
+  <div class="hero__scrim" aria-hidden="true"></div>
+
+  <div class="hero__inner">
+    <p class="hero__eyebrow">
+      <span aria-hidden="true" class="hero__star"></span>
+      Akwaaba · Republic of Ghana
+    </p>
+    <h1 id="hero-title" class="hero__title">
+      Welcome to <span class="hero__accent">Ghana</span>.
+    </h1>
+    <p class="hero__lede">
+      The official digital portal of the Government of Ghana.<br />
+      Every service, every ministry, every announcement — in one place.
+    </p>
+    <form action="/search/" method="get" role="search" class="hero__search">
+      <label class="sr-only" for="hero-q">Search the government of Ghana</label>
+      <span aria-hidden="true" class="hero__search-icon">
+        <svg viewBox="0 0 20 20" width="18" height="18" fill="none">
+          <circle cx="9" cy="9" r="6" stroke="currentColor" stroke-width="1.6"></circle>
+          <path
+            d="M13.5 13.5 L17 17"
+            stroke="currentColor"
+            stroke-width="1.6"
+            stroke-linecap="round"></path>
+        </svg>
+      </span>
+      <input
+        id="hero-q"
+        name="q"
+        type="search"
+        placeholder="Search services, ministries, news…"
+        autocomplete="off"
       />
-      <figcaption class="hero__photo-caption">
-        Black Star Square · Independence Arch, A.D. 1957
-      </figcaption>
-    </figure>
+      <button type="submit">Search</button>
+    </form>
+    <p class="hero__caption" aria-hidden="true">Black Star Square · Independence Arch, A.D. 1957</p>
   </div>
 </section>
 
 <style>
   .hero {
-    background: #ffffff;
-    padding: clamp(3rem, 7vw, 6rem) clamp(1.25rem, 4vw, 3rem);
     position: relative;
-    isolation: isolate;
-    border-bottom: 1px solid #edeae2;
-  }
-  .hero__grid {
-    max-width: 80rem;
-    margin: 0 auto;
+    overflow: hidden;
+    min-height: 640px;
+    min-height: 100svh;
+    min-height: 100dvh;
     display: grid;
-    grid-template-columns: 1fr;
-    gap: clamp(2rem, 4vw, 3rem);
     align-items: center;
+    background: #0a0f1f;
+    color: #fff;
+    isolation: isolate;
   }
-  @media (min-width: 64rem) {
-    .hero__grid {
-      grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
-      gap: clamp(3rem, 6vw, 5rem);
+  .hero__photo-wrap {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+  }
+  .hero__photo-wrap :global(img.hero__photo) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 58%;
+    transform: scale(1.04);
+    animation: kenBurns 20s ease-out forwards;
+  }
+  @keyframes kenBurns {
+    from {
+      transform: scale(1.1);
+    }
+    to {
+      transform: scale(1.02);
+    }
+  }
+  .hero__scrim {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background:
+      linear-gradient(
+        180deg,
+        rgba(10, 15, 31, 0.35) 0%,
+        rgba(10, 15, 31, 0.15) 30%,
+        rgba(10, 15, 31, 0.72) 100%
+      ),
+      radial-gradient(ellipse 100% 80% at 50% 70%, rgba(10, 15, 31, 0.4) 0%, transparent 70%);
+  }
+
+  .hero__inner {
+    position: relative;
+    z-index: 2;
+    max-width: 68rem;
+    margin: 0 auto;
+    padding: clamp(7rem, 14vh, 10rem) clamp(1.5rem, 5vw, 4rem) clamp(4rem, 8vh, 6rem);
+    text-align: center;
+    animation: heroFade 0.9s cubic-bezier(0.2, 0.9, 0.3, 1) 0.15s both;
+  }
+  @keyframes heroFade {
+    from {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
     }
   }
 
-  .hero__text {
-    max-width: 44rem;
-  }
   .hero__eyebrow {
     font-size: 0.8125rem;
-    letter-spacing: 0.14em;
-    color: #005a35;
+    letter-spacing: 0.25em;
+    color: #fcd116;
     text-transform: uppercase;
-    margin: 0 0 1.25rem;
+    margin: 0 0 1.5rem;
     font-weight: 600;
     display: inline-flex;
     align-items: center;
     gap: 0.625rem;
   }
-  .hero__eyebrow-star {
-    width: 8px;
-    height: 8px;
+  .hero__star {
+    width: 10px;
+    height: 10px;
     background: #fcd116;
     display: inline-block;
-    /* A tiny 5-pointed star as pseudo-marker, kept with clip-path. */
     clip-path: polygon(
       50% 0%,
       61% 35%,
@@ -130,16 +164,17 @@ import heroArch from '../assets/photos/independence-arch.png';
   }
 
   .hero__title {
-    font-size: clamp(2.5rem, 5vw, 4.25rem);
+    font-size: clamp(2.75rem, 7vw, 6rem);
     font-weight: 700;
-    letter-spacing: -0.022em;
-    line-height: 1.02;
-    color: #0a0f1f;
+    letter-spacing: -0.025em;
+    line-height: 0.98;
+    color: #fff;
     margin: 0 0 1.25rem;
+    text-shadow: 0 3px 32px rgba(0, 0, 0, 0.5);
   }
   .hero__accent {
     position: relative;
-    color: #005a35;
+    color: #fcd116;
     display: inline-block;
   }
   .hero__accent::after {
@@ -147,8 +182,8 @@ import heroArch from '../assets/photos/independence-arch.png';
     position: absolute;
     left: 0;
     right: 0;
-    bottom: 0.02em;
-    height: 0.1em;
+    bottom: -0.025em;
+    height: 0.085em;
     background: linear-gradient(
       90deg,
       #006b3f 0%,
@@ -161,11 +196,12 @@ import heroArch from '../assets/photos/independence-arch.png';
   }
 
   .hero__lede {
-    font-size: clamp(1.0625rem, 1.35vw, 1.25rem);
-    line-height: 1.55;
-    color: #384251;
-    max-width: 44ch;
-    margin: 0 0 2rem;
+    font-size: clamp(1.0625rem, 1.6vw, 1.375rem);
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.88);
+    margin: 0 auto 2.25rem;
+    max-width: 44rem;
+    text-shadow: 0 2px 16px rgba(0, 0, 0, 0.45);
   }
 
   .hero__search {
@@ -173,18 +209,17 @@ import heroArch from '../assets/photos/independence-arch.png';
     grid-template-columns: auto 1fr auto;
     align-items: stretch;
     gap: 0;
-    background: #fff;
-    border: 1.5px solid #0a0f1f;
+    background: rgba(255, 255, 255, 0.95);
+    border: 2px solid #fff;
     border-radius: 4px;
-    max-width: 40rem;
+    max-width: 38rem;
+    margin: 0 auto;
     overflow: hidden;
-    transition:
-      border-color 180ms ease,
-      box-shadow 180ms ease;
+    box-shadow: 0 20px 50px -16px rgba(0, 0, 0, 0.45);
+    transition: box-shadow 180ms ease;
   }
   .hero__search:focus-within {
-    border-color: #005a35;
-    box-shadow: 0 0 0 3px rgba(252, 209, 22, 0.35);
+    box-shadow: 0 0 0 4px rgba(252, 209, 22, 0.45);
   }
   .hero__search-icon {
     display: inline-flex;
@@ -193,11 +228,10 @@ import heroArch from '../assets/photos/independence-arch.png';
     color: #5b5f68;
   }
   .hero__search input {
-    flex: 1;
     border: 0;
-    padding: 0.95rem 0.75rem 0.95rem 0.75rem;
+    padding: 1rem 0.75rem;
     font: inherit;
-    font-size: 0.9375rem;
+    font-size: 1rem;
     color: #0a0f1f;
     background: transparent;
     min-width: 0;
@@ -212,9 +246,9 @@ import heroArch from '../assets/photos/independence-arch.png';
     border: 0;
     background: #005a35;
     color: #fff;
-    padding: 0 1.5rem;
+    padding: 0 1.625rem;
     font: inherit;
-    font-size: 0.875rem;
+    font-size: 0.9375rem;
     font-weight: 600;
     letter-spacing: 0.01em;
     cursor: pointer;
@@ -225,40 +259,22 @@ import heroArch from '../assets/photos/independence-arch.png';
     background: #004527;
   }
 
-  .hero__photo-wrap {
-    margin: 0;
-    position: relative;
-    aspect-ratio: 4 / 5;
-    border-radius: 6px;
-    overflow: hidden;
-    background: #edeae2;
-    box-shadow: 0 20px 50px -20px rgba(0, 40, 24, 0.25);
-    max-height: 620px;
-  }
-  .hero__photo-wrap :global(img.hero__photo) {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: 55% 50%;
-  }
-  .hero__photo-caption {
-    position: absolute;
-    bottom: 12px;
-    left: 14px;
-    right: 14px;
-    font-size: 0.6875rem;
-    letter-spacing: 0.08em;
+  .hero__caption {
+    margin: 3rem 0 0;
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: #fff;
-    font-weight: 600;
-    padding: 6px 10px;
-    background: rgba(10, 15, 31, 0.65);
-    backdrop-filter: blur(6px);
-    border-radius: 2px;
+    color: rgba(255, 255, 255, 0.65);
+    font-weight: 500;
   }
-  @media (max-width: 64rem) {
-    .hero__photo-wrap {
-      max-height: 420px;
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero__photo-wrap :global(img.hero__photo) {
+      animation: none;
+      transform: scale(1);
+    }
+    .hero__inner {
+      animation: none;
     }
   }
 

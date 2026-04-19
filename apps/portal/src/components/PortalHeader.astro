@@ -1,0 +1,521 @@
+---
+/**
+ * PortalHeader — worldclass, Kente-led, animated.
+ *
+ * Composition (top → bottom):
+ *   1. Kente weave signature band (8px, actual woven gradient composition,
+ *      slow drift + periodic gold shimmer sweep).
+ *   2. Brand bar — coat of arms + country label + "gov.gh" wordmark with a
+ *      slowly-rotating gold Black Star. Right side: search launcher button
+ *      and language switcher.
+ *   3. Nav bar — deep forest green with a subtle layered Kente warp texture
+ *      at very low opacity. Primary nav items with gold underline slide-in
+ *      on hover; active route marked with persistent gold indicator.
+ *
+ * All animations CSS-only, transform / opacity / background-position, and
+ * respect prefers-reduced-motion. No JavaScript.
+ *
+ * Replaces @gh/gh-ds/Header on portal pages.
+ */
+import { Image } from 'astro:assets';
+import coatOfArms from '../assets/photos/coat-of-arms.png';
+
+interface NavItem {
+  href: string;
+  label: string;
+}
+
+const primaryNav: ReadonlyArray<NavItem> = [
+  { href: '/services/', label: 'Services' },
+  { href: '/news/', label: 'News' },
+  { href: '/ministries/', label: 'Ministries' },
+  { href: '/about/', label: 'About' },
+];
+
+// Mark the currently-active top-level section for the persistent indicator.
+const currentPath = Astro.url.pathname;
+const isActive = (href: string) => {
+  if (href === '/' && currentPath === '/') return true;
+  if (href !== '/' && currentPath.startsWith(href)) return true;
+  return false;
+};
+---
+
+<header class="ph" role="banner">
+  <!-- Kente weave signature band. -->
+  <div class="ph__kente" aria-hidden="true">
+    <div class="ph__kente-shimmer"></div>
+  </div>
+
+  <!-- Brand bar. -->
+  <div class="ph__brand-bar">
+    <div class="ph__inner ph__brand-inner">
+      <a href="/" class="ph__brand" aria-label="gov.gh — Republic of Ghana, home">
+        <figure class="ph__crest" aria-hidden="true">
+          <Image src={coatOfArms} alt="" widths={[96, 144]} sizes="48px" quality={92} />
+        </figure>
+        <div class="ph__wordmark">
+          <span class="ph__country">Republic of Ghana</span>
+          <span class="ph__name">
+            gov<span class="ph__dot">.</span>gh
+            <span class="ph__star" aria-hidden="true"></span>
+          </span>
+        </div>
+      </a>
+      <div class="ph__tools">
+        <a class="ph__search" href="/search/" aria-label="Search the portal">
+          <svg viewBox="0 0 20 20" width="16" height="16" fill="none" aria-hidden="true">
+            <circle cx="9" cy="9" r="6" stroke="currentColor" stroke-width="1.7"></circle>
+            <path
+              d="M13.5 13.5 L17 17"
+              stroke="currentColor"
+              stroke-width="1.7"
+              stroke-linecap="round"></path>
+          </svg>
+          <span>Search</span>
+          <span class="ph__search-key" aria-hidden="true">⌘K</span>
+        </a>
+        <div class="ph__lang" role="group" aria-label="Language">
+          <a href="/" class="ph__lang-item ph__lang-item--active" aria-current="true">EN</a>
+          <span class="ph__lang-sep" aria-hidden="true">|</span>
+          <a href="/tw/" class="ph__lang-item">Twi</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Primary nav bar. -->
+  <nav class="ph__nav" aria-label="Primary">
+    <div class="ph__nav-texture" aria-hidden="true"></div>
+    <div class="ph__inner ph__nav-inner">
+      <ul>
+        {
+          primaryNav.map((item) => (
+            <li class={isActive(item.href) ? 'ph__nav-item ph__nav-item--active' : 'ph__nav-item'}>
+              <a href={item.href}>{item.label}</a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<style>
+  .ph {
+    position: relative;
+    background: #ffffff;
+    isolation: isolate;
+    z-index: 10;
+  }
+  .ph__inner {
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 0 clamp(1.25rem, 4vw, 3rem);
+  }
+
+  /* ─── Kente weave band ─────────────────────────────────────────── */
+  .ph__kente {
+    position: relative;
+    height: 8px;
+    overflow: hidden;
+    /* Stacked gradients simulate a woven structure: horizontal weft in flag
+       colours + vertical warp shadow lines crossing over. */
+    background:
+      /* Warp (vertical, fine) — creates the "over / under" impression. */
+      repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.25) 0 3px, transparent 3px 6px),
+      /* Weft (horizontal — the flag colour rhythm). */
+      repeating-linear-gradient(
+          90deg,
+          #006b3f 0 18px,
+          #fcd116 18px 26px,
+          #ce1126 26px 44px,
+          #0b0b0f 44px 52px
+        );
+    background-size:
+      6px 6px,
+      52px 100%;
+    animation: kenteDrift 30s linear infinite;
+    will-change: background-position;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  }
+  @keyframes kenteDrift {
+    from {
+      background-position:
+        0 0,
+        0 0;
+    }
+    to {
+      background-position:
+        -6px 0,
+        -52px 0;
+    }
+  }
+
+  /* Gold shimmer sweep that passes across the kente band every ~9s. */
+  .ph__kente-shimmer {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      100deg,
+      transparent 0%,
+      transparent 40%,
+      rgba(255, 255, 255, 0.5) 48%,
+      rgba(252, 209, 22, 0.85) 52%,
+      rgba(255, 255, 255, 0.5) 56%,
+      transparent 64%,
+      transparent 100%
+    );
+    background-size: 300% 100%;
+    background-repeat: no-repeat;
+    background-position: -150% 0;
+    animation: kenteShimmer 9s cubic-bezier(0.4, 0, 0.2, 1) 1.2s infinite;
+    mix-blend-mode: screen;
+    pointer-events: none;
+  }
+  @keyframes kenteShimmer {
+    0% {
+      background-position: -150% 0;
+    }
+    18% {
+      background-position: 150% 0;
+    }
+    100% {
+      background-position: 150% 0;
+    }
+  }
+
+  /* ─── Brand bar ─────────────────────────────────────────────────── */
+  .ph__brand-bar {
+    background: #ffffff;
+    border-bottom: 1px solid #edeae2;
+    animation: phRise 0.6s cubic-bezier(0.2, 0.9, 0.3, 1) 0.15s both;
+  }
+  @keyframes phRise {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  .ph__brand-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-top: 0.875rem;
+    padding-bottom: 0.875rem;
+  }
+  .ph__brand {
+    display: flex;
+    align-items: center;
+    gap: 0.875rem;
+    text-decoration: none;
+    color: inherit;
+    border-radius: 3px;
+    padding: 4px 0;
+    outline-offset: 4px;
+  }
+  .ph__brand:focus-visible {
+    outline: 3px solid #fcd116;
+    outline-offset: 4px;
+  }
+  .ph__crest {
+    margin: 0;
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    transition: transform 320ms cubic-bezier(0.2, 0.9, 0.3, 1);
+  }
+  .ph__crest :global(img) {
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 2px 6px rgba(0, 40, 24, 0.18));
+  }
+  .ph__brand:hover .ph__crest,
+  .ph__brand:focus-visible .ph__crest {
+    transform: rotate(-4deg) scale(1.05);
+  }
+  .ph__wordmark {
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+  }
+  .ph__country {
+    font-size: 0.6875rem;
+    letter-spacing: 0.26em;
+    color: #5b5f68;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 0.325rem;
+  }
+  .ph__name {
+    font-size: 1.4375rem;
+    font-weight: 700;
+    color: #0a0f1f;
+    letter-spacing: -0.018em;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+  }
+  .ph__dot {
+    color: #ce1126;
+  }
+  .ph__star {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    background: #fcd116;
+    clip-path: polygon(
+      50% 0%,
+      61% 35%,
+      98% 35%,
+      68% 57%,
+      79% 91%,
+      50% 70%,
+      21% 91%,
+      32% 57%,
+      2% 35%,
+      39% 35%
+    );
+    animation: phStarSpin 42s linear infinite;
+    filter: drop-shadow(0 1px 3px rgba(224, 185, 18, 0.55));
+  }
+  @keyframes phStarSpin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .ph__tools {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-shrink: 0;
+  }
+  @media (max-width: 32rem) {
+    .ph__country {
+      font-size: 0.625rem;
+      letter-spacing: 0.22em;
+    }
+    .ph__name {
+      font-size: 1.125rem;
+    }
+    .ph__crest {
+      width: 40px;
+      height: 40px;
+    }
+    .ph__tools {
+      gap: 0.5rem;
+    }
+  }
+
+  /* Search launcher. */
+  .ph__search {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.4rem 0.75rem 0.4rem 0.65rem;
+    border: 1px solid #e5e0d6;
+    background: #fcfbf7;
+    color: #384251;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    transition:
+      border-color 180ms ease,
+      background 180ms ease,
+      color 180ms ease;
+    min-height: 36px;
+  }
+  .ph__search:hover,
+  .ph__search:focus-visible {
+    border-color: #005a35;
+    background: #fff;
+    color: #005a35;
+  }
+  .ph__search:focus-visible {
+    outline: 3px solid #fcd116;
+    outline-offset: 2px;
+  }
+  .ph__search-key {
+    padding: 2px 6px;
+    font-size: 0.625rem;
+    letter-spacing: 0.06em;
+    color: #6b7280;
+    background: #fff;
+    border: 1px solid #e5e0d6;
+    border-radius: 3px;
+    font-variant-numeric: tabular-nums;
+  }
+  .ph__search:hover .ph__search-key,
+  .ph__search:focus-visible .ph__search-key {
+    color: #005a35;
+    border-color: #005a35;
+  }
+  @media (max-width: 28rem) {
+    .ph__search span:not(.ph__search-key) {
+      display: none;
+    }
+    .ph__search-key {
+      display: none;
+    }
+    .ph__search {
+      padding: 0.425rem;
+    }
+  }
+
+  /* Language switcher. */
+  .ph__lang {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+  }
+  .ph__lang-item {
+    color: #6b7280;
+    text-decoration: none;
+    padding: 0.25rem 0.35rem;
+    border-radius: 3px;
+    transition:
+      color 160ms ease,
+      background 160ms ease;
+  }
+  .ph__lang-item--active {
+    color: #0a0f1f;
+  }
+  .ph__lang-item:hover,
+  .ph__lang-item:focus-visible {
+    color: #005a35;
+    background: #fcfbf7;
+  }
+  .ph__lang-item:focus-visible {
+    outline: 2px solid #fcd116;
+    outline-offset: 2px;
+  }
+  .ph__lang-sep {
+    color: #e5e0d6;
+  }
+
+  /* ─── Nav bar ───────────────────────────────────────────────────── */
+  .ph__nav {
+    position: relative;
+    background: linear-gradient(180deg, #005a35 0%, #003920 100%);
+    color: #fff;
+    box-shadow: 0 1px 0 rgba(252, 209, 22, 0.2) inset;
+    overflow: hidden;
+    animation: phNavRise 0.7s cubic-bezier(0.2, 0.9, 0.3, 1) 0.25s both;
+  }
+  @keyframes phNavRise {
+    from {
+      opacity: 0;
+      transform: translateY(-6px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  /* Faint Kente warp texture in the nav bar — very low opacity so it reads
+     as "material" not "pattern". */
+  .ph__nav-texture {
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      90deg,
+      rgba(252, 209, 22, 0.05) 0 1px,
+      transparent 1px 18px,
+      rgba(206, 17, 38, 0.05) 18px 19px,
+      transparent 19px 26px,
+      rgba(255, 255, 255, 0.04) 26px 27px,
+      transparent 27px 52px
+    );
+    pointer-events: none;
+  }
+  .ph__nav-inner {
+    position: relative;
+  }
+  .ph__nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: clamp(0.5rem, 2vw, 1.75rem);
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .ph__nav ul::-webkit-scrollbar {
+    display: none;
+  }
+  .ph__nav-item {
+    flex-shrink: 0;
+  }
+  .ph__nav-item a {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.85rem 0.75rem;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.88);
+    text-decoration: none;
+    letter-spacing: 0.005em;
+    position: relative;
+    transition: color 180ms ease;
+    min-height: 44px;
+  }
+  .ph__nav-item a::after {
+    content: '';
+    position: absolute;
+    left: 0.75rem;
+    right: 0.75rem;
+    bottom: 0.35rem;
+    height: 2px;
+    background: linear-gradient(90deg, #fcd116 0%, #f4a43e 100%);
+    transform-origin: left;
+    transform: scaleX(0);
+    transition: transform 280ms cubic-bezier(0.2, 0.9, 0.3, 1);
+  }
+  .ph__nav-item a:hover,
+  .ph__nav-item a:focus-visible {
+    color: #fcd116;
+  }
+  .ph__nav-item a:hover::after,
+  .ph__nav-item a:focus-visible::after {
+    transform: scaleX(1);
+  }
+  .ph__nav-item a:focus-visible {
+    outline: none;
+  }
+  .ph__nav-item--active a {
+    color: #fcd116;
+  }
+  .ph__nav-item--active a::after {
+    transform: scaleX(1);
+  }
+
+  /* ─── Reduced motion ───────────────────────────────────────────── */
+  @media (prefers-reduced-motion: reduce) {
+    .ph__kente,
+    .ph__kente-shimmer,
+    .ph__star,
+    .ph__brand-bar,
+    .ph__nav {
+      animation: none !important;
+    }
+    .ph__brand:hover .ph__crest,
+    .ph__nav-item a::after {
+      transition: none;
+    }
+  }
+</style>

@@ -10,22 +10,15 @@
  *   - Token sheet from @gh/gh-ds, inlined by Astro when small enough.
  *   - Preload the two most critical font weights so first paint doesn't FOUT.
  *   - Skip-link anchor (visually hidden until focused).
- *   - Kente stripe, Header, slot for page content, Footer.
+ *   - PortalHeader (Kente-signature worldclass), slot, PortalFooter.
  *   - Cloudflare Web Analytics beacon (gated by PUBLIC_CF_ANALYTICS_TOKEN env).
  */
 
 import '@gh/gh-ds/tokens.css';
 import '../styles/global.css';
 import SkipLink from '@gh/gh-ds/SkipLink';
-import Header from '@gh/gh-ds/Header';
+import PortalHeader from '../components/PortalHeader.astro';
 import PortalFooter from '../components/PortalFooter.astro';
-
-const primaryNav = [
-  { href: '/services/', label: 'Services' },
-  { href: '/news/', label: 'News' },
-  { href: '/ministries/', label: 'Ministries' },
-  { href: '/about/', label: 'About' },
-];
 
 interface Props {
   title: string;
@@ -100,9 +93,8 @@ const cfAnalyticsToken = import.meta.env.PUBLIC_CF_ANALYTICS_TOKEN;
     }
   </head>
   <body>
-    <div class="page-rule" aria-hidden="true"></div>
     <SkipLink />
-    <Header serviceName="gov.gh" primaryNav={primaryNav} flagRule={false} />
+    <PortalHeader />
     <main id="main" tabindex="-1">
       <slot />
     </main>
@@ -112,23 +104,7 @@ const cfAnalyticsToken = import.meta.env.PUBLIC_CF_ANALYTICS_TOKEN;
 
 <style is:global>
   body {
-    background: #faf7f2;
-  }
-  /* Subtle flag-rule at the very top — a 2px hairline gradient in place of
-     the loud repeating-Kente strip. The full woven Kente treatment lives
-     inside components (stats band, marquee, tile threads) where it belongs. */
-  .page-rule {
-    height: 2px;
-    background: linear-gradient(
-      90deg,
-      #006b3f 0%,
-      #006b3f 33%,
-      #fcd116 33%,
-      #fcd116 66%,
-      #ce1126 66%,
-      #ce1126 100%
-    );
-    width: 100%;
-    opacity: 0.9;
+    background: #ffffff;
+    margin: 0;
   }
 </style>

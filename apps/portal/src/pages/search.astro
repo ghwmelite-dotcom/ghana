@@ -1,8 +1,55 @@
 ---
-import Layout from '../layouts/BaseLayout.astro';
+/**
+ * Search — client-side, powered by Pagefind. The index is built at
+ * postbuild time and served from /pagefind/. The noscript fallback
+ * points users to the A–Z index so search is never the only path.
+ */
+import BoilerplatePageLayout from '../layouts/BoilerplatePageLayout.astro';
 ---
 
-<Layout title="Search" description="Search every service, news item, and ministry on gov.gh.">
-  <h1>Search</h1>
-  <p>Search experience lands in PR E (Pagefind integration).</p>
-</Layout>
+<BoilerplatePageLayout
+  title="Search"
+  description="Search every service, news item, and ministry on gov.gh."
+  lede="Type what you're looking for — services, ministries, or news."
+>
+  <div id="search" class="search"></div>
+  <noscript>
+    <p class="noscript">
+      Search requires JavaScript. You can browse the
+      <a href="/services/a-z/">A–Z services index</a> or the
+      <a href="/ministries/">ministries directory</a> instead.
+    </p>
+  </noscript>
+
+  <link href="/pagefind/pagefind-ui.css" rel="stylesheet" />
+  <script src="/pagefind/pagefind-ui.js" is:inline></script>
+  <script is:inline>
+    window.addEventListener('DOMContentLoaded', () => {
+      if (typeof PagefindUI === 'undefined') return;
+      new PagefindUI({
+        element: '#search',
+        showImages: false,
+        resetStyles: false,
+      });
+    });
+  </script>
+</BoilerplatePageLayout>
+
+<style>
+  .search {
+    min-height: 10rem;
+    margin-top: 1rem;
+  }
+  .noscript {
+    padding: 1rem;
+    background: #fff;
+    border: 1px solid #e5e0d6;
+    border-radius: 3px;
+  }
+  :global(.pagefind-ui__search-input:focus) {
+    outline: 3px solid #fcd116;
+  }
+  :global(.pagefind-ui__result-link) {
+    color: #004527;
+  }
+</style>

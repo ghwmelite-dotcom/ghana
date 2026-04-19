@@ -1,0 +1,31 @@
+---
+/**
+ * Life-stage category landing — /services/live|work|business|visit.
+ * v1 stub: prerenders the 4 known stages. Full implementation in PR C.
+ */
+import Layout from '../../layouts/BaseLayout.astro';
+
+export function getStaticPaths() {
+  return [
+    { params: { lifeStage: 'live' } },
+    { params: { lifeStage: 'work' } },
+    { params: { lifeStage: 'business' } },
+    { params: { lifeStage: 'visit' } },
+  ];
+}
+
+const { lifeStage } = Astro.params;
+const titles: Record<string, string> = {
+  live: 'Live',
+  work: 'Work',
+  business: 'Do business',
+  visit: 'Visit',
+};
+const label = titles[lifeStage as string] ?? 'Services';
+---
+
+<Layout title={label} description={`Services for when you ${label.toLowerCase()}.`}>
+  <h1>{label}</h1>
+  <p>Services in this category land here. Full content in plan 2.</p>
+  <p><a href="/services/">← All services</a></p>
+</Layout>

@@ -1,0 +1,24 @@
+---
+/**
+ * Services index — life-stage tiles + link to A–Z topic index.
+ * v1 stub: renders the 4 life-stage names. Full tile composition
+ * lands in PR C (CategoryLandingLayout + LifeStageTiles block).
+ */
+import Layout from '../../layouts/BaseLayout.astro';
+
+const stages = [
+  { slug: 'live', label: 'Live' },
+  { slug: 'work', label: 'Work' },
+  { slug: 'business', label: 'Do business' },
+  { slug: 'visit', label: 'Visit' },
+];
+---
+
+<Layout title="Services" description="Every service the government of Ghana offers.">
+  <h1>Services</h1>
+  <ul>
+    {stages.map((s) => <li><a href={`/services/${s.slug}/`}>{s.label}</a></li>)}
+    <li><a href="/services/a-z/">A–Z index</a></li>
+    <li><a href="/services/diaspora/">Diaspora</a></li>
+  </ul>
+</Layout>

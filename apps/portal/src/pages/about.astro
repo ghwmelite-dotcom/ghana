@@ -1,17 +1,202 @@
 ---
+import { Image } from 'astro:assets';
 import { getEntry } from 'astro:content';
-import BoilerplatePageLayout from '../layouts/BoilerplatePageLayout.astro';
+import HomepageLayout from '../layouts/HomepageLayout.astro';
+import coatOfArms from '../assets/photos/coat-of-arms.png';
+import ghanaFlag from '../assets/photos/ghana-flag.jpg';
 
 const entry = await getEntry('pages', 'about');
 if (!entry) throw new Error('pages/about.md missing');
 const { Content } = await entry.render();
+
+const formatter = new Intl.DateTimeFormat('en-GB', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+});
 ---
 
-<BoilerplatePageLayout
-  title={entry.data.title}
-  description={entry.data.lede}
-  lede={entry.data.lede}
-  updatedAt={entry.data.updatedAt}
->
-  <Content />
-</BoilerplatePageLayout>
+<HomepageLayout title={entry.data.title} description={entry.data.lede}>
+  <section class="about-hero" aria-labelledby="about-hero-title">
+    <div class="about-hero__flag" aria-hidden="true">
+      <Image
+        src={ghanaFlag}
+        alt=""
+        widths={[640, 960, 1440]}
+        sizes="100vw"
+        loading="eager"
+        quality={82}
+      />
+    </div>
+    <div class="about-hero__scrim" aria-hidden="true"></div>
+    <div class="about-hero__inner">
+      <figure class="about-hero__crest">
+        <Image
+          src={coatOfArms}
+          alt="Coat of arms of the Republic of Ghana"
+          widths={[240, 360]}
+          sizes="180px"
+          quality={90}
+          loading="eager"
+        />
+      </figure>
+      <p class="about-hero__eyebrow">Freedom and Justice · 1957</p>
+      <h1 id="about-hero-title" class="about-hero__title">{entry.data.title}</h1>
+      <p class="about-hero__lede">{entry.data.lede}</p>
+    </div>
+  </section>
+
+  <article class="about-body">
+    <Content />
+    <p class="about-body__updated">Last updated {formatter.format(entry.data.updatedAt)}.</p>
+  </article>
+</HomepageLayout>
+
+<style>
+  .about-hero {
+    position: relative;
+    overflow: hidden;
+    min-height: clamp(380px, 55vh, 560px);
+    display: grid;
+    align-items: center;
+    background: #002818;
+    color: #fffef9;
+    isolation: isolate;
+  }
+  .about-hero__flag {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    opacity: 0.3;
+  }
+  .about-hero__flag :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: saturate(1.1) brightness(0.7);
+    transform: scale(1.05);
+    animation: aboutDrift 22s ease-in-out infinite alternate;
+  }
+  @keyframes aboutDrift {
+    from {
+      transform: scale(1.05) translateX(0);
+    }
+    to {
+      transform: scale(1.1) translateX(-1.5%);
+    }
+  }
+  .about-hero__scrim {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background:
+      linear-gradient(180deg, rgba(0, 16, 8, 0.4) 0%, rgba(0, 16, 8, 0.72) 100%),
+      radial-gradient(ellipse 60% 70% at 50% 40%, rgba(0, 16, 8, 0.3) 0%, transparent 70%);
+  }
+  .about-hero__inner {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: clamp(2rem, 5vw, 3.5rem) clamp(1.25rem, 4vw, 3rem);
+    max-width: 44rem;
+    margin: 0 auto;
+  }
+  .about-hero__crest {
+    margin: 0 auto 1.25rem;
+    width: 140px;
+    height: 140px;
+    display: grid;
+    place-items: center;
+    animation: crestRise 1.2s cubic-bezier(0.2, 0.9, 0.3, 1) both;
+  }
+  .about-hero__crest :global(img) {
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 6px 24px rgba(0, 0, 0, 0.55));
+  }
+  @keyframes crestRise {
+    from {
+      opacity: 0;
+      transform: translateY(16px) scale(0.92);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+  .about-hero__eyebrow {
+    font-size: 0.6875rem;
+    letter-spacing: 0.32em;
+    color: #fcd116;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin: 0 0 0.75rem;
+  }
+  .about-hero__title {
+    font-family: Georgia, 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3rem);
+    line-height: 1.05;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin: 0 0 1rem;
+    color: #fffef9;
+    text-shadow: 0 3px 28px rgba(0, 0, 0, 0.6);
+  }
+  .about-hero__lede {
+    font-family: Georgia, serif;
+    font-style: italic;
+    font-size: clamp(1rem, 1.5vw, 1.1875rem);
+    line-height: 1.55;
+    color: rgba(255, 253, 245, 0.9);
+    margin: 0 auto;
+    max-width: 44ch;
+    text-shadow: 0 2px 14px rgba(0, 0, 0, 0.5);
+  }
+
+  .about-body {
+    max-width: 40rem;
+    margin: 0 auto;
+    padding: clamp(2.5rem, 5vw, 4rem) clamp(1.25rem, 4vw, 2rem) clamp(3rem, 6vw, 5rem);
+  }
+  .about-body :global(h2) {
+    font-family: Georgia, serif;
+    font-size: clamp(1.375rem, 2.2vw, 1.625rem);
+    line-height: 1.2;
+    color: #002818;
+    margin: 2.25rem 0 0.75rem;
+    letter-spacing: -0.005em;
+  }
+  .about-body :global(h2):first-child {
+    margin-top: 0;
+  }
+  .about-body :global(p) {
+    line-height: 1.65;
+    color: #2b2e34;
+    margin: 0 0 1rem;
+  }
+  .about-body :global(ul) {
+    margin: 0 0 1.25rem;
+    padding-left: 1.25rem;
+  }
+  .about-body :global(li) {
+    margin: 0.375rem 0;
+    line-height: 1.55;
+  }
+  .about-body :global(a) {
+    color: #004527;
+  }
+  .about-body__updated {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid #e5e0d6;
+    font-size: 0.875rem;
+    color: #5b5f68;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .about-hero__flag :global(img),
+    .about-hero__crest {
+      animation: none;
+    }
+  }
+</style>

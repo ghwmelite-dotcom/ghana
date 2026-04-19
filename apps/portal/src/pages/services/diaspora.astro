@@ -1,7 +1,12 @@
 ---
+import { Image } from 'astro:assets';
 import { getCollection, type CollectionEntry } from 'astro:content';
-import BoilerplatePageLayout from '../../layouts/BoilerplatePageLayout.astro';
+import HomepageLayout from '../../layouts/HomepageLayout.astro';
 import Card from '@gh/gh-ds/Card';
+import nkrumahMemorial from '../../assets/photos/nkrumah-memorial.png';
+import nkrumahStatue from '../../assets/photos/nkrumah-statue.png';
+import nkrumahMausoleum from '../../assets/photos/nkrumah-mausoleum.png';
+import nkrumahPresidents from '../../assets/photos/nkrumah-presidents-mural.png';
 
 const DIASPORA_SLUGS = new Set([
   'apply-dual-citizenship',
@@ -20,68 +25,253 @@ const diasporaServices: CollectionEntry<'services'>[] = allServices
   );
 ---
 
-<BoilerplatePageLayout
+<HomepageLayout
   title="For Ghanaians abroad"
   description="Services curated for the Ghanaian diaspora — dual citizenship, passports, visas, residence, and the Year of Return."
-  lede="Wherever you are in the world, Ghana is home. These are the services most diaspora Ghanaians need — and a warm invitation to return."
 >
-  <section class="block">
-    <h2>The Year of Return — and Beyond</h2>
-    <p>
-      In 2019 Ghana invited every person of African descent to come home. Over one million visitors
-      answered. The Beyond the Return decade (2020–2030) continues that invitation with easier
-      citizenship paths, diaspora investment channels, and an active programme of Ghanaian-mission
-      engagement on six continents.
-    </p>
-    <p>
-      Whether you hold Ghanaian citizenship already, are claiming it by descent, or are visiting for
-      the first time, the services below are the most common places to start.
-    </p>
+  <!-- Photographic hero, Nkrumah Memorial -->
+  <section class="diaspora-hero" aria-labelledby="diaspora-hero-title">
+    <div class="diaspora-hero__photo-wrap" aria-hidden="true">
+      <Image
+        src={nkrumahMemorial}
+        alt=""
+        widths={[640, 960, 1440, 1920]}
+        sizes="100vw"
+        loading="eager"
+        fetchpriority="high"
+        quality={80}
+        class="diaspora-hero__photo"
+      />
+    </div>
+    <div class="diaspora-hero__scrim" aria-hidden="true"></div>
+    <div class="diaspora-hero__inner">
+      <p class="diaspora-hero__eyebrow">
+        <span aria-hidden="true">❋</span> For Ghanaians abroad
+      </p>
+      <h1 id="diaspora-hero-title" class="diaspora-hero__title">
+        Wherever you are,<br /><span class="diaspora-hero__accent">Ghana is home.</span>
+      </h1>
+      <p class="diaspora-hero__lede">
+        Dual citizenship, passports, visas, residence permits — plus a standing invitation to
+        return. The Beyond the Return decade runs 2020 – 2030.
+      </p>
+    </div>
   </section>
 
-  <section class="block">
-    <h2>Most-needed services</h2>
-    {
-      diasporaServices.length === 0 ? (
-        <p>Services are being curated. Check back soon.</p>
-      ) : (
-        <ul class="cards">
-          {diasporaServices.map((s) => (
-            <li>
-              <Card
-                title={s.data.title}
-                description={s.data.lede}
-                href={`/services/${s.slug}/`}
-                headingLevel="h3"
-              />
-            </li>
-          ))}
-        </ul>
-      )
-    }
-  </section>
+  <div class="diaspora-body">
+    <section class="block">
+      <p class="block__eyebrow">The Year of Return — and Beyond</p>
+      <h2 class="block__title">A standing invitation home.</h2>
+      <p>
+        In 2019 Ghana invited every person of African descent to come home. Over one million
+        visitors answered. The Beyond the Return decade (2020–2030) continues that invitation with
+        easier citizenship paths, diaspora investment channels, and an active programme of
+        Ghanaian-mission engagement on six continents.
+      </p>
+      <p>
+        Whether you hold Ghanaian citizenship already, are claiming it by descent, or are visiting
+        for the first time, the services below are the most common places to start.
+      </p>
+    </section>
 
-  <section class="block">
-    <h2>Reach your nearest Ghanaian mission</h2>
-    <p>
-      Ghana maintains over 50 embassies, high commissions, and consulates-general worldwide. Each
-      can process passport renewals, issue emergency travel documents, register births of Ghanaians
-      born abroad, and certify documents. Find yours through the
-      <a href="/ministries/foreign-affairs/">Ministry of Foreign Affairs and Regional Integration</a
-      >.
-    </p>
-  </section>
-</BoilerplatePageLayout>
+    <section class="block" aria-labelledby="services-heading">
+      <p class="block__eyebrow">Start here</p>
+      <h2 id="services-heading" class="block__title">Most-needed services for the diaspora.</h2>
+      {
+        diasporaServices.length === 0 ? (
+          <p>Services are being curated. Check back soon.</p>
+        ) : (
+          <ul class="cards">
+            {diasporaServices.map((s) => (
+              <li>
+                <Card
+                  title={s.data.title}
+                  description={s.data.lede}
+                  href={`/services/${s.slug}/`}
+                  headingLevel="h3"
+                />
+              </li>
+            ))}
+          </ul>
+        )
+      }
+    </section>
+
+    <section class="gallery" aria-label="Kwame Nkrumah Memorial Park">
+      <div class="gallery__head">
+        <p class="block__eyebrow">Kwame Nkrumah Memorial Park, Accra</p>
+        <h2 class="block__title">Pilgrimage to the founder of modern Ghana.</h2>
+        <p class="gallery__lede">
+          Kwame Nkrumah Memorial Park sits at the heart of Accra, on the site where Ghana declared
+          independence on 6 March 1957. Every returning diaspora Ghanaian should visit at least
+          once.
+        </p>
+      </div>
+      <div class="gallery__grid">
+        <figure class="gallery__item gallery__item--tall">
+          <Image
+            src={nkrumahStatue}
+            alt="The statue of Kwame Nkrumah at the Memorial Park, arm outstretched forward over a crowd of visitors."
+            widths={[480, 720, 960]}
+            sizes="(min-width: 64rem) 420px, 100vw"
+            quality={78}
+          />
+          <figcaption>The Founder · Nkrumah statue, Memorial Park</figcaption>
+        </figure>
+        <figure class="gallery__item">
+          <Image
+            src={nkrumahMausoleum}
+            alt="The white stone mausoleum of Kwame Nkrumah, with bronze statues flanking the entrance."
+            widths={[480, 720, 960]}
+            sizes="(min-width: 64rem) 320px, 100vw"
+            quality={78}
+          />
+          <figcaption>Mausoleum · final resting place</figcaption>
+        </figure>
+        <figure class="gallery__item">
+          <Image
+            src={nkrumahPresidents}
+            alt="A wall of portrait murals of past Presidents of Ghana at the Memorial Park."
+            widths={[480, 720, 960]}
+            sizes="(min-width: 64rem) 320px, 100vw"
+            quality={78}
+          />
+          <figcaption>Presidents' mural · continuity of office</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="block">
+      <p class="block__eyebrow">Missions worldwide</p>
+      <h2 class="block__title">Reach your nearest Ghanaian mission.</h2>
+      <p>
+        Ghana maintains over 50 embassies, high commissions, and consulates-general worldwide. Each
+        can process passport renewals, issue emergency travel documents, register births of
+        Ghanaians born abroad, and certify documents. Find yours through the
+        <a href="/ministries/foreign-affairs/"
+          >Ministry of Foreign Affairs and Regional Integration</a
+        >.
+      </p>
+    </section>
+  </div>
+</HomepageLayout>
 
 <style>
-  .block {
-    margin-bottom: 2rem;
+  /* Photographic hero. */
+  .diaspora-hero {
+    position: relative;
+    overflow: hidden;
+    min-height: clamp(420px, 60vh, 640px);
+    display: grid;
+    align-items: center;
+    background: #001008;
+    color: #fffef9;
+    isolation: isolate;
   }
-  .block h2 {
+  .diaspora-hero__photo-wrap {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+  }
+  .diaspora-hero__photo-wrap :global(img.diaspora-hero__photo) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 42%;
+    transform: scale(1.05);
+    animation: diaspKenBurns 16s ease-out forwards;
+  }
+  @keyframes diaspKenBurns {
+    from {
+      transform: scale(1.1);
+    }
+    to {
+      transform: scale(1.02);
+    }
+  }
+  .diaspora-hero__scrim {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background:
+      radial-gradient(
+        ellipse 70% 80% at 28% 55%,
+        rgba(0, 16, 8, 0.78) 0%,
+        rgba(0, 16, 8, 0.2) 60%,
+        transparent 78%
+      ),
+      linear-gradient(180deg, rgba(0, 16, 8, 0.35) 0%, transparent 30%, rgba(0, 16, 8, 0.4) 100%);
+  }
+  .diaspora-hero__inner {
+    position: relative;
+    z-index: 2;
+    padding: clamp(2rem, 6vw, 4rem) clamp(1.5rem, 5vw, 4.5rem);
+    max-width: 62rem;
+  }
+  .diaspora-hero__eyebrow {
+    font-size: 0.75rem;
+    letter-spacing: 0.3em;
+    color: #fcd116;
+    text-transform: uppercase;
+    margin: 0 0 1rem;
+    font-weight: 600;
+  }
+  .diaspora-hero__title {
+    font-family: Georgia, 'Playfair Display', serif;
+    font-size: clamp(2rem, 5.5vw, 4.25rem);
+    line-height: 1.02;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin: 0 0 1rem;
+    color: #fffef9;
+    text-shadow: 0 3px 32px rgba(0, 0, 0, 0.6);
+  }
+  .diaspora-hero__accent {
+    color: #fcd116;
+    font-style: italic;
+  }
+  .diaspora-hero__lede {
     font-family: Georgia, serif;
-    font-size: 1.375rem;
-    color: #004527;
+    font-style: italic;
+    font-size: clamp(1rem, 1.5vw, 1.1875rem);
+    line-height: 1.55;
+    color: rgba(255, 253, 245, 0.9);
+    margin: 0;
+    max-width: 42ch;
+    text-shadow: 0 2px 16px rgba(0, 0, 0, 0.55);
+  }
+
+  /* Body */
+  .diaspora-body {
+    max-width: 72rem;
+    margin: 0 auto;
+    padding: clamp(2.5rem, 5vw, 4rem) clamp(1.25rem, 4vw, 3rem) clamp(3rem, 6vw, 5rem);
+  }
+  .block {
+    margin-bottom: clamp(2.5rem, 5vw, 4rem);
+    max-width: 48rem;
+  }
+  .block__eyebrow {
+    font-size: 0.75rem;
+    letter-spacing: 0.3em;
+    color: #820b18;
+    text-transform: uppercase;
+    font-weight: 600;
     margin: 0 0 0.75rem;
+  }
+  .block__title {
+    font-family: Georgia, serif;
+    font-size: clamp(1.625rem, 3vw, 2.25rem);
+    line-height: 1.1;
+    color: #002818;
+    margin: 0 0 1rem;
+    letter-spacing: -0.01em;
+  }
+  .block p {
+    line-height: 1.65;
+    margin: 0 0 1rem;
+    color: #2b2e34;
   }
   .cards {
     list-style: none;
@@ -94,6 +284,80 @@ const diasporaServices: CollectionEntry<'services'>[] = allServices
   @media (min-width: 48rem) {
     .cards {
       grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  /* Photo gallery block */
+  .gallery {
+    margin-bottom: clamp(2.5rem, 5vw, 4rem);
+  }
+  .gallery__head {
+    max-width: 48rem;
+    margin-bottom: 1.5rem;
+  }
+  .gallery__lede {
+    font-size: 1.0625rem;
+    color: #3e424a;
+    line-height: 1.55;
+    margin: 0 0 1.5rem;
+  }
+  .gallery__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+  @media (min-width: 48rem) {
+    .gallery__grid {
+      grid-template-columns: 1.4fr 1fr 1fr;
+      grid-template-rows: auto auto;
+      gap: 0.75rem;
+    }
+    .gallery__item--tall {
+      grid-row: span 2;
+    }
+  }
+  .gallery__item {
+    position: relative;
+    margin: 0;
+    overflow: hidden;
+    border-radius: 3px;
+    background: #e5e0d6;
+  }
+  .gallery__item :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    aspect-ratio: 4/3;
+    display: block;
+    transition: transform 600ms cubic-bezier(0.2, 0.9, 0.3, 1);
+  }
+  .gallery__item--tall :global(img) {
+    aspect-ratio: 3/4;
+  }
+  .gallery__item:hover :global(img) {
+    transform: scale(1.04);
+  }
+  .gallery__item figcaption {
+    position: absolute;
+    left: 0.75rem;
+    bottom: 0.625rem;
+    font-size: 0.6875rem;
+    letter-spacing: 0.12em;
+    color: #fffef9;
+    text-transform: uppercase;
+    font-weight: 600;
+    padding: 0.25rem 0.5rem;
+    background: rgba(0, 16, 8, 0.7);
+    border-radius: 2px;
+    backdrop-filter: blur(4px);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .diaspora-hero__photo-wrap :global(img.diaspora-hero__photo),
+    .gallery__item :global(img) {
+      animation: none;
+      transition: none;
+      transform: scale(1);
     }
   }
 </style>

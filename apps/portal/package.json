@@ -10,7 +10,7 @@
     "lint": "eslint --ext .ts,.mjs,.astro src",
     "test": "node scripts/routes-test.mjs && node --experimental-strip-types scripts/axe-check.mjs",
     "prebuild": "node scripts/prebuild.mjs",
-    "build": "pnpm run prebuild && astro build && pagefind --site dist",
+    "build": "pnpm --filter @gh/gh-ds run build && pnpm run prebuild && astro build && pagefind --site dist",
     "preview": "astro preview",
     "measure:weight": "node --experimental-strip-types scripts/measure-weight.mjs"
   },

@@ -176,11 +176,18 @@ const constellation: ReadonlyArray<{ x: number; y: number; size: number; twinkle
   .hero {
     position: relative;
     overflow: hidden;
-    /* Cover the entire viewport below the site header. Uses dynamic viewport
-       units where supported so mobile address-bar collapse doesn't create
-       gaps. Clamps to a comfortable minimum on very short screens. */
-    min-height: clamp(640px, calc(100vh - 60px), 1200px);
-    min-height: clamp(640px, calc(100dvh - 60px), 1200px);
+    /* Fill the ENTIRE viewport edge-to-edge. The opaque site header overlays
+       the top of the hero; since the Independence Arch photo has sky at the
+       top, nothing important is lost. Cascading fallbacks:
+         - 100vh: every browser (may leave a gap on mobile when address bar
+           collapses — harmless at the bottom of the hero)
+         - 100svh: Safari ≥15 — small viewport, no mobile UI gap
+         - 100dvh: modern browsers — adjusts live as mobile UI shows/hides
+       Final min-height value wins where supported. */
+    min-height: 640px;
+    min-height: 100vh;
+    min-height: 100svh;
+    min-height: 100dvh;
     display: grid;
     align-items: center;
     background: #001008;
@@ -201,7 +208,9 @@ const constellation: ReadonlyArray<{ x: number; y: number; size: number; twinkle
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: 55% 50%;
+    /* Shift focal point slightly down so the arch + star crown read below
+       the opaque site header overlay (which occupies the top ~128px). */
+    object-position: 55% 58%;
     transform: scale(1.04);
     animation: kenBurns 18s ease-out forwards;
   }
@@ -325,7 +334,10 @@ const constellation: ReadonlyArray<{ x: number; y: number; size: number; twinkle
   .hero__inner {
     position: relative;
     z-index: 3;
-    padding: clamp(2.5rem, 7vw, 5rem) clamp(1.5rem, 5vw, 4.5rem);
+    /* Pad the top a little extra so the eyebrow never collides with the
+       opaque header overlay, and pad the bottom enough for the caption and
+       scroll affordance to live below the search box. */
+    padding: clamp(7rem, 14vh, 10rem) clamp(1.5rem, 5vw, 4.5rem) clamp(5rem, 10vh, 7rem);
     max-width: 62rem;
   }
 

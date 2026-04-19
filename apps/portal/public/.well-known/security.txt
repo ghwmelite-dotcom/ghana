@@ -1,0 +1,6 @@
+Contact: mailto:security@gov.gh
+Contact: https://gov.gh/contact/
+Expires: 2027-04-19T00:00:00.000Z
+Preferred-Languages: en, tw
+Canonical: https://gov.gh/.well-known/security.txt
+Policy: https://gov.gh/privacy/

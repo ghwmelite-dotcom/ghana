@@ -1,0 +1,20 @@
+/* TEAM */
+
+Office of the Head of Civil Service (OHCS)
+  Site: https://ohcs.gov.gh
+  Location: Accra, Ghana
+
+/* LICENCE */
+
+Content: Creative Commons Attribution 4.0 International (CC-BY-4.0)
+Code: MIT Licence
+Fonts: SIL Open Font Licence 1.1
+
+/* CREDITS */
+
+Design: Ghana Design System (packages/gh-ds) — forks GOV.UK Frontend
+Build: Astro 5, Cloudflare Pages, Pagefind
+
+/* CONTRIBUTIONS */
+
+Issues and contributions: github.com/ghana-digital (future)

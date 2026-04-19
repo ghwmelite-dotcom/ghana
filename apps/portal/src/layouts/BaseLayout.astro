@@ -15,8 +15,16 @@
 import '@gh/gh-ds/tokens.css';
 import '../styles/global.css';
 import SkipLink from '@gh/gh-ds/SkipLink';
+import KenteStripe from '@gh/gh-ds/KenteStripe';
 import Header from '@gh/gh-ds/Header';
 import Footer from '@gh/gh-ds/Footer';
+
+const primaryNav = [
+  { href: '/services/', label: 'Services' },
+  { href: '/news/', label: 'News' },
+  { href: '/ministries/', label: 'Ministries' },
+  { href: '/about/', label: 'About' },
+];
 
 interface Props {
   title: string;
@@ -50,11 +58,18 @@ const htmlTitle = `${title} — gov.gh`;
     <title>{htmlTitle}</title>
   </head>
   <body>
+    <KenteStripe />
     <SkipLink />
-    <Header />
+    <Header serviceName="gov.gh" primaryNav={primaryNav} flagRule={false} />
     <main id="main" tabindex="-1">
       <slot />
     </main>
     <Footer />
   </body>
 </html>
+
+<style is:global>
+  body {
+    background: #faf7f2;
+  }
+</style>

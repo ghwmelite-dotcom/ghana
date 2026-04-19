@@ -57,3 +57,6 @@ tmp/
 
 # Brainstorming companion (superpowers skill)
 .superpowers/
+
+# Git worktrees (superpowers skill)
+.worktrees/

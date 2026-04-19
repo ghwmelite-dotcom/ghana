@@ -54,3 +54,6 @@ test-results/
 # Temporary
 tmp/
 *.tmp
+
+# Brainstorming companion (superpowers skill)
+.superpowers/

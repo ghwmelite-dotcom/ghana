@@ -15,3 +15,6 @@ node_modules/
 coverage/
 .lighthouseci/
 playwright-report/
+
+# Design specs + plans — human-authored, hand-wrapped
+docs/superpowers/

@@ -19,7 +19,8 @@ departments:
   - National Service Secretariat (NSS)
   - Ghana Tertiary Education Commission (GTEC)
   - National Council for Technical and Vocational Education and Training (NACVET)
-keyServices: []
+keyServices:
+  - apply-nss-posting
 ---
 
 ## What we do

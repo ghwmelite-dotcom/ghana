@@ -22,6 +22,7 @@ departments:
   - Komfo Anokye Teaching Hospital
 keyServices:
   - apply-nhis-card
+  - register-fda-product
 ---
 
 ## What we do

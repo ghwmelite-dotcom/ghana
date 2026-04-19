@@ -24,6 +24,7 @@ keyServices:
   - file-income-tax
   - register-vat
   - apply-tin
+  - request-tax-clearance-certificate
 ---
 
 ## What we do

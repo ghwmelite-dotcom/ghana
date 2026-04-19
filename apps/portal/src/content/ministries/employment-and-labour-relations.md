@@ -20,7 +20,9 @@ departments:
   - Fair Wages and Salaries Commission (FWSC)
   - Department of Labour
   - National Pensions Regulatory Authority (NPRA)
-keyServices: []
+keyServices:
+  - pay-ssnit-contributions
+  - claim-ssnit-pension
 ---
 
 ## What we do

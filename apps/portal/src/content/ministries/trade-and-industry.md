@@ -22,6 +22,8 @@ departments:
   - National Board for Small Scale Industries (NBSSI)
 keyServices:
   - register-business
+  - register-trademark
+  - apply-import-export-licence
 ---
 
 ## What we do

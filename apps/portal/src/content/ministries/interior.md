@@ -24,6 +24,8 @@ keyServices:
   - apply-ghana-card
   - apply-ghana-visa
   - apply-dual-citizenship
+  - apply-residence-permit
+  - apply-work-permit
 ---
 
 ## What we do

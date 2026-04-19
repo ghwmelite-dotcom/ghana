@@ -12,16 +12,16 @@ five-gate pipeline is green end-to-end.
 
 ## Plan 3 engineering — what shipped
 
-| Task | Scope | Location |
-| --- | --- | --- |
-| L1 | Security headers (CSP + HSTS + Referrer-Policy + Permissions-Policy + X-Frame-Options + X-Content-Type-Options + COOP + per-path cache) | `apps/portal/public/_headers` |
-| L2 | Sitemap integration with i18n en/tw | `apps/portal/astro.config.mjs` → `/sitemap-index.xml`, `/sitemap-0.xml` |
-| L3 | robots.txt + humans.txt | `apps/portal/public/` |
-| L4 | Ghana-branded 404 page | `apps/portal/src/pages/404.astro` → `/404.html` |
-| L5 | News RSS 2.0 feed | `apps/portal/src/pages/news/feed.xml.js` → `/news/feed.xml` |
-| L6 | Canonical URLs, Open Graph, Twitter summary_large_image, OG image stub | `apps/portal/src/layouts/BaseLayout.astro` |
-| L7 | Cloudflare Web Analytics beacon (conditional on env) | `apps/portal/src/layouts/BaseLayout.astro` |
-| L8 | `.well-known/security.txt` (RFC 9116) | `apps/portal/public/.well-known/security.txt` |
+| Task | Scope                                                                                                                                   | Location                                                                |
+| ---- | --------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| L1   | Security headers (CSP + HSTS + Referrer-Policy + Permissions-Policy + X-Frame-Options + X-Content-Type-Options + COOP + per-path cache) | `apps/portal/public/_headers`                                           |
+| L2   | Sitemap integration with i18n en/tw                                                                                                     | `apps/portal/astro.config.mjs` → `/sitemap-index.xml`, `/sitemap-0.xml` |
+| L3   | robots.txt + humans.txt                                                                                                                 | `apps/portal/public/`                                                   |
+| L4   | Ghana-branded 404 page                                                                                                                  | `apps/portal/src/pages/404.astro` → `/404.html`                         |
+| L5   | News RSS 2.0 feed                                                                                                                       | `apps/portal/src/pages/news/feed.xml.js` → `/news/feed.xml`             |
+| L6   | Canonical URLs, Open Graph, Twitter summary_large_image, OG image stub                                                                  | `apps/portal/src/layouts/BaseLayout.astro`                              |
+| L7   | Cloudflare Web Analytics beacon (conditional on env)                                                                                    | `apps/portal/src/layouts/BaseLayout.astro`                              |
+| L8   | `.well-known/security.txt` (RFC 9116)                                                                                                   | `apps/portal/public/.well-known/security.txt`                           |
 
 ## Still to do — hand to human
 
@@ -30,22 +30,50 @@ blocker for production cutover; document status when actioned.
 
 ### High priority — before go-live
 
-- [ ] **Source 3 cultural close-up hero images** per `apps/portal/src/assets/hero/CREDITS.md`. Swap Hero placeholder per the restore procedure in that file. Without this the homepage ships a solid-colour backdrop.
-- [ ] **Create the OG image** at `apps/portal/public/og-image.png` — 1200×630 px, Kente stripe + coat of arms + "Government of Ghana" in Georgia serif. Currently referenced by BaseLayout but the file is a 404.
-- [ ] **Confirm current Minister names** for all 21 ministry files (currently placeholder `Hon. Minister` / `Hon. Deputy Minister`). Swap in real office-holders from the Office of the President.
-- [ ] **External WCAG 2.2 AA audit.** Automated axe is gating at 0 blocking violations across 80 pages, but a human panel (Ghana Federation of Disability Organisations or equivalent) must sign off per the accessibility statement.
-- [ ] **Register the portal as CII under Act 1038** with the Cyber Security Authority. Documented security architecture: Cloudflare edge + application-layer encryption (none needed in v1 — no PII collected) + RFC 9116 disclosure at `/.well-known/security.txt`.
-- [ ] **Register as Data Controller under Act 843** with the Data Protection Commission. Collected data: Cloudflare Web Analytics only (anonymous, no cookies). Processor agreement with Cloudflare under §30(4) referenced in `/privacy/`.
-- [ ] **Replace the placeholder email addresses** in `/about/`, `/accessibility/`, `/privacy/`, `/contact/`, `/.well-known/security.txt`. Currently `accessibility@gov.gh`, `dpo@gov.gh`, `feedback@gov.gh`, `security@gov.gh` — these need real MX records + inboxes.
-- [ ] **DNS cutover.** Point `gov.gh` at Cloudflare Pages. Create the Pages project, configure `PUBLIC_CF_ANALYTICS_TOKEN` env var, connect custom domain.
-- [ ] **Lighthouse CI against the deployed preview.** Thresholds per spec §8: Performance ≥ 0.95, Accessibility = 1.00, BP ≥ 0.95, SEO = 1.00, LCP ≤ 2500 ms, CLS ≤ 0.1, INP ≤ 200 ms, total-byte weight ≤ 307200 per page.
+- [ ] **Source 3 cultural close-up hero images** per
+      `apps/portal/src/assets/hero/CREDITS.md`. Swap Hero placeholder per the
+      restore procedure in that file. Without this the homepage ships a
+      solid-colour backdrop.
+- [ ] **Create the OG image** at `apps/portal/public/og-image.png` — 1200×630
+      px, Kente stripe + coat of arms + "Government of Ghana" in Georgia serif.
+      Currently referenced by BaseLayout but the file is a 404.
+- [ ] **Confirm current Minister names** for all 21 ministry files (currently
+      placeholder `Hon. Minister` / `Hon. Deputy Minister`). Swap in real
+      office-holders from the Office of the President.
+- [ ] **External WCAG 2.2 AA audit.** Automated axe is gating at 0 blocking
+      violations across 80 pages, but a human panel (Ghana Federation of
+      Disability Organisations or equivalent) must sign off per the
+      accessibility statement.
+- [ ] **Register the portal as CII under Act 1038** with the Cyber Security
+      Authority. Documented security architecture: Cloudflare edge +
+      application-layer encryption (none needed in v1 — no PII collected) + RFC
+      9116 disclosure at `/.well-known/security.txt`.
+- [ ] **Register as Data Controller under Act 843** with the Data Protection
+      Commission. Collected data: Cloudflare Web Analytics only (anonymous, no
+      cookies). Processor agreement with Cloudflare under §30(4) referenced in
+      `/privacy/`.
+- [ ] **Replace the placeholder email addresses** in `/about/`,
+      `/accessibility/`, `/privacy/`, `/contact/`, `/.well-known/security.txt`.
+      Currently `accessibility@gov.gh`, `dpo@gov.gh`, `feedback@gov.gh`,
+      `security@gov.gh` — these need real MX records + inboxes.
+- [ ] **DNS cutover.** Point `gov.gh` at Cloudflare Pages. Create the Pages
+      project, configure `PUBLIC_CF_ANALYTICS_TOKEN` env var, connect custom
+      domain.
+- [ ] **Lighthouse CI against the deployed preview.** Thresholds per spec §8:
+      Performance ≥ 0.95, Accessibility = 1.00, BP ≥ 0.95, SEO = 1.00, LCP ≤
+      2500 ms, CLS ≤ 0.1, INP ≤ 200 ms, total-byte weight ≤ 307200 per page.
 
 ### Medium priority — within first month post-launch
 
-- [ ] **Cybersecurity Fund levy** configuration per Act 1038 §31(e) — only applicable once any paid service is added (none in v1).
-- [ ] **10 ministries still carry `keyServices: []`** — populate as more services are authored: Defence, Justice, Roads, Energy, Works & Housing, Sanitation, Tourism, Information, Youth & Sports, Gender.
-- [ ] **Twi expansion.** Current 5 stubs → full parity on services/ministries/news is a v1.1 programme.
-- [ ] **Commissioned people-centric photography** (v2 upgrade from cultural close-ups per brainstorming session).
+- [ ] **Cybersecurity Fund levy** configuration per Act 1038 §31(e) — only
+      applicable once any paid service is added (none in v1).
+- [ ] **10 ministries still carry `keyServices: []`** — populate as more
+      services are authored: Defence, Justice, Roads, Energy, Works & Housing,
+      Sanitation, Tourism, Information, Youth & Sports, Gender.
+- [ ] **Twi expansion.** Current 5 stubs → full parity on
+      services/ministries/news is a v1.1 programme.
+- [ ] **Commissioned people-centric photography** (v2 upgrade from cultural
+      close-ups per brainstorming session).
 
 ## Five-gate at tag
 
@@ -59,7 +87,8 @@ blocker for production cutover; document status when actioned.
 
 - Total first-paint transfer: **31.6 KB gzipped** (HTML + CSS + preloaded fonts)
 - Budget: **80 KB gzipped**
-- Headroom: **~50 KB** — ample runway for the hero image + any future enhancements
+- Headroom: **~50 KB** — ample runway for the hero image + any future
+  enhancements
 
 ## Running the site locally
 
@@ -87,4 +116,5 @@ git worktree remove .worktrees/v1-foundation
    - `PUBLIC_CF_ANALYTICS_TOKEN` — from Cloudflare Web Analytics dashboard
 5. Custom domain: `gov.gh` (apex) + `www.gov.gh` redirect.
 6. Node version: 22.
-7. First deploy — verify `/sitemap-index.xml`, `/news/feed.xml`, `/.well-known/security.txt`, and `/_headers` are all served correctly.
+7. First deploy — verify `/sitemap-index.xml`, `/news/feed.xml`,
+   `/.well-known/security.txt`, and `/_headers` are all served correctly.

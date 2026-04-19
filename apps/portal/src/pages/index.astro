@@ -1,48 +1,88 @@
 ---
 /**
- * gov.gh homepage.
+ * gov.gh homepage — composed from atmospheric blocks.
  *
- * Composition only — every block lives in a separate component. Order:
- * cultural-close-up Hero (with the search), 4-tile life-stage nav,
- * 8-link MostRequestedBand, NewsStrip (gracefully empty until plan 2).
+ * Order: Kente-weave Hero → Stats band → Life-stage tiles → Editorial
+ * most-requested → Editorial news → Ministries marquee → closing motto.
  *
- * Restraint principle (`.claude/CLAUDE.md §12`): no carousel, no marketing
- * copy, no JS, no animation beyond per-component micro-interactions.
+ * Each block is its own component under apps/portal/src/components/.
+ * CSS-only animations throughout (plus a small IntersectionObserver in
+ * StatsBand for counter animation). Every motion respects
+ * `prefers-reduced-motion: reduce`. Weight budget: ≤ 80 KB gzipped.
  */
-
 import HomepageLayout from '../layouts/HomepageLayout.astro';
 import Hero from '../components/Hero.astro';
+import StatsBand from '../components/StatsBand.astro';
 import LifeStageTiles from '../components/LifeStageTiles.astro';
-import NewsStrip from '../components/NewsStrip.astro';
-import MostRequestedBand from '@gh/gh-ds/MostRequestedBand';
-
-const mostRequested = [
-  { label: 'Renew your passport', href: '/services/renew-passport/' },
-  { label: 'Apply for a Ghana Card', href: '/services/apply-ghana-card/' },
-  { label: 'File your income tax return', href: '/services/file-income-tax/' },
-  { label: 'Register a business', href: '/services/register-business/' },
-  { label: "Renew your driver's licence", href: '/services/renew-drivers-licence/' },
-  { label: 'Apply for a birth certificate', href: '/services/apply-birth-certificate/' },
-  { label: 'Apply for a Ghana visa', href: '/services/apply-ghana-visa/' },
-  { label: 'Register for VAT', href: '/services/register-vat/' },
-];
+import MostRequestedEditorial from '../components/MostRequestedEditorial.astro';
+import EditorialNews from '../components/EditorialNews.astro';
+import MinistriesMarquee from '../components/MinistriesMarquee.astro';
 ---
 
 <HomepageLayout
   title="Home"
   description="The national portal of the Republic of Ghana. Every service the government offers, every announcement it makes — in one place."
 >
-  <Hero
-    tagline="One government.<br/>One people.<br/>One Ghana."
-    lede="Every service the government offers, every announcement it makes — in one place."
-    variant="kente"
-  />
+  <Hero />
+  <StatsBand />
   <LifeStageTiles />
-  <MostRequestedBand
-    id="home-most-requested"
-    title="Most requested"
-    headingLevel="h2"
-    items={mostRequested}
-  />
-  <NewsStrip limit={4} />
+  <MostRequestedEditorial />
+  <EditorialNews />
+  <MinistriesMarquee />
+
+  <section class="motto" aria-labelledby="motto-heading">
+    <div class="motto__inner">
+      <span class="motto__rule" aria-hidden="true"></span>
+      <h2 id="motto-heading" class="motto__title">
+        <span class="motto__word">Ghana</span>
+        <span class="motto__word">first.</span>
+        <span class="motto__word motto__word--gold">Always.</span>
+      </h2>
+      <p class="motto__sub">Freedom and Justice · 1957</p>
+    </div>
+  </section>
 </HomepageLayout>
+
+<style>
+  .motto {
+    background: #faf7f2;
+    padding: clamp(3.5rem, 7vw, 6rem) clamp(1.25rem, 4vw, 3rem);
+    text-align: center;
+  }
+  .motto__inner {
+    max-width: 56rem;
+    margin: 0 auto;
+  }
+  .motto__rule {
+    display: block;
+    width: 64px;
+    height: 2px;
+    background: linear-gradient(90deg, #006b3f 0%, #fcd116 50%, #ce1126 100%);
+    margin: 0 auto 2rem;
+  }
+  .motto__title {
+    font-family: Georgia, 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    line-height: 1.05;
+    font-weight: 700;
+    letter-spacing: -0.015em;
+    color: #002818;
+    margin: 0 0 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.4em;
+  }
+  .motto__word--gold {
+    color: #b8960c;
+    font-style: italic;
+  }
+  .motto__sub {
+    font-size: 0.75rem;
+    letter-spacing: 0.3em;
+    color: #5b5f68;
+    text-transform: uppercase;
+    margin: 0;
+    font-weight: 600;
+  }
+</style>

@@ -20,3 +20,4 @@ export {
   type BorderWidthToken,
   type ShadowToken,
 } from './spacing.ts';
+export { paper } from './paper.ts';

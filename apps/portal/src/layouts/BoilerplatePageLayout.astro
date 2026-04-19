@@ -13,7 +13,11 @@ interface Props {
   updatedAt?: Date;
 }
 const { title, description, lede, updatedAt } = Astro.props;
-const formatter = new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+const formatter = new Intl.DateTimeFormat('en-GB', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+});
 ---
 
 <BaseLayout title={title} description={description}>

@@ -33,11 +33,60 @@ const { data } = entry;
       <aside class="contact">
         <h2>Contact</h2>
         <dl>
-          {data.minister && (<><dt>Minister</dt><dd>{data.minister}</dd></>)}
-          {data.phone && (<><dt>Phone</dt><dd>{data.phone}</dd></>)}
-          {data.email && (<><dt>Email</dt><dd><a href={`mailto:${data.email}`}>{data.email}</a></dd></>)}
-          {data.website && (<><dt>Website</dt><dd><a href={data.website}>{data.website}</a></dd></>)}
-          {data.address && (<><dt>Address</dt><dd>{data.address}</dd></>)}
+          {
+            data.minister && (
+              <>
+                <>
+                  <dt>Minister</dt>
+                  <dd>{data.minister}</dd>
+                </>
+              </>
+            )
+          }
+          {
+            data.phone && (
+              <>
+                <>
+                  <dt>Phone</dt>
+                  <dd>{data.phone}</dd>
+                </>
+              </>
+            )
+          }
+          {
+            data.email && (
+              <>
+                <>
+                  <dt>Email</dt>
+                  <dd>
+                    <a href={`mailto:${data.email}`}>{data.email}</a>
+                  </dd>
+                </>
+              </>
+            )
+          }
+          {
+            data.website && (
+              <>
+                <>
+                  <dt>Website</dt>
+                  <dd>
+                    <a href={data.website}>{data.website}</a>
+                  </dd>
+                </>
+              </>
+            )
+          }
+          {
+            data.address && (
+              <>
+                <>
+                  <dt>Address</dt>
+                  <dd>{data.address}</dd>
+                </>
+              </>
+            )
+          }
         </dl>
       </aside>
     </div>

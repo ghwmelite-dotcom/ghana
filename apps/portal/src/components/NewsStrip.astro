@@ -12,7 +12,7 @@ const { limit = 4 } = Astro.props;
 const news = (await getCollection('news'))
   .sort(
     (a: CollectionEntry<'news'>, b: CollectionEntry<'news'>) =>
-      b.data.publishedAt.getTime() - a.data.publishedAt.getTime()
+      b.data.publishedAt.getTime() - a.data.publishedAt.getTime(),
   )
   .slice(0, limit);
 

@@ -30,7 +30,7 @@ const credits: Record<NonNullable<Props['variant']>, string> = {
   <div class="hero__scrim"></div>
   <div class="hero__content">
     <p class="hero__eyebrow">· Akwaaba ·</p>
-    <h1 id="hero-title" set:html={tagline}></h1>
+    <h1 id="hero-title" set:html={tagline} />
     <p class="hero__lede">{lede}</p>
     <form action="/search/" method="get" role="search" class="hero__search">
       <label class="sr-only" for="hero-q">Search the portal</label>

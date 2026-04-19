@@ -17,7 +17,6 @@
 import '@gh/gh-ds/tokens.css';
 import '../styles/global.css';
 import SkipLink from '@gh/gh-ds/SkipLink';
-import KenteStripe from '@gh/gh-ds/KenteStripe';
 import Header from '@gh/gh-ds/Header';
 import Footer from '@gh/gh-ds/Footer';
 
@@ -101,7 +100,7 @@ const cfAnalyticsToken = import.meta.env.PUBLIC_CF_ANALYTICS_TOKEN;
     }
   </head>
   <body>
-    <KenteStripe />
+    <div class="page-rule" aria-hidden="true"></div>
     <SkipLink />
     <Header serviceName="gov.gh" primaryNav={primaryNav} flagRule={false} />
     <main id="main" tabindex="-1">
@@ -114,5 +113,22 @@ const cfAnalyticsToken = import.meta.env.PUBLIC_CF_ANALYTICS_TOKEN;
 <style is:global>
   body {
     background: #faf7f2;
+  }
+  /* Subtle flag-rule at the very top — a 2px hairline gradient in place of
+     the loud repeating-Kente strip. The full woven Kente treatment lives
+     inside components (stats band, marquee, tile threads) where it belongs. */
+  .page-rule {
+    height: 2px;
+    background: linear-gradient(
+      90deg,
+      #006b3f 0%,
+      #006b3f 33%,
+      #fcd116 33%,
+      #fcd116 66%,
+      #ce1126 66%,
+      #ce1126 100%
+    );
+    width: 100%;
+    opacity: 0.9;
   }
 </style>

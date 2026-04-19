@@ -1,0 +1,555 @@
+---
+/**
+ * AIAssistantLauncher — the "Nyansapo" floating AI assistant shell.
+ *
+ * Nyansapo ("the wisdom knot") is the Adinkra symbol for wisdom and
+ * learning — CLAUDE.md §6.3 pre-maps it to help/FAQ surfaces, which
+ * makes it the cleanest cultural frame for a national AI assistant.
+ *
+ * What ships today:
+ *   - A fixed-position round launcher button, bottom-right, that pulses
+ *     gently when idle.
+ *   - On click, a slide-up panel opens with a welcome message,
+ *     suggested questions, and a disabled input labelled 'coming soon'.
+ *   - Fully keyboard-accessible (Esc closes; focus trapped to close btn
+ *     on first open, returns to launcher on close).
+ *   - Progressive enhancement: no JS → the button renders as a link to
+ *     /contact/ so users still have a path to get help.
+ *
+ * What hooks up later (intentional extension points):
+ *   - Connect the <form> at the bottom to a Cloudflare Workers AI
+ *     endpoint (`/api/assistant/ask` or similar — see the
+ *     service-worker plan in CLAUDE.md §2.8).
+ *   - Hydrate the message list into a live chat transcript.
+ *   - Stream responses via Server-Sent Events from the Worker.
+ *   - Persist transcript to a Durable Object session.
+ */
+---
+
+<div class="nyansapo" data-nyansapo>
+  <button
+    type="button"
+    class="nyansapo__launcher"
+    aria-controls="nyansapo-panel"
+    aria-expanded="false"
+    aria-label="Open Nyansapo, Ghana's AI assistant"
+  >
+    <span class="nyansapo__launcher-halo" aria-hidden="true"></span>
+    <span class="nyansapo__launcher-icon" aria-hidden="true">
+      <svg viewBox="0 0 32 32" width="22" height="22" fill="none">
+        <!-- Stylised Nyansapo-inspired knot with a central dot — the
+             "wisdom-knot" abstracted. -->
+        <path
+          d="M16 6 C 11 6, 7 10, 7 15 C 7 19, 10 22, 14 22 C 17 22, 19 20, 19 18 C 19 16, 17 15, 15 15 C 13 15, 12 16, 12 17"
+          stroke="currentColor"
+          stroke-width="1.75"
+          stroke-linecap="round"
+          stroke-linejoin="round"></path>
+        <path
+          d="M16 26 C 21 26, 25 22, 25 17 C 25 13, 22 10, 18 10 C 15 10, 13 12, 13 14 C 13 16, 15 17, 17 17 C 19 17, 20 16, 20 15"
+          stroke="currentColor"
+          stroke-width="1.75"
+          stroke-linecap="round"
+          stroke-linejoin="round"></path>
+        <circle cx="16" cy="16" r="1.8" fill="currentColor"></circle>
+      </svg>
+    </span>
+    <span class="nyansapo__launcher-label">Ask Nyansapo</span>
+  </button>
+
+  <aside
+    id="nyansapo-panel"
+    class="nyansapo__panel"
+    role="dialog"
+    aria-modal="false"
+    aria-labelledby="nyansapo-title"
+    hidden
+  >
+    <header class="nyansapo__header">
+      <div class="nyansapo__header-left">
+        <span class="nyansapo__avatar" aria-hidden="true">
+          <svg viewBox="0 0 32 32" width="20" height="20" fill="none">
+            <path
+              d="M16 6 C 11 6, 7 10, 7 15 C 7 19, 10 22, 14 22 C 17 22, 19 20, 19 18 C 19 16, 17 15, 15 15 C 13 15, 12 16, 12 17"
+              stroke="currentColor"
+              stroke-width="1.75"
+              stroke-linecap="round"
+              stroke-linejoin="round"></path>
+            <path
+              d="M16 26 C 21 26, 25 22, 25 17 C 25 13, 22 10, 18 10 C 15 10, 13 12, 13 14 C 13 16, 15 17, 17 17 C 19 17, 20 16, 20 15"
+              stroke="currentColor"
+              stroke-width="1.75"
+              stroke-linecap="round"
+              stroke-linejoin="round"></path>
+            <circle cx="16" cy="16" r="1.8" fill="currentColor"></circle>
+          </svg>
+        </span>
+        <div>
+          <p id="nyansapo-title" class="nyansapo__title">Nyansapo</p>
+          <p class="nyansapo__subtitle">Ghana's AI assistant</p>
+        </div>
+      </div>
+      <button type="button" class="nyansapo__close" aria-label="Close Nyansapo">
+        <svg viewBox="0 0 16 16" width="14" height="14" fill="none" aria-hidden="true">
+          <path
+            d="M3 3 L13 13 M13 3 L3 13"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"></path>
+        </svg>
+      </button>
+    </header>
+
+    <div class="nyansapo__body">
+      <div class="nyansapo__msg nyansapo__msg--bot">
+        <p>
+          <strong>Akwaaba.</strong> I'm Nyansapo, the wisdom-knot — Ghana's digital assistant. Ask me
+          anything about government services, ministries, or announcements.
+        </p>
+        <p class="nyansapo__preview">
+          I'm currently in <em>preview</em>. Full conversation, source citations, and Twi support
+          arrive with v2.
+        </p>
+      </div>
+      <p class="nyansapo__suggest-heading">Try asking</p>
+      <ul class="nyansapo__suggest">
+        <li>
+          <button type="button" class="nyansapo__chip" disabled>How do I renew my passport?</button>
+        </li>
+        <li>
+          <button type="button" class="nyansapo__chip" disabled
+            >What's the fee for a Ghana Card?</button
+          >
+        </li>
+        <li>
+          <button type="button" class="nyansapo__chip" disabled
+            >Where's the nearest GRA office?</button
+          >
+        </li>
+        <li>
+          <button type="button" class="nyansapo__chip" disabled
+            >How do I register a business?</button
+          >
+        </li>
+      </ul>
+    </div>
+
+    <form class="nyansapo__form" aria-label="Ask Nyansapo">
+      <input
+        type="text"
+        class="nyansapo__input"
+        placeholder="Preview — ask coming with v2"
+        disabled
+        aria-label="Ask Nyansapo a question"
+      />
+      <button type="submit" class="nyansapo__send" disabled aria-label="Send">
+        <svg viewBox="0 0 16 16" width="16" height="16" fill="none" aria-hidden="true">
+          <path
+            d="M2 8 L14 2 L10 14 L8 9 L2 8 Z"
+            stroke="currentColor"
+            stroke-width="1.6"
+            stroke-linejoin="round"></path>
+        </svg>
+      </button>
+    </form>
+
+    <p class="nyansapo__footer">
+      Early-access · built on Cloudflare Workers AI ·
+      <a href="/contact/">give feedback</a>
+    </p>
+  </aside>
+</div>
+
+<script is:inline>
+  (function () {
+    if (typeof window === 'undefined') return;
+    function init() {
+      var root = document.querySelector('[data-nyansapo]');
+      if (!root) return;
+      var launcher = root.querySelector('.nyansapo__launcher');
+      var panel = root.querySelector('.nyansapo__panel');
+      var closeBtn = root.querySelector('.nyansapo__close');
+      if (!launcher || !panel || !closeBtn) return;
+
+      function open() {
+        panel.hidden = false;
+        // Let the hidden-to-visible transition settle before flagging,
+        // so CSS [data-open] triggers the slide-up animation.
+        requestAnimationFrame(function () {
+          root.setAttribute('data-open', '');
+          launcher.setAttribute('aria-expanded', 'true');
+          closeBtn.focus();
+        });
+      }
+      function close() {
+        root.removeAttribute('data-open');
+        launcher.setAttribute('aria-expanded', 'false');
+        // Wait for the 240ms slide-down before hiding.
+        setTimeout(function () {
+          panel.hidden = true;
+          launcher.focus();
+        }, 240);
+      }
+
+      launcher.addEventListener('click', function () {
+        if (root.hasAttribute('data-open')) close();
+        else open();
+      });
+      closeBtn.addEventListener('click', close);
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && root.hasAttribute('data-open')) close();
+      });
+
+      // Click outside the panel closes it.
+      document.addEventListener('click', function (e) {
+        if (!root.hasAttribute('data-open')) return;
+        if (root.contains(e.target)) return;
+        close();
+      });
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+  })();
+</script>
+
+<style>
+  .nyansapo {
+    position: fixed;
+    bottom: clamp(1rem, 3vw, 1.75rem);
+    right: clamp(1rem, 3vw, 1.75rem);
+    z-index: 80;
+    font-family: inherit;
+  }
+
+  /* ─── Launcher (floating pill) ─────────────────────────────────── */
+  .nyansapo__launcher {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    padding: 0.7rem 1.1rem 0.7rem 0.7rem;
+    background: linear-gradient(135deg, #005a35 0%, #003920 100%);
+    color: #fff;
+    border: 1px solid rgba(252, 209, 22, 0.6);
+    border-radius: 999px;
+    cursor: pointer;
+    font: inherit;
+    font-weight: 600;
+    font-size: 0.9375rem;
+    letter-spacing: 0.01em;
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.1) inset,
+      0 14px 32px -14px rgba(0, 40, 24, 0.55),
+      0 0 0 4px rgba(252, 209, 22, 0);
+    transition:
+      transform 260ms cubic-bezier(0.2, 0.9, 0.3, 1),
+      box-shadow 260ms ease;
+    isolation: isolate;
+  }
+  .nyansapo__launcher-halo {
+    position: absolute;
+    inset: -6px;
+    border-radius: 999px;
+    background: radial-gradient(circle, rgba(252, 209, 22, 0.42) 0%, transparent 65%);
+    z-index: -1;
+    animation: nyansapoHalo 3.8s ease-in-out infinite;
+  }
+  @keyframes nyansapoHalo {
+    0%,
+    100% {
+      opacity: 0.45;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.9;
+      transform: scale(1.15);
+    }
+  }
+  .nyansapo__launcher-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #fcd116 0%, #e0b912 100%);
+    color: #0a0f1f;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  }
+  .nyansapo__launcher:hover,
+  .nyansapo__launcher:focus-visible {
+    transform: translateY(-3px);
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.15) inset,
+      0 20px 40px -12px rgba(0, 40, 24, 0.7),
+      0 0 0 4px rgba(252, 209, 22, 0.35);
+  }
+  .nyansapo__launcher:focus-visible {
+    outline: 3px solid #fcd116;
+    outline-offset: 3px;
+  }
+  @media (max-width: 30rem) {
+    .nyansapo__launcher-label {
+      display: none;
+    }
+    .nyansapo__launcher {
+      padding: 0.5rem;
+    }
+  }
+
+  /* ─── Panel ────────────────────────────────────────────────────── */
+  .nyansapo__panel {
+    position: absolute;
+    right: 0;
+    bottom: calc(100% + 12px);
+    width: min(380px, calc(100vw - 2rem));
+    max-height: min(560px, calc(100vh - 6rem));
+    background: #fff;
+    border: 1px solid #e5e0d6;
+    border-radius: 12px;
+    box-shadow: 0 30px 60px -18px rgba(0, 40, 24, 0.35);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    transform: translateY(16px) scale(0.98);
+    transform-origin: bottom right;
+    transition:
+      opacity 220ms ease,
+      transform 220ms cubic-bezier(0.2, 0.9, 0.3, 1);
+    pointer-events: none;
+  }
+  .nyansapo[data-open] .nyansapo__panel {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+  }
+  .nyansapo__panel[hidden] {
+    display: none;
+  }
+  .nyansapo[data-open] .nyansapo__panel[hidden] {
+    /* Re-show once the inline script unsets hidden; transition fires via
+       the data-open attribute toggle above. */
+    display: flex;
+  }
+
+  /* ─── Panel header ─────────────────────────────────────────────── */
+  .nyansapo__header {
+    padding: 0.875rem 1rem;
+    background: linear-gradient(135deg, #005a35 0%, #003920 100%);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+  }
+  .nyansapo__header::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 2px;
+    background: linear-gradient(
+      90deg,
+      #006b3f 0%,
+      #006b3f 33%,
+      #fcd116 33%,
+      #fcd116 66%,
+      #ce1126 66%,
+      #ce1126 100%
+    );
+  }
+  .nyansapo__header-left {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+  }
+  .nyansapo__avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #fcd116 0%, #e0b912 100%);
+    color: #0a0f1f;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .nyansapo__title {
+    margin: 0;
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: -0.005em;
+    line-height: 1.1;
+  }
+  .nyansapo__subtitle {
+    margin: 0;
+    font-size: 0.6875rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.65);
+    font-weight: 500;
+  }
+  .nyansapo__close {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #fff;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition:
+      background 160ms ease,
+      transform 160ms ease;
+  }
+  .nyansapo__close:hover,
+  .nyansapo__close:focus-visible {
+    background: rgba(255, 255, 255, 0.18);
+    transform: scale(1.1);
+  }
+  .nyansapo__close:focus-visible {
+    outline: 2px solid #fcd116;
+    outline-offset: 2px;
+  }
+
+  /* ─── Body ─────────────────────────────────────────────────────── */
+  .nyansapo__body {
+    flex: 1;
+    padding: 1rem;
+    overflow-y: auto;
+    background: #faf8f3;
+  }
+  .nyansapo__msg {
+    background: #fff;
+    border: 1px solid #edeae2;
+    border-radius: 10px 10px 10px 2px;
+    padding: 0.875rem 1rem;
+    font-size: 0.9375rem;
+    line-height: 1.5;
+    color: #111827;
+  }
+  .nyansapo__msg p {
+    margin: 0 0 0.625rem;
+  }
+  .nyansapo__msg p:last-child {
+    margin: 0;
+  }
+  .nyansapo__msg strong {
+    color: #005a35;
+  }
+  .nyansapo__preview {
+    font-size: 0.8125rem;
+    color: #5b5f68;
+  }
+  .nyansapo__preview em {
+    color: #b8960c;
+    font-style: normal;
+    font-weight: 600;
+  }
+  .nyansapo__suggest-heading {
+    font-size: 0.6875rem;
+    letter-spacing: 0.2em;
+    color: #5b5f68;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin: 1rem 0 0.5rem;
+  }
+  .nyansapo__suggest {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+  }
+  .nyansapo__chip {
+    display: block;
+    width: 100%;
+    text-align: left;
+    background: #fff;
+    border: 1px solid #e5e0d6;
+    color: #384251;
+    padding: 0.55rem 0.8rem;
+    border-radius: 999px;
+    font: inherit;
+    font-size: 0.8125rem;
+    cursor: not-allowed;
+    opacity: 0.75;
+  }
+
+  /* ─── Form ─────────────────────────────────────────────────────── */
+  .nyansapo__form {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 0.5rem;
+    padding: 0.75rem;
+    background: #fff;
+    border-top: 1px solid #edeae2;
+  }
+  .nyansapo__input {
+    border: 1px solid #e5e0d6;
+    background: #faf8f3;
+    border-radius: 999px;
+    padding: 0.6rem 1rem;
+    font: inherit;
+    font-size: 0.875rem;
+    color: #111827;
+  }
+  .nyansapo__input::placeholder {
+    color: #9ca3af;
+  }
+  .nyansapo__input:disabled {
+    cursor: not-allowed;
+  }
+  .nyansapo__send {
+    background: linear-gradient(135deg, #fcd116 0%, #e0b912 100%);
+    color: #0a0f1f;
+    border: 0;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+
+  .nyansapo__footer {
+    font-size: 0.6875rem;
+    color: #5b5f68;
+    background: #fff;
+    padding: 0.5rem 1rem 0.75rem;
+    margin: 0;
+    text-align: center;
+    border-top: 1px solid #edeae2;
+  }
+  .nyansapo__footer a {
+    color: #005a35;
+  }
+
+  /* ─── Reduced motion ───────────────────────────────────────────── */
+  @media (prefers-reduced-motion: reduce) {
+    .nyansapo__launcher,
+    .nyansapo__launcher-halo,
+    .nyansapo__panel,
+    .nyansapo__close {
+      animation: none !important;
+      transition: none;
+    }
+    .nyansapo__launcher:hover,
+    .nyansapo__launcher:focus-visible {
+      transform: none;
+    }
+    .nyansapo[data-open] .nyansapo__panel {
+      transform: none;
+    }
+  }
+</style>

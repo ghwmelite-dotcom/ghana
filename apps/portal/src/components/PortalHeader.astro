@@ -96,6 +96,33 @@ const isActive = (href: string) => {
             </li>
           ))
         }
+        <li class="ph__nav-item ph__nav-item--cta">
+          <a href="https://visitghana.com" rel="noopener external" target="_blank">
+            <svg viewBox="0 0 16 16" width="13" height="13" fill="none" aria-hidden="true">
+              <path
+                d="M2 8 L14 2 L11 8 L14 14 Z"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linejoin="round"></path>
+            </svg>
+            Visit Ghana
+            <svg
+              class="ph__nav-cta-arrow"
+              viewBox="0 0 14 14"
+              width="12"
+              height="12"
+              fill="none"
+              aria-hidden="true"
+            >
+              <path
+                d="M4 10 L10 4 M5 4 h5 v5"
+                stroke="currentColor"
+                stroke-width="1.6"
+                stroke-linecap="round"
+                stroke-linejoin="round"></path>
+            </svg>
+          </a>
+        </li>
       </ul>
     </div>
   </nav>
@@ -451,7 +478,9 @@ const isActive = (href: string) => {
     padding: 0;
     margin: 0;
     display: flex;
-    gap: clamp(0.5rem, 2vw, 1.75rem);
+    align-items: center;
+    justify-content: center;
+    gap: clamp(0.75rem, 2.5vw, 2.25rem);
     overflow-x: auto;
     scrollbar-width: none;
   }
@@ -502,6 +531,106 @@ const isActive = (href: string) => {
   }
   .ph__nav-item--active a::after {
     transform: scaleX(1);
+  }
+
+  /* ─── Visit Ghana CTA (gold pill) ──────────────────────────────── */
+  .ph__nav-item--cta {
+    margin-left: clamp(0.5rem, 1.5vw, 1rem);
+  }
+  .ph__nav-item--cta a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.45rem 0.95rem;
+    margin: 0.25rem 0;
+    background: linear-gradient(135deg, #fcd116 0%, #e0b912 100%);
+    color: #0a0f1f;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 0.8125rem;
+    letter-spacing: 0.01em;
+    min-height: 36px;
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    transition:
+      transform 220ms cubic-bezier(0.2, 0.9, 0.3, 1),
+      box-shadow 220ms ease,
+      color 180ms ease;
+    box-shadow:
+      0 0 0 1px rgba(252, 209, 22, 0.4),
+      0 1px 0 rgba(255, 255, 255, 0.4) inset,
+      0 8px 20px -10px rgba(252, 209, 22, 0.55);
+  }
+  /* Gentle sheen that passes across the pill every 4s while idle. */
+  .ph__nav-item--cta a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -60%;
+    width: 60%;
+    background: linear-gradient(
+      100deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.55) 45%,
+      rgba(255, 255, 255, 0.55) 55%,
+      transparent 100%
+    );
+    transform: skewX(-18deg);
+    animation: ctaSheen 4.5s ease-in-out 2s infinite;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .ph__nav-item--cta a > * {
+    position: relative;
+    z-index: 1;
+  }
+  .ph__nav-item--cta a::after {
+    display: none;
+  }
+  @keyframes ctaSheen {
+    0%,
+    18% {
+      left: -60%;
+    }
+    28%,
+    100% {
+      left: 160%;
+    }
+  }
+  .ph__nav-item--cta a:hover,
+  .ph__nav-item--cta a:focus-visible {
+    transform: translateY(-2px);
+    box-shadow:
+      0 0 0 1px rgba(252, 209, 22, 0.7),
+      0 1px 0 rgba(255, 255, 255, 0.5) inset,
+      0 14px 28px -12px rgba(252, 209, 22, 0.7);
+    color: #000;
+  }
+  .ph__nav-item--cta a:focus-visible {
+    outline: 3px solid #fff;
+    outline-offset: 3px;
+  }
+  .ph__nav-cta-arrow {
+    transition: transform 220ms cubic-bezier(0.2, 0.9, 0.3, 1);
+  }
+  .ph__nav-item--cta a:hover .ph__nav-cta-arrow,
+  .ph__nav-item--cta a:focus-visible .ph__nav-cta-arrow {
+    transform: translate(2px, -2px);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .ph__nav-item--cta a::before {
+      animation: none;
+      display: none;
+    }
+    .ph__nav-item--cta a:hover,
+    .ph__nav-item--cta a:focus-visible {
+      transform: none;
+    }
+    .ph__nav-cta-arrow {
+      transition: none;
+    }
   }
 
   /* ─── Reduced motion ───────────────────────────────────────────── */

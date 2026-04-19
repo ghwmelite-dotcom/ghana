@@ -18,7 +18,7 @@ import '@gh/gh-ds/tokens.css';
 import '../styles/global.css';
 import SkipLink from '@gh/gh-ds/SkipLink';
 import Header from '@gh/gh-ds/Header';
-import Footer from '@gh/gh-ds/Footer';
+import PortalFooter from '../components/PortalFooter.astro';
 
 const primaryNav = [
   { href: '/services/', label: 'Services' },
@@ -106,7 +106,7 @@ const cfAnalyticsToken = import.meta.env.PUBLIC_CF_ANALYTICS_TOKEN;
     <main id="main" tabindex="-1">
       <slot />
     </main>
-    <Footer />
+    <PortalFooter />
   </body>
 </html>
 

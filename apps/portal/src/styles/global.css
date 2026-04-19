@@ -113,3 +113,71 @@ a:hover {
 a:visited {
   color: #004527;
 }
+
+/* ─── Scroll-reveal utility ────────────────────────────────────── */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 700ms cubic-bezier(0.2, 0.9, 0.3, 1),
+    transform 700ms cubic-bezier(0.2, 0.9, 0.3, 1);
+}
+[data-reveal].is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+[data-reveal][data-reveal-delay='1'] { transition-delay: 80ms; }
+[data-reveal][data-reveal-delay='2'] { transition-delay: 160ms; }
+[data-reveal][data-reveal-delay='3'] { transition-delay: 240ms; }
+[data-reveal][data-reveal-delay='4'] { transition-delay: 320ms; }
+[data-reveal][data-reveal-delay='5'] { transition-delay: 400ms; }
+[data-reveal][data-reveal-delay='6'] { transition-delay: 480ms; }
+
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* ─── Section eyebrow star marker ─────────────────────────────── */
+.eyebrow-star {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background: #fcd116;
+  margin-right: 0.5rem;
+  clip-path: polygon(
+    50% 0%,
+    61% 35%,
+    98% 35%,
+    68% 57%,
+    79% 91%,
+    50% 70%,
+    21% 91%,
+    32% 57%,
+    2% 35%,
+    39% 35%
+  );
+  vertical-align: middle;
+  transform: translateY(-1px);
+}
+
+/* ─── Kente section divider (optional) ────────────────────────── */
+.kente-divider {
+  position: relative;
+  height: 4px;
+  background:
+    repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.25) 0 2px, transparent 2px 4px),
+    repeating-linear-gradient(
+      90deg,
+      #006b3f 0 18px,
+      #fcd116 18px 26px,
+      #ce1126 26px 44px,
+      #0b0b0f 44px 52px
+    );
+  background-size:
+    4px 4px,
+    52px 100%;
+}

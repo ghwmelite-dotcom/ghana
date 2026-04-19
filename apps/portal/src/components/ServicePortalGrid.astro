@@ -1,9 +1,7 @@
 ---
 /**
- * Service portal grid — gov.rw's "Irembo / Business / Tax / Procurement" row.
- *
- * Three cards, each with a simple line icon, heading, descriptor, and a
- * "Read more" link pointing to the specific service entry point.
+ * Service portal grid — three signature entry-point cards with rich hover,
+ * gold ring on the icon chip, and staggered scroll-reveal.
  */
 interface Portal {
   href: string;
@@ -39,8 +37,11 @@ const portals: ReadonlyArray<Portal> = [
 
 <section class="portal" aria-labelledby="portal-heading">
   <div class="portal__inner">
-    <header class="portal__head">
-      <p class="portal__eyebrow">Most-used services</p>
+    <header class="portal__head" data-reveal>
+      <p class="portal__eyebrow">
+        <span class="eyebrow-star" aria-hidden="true"></span>
+        Most-used services
+      </p>
       <h2 id="portal-heading" class="portal__title">Official service entry points.</h2>
       <p class="portal__lede">
         The three services Ghanaians use most often, with direct links to the responsible agency.
@@ -49,9 +50,11 @@ const portals: ReadonlyArray<Portal> = [
 
     <div class="portal__grid">
       {
-        portals.map((p) => (
-          <article class="card">
-            <span class="card__icon" aria-hidden="true">
+        portals.map((p, i) => (
+          <article class="pcard" data-reveal data-reveal-delay={String(i + 1)}>
+            <span class="pcard__thread" aria-hidden="true" />
+            <span class="pcard__icon" aria-hidden="true">
+              <span class="pcard__icon-glow" />
               {p.icon === 'id' && (
                 <svg viewBox="0 0 32 32" width="30" height="30" fill="none">
                   <rect
@@ -113,9 +116,9 @@ const portals: ReadonlyArray<Portal> = [
                 </svg>
               )}
             </span>
-            <h3 class="card__label">{p.label}</h3>
-            <p class="card__descriptor">{p.descriptor}</p>
-            <a href={p.href} class="card__link">
+            <h3 class="pcard__label">{p.label}</h3>
+            <p class="pcard__descriptor">{p.descriptor}</p>
+            <a href={p.href} class="pcard__link">
               Read more
               <svg viewBox="0 0 16 16" width="12" height="12" fill="none" aria-hidden="true">
                 <path
@@ -137,7 +140,7 @@ const portals: ReadonlyArray<Portal> = [
 <style>
   .portal {
     background: #ffffff;
-    padding: clamp(3rem, 6vw, 5rem) clamp(1.25rem, 4vw, 3rem);
+    padding: clamp(3.5rem, 7vw, 6rem) clamp(1.25rem, 4vw, 3rem);
     border-bottom: 1px solid #edeae2;
   }
   .portal__inner {
@@ -146,28 +149,32 @@ const portals: ReadonlyArray<Portal> = [
   }
   .portal__head {
     max-width: 50ch;
-    margin-bottom: clamp(1.75rem, 3vw, 2.5rem);
+    margin-bottom: clamp(2rem, 3.5vw, 2.75rem);
   }
   .portal__eyebrow {
     font-size: 0.75rem;
-    letter-spacing: 0.2em;
+    letter-spacing: 0.25em;
     color: #005a35;
     text-transform: uppercase;
     font-weight: 600;
-    margin: 0 0 0.5rem;
+    margin: 0 0 0.75rem;
+    display: inline-flex;
+    align-items: center;
   }
   .portal__title {
-    font-size: clamp(1.5rem, 2.6vw, 2rem);
+    font-size: clamp(1.625rem, 2.8vw, 2.125rem);
     font-weight: 700;
     color: #0a0f1f;
-    margin: 0 0 0.625rem;
-    letter-spacing: -0.015em;
+    margin: 0 0 0.75rem;
+    letter-spacing: -0.018em;
+    line-height: 1.08;
   }
   .portal__lede {
     color: #384251;
     margin: 0;
     max-width: 54ch;
     line-height: 1.55;
+    font-size: 1.0625rem;
   }
 
   .portal__grid {
@@ -181,78 +188,149 @@ const portals: ReadonlyArray<Portal> = [
     }
   }
 
-  .card {
+  .pcard {
+    position: relative;
     background: #f7f7f5;
     border: 1px solid #e5e0d6;
-    border-radius: 4px;
-    padding: 1.75rem 1.5rem 1.5rem;
+    border-radius: 6px;
+    padding: 2rem 1.5rem 1.625rem;
     display: flex;
     flex-direction: column;
+    overflow: hidden;
     transition:
-      transform 200ms cubic-bezier(0.2, 0.9, 0.3, 1),
-      box-shadow 200ms ease;
+      transform 340ms cubic-bezier(0.2, 0.9, 0.3, 1),
+      box-shadow 340ms ease,
+      background 240ms ease;
   }
-  .card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 14px 32px -16px rgba(0, 40, 24, 0.16);
+  .pcard:hover {
+    transform: translateY(-5px);
+    background: #fff;
+    box-shadow: 0 22px 48px -22px rgba(0, 40, 24, 0.24);
   }
-  .card__icon {
+
+  /* Top-edge three-colour Kente accent that fills in on hover. */
+  .pcard__thread {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(
+      90deg,
+      #006b3f 0%,
+      #006b3f 33%,
+      #fcd116 33%,
+      #fcd116 66%,
+      #ce1126 66%,
+      #ce1126 100%
+    );
+    transform-origin: left;
+    transform: scaleX(0.3);
+    transition: transform 480ms cubic-bezier(0.2, 0.9, 0.3, 1);
+  }
+  .pcard:hover .pcard__thread {
+    transform: scaleX(1);
+  }
+
+  /* Icon chip with a gold glow that ramps in on hover. */
+  .pcard__icon {
+    position: relative;
     color: #005a35;
     background: #fff;
-    border-radius: 4px;
-    width: 52px;
-    height: 52px;
+    border-radius: 6px;
+    width: 56px;
+    height: 56px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     margin-bottom: 1.125rem;
     border: 1px solid #e5e0d6;
+    transition:
+      border-color 240ms ease,
+      transform 320ms cubic-bezier(0.2, 0.9, 0.3, 1);
+    isolation: isolate;
   }
-  .card__label {
-    font-size: 1.125rem;
+  .pcard__icon svg {
+    position: relative;
+    z-index: 1;
+  }
+  .pcard__icon-glow {
+    position: absolute;
+    inset: -4px;
+    border-radius: 8px;
+    background: radial-gradient(circle, rgba(252, 209, 22, 0.55) 0%, transparent 60%);
+    opacity: 0;
+    transition: opacity 320ms ease;
+    z-index: 0;
+  }
+  .pcard:hover .pcard__icon {
+    border-color: #005a35;
+    transform: translateY(-3px) rotate(-3deg);
+  }
+  .pcard:hover .pcard__icon-glow {
+    opacity: 1;
+  }
+
+  .pcard__label {
+    font-size: 1.1875rem;
     font-weight: 600;
     color: #0a0f1f;
     margin: 0 0 0.5rem;
     line-height: 1.3;
+    letter-spacing: -0.005em;
   }
-  .card__descriptor {
+  .pcard__descriptor {
     font-size: 0.9375rem;
     color: #384251;
-    line-height: 1.5;
+    line-height: 1.55;
     margin: 0 0 1.25rem;
     flex: 1;
   }
-  .card__link {
+  .pcard__link {
     display: inline-flex;
     align-items: center;
-    gap: 0.35rem;
+    gap: 0.4rem;
     font-size: 0.875rem;
     font-weight: 600;
     color: #005a35;
     text-decoration: none;
     border-bottom: 1px solid transparent;
-    padding-bottom: 1px;
+    padding-bottom: 2px;
     align-self: flex-start;
     transition: border-color 180ms ease;
   }
-  .card__link:hover,
-  .card__link:focus-visible {
+  .pcard__link:hover,
+  .pcard__link:focus-visible {
     border-bottom-color: #005a35;
   }
-  .card__link svg {
-    transition: transform 200ms cubic-bezier(0.2, 0.9, 0.3, 1);
+  .pcard__link:focus-visible {
+    outline: 3px solid #fcd116;
+    outline-offset: 3px;
+    border-radius: 2px;
   }
-  .card:hover .card__link svg {
-    transform: translateX(3px);
+  .pcard__link svg {
+    transition: transform 260ms cubic-bezier(0.2, 0.9, 0.3, 1);
+  }
+  .pcard:hover .pcard__link svg {
+    transform: translateX(4px);
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .card,
-    .card__link svg {
+    .pcard,
+    .pcard__icon,
+    .pcard__icon-glow,
+    .pcard__thread,
+    .pcard__link svg {
       transition: none;
     }
-    .card:hover {
+    .pcard:hover {
       transform: none;
+    }
+    .pcard:hover .pcard__icon {
+      transform: none;
+    }
+    .pcard__thread {
+      transform: scaleX(1);
     }
   }
 </style>

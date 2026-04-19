@@ -91,6 +91,44 @@ const cfAnalyticsToken = import.meta.env.PUBLIC_CF_ANALYTICS_TOKEN;
         />
       )
     }
+
+    <!-- Scroll-reveal observer: elements with [data-reveal] fade+rise when
+         they enter the viewport. One shared IntersectionObserver powers
+         the whole site; respects prefers-reduced-motion. -->
+    <script is:inline>
+      (function () {
+        if (typeof window === 'undefined') return;
+        var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        function start() {
+          var els = document.querySelectorAll('[data-reveal]');
+          if (!els.length) return;
+          if (reduce || !('IntersectionObserver' in window)) {
+            els.forEach(function (el) {
+              el.classList.add('is-revealed');
+            });
+            return;
+          }
+          var io = new IntersectionObserver(
+            function (entries) {
+              entries.forEach(function (entry) {
+                if (!entry.isIntersecting) return;
+                entry.target.classList.add('is-revealed');
+                io.unobserve(entry.target);
+              });
+            },
+            { threshold: 0.15, rootMargin: '0px 0px -60px 0px' },
+          );
+          els.forEach(function (el) {
+            io.observe(el);
+          });
+        }
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', start);
+        } else {
+          start();
+        }
+      })();
+    </script>
   </head>
   <body>
     <SkipLink />

@@ -15,9 +15,12 @@ const short = (name: string) => name.replace(/^Ministry of (the )?/, '');
 
 <section class="mins" aria-labelledby="mins-heading">
   <div class="mins__inner">
-    <header class="mins__head">
+    <header class="mins__head" data-reveal>
       <div>
-        <p class="mins__eyebrow">The 21 ministries</p>
+        <p class="mins__eyebrow">
+          <span class="eyebrow-star" aria-hidden="true"></span>
+          The 21 ministries
+        </p>
         <h2 id="mins-heading" class="mins__title">Every arm of government, one directory.</h2>
       </div>
       <a href="/ministries/" class="mins__more">
@@ -32,13 +35,16 @@ const short = (name: string) => name.replace(/^Ministry of (the )?/, '');
         </svg>
       </a>
     </header>
-    <ul class="mins__list">
+    <ul class="mins__list" data-reveal>
       {
         ministries.map((m) => (
           <li>
             <a href={`/ministries/${m.slug}/`} class="mins__item">
               <span class="mins__item-dot" aria-hidden="true" />
-              {short(m.data.name)}
+              <span class="mins__item-label">{short(m.data.name)}</span>
+              <span class="mins__item-arrow" aria-hidden="true">
+                →
+              </span>
             </a>
           </li>
         ))
@@ -110,21 +116,39 @@ const short = (name: string) => name.replace(/^Ministry of (the )?/, '');
     display: flex;
     align-items: center;
     gap: 0.625rem;
-    padding: 0.875rem 1rem;
+    padding: 0.95rem 1rem;
     text-decoration: none;
     color: #111827;
     font-size: 0.9375rem;
     border-right: 1px solid #edeae2;
     border-bottom: 1px solid #edeae2;
     min-height: 48px;
+    position: relative;
+    overflow: hidden;
     transition:
-      background 160ms ease,
-      color 160ms ease;
+      background 200ms ease,
+      color 200ms ease,
+      padding-left 240ms cubic-bezier(0.2, 0.9, 0.3, 1);
+  }
+  .mins__item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 0;
+    background: linear-gradient(180deg, #006b3f 0%, #fcd116 50%, #ce1126 100%);
+    transition: width 280ms cubic-bezier(0.2, 0.9, 0.3, 1);
   }
   .mins__item:hover,
   .mins__item:focus-visible {
-    background: #f7f7f5;
+    background: #fff;
     color: #005a35;
+    padding-left: 1.375rem;
+  }
+  .mins__item:hover::before,
+  .mins__item:focus-visible::before {
+    width: 3px;
   }
   .mins__item:focus-visible {
     outline: 3px solid #fcd116;
@@ -136,5 +160,43 @@ const short = (name: string) => name.replace(/^Ministry of (the )?/, '');
     border-radius: 50%;
     background: #fcd116;
     flex-shrink: 0;
+    transition: transform 200ms ease;
+  }
+  .mins__item:hover .mins__item-dot,
+  .mins__item:focus-visible .mins__item-dot {
+    transform: scale(1.4);
+  }
+  .mins__item-label {
+    flex: 1;
+  }
+  .mins__item-arrow {
+    color: #005a35;
+    font-size: 0.9375rem;
+    opacity: 0;
+    transform: translateX(-4px);
+    transition:
+      opacity 220ms ease,
+      transform 220ms cubic-bezier(0.2, 0.9, 0.3, 1);
+  }
+  .mins__item:hover .mins__item-arrow,
+  .mins__item:focus-visible .mins__item-arrow {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .mins__item,
+    .mins__item::before,
+    .mins__item-dot,
+    .mins__item-arrow {
+      transition: none;
+    }
+    .mins__item:hover,
+    .mins__item:focus-visible {
+      padding-left: 1rem;
+    }
+    .mins__item:hover .mins__item-dot {
+      transform: none;
+    }
   }
 </style>

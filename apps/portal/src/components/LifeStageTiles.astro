@@ -1,10 +1,10 @@
 ---
 /**
- * Life-stage tiles — gov.rw-aligned 4-column card grid.
+ * Life-stage tiles — gov.rw card rhythm, worldclass-Kente treatment.
  *
- * Each tile is a clean white card with a simple line-icon in the top-left,
- * a sans heading, a short descriptor, and a "Read more →" link. Hover
- * subtly lifts and tints the top border green.
+ * Each tile carries a vertical Kente thread on the left edge that widens
+ * and shimmers on hover, a line-icon that subtly scales, and a chevron
+ * that travels on hover. Entrance: staggered scroll-reveal.
  */
 interface Tile {
   href: string;
@@ -43,8 +43,11 @@ const tiles: ReadonlyArray<Tile> = [
 
 <section class="tiles" aria-labelledby="tiles-heading">
   <div class="tiles__inner">
-    <header class="tiles__head">
-      <p class="tiles__eyebrow">Services</p>
+    <header class="tiles__head" data-reveal>
+      <p class="tiles__eyebrow">
+        <span class="eyebrow-star" aria-hidden="true"></span>
+        Services
+      </p>
       <h2 id="tiles-heading" class="tiles__title">Start with a moment of your life.</h2>
       <p class="tiles__lede">
         Every service the Government of Ghana offers, grouped by what you need to do.
@@ -53,8 +56,11 @@ const tiles: ReadonlyArray<Tile> = [
 
     <div class="tiles__grid">
       {
-        tiles.map((tile) => (
-          <a href={tile.href} class="tile">
+        tiles.map((tile, i) => (
+          <a href={tile.href} class="tile" data-reveal data-reveal-delay={String(i + 1)}>
+            <span class="tile__thread" aria-hidden="true">
+              <span class="tile__thread-shimmer" />
+            </span>
             <span class="tile__icon" aria-hidden="true">
               {tile.icon === 'live' && (
                 <svg viewBox="0 0 32 32" width="28" height="28" fill="none">
@@ -128,7 +134,7 @@ const tiles: ReadonlyArray<Tile> = [
 <style>
   .tiles {
     background: #f7f7f5;
-    padding: clamp(3rem, 6vw, 5rem) clamp(1.25rem, 4vw, 3rem);
+    padding: clamp(3.5rem, 7vw, 6rem) clamp(1.25rem, 4vw, 3rem);
     border-bottom: 1px solid #edeae2;
   }
   .tiles__inner {
@@ -137,28 +143,31 @@ const tiles: ReadonlyArray<Tile> = [
   }
   .tiles__head {
     max-width: 50ch;
-    margin-bottom: clamp(1.75rem, 3vw, 2.5rem);
+    margin-bottom: clamp(2rem, 3.5vw, 2.75rem);
   }
   .tiles__eyebrow {
     font-size: 0.75rem;
-    letter-spacing: 0.2em;
+    letter-spacing: 0.25em;
     color: #005a35;
     text-transform: uppercase;
     font-weight: 600;
-    margin: 0 0 0.625rem;
+    margin: 0 0 0.75rem;
+    display: inline-flex;
+    align-items: center;
   }
   .tiles__title {
-    font-size: clamp(1.5rem, 2.6vw, 2rem);
+    font-size: clamp(1.625rem, 2.8vw, 2.125rem);
     font-weight: 700;
     color: #0a0f1f;
-    margin: 0 0 0.625rem;
-    letter-spacing: -0.015em;
+    margin: 0 0 0.75rem;
+    letter-spacing: -0.018em;
+    line-height: 1.08;
   }
   .tiles__lede {
     color: #384251;
-    max-width: 52ch;
+    max-width: 54ch;
     margin: 0;
-    font-size: 1rem;
+    font-size: 1.0625rem;
     line-height: 1.55;
   }
 
@@ -179,75 +188,153 @@ const tiles: ReadonlyArray<Tile> = [
   }
 
   .tile {
+    position: relative;
     background: #fff;
     border: 1px solid #e5e0d6;
-    border-top: 3px solid #005a35;
-    border-radius: 4px;
-    padding: 1.5rem 1.375rem 1.375rem;
+    border-radius: 6px;
+    padding: 1.75rem 1.5rem 1.5rem 2rem;
     text-decoration: none;
     color: inherit;
     display: flex;
     flex-direction: column;
-    min-height: 220px;
+    min-height: 240px;
+    overflow: hidden;
     transition:
-      transform 200ms cubic-bezier(0.2, 0.9, 0.3, 1),
-      box-shadow 200ms ease,
-      border-top-color 200ms ease;
+      transform 340ms cubic-bezier(0.2, 0.9, 0.3, 1),
+      box-shadow 340ms ease,
+      border-color 240ms ease;
   }
   .tile:hover,
   .tile:focus-visible {
-    transform: translateY(-3px);
-    box-shadow: 0 14px 32px -16px rgba(0, 40, 24, 0.18);
-    border-top-color: #fcd116;
+    transform: translateY(-5px);
+    box-shadow: 0 22px 48px -22px rgba(0, 40, 24, 0.26);
+    border-color: rgba(0, 90, 53, 0.35);
   }
   .tile:focus-visible {
     outline: 3px solid #fcd116;
     outline-offset: 3px;
   }
+
+  /* Vertical Kente thread on the left edge — the Ghanaian signature. */
+  .tile__thread {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 6px;
+    background:
+      repeating-linear-gradient(90deg, rgba(0, 0, 0, 0.2) 0 1.5px, transparent 1.5px 3px),
+      repeating-linear-gradient(
+        180deg,
+        #006b3f 0 16px,
+        #fcd116 16px 22px,
+        #ce1126 22px 38px,
+        #0b0b0f 38px 44px
+      );
+    background-size:
+      3px 3px,
+      100% 44px;
+    overflow: hidden;
+    transition: width 340ms cubic-bezier(0.2, 0.9, 0.3, 1);
+  }
+  .tile:hover .tile__thread,
+  .tile:focus-visible .tile__thread {
+    width: 10px;
+  }
+  .tile__thread-shimmer {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.7) 45%,
+      rgba(252, 209, 22, 0.9) 50%,
+      rgba(255, 255, 255, 0.7) 55%,
+      transparent 100%
+    );
+    background-size: 100% 300%;
+    background-position: 0 -50%;
+    mix-blend-mode: screen;
+    opacity: 0;
+    pointer-events: none;
+  }
+  .tile:hover .tile__thread-shimmer,
+  .tile:focus-visible .tile__thread-shimmer {
+    opacity: 1;
+    animation: tileShimmer 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+  @keyframes tileShimmer {
+    from {
+      background-position: 0 -50%;
+    }
+    to {
+      background-position: 0 150%;
+    }
+  }
+
   .tile__icon {
     color: #005a35;
     display: inline-flex;
     margin-bottom: 1rem;
+    transition: transform 320ms cubic-bezier(0.2, 0.9, 0.3, 1);
+  }
+  .tile:hover .tile__icon,
+  .tile:focus-visible .tile__icon {
+    transform: scale(1.12) translateY(-2px);
   }
   .tile__label {
-    font-size: 1.125rem;
+    font-size: 1.1875rem;
     font-weight: 600;
     color: #0a0f1f;
     margin: 0 0 0.5rem;
     line-height: 1.25;
+    letter-spacing: -0.005em;
   }
   .tile__descriptor {
     font-size: 0.9375rem;
     color: #384251;
-    line-height: 1.45;
+    line-height: 1.5;
     margin: 0 0 1.25rem;
     flex: 1;
   }
   .tile__more {
     display: inline-flex;
     align-items: center;
-    gap: 0.35rem;
+    gap: 0.4rem;
     font-size: 0.875rem;
     font-weight: 600;
     color: #005a35;
     text-decoration: none;
   }
   .tile__more svg {
-    transition: transform 200ms cubic-bezier(0.2, 0.9, 0.3, 1);
+    transition: transform 260ms cubic-bezier(0.2, 0.9, 0.3, 1);
+  }
+  .tile:hover .tile__more,
+  .tile:focus-visible .tile__more {
+    color: #004527;
   }
   .tile:hover .tile__more svg,
   .tile:focus-visible .tile__more svg {
-    transform: translateX(3px);
+    transform: translateX(4px);
   }
 
   @media (prefers-reduced-motion: reduce) {
     .tile,
+    .tile__icon,
+    .tile__thread,
     .tile__more svg {
       transition: none;
     }
     .tile:hover,
     .tile:focus-visible {
       transform: none;
+    }
+    .tile:hover .tile__icon,
+    .tile:focus-visible .tile__icon {
+      transform: none;
+    }
+    .tile__thread-shimmer {
+      display: none;
     }
   }
 </style>

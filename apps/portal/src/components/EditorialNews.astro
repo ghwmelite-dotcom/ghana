@@ -36,9 +36,12 @@ const ministryLabel = (slug: string) =>
 
 <section class="news" aria-labelledby="news-heading">
   <div class="news__inner">
-    <header class="news__head">
+    <header class="news__head" data-reveal>
       <div>
-        <p class="news__eyebrow">Latest updates</p>
+        <p class="news__eyebrow">
+          <span class="eyebrow-star" aria-hidden="true"></span>
+          Latest updates
+        </p>
         <h2 id="news-heading" class="news__title">From across government.</h2>
       </div>
       <a href="/news/" class="news__more">
@@ -60,7 +63,7 @@ const ministryLabel = (slug: string) =>
       ) : (
         <ul class="news__list">
           {items.map((n, i) => (
-            <li class="news-item">
+            <li class="news-item" data-reveal data-reveal-delay={String(i + 1)}>
               <a
                 href={`/news/${n.data.publishedAt.getFullYear()}/${n.slug}/`}
                 class="news-item__link"
@@ -188,11 +191,17 @@ const ministryLabel = (slug: string) =>
     border-radius: 3px;
     overflow: hidden;
     background: #edeae2;
+    position: relative;
   }
   .news-item__thumb :global(img) {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: transform 700ms cubic-bezier(0.2, 0.9, 0.3, 1);
+  }
+  .news-item__link:hover .news-item__thumb :global(img),
+  .news-item__link:focus-visible .news-item__thumb :global(img) {
+    transform: scale(1.06);
   }
   .news-item__body {
     padding: 0.25rem 0;
@@ -214,6 +223,14 @@ const ministryLabel = (slug: string) =>
     letter-spacing: 0.04em;
     text-transform: uppercase;
     font-size: 0.6875rem;
+    transition:
+      background 220ms ease,
+      box-shadow 220ms ease;
+  }
+  .news-item__link:hover .news-item__tag,
+  .news-item__link:focus-visible .news-item__tag {
+    background: #004527;
+    box-shadow: 0 0 0 3px rgba(252, 209, 22, 0.35);
   }
   .news-item__meta time {
     color: #5b5f68;

@@ -1,0 +1,40 @@
+---
+/**
+ * <KenteStripe /> — a 6-8px horizontal micro-stripe of repeating flag colours
+ * (green / gold / red / black) used at the very top edge of every page as
+ * the one decorative flag-colour moment, per spec §4.3.
+ *
+ * Hard rules (from `.claude/CLAUDE.md §6.3`):
+ *   - Maximum 8 px tall. Default 6 px.
+ *   - Only at the top edge of a page. Never repeated.
+ *   - Never behind body text. Never as wallpaper.
+ *   - Purely decorative: `aria-hidden="true"` because the flag colours are
+ *     not announced to screen readers.
+ *
+ * Usage:
+ *   <KenteStripe />
+ */
+
+interface Props {
+  /** Stripe height in px. Clamped to [4, 8]. Default 6. */
+  height?: number;
+}
+
+const { height = 6 } = Astro.props;
+const h = Math.max(4, Math.min(8, height));
+---
+
+<div class="gh-kente-stripe" aria-hidden="true" style={`height:${h}px`}></div>
+
+<style>
+  .gh-kente-stripe {
+    background: repeating-linear-gradient(
+      90deg,
+      #006b3f 0 14px,
+      #fcd116 14px 22px,
+      #ce1126 22px 32px,
+      #000000 32px 38px
+    );
+    width: 100%;
+  }
+</style>

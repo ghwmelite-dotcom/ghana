@@ -1,0 +1,254 @@
+---
+/**
+ * <Pagination> — Ghana Design System Tier-2 navigation component.
+ *
+ * Ported in intent from GOV.UK Frontend's `govuk-pagination`, per ADR-003.
+ *
+ * Behaviour:
+ *   - Wrapped in `<nav aria-label="Pagination">`.
+ *   - Previous / Next links disappear at page boundaries (not shown as
+ *     disabled links; disabled links fail WCAG 2.4.4 Link Purpose).
+ *   - Page numbers condense with ellipsis when total exceeds 7: always
+ *     shows first, last, current ± 1, plus ellipses for any gap.
+ *   - Current page is a `<span aria-current="page">`, not a link.
+ *   - URL for page N is `${baseUrl}${N}` — pass a URL ending with `?page=`
+ *     or `/page/` so page numbers substitute cleanly.
+ *
+ * Progressive enhancement: native anchor links only, no JavaScript.
+ *
+ * Multiple on one page:
+ *   If a page renders more than one Pagination nav (e.g. top + bottom of
+ *   a long list), pass a unique `ariaLabel` to each. The default label is
+ *   shared, and axe's `landmark-unique` rule flags duplicates.
+ *
+ * Usage:
+ *   <Pagination current={3} total={47} baseUrl="/news/?page=" />
+ */
+
+interface Props {
+  /** 1-indexed current page. */
+  current: number;
+  /** Total number of pages. */
+  total: number;
+  /** URL prefix. Page N = `${baseUrl}${N}`. */
+  baseUrl: string;
+  previousLabel?: string;
+  nextLabel?: string;
+  /** Accessible label for the outer nav. Defaults to "Pagination". */
+  ariaLabel?: string;
+  class?: string;
+}
+
+const {
+  current,
+  total,
+  baseUrl,
+  previousLabel = 'Previous',
+  nextLabel = 'Next',
+  ariaLabel = 'Pagination',
+  class: extraClass,
+} = Astro.props;
+
+// Sanity clamp — defensive against out-of-range props from bad server data.
+const safeTotal = Math.max(1, Math.floor(total));
+const safeCurrent = Math.min(Math.max(1, Math.floor(current)), safeTotal);
+
+/**
+ * Compute the page numbers to render. Items are either numeric (a page
+ * link) or the literal string `'ellipsis'`. Keeps the component easy to
+ * render with a single map and no edge-case branches in the template.
+ */
+function buildPages(cur: number, tot: number): Array<number | 'ellipsis'> {
+  if (tot <= 7) {
+    return Array.from({ length: tot }, (_, i) => i + 1);
+  }
+  const pages: Array<number | 'ellipsis'> = [1];
+  const left = Math.max(2, cur - 1);
+  const right = Math.min(tot - 1, cur + 1);
+
+  if (left > 2) pages.push('ellipsis');
+  for (let p = left; p <= right; p++) pages.push(p);
+  if (right < tot - 1) pages.push('ellipsis');
+
+  pages.push(tot);
+  return pages;
+}
+
+const pages = buildPages(safeCurrent, safeTotal);
+
+const classes = ['gh-pagination', extraClass].filter(Boolean).join(' ');
+
+const hasPrev = safeCurrent > 1;
+const hasNext = safeCurrent < safeTotal;
+---
+
+<nav class={classes} aria-label={ariaLabel}>
+  <ul class="gh-pagination__list">
+    {
+      hasPrev && (
+        <li class="gh-pagination__item gh-pagination__item--prev">
+          <a class="gh-pagination__link" href={`${baseUrl}${safeCurrent - 1}`} rel="prev">
+            <svg
+              class="gh-pagination__icon"
+              width="15"
+              height="13"
+              viewBox="0 0 15 13"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path
+                d="M6.3 0L0 6.5L6.3 13L7.7 11.6L3.8 7.5H15V5.5H3.8L7.7 1.4L6.3 0Z"
+                fill="currentColor"
+              />
+            </svg>
+            <span>{previousLabel}</span>
+          </a>
+        </li>
+      )
+    }
+
+    {
+      pages.map((p) => {
+        if (p === 'ellipsis') {
+          return (
+            <li class="gh-pagination__item gh-pagination__item--ellipsis" aria-hidden="true">
+              …
+            </li>
+          );
+        }
+        if (p === safeCurrent) {
+          return (
+            <li class="gh-pagination__item gh-pagination__item--current">
+              <span
+                class="gh-pagination__link gh-pagination__link--current"
+                aria-current="page"
+                aria-label={`Page ${p}, current page`}
+              >
+                {p}
+              </span>
+            </li>
+          );
+        }
+        return (
+          <li class="gh-pagination__item">
+            <a class="gh-pagination__link" href={`${baseUrl}${p}`} aria-label={`Page ${p}`}>
+              {p}
+            </a>
+          </li>
+        );
+      })
+    }
+
+    {
+      hasNext && (
+        <li class="gh-pagination__item gh-pagination__item--next">
+          <a class="gh-pagination__link" href={`${baseUrl}${safeCurrent + 1}`} rel="next">
+            <span>{nextLabel}</span>
+            <svg
+              class="gh-pagination__icon"
+              width="15"
+              height="13"
+              viewBox="0 0 15 13"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path
+                d="M8.7 0L15 6.5L8.7 13L7.3 11.6L11.2 7.5H0V5.5H11.2L7.3 1.4L8.7 0Z"
+                fill="currentColor"
+              />
+            </svg>
+          </a>
+        </li>
+      )
+    }
+  </ul>
+</nav>
+
+<style>
+  .gh-pagination {
+    margin: var(--space-8) 0;
+  }
+
+  .gh-pagination__list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-1);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: var(--font-size-base);
+  }
+
+  .gh-pagination__item {
+    display: inline-flex;
+  }
+
+  .gh-pagination__item--ellipsis {
+    padding: 0 var(--space-2);
+    color: var(--color-text-secondary);
+  }
+
+  .gh-pagination__link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    min-width: 2.75rem;
+    min-height: 2.75rem;
+    padding: var(--space-2) var(--space-3);
+    justify-content: center;
+    color: var(--color-link);
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
+    text-decoration-thickness: 0.06em;
+    border-radius: var(--radius-md);
+  }
+
+  .gh-pagination__link:hover {
+    text-decoration-thickness: 0.12em;
+    background: var(--ghana-green-50);
+  }
+
+  .gh-pagination__link:focus-visible {
+    outline: var(--border-width-focus) solid var(--color-focus-ring);
+    outline-offset: 2px;
+    background: var(--color-focus-ring);
+    color: var(--color-text-default);
+    text-decoration: none;
+  }
+
+  .gh-pagination__link--current {
+    color: var(--color-text-default);
+    font-weight: var(--font-weight-bold);
+    text-decoration: none;
+    background: var(--ghana-ink-50);
+    cursor: default;
+  }
+
+  .gh-pagination__link--current:hover {
+    background: var(--ghana-ink-50);
+  }
+
+  .gh-pagination__item--prev {
+    margin-right: auto;
+  }
+
+  .gh-pagination__item--next {
+    margin-left: auto;
+  }
+
+  /* On wider viewports, previous and next sit at the far edges; on
+     narrower viewports the flex-wrap puts them naturally in order. */
+  @media (max-width: 40rem) {
+    .gh-pagination__item--prev,
+    .gh-pagination__item--next {
+      flex: 1 0 100%;
+      justify-content: flex-start;
+      margin: 0;
+    }
+  }
+
+  .gh-pagination__icon {
+    flex-shrink: 0;
+  }
+</style>

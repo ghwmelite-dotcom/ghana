@@ -1,0 +1,12 @@
+{
+  "name": "@gh/webhooks",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "typecheck": "echo '@gh/webhooks: no typecheck yet' && exit 0",
+    "lint": "echo '@gh/webhooks: no lint yet' && exit 0",
+    "test": "echo '@gh/webhooks: no test yet' && exit 0",
+    "build": "echo '@gh/webhooks: no build yet' && exit 0"
+  }
+}

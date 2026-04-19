@@ -1,0 +1,19 @@
+name = "gov-gh-portal"
+compatibility_date = "2026-04-18"
+compatibility_flags = ["nodejs_compat"]
+pages_build_output_dir = "./dist"
+
+# Environment split — staging is where PR previews land; production is
+# promoted from main after KPIs pass per `.claude/CLAUDE.md §5` Weeks 11–14.
+[env.staging]
+vars = { ENVIRONMENT = "staging" }
+
+[env.production]
+vars = { ENVIRONMENT = "production" }
+
+# Observability is mandatory — ADR-002 requires every Worker-runtime artefact
+# to emit structured logs. Enabled at full sampling; production may lower
+# after volume data accrues.
+[observability]
+enabled = true
+head_sampling_rate = 1

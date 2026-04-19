@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help Center | Ghana.Gov</title>
+    <meta name="description" content="Get help navigating Ghana.Gov services. Find answers, guides, and support for all government services.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Typography */
+            --font-display: 'Cormorant Garamond', serif;
+            --font-body: 'DM Sans', sans-serif;
+
+            /* Core Background Hierarchy */
+            --bg-primary: #030303;
+            --bg-secondary: #0A0A0A;
+            --bg-tertiary: #141414;
+            --bg-elevated: #1E1E1E;
+            --bg-surface: #2A2A2A;
+
+            /* Text Hierarchy */
+            --text-primary: #FAF9F6;
+            --text-secondary: #E8E6E1;
+            --text-muted: #9A9A9A;
+            --text-subtle: #666666;
+
+            /* Ghana National Colors */
+            --gold-brilliant: #D4AF37;
+            --gold-glow: #F5D061;
+            --gold-pale: rgba(212, 175, 55, 0.15);
+            --gold-mist: rgba(212, 175, 55, 0.08);
+            --emerald-deep: #0D3D2E;
+            --emerald-rich: #1A5C45;
+            --emerald-glow: #2ECC71;
+            --crimson-deep: #6B1E28;
+            --crimson-rich: #8B2332;
+
+            /* Semantic Surfaces */
+            --card-bg: rgba(255, 255, 255, 0.02);
+            --card-bg-hover: rgba(255, 255, 255, 0.05);
+            --card-border: rgba(255, 255, 255, 0.05);
+            --card-border-hover: rgba(212, 175, 55, 0.3);
+            --nav-bg: rgba(10, 10, 10, 0.8);
+            --border-subtle: rgba(212, 175, 55, 0.1);
+
+            /* Legacy Variables */
+            --obsidian: #030303;
+            --onyx: #0A0A0A;
+            --charcoal: #141414;
+            --slate: #1E1E1E;
+            --graphite: #2A2A2A;
+            --ivory: #FAF9F6;
+            --pearl: #E8E6E1;
+            --silver: #9A9A9A;
+            --smoke: #666666;
+            --green-deep: #1B4D3E;
+            --green-forest: #2D5A4A;
+            --gold-burnished: #C9A227;
+            --gold-light: #E8D48A;
+            --red-crimson: #8B2332;
+            --black-obsidian: #0A0A0A;
+            --white-ivory: #FAFAF8;
+            --gray-warm: #6B6B6B;
+            --gray-light: #E8E8E6;
+            --blue-info: #2563EB;
+
+            /* Effects */
+            --glow-gold: 0 0 60px rgba(212, 175, 55, 0.4);
+            --shadow-deep: 0 25px 80px rgba(0, 0, 0, 0.8);
+            --shadow-float: 0 15px 50px rgba(0, 0, 0, 0.5);
+
+            /* Help page specific */
+            --bg-card: #151515;
+            --border-color: #2A2A2A;
+            --accent-primary: #C9A227;
+            --accent-secondary: #E8D48A;
+            --hero-gradient-start: #1B4D3E;
+            --hero-gradient-end: #2D5A4A;
+            --header-bg: #0A0A0A;
+        }
+
+        [data-theme="light"] {
+            --bg-primary: #FAFAF8;
+            --bg-secondary: #F5F4F0;
+            --bg-tertiary: #EEEEE8;
+            --bg-elevated: #FFFFFF;
+            --bg-card: #FFFFFF;
+            --text-primary: #1A1A1A;
+            --text-secondary: #2D2D2D;
+            --text-muted: #5A5A5A;
+            --border-color: #E0E0DC;
+            --card-border: rgba(0, 0, 0, 0.08);
+            --accent-primary: #0D3D2E;
+            --accent-secondary: #1A5C45;
+            --hero-gradient-start: #0D3D2E;
+            --hero-gradient-end: #1A5C45;
+            --header-bg: #FFFFFF;
+            --green-deep: #0D3D2E;
+            --green-forest: #1A5C45;
+            --gold-burnished: #0D3D2E;
+            --gold-light: #1A5C45;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body), 'Plus Jakarta Sans', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        /* Minimal Navigation */
+        .nav-main {
+            background: var(--bg-secondary);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 0 2rem;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-subtle);
+            transition: all 0.3s ease;
+        }
+        .nav-main.scrolled { background: rgba(10, 10, 10, 0.95); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); }
+        .nav-container { max-width: 1400px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 80px; }
+        .logo { display: flex; align-items: center; gap: 1rem; text-decoration: none; color: var(--text-primary); }
+        .logo-emblem { width: 48px; height: 48px; flex-shrink: 0; }
+        .logo-star { width: 100%; height: 100%; fill: var(--gold-brilliant); transition: transform 0.4s ease; }
+        .logo:hover .logo-star { transform: rotate(36deg); }
+        .logo-text { display: flex; flex-direction: column; line-height: 1.2; }
+        .logo-title { font-family: var(--font-display); font-size: 1.4rem; font-weight: 600; color: var(--text-primary); }
+        .logo-subtitle { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--text-muted); }
+        .nav-links { display: flex; align-items: center; gap: 2.5rem; list-style: none; }
+        .nav-links a { text-decoration: none; color: var(--text-secondary); font-weight: 500; font-size: 0.9rem; padding: 0.5rem 0; position: relative; transition: color 0.3s ease; }
+        .nav-links a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: var(--gold-brilliant); transition: width 0.3s ease; }
+        .nav-links a:hover, .nav-links a.active { color: var(--gold-brilliant); }
+        .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+        .nav-actions { display: flex; align-items: center; gap: 1rem; }
+        .nav-btn { background: none; border: none; cursor: pointer; padding: 0.5rem; color: var(--text-secondary); transition: color 0.3s ease; }
+        .nav-btn:hover { color: var(--gold-brilliant); }
+        .nav-btn svg { width: 22px; height: 22px; }
+
+        /* Theme Toggle */
+        .theme-toggle { position: relative; width: 56px; height: 28px; background: linear-gradient(135deg, var(--bg-tertiary) 0%, var(--bg-secondary) 100%); border: 1px solid var(--border-subtle); border-radius: 50px; cursor: pointer; transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); overflow: hidden; display: flex; align-items: center; padding: 3px; }
+        .theme-toggle::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, var(--emerald-deep) 0%, var(--emerald-rich) 100%); opacity: 0; transition: opacity 0.5s ease; border-radius: 50px; }
+        [data-theme="light"] .theme-toggle::before { opacity: 1; }
+        .theme-toggle:hover { border-color: var(--gold-brilliant); box-shadow: 0 0 20px rgba(212, 175, 55, 0.3); transform: scale(1.05); }
+        .toggle-orb { position: relative; width: 22px; height: 22px; border-radius: 50%; background: linear-gradient(135deg, var(--gold-brilliant) 0%, var(--gold-glow) 100%); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3), 0 0 15px rgba(212, 175, 55, 0.4); transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55); z-index: 2; display: flex; align-items: center; justify-content: center; }
+        [data-theme="light"] .toggle-orb { transform: translateX(26px); background: linear-gradient(135deg, #FFFFFF 0%, #F5F4F0 100%); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15), 0 0 15px rgba(255, 255, 255, 0.5); }
+        .toggle-icon { width: 14px; height: 14px; transition: all 0.4s ease; }
+        .toggle-icon.sun { color: #0D3D2E; opacity: 0; transform: rotate(-90deg) scale(0); position: absolute; }
+        .toggle-icon.moon { color: var(--emerald-deep); opacity: 1; transform: rotate(0deg) scale(1); }
+
+        [data-theme="light"] .toggle-icon.sun { opacity: 1; transform: rotate(0deg) scale(1); }
+        [data-theme="light"] .toggle-icon.moon { opacity: 0; transform: rotate(90deg) scale(0); }
+
+        .nav-cta { background: linear-gradient(135deg, var(--gold-brilliant) 0%, var(--gold-glow) 100%); color: #0A0A0A; padding: 0.75rem 1.5rem; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 0.85rem; transition: all 0.3s ease; }
+        .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 0 30px rgba(212, 175, 55, 0.4); }
+        .mobile-menu-btn { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; color: var(--text-primary); }
+        .mobile-menu-btn svg { width: 24px; height: 24px; }
+
+        /* Mobile Menu */
+        .mobile-menu { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: var(--bg-primary); z-index: 999; padding: 6rem 2rem 2rem; opacity: 0; visibility: hidden; transition: all 0.3s ease; }
+        .mobile-menu.active { opacity: 1; visibility: visible; }
+        .mobile-menu-links { display: flex; flex-direction: column; gap: 0.5rem; list-style: none; }
+        .mobile-menu-links a { display: block; padding: 1rem 0; text-decoration: none; color: var(--text-primary); font-size: 1.5rem; font-family: var(--font-display); border-bottom: 1px solid var(--border-subtle); transition: color 0.3s ease; }
+        .mobile-menu-links a:hover { color: var(--gold-brilliant); }
+        .mobile-menu-close { position: absolute; top: 1.5rem; right: 1.5rem; background: none; border: none; cursor: pointer; color: var(--text-primary); padding: 0.5rem; }
+        .mobile-menu-close svg { width: 28px; height: 28px; }
+
+        @media (max-width: 1024px) { .nav-main { padding: 0 1.5rem; } .nav-links { display: none; } .nav-cta { display: none; } .mobile-menu-btn { display: block; } .mobile-menu { display: block; } }
+        @media (max-width: 640px) { .logo-text { display: none; } .nav-container { height: 70px; } }
+
+        /* Light mode nav */
+        [data-theme="light"] .nav-main { background: rgba(250, 250, 248, 0.9); border-bottom-color: rgba(0, 0, 0, 0.08); }
+        [data-theme="light"] .nav-main.scrolled { background: rgba(255, 255, 255, 0.98); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); }
+        [data-theme="light"] .nav-links a:hover, [data-theme="light"] .nav-links a.active { color: var(--emerald-deep); }
+        [data-theme="light"] .nav-links a::after { background: var(--emerald-deep); }
+        [data-theme="light"] .nav-cta { background: var(--emerald-deep); color: #fff; }
+        [data-theme="light"] .logo-title { color: var(--text-primary); }
+        [data-theme="light"] .logo-star { fill: var(--emerald-deep); }
+
+        /* Hero */
+        .hero {
+            padding: 10rem 2rem 4rem;
+            background: linear-gradient(135deg, var(--hero-gradient-start) 0%, var(--hero-gradient-end) 100%);
+            text-align: center;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='20' cy='20' r='2' fill='%23C9A227' fill-opacity='0.1'/%3E%3C/svg%3E");
+            pointer-events: none;
+        }
+
+        [data-theme="light"] .hero::before {
+            background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='20' cy='20' r='2' fill='%23FFFFFF' fill-opacity='0.15'/%3E%3C/svg%3E");
+        }
+
+        .hero-inner {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gold-burnished);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            margin: 0 auto 1.5rem;
+        }
+
+        [data-theme="light"] .hero-icon {
+            background: rgba(255,255,255,0.2);
+        }
+
+        .hero h1 {
+            font-family: 'Fraunces', serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: #FFFFFF;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            color: rgba(255,255,255,0.8);
+            font-size: 1.125rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Search */
+        .search-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .search-box {
+            display: flex;
+            background: var(--bg-card);
+            border-radius: 50px;
+            padding: 0.5rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+
+        .search-box input {
+            flex: 1;
+            border: none;
+            padding: 1rem 1.5rem;
+            font-size: 1rem;
+            font-family: inherit;
+            background: transparent;
+            outline: none;
+            color: var(--text-primary);
+        }
+
+        .search-box input::placeholder {
+            color: var(--text-muted);
+        }
+
+        .search-box button {
+            background: var(--accent-primary);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-family: inherit;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .search-box button:hover {
+            background: var(--accent-secondary);
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 5rem 2rem;
+        }
+
+        .section-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-family: 'Fraunces', serif;
+            font-size: 2rem;
+            color: var(--accent-primary);
+            margin-bottom: 0.75rem;
+        }
+
+        .section-subtitle {
+            color: var(--text-muted);
+            font-size: 1.125rem;
+        }
+
+        /* Quick Help Cards */
+        .quick-help {
+            background: var(--bg-card);
+            padding: 4rem 2rem;
+            margin-top: -2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        [data-theme="light"] .quick-help {
+            background: #FFFFFF;
+        }
+
+        .quick-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .quick-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        [data-theme="light"] .quick-card {
+            background: #FFFFFF;
+            border-color: #0D3D2E20;
+        }
+
+        .quick-card:hover {
+            border-color: var(--accent-primary);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+        }
+
+        [data-theme="light"] .quick-card:hover {
+            box-shadow: 0 20px 40px rgba(13,61,46,0.12);
+        }
+
+        .quick-icon {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, var(--hero-gradient-start), var(--hero-gradient-end));
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            margin: 0 auto 1rem;
+        }
+
+        .quick-card h3 {
+            font-family: 'Fraunces', serif;
+            font-size: 1.25rem;
+            color: var(--accent-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .quick-card p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Topics */
+        .topics-section {
+            background: var(--bg-secondary);
+        }
+
+        [data-theme="light"] .topics-section {
+            background: var(--bg-tertiary);
+        }
+
+        .topics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .topic-card {
+            background: var(--bg-card);
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+        }
+
+        [data-theme="light"] .topic-card {
+            background: #FFFFFF;
+            border-color: #0D3D2E20;
+        }
+
+        .topic-header {
+            background: var(--hero-gradient-start);
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .topic-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--gold-burnished);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        [data-theme="light"] .topic-icon {
+            background: rgba(255,255,255,0.2);
+        }
+
+        .topic-header h3 {
+            font-family: 'Fraunces', serif;
+            font-size: 1.25rem;
+            color: white;
+        }
+
+        .topic-links {
+            padding: 1.5rem;
+        }
+
+        .topic-link {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border-color);
+            text-decoration: none;
+            color: var(--text-primary);
+            transition: color 0.3s ease;
+        }
+
+        .topic-link:last-child {
+            border-bottom: none;
+        }
+
+        .topic-link:hover {
+            color: var(--accent-primary);
+        }
+
+        .topic-link::after {
+            content: '\2192';
+            color: var(--accent-primary);
+        }
+
+        /* Contact Options */
+        .contact-section {
+            background: linear-gradient(135deg, #0A0A0A 0%, #1a1a1a 100%);
+        }
+
+        [data-theme="light"] .contact-section {
+            background: linear-gradient(135deg, var(--hero-gradient-start) 0%, var(--hero-gradient-end) 100%);
+        }
+
+        .contact-section .section-title,
+        .contact-section .section-subtitle {
+            color: #FFFFFF;
+        }
+
+        .contact-section .section-subtitle {
+            opacity: 0.8;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .contact-card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        [data-theme="light"] .contact-card {
+            background: rgba(255,255,255,0.15);
+            border-color: rgba(255,255,255,0.25);
+        }
+
+        .contact-card:hover {
+            background: rgba(255,255,255,0.1);
+            transform: translateY(-4px);
+        }
+
+        [data-theme="light"] .contact-card:hover {
+            background: rgba(255,255,255,0.25);
+        }
+
+        .contact-icon {
+            width: 64px;
+            height: 64px;
+            background: var(--gold-burnished);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            margin: 0 auto 1rem;
+        }
+
+        [data-theme="light"] .contact-icon {
+            background: rgba(255,255,255,0.25);
+        }
+
+        .contact-card h4 {
+            font-family: 'Fraunces', serif;
+            color: #FFFFFF;
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-card p {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-card a {
+            color: #C9A227;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        [data-theme="light"] .contact-card a {
+            color: #FFFFFF;
+        }
+
+        .contact-card a:hover {
+            text-decoration: underline;
+        }
+
+        /* Status */
+        .status-section {
+            background: var(--bg-card);
+        }
+
+        [data-theme="light"] .status-section {
+            background: #FFFFFF;
+        }
+
+        .status-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .status-card {
+            padding: 1.5rem;
+            border-radius: 12px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        [data-theme="light"] .status-card {
+            background: var(--bg-tertiary);
+            border-color: #0D3D2E20;
+        }
+
+        .status-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 0.5rem;
+        }
+
+        .status-indicator.operational {
+            background: #22C55E;
+            box-shadow: 0 0 10px #22C55E;
+        }
+
+        .status-card h4 {
+            font-size: 1rem;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .status-card p {
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: #0A0A0A;
+            color: #FAFAF8;
+            padding: 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        [data-theme="light"] .footer {
+            background: var(--hero-gradient-start);
+            border-top-color: rgba(255,255,255,0.2);
+        }
+
+        .footer a {
+            color: #C9A227;
+            text-decoration: none;
+        }
+
+        [data-theme="light"] .footer a {
+            color: #FFFFFF;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .search-box {
+                flex-direction: column;
+                border-radius: 16px;
+            }
+
+            .search-box button {
+                margin-top: 0.5rem;
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding: 8rem 1rem 3rem;
+            }
+
+            .section {
+                padding: 3rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav-main">
+        <div class="nav-container">
+            <a href="../index.html" class="logo">
+                <div class="logo-emblem">
+                    <svg class="logo-star" viewBox="0 0 100 100">
+                        <polygon points="50,5 61,40 98,40 68,62 79,97 50,75 21,97 32,62 2,40 39,40"/>
+                    </svg>
+                </div>
+                <div class="logo-text">
+                    <span class="logo-title">Republic of Ghana</span>
+                    <span class="logo-subtitle">Official Government Portal</span>
+                </div>
+            </a>
+
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../services/index.html">Services</a></li>
+                <li><a href="../government/index.html">Government</a></li>
+                <li><a href="../business/index.html">Invest</a></li>
+                <li><a href="../tourism/index.html">Visit Ghana</a></li>
+                <li><a href="../contact.html">Contact</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <button class="nav-btn" aria-label="Search">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"/>
+                        <path d="M21 21l-4.35-4.35"/>
+                    </svg>
+                </button>
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <div class="toggle-orb">
+                        <svg class="toggle-icon moon" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                        </svg>
+                        <svg class="toggle-icon sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="5"/>
+                            <line x1="12" y1="1" x2="12" y2="3"/>
+                            <line x1="12" y1="21" x2="12" y2="23"/>
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                            <line x1="1" y1="12" x2="3" y2="12"/>
+                            <line x1="21" y1="12" x2="23" y2="12"/>
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                        </svg>
+                    </div>
+                </button>
+                <a href="../services/index.html" class="nav-cta">Access Services</a>
+                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open menu">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="3" y1="6" x2="21" y2="6"/>
+                        <line x1="3" y1="12" x2="21" y2="12"/>
+                        <line x1="3" y1="18" x2="21" y2="18"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close menu">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="18" y1="6" x2="6" y2="18"/>
+                <line x1="6" y1="6" x2="18" y2="18"/>
+            </svg>
+        </button>
+        <ul class="mobile-menu-links">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../services/index.html">Services</a></li>
+            <li><a href="../government/index.html">Government</a></li>
+            <li><a href="../business/index.html">Invest</a></li>
+            <li><a href="../tourism/index.html">Visit Ghana</a></li>
+            <li><a href="../contact.html">Contact</a></li>
+        </ul>
+    </div>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-inner">
+            <div class="hero-icon">❓</div>
+            <h1>How Can We Help You?</h1>
+            <p>Find answers to common questions, step-by-step guides, and contact information for all government services.</p>
+
+            <div class="search-container">
+                <form class="search-box" onsubmit="return false;">
+                    <input type="text" placeholder="Search for help topics...">
+                    <button type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Help -->
+    <section class="quick-help">
+        <div class="quick-grid">
+            <a href="faq.html" class="quick-card">
+                <div class="quick-icon">💬</div>
+                <h3>FAQ</h3>
+                <p>Find answers to frequently asked questions</p>
+            </a>
+
+            <a href="../services/index.html" class="quick-card">
+                <div class="quick-icon">📋</div>
+                <h3>Service Guides</h3>
+                <p>Step-by-step guides for all services</p>
+            </a>
+
+            <a href="../contact.html" class="quick-card">
+                <div class="quick-icon">📞</div>
+                <h3>Contact Us</h3>
+                <p>Reach out to government agencies</p>
+            </a>
+
+            <a href="#status" class="quick-card">
+                <div class="quick-icon">🔧</div>
+                <h3>System Status</h3>
+                <p>Check service availability</p>
+            </a>
+        </div>
+    </section>
+
+    <!-- Topics -->
+    <section class="section topics-section">
+        <div class="section-inner">
+            <div class="section-header">
+                <h2 class="section-title">Browse Help Topics</h2>
+                <p class="section-subtitle">Select a category to find relevant help articles</p>
+            </div>
+
+            <div class="topics-grid">
+                <div class="topic-card">
+                    <div class="topic-header">
+                        <div class="topic-icon">🪪</div>
+                        <h3>Identity Documents</h3>
+                    </div>
+                    <div class="topic-links">
+                        <a href="../services/ghana-card.html" class="topic-link">How to apply for Ghana Card</a>
+                        <a href="../services/passport.html" class="topic-link">Passport application process</a>
+                        <a href="../services/drivers-license.html" class="topic-link">Getting a driver's license</a>
+                        <a href="faq.html#documents" class="topic-link">Document replacement</a>
+                    </div>
+                </div>
+
+                <div class="topic-card">
+                    <div class="topic-header">
+                        <div class="topic-icon">💼</div>
+                        <h3>Business Services</h3>
+                    </div>
+                    <div class="topic-links">
+                        <a href="../services/business-registration.html" class="topic-link">Register a business</a>
+                        <a href="../services/tax.html" class="topic-link">Tax registration (TIN)</a>
+                        <a href="../business/index.html" class="topic-link">Investment incentives</a>
+                        <a href="faq.html#business" class="topic-link">Business permits & licenses</a>
+                    </div>
+                </div>
+
+                <div class="topic-card">
+                    <div class="topic-header">
+                        <div class="topic-icon">✈️</div>
+                        <h3>Travel & Immigration</h3>
+                    </div>
+                    <div class="topic-links">
+                        <a href="../tourism/visa.html" class="topic-link">Visa requirements</a>
+                        <a href="../services/passport.html" class="topic-link">Passport renewal</a>
+                        <a href="faq.html#travel" class="topic-link">Entry requirements</a>
+                        <a href="../tourism/index.html" class="topic-link">Visiting Ghana</a>
+                    </div>
+                </div>
+
+                <div class="topic-card">
+                    <div class="topic-header">
+                        <div class="topic-icon">🏛️</div>
+                        <h3>Government Services</h3>
+                    </div>
+                    <div class="topic-links">
+                        <a href="../government/ministries/index.html" class="topic-link">Find a ministry</a>
+                        <a href="../government/index.html" class="topic-link">Government structure</a>
+                        <a href="faq.html#government" class="topic-link">Public records requests</a>
+                        <a href="../contact.html" class="topic-link">Contact government</a>
+                    </div>
+                </div>
+
+                <div class="topic-card">
+                    <div class="topic-header">
+                        <div class="topic-icon">🏥</div>
+                        <h3>Health & Social Services</h3>
+                    </div>
+                    <div class="topic-links">
+                        <a href="faq.html#health" class="topic-link">National Health Insurance</a>
+                        <a href="faq.html#health" class="topic-link">Birth & death registration</a>
+                        <a href="faq.html#social" class="topic-link">Social security (SSNIT)</a>
+                        <a href="faq.html#health" class="topic-link">Public health services</a>
+                    </div>
+                </div>
+
+                <div class="topic-card">
+                    <div class="topic-header">
+                        <div class="topic-icon">🎓</div>
+                        <h3>Education</h3>
+                    </div>
+                    <div class="topic-links">
+                        <a href="faq.html#education" class="topic-link">School enrollment</a>
+                        <a href="faq.html#education" class="topic-link">University admission</a>
+                        <a href="faq.html#education" class="topic-link">Scholarship opportunities</a>
+                        <a href="faq.html#education" class="topic-link">Certificate verification</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- System Status -->
+    <section class="section status-section" id="status">
+        <div class="section-inner">
+            <div class="section-header">
+                <h2 class="section-title">System Status</h2>
+                <p class="section-subtitle">Current status of Ghana.Gov services</p>
+            </div>
+
+            <div class="status-grid">
+                <div class="status-card">
+                    <h4><span class="status-indicator operational"></span>Ghana Card Portal</h4>
+                    <p>All systems operational</p>
+                </div>
+                <div class="status-card">
+                    <h4><span class="status-indicator operational"></span>Passport Services</h4>
+                    <p>All systems operational</p>
+                </div>
+                <div class="status-card">
+                    <h4><span class="status-indicator operational"></span>Tax Portal (GRA)</h4>
+                    <p>All systems operational</p>
+                </div>
+                <div class="status-card">
+                    <h4><span class="status-indicator operational"></span>Business Registration</h4>
+                    <p>All systems operational</p>
+                </div>
+                <div class="status-card">
+                    <h4><span class="status-indicator operational"></span>DVLA Services</h4>
+                    <p>All systems operational</p>
+                </div>
+                <div class="status-card">
+                    <h4><span class="status-indicator operational"></span>Visa Services</h4>
+                    <p>All systems operational</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="section contact-section">
+        <div class="section-inner">
+            <div class="section-header">
+                <h2 class="section-title">Still Need Help?</h2>
+                <p class="section-subtitle">Our support team is here to assist you</p>
+            </div>
+
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <div class="contact-icon">📞</div>
+                    <h4>Call Us</h4>
+                    <p>Speak directly with a support agent</p>
+                    <a href="tel:311">Dial 311</a>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-icon">✉️</div>
+                    <h4>Email Support</h4>
+                    <p>Send us your questions</p>
+                    <a href="mailto:support@ghana.gov.gh">support@ghana.gov.gh</a>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-icon">💬</div>
+                    <h4>Live Chat</h4>
+                    <p>Chat with us online</p>
+                    <a href="#" onclick="alert('Live chat coming soon!')">Start Chat</a>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-icon">📍</div>
+                    <h4>Visit In Person</h4>
+                    <p>Find a service center near you</p>
+                    <a href="../contact.html">Find Location</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2025 Republic of Ghana. All rights reserved. | <a href="../index.html">Ghana.Gov</a></p>
+    </footer>
+
+    <script>
+        // Theme Toggle Script
+        (function(){const STORAGE_KEY='ghana-gov-theme',DARK='dark',LIGHT='light';function getSavedTheme(){const saved=localStorage.getItem(STORAGE_KEY);if(saved)return saved;if(window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches)return LIGHT;return DARK;}function applyTheme(theme){if(theme===LIGHT)document.documentElement.setAttribute('data-theme','light');else document.documentElement.removeAttribute('data-theme');localStorage.setItem(STORAGE_KEY,theme);}applyTheme(getSavedTheme());document.addEventListener('DOMContentLoaded',function(){const toggle=document.getElementById('themeToggle');if(toggle){toggle.addEventListener('click',function(){const current=document.documentElement.getAttribute('data-theme');applyTheme(current==='light'?DARK:LIGHT);this.style.transform='scale(0.95)';setTimeout(()=>{this.style.transform='';},150);});}});})();
+
+        // Mobile Menu Toggle
+        (function() {
+            document.addEventListener('DOMContentLoaded', function() {
+                const menuBtn = document.getElementById('mobileMenuBtn');
+                const menuClose = document.getElementById('mobileMenuClose');
+                const mobileMenu = document.getElementById('mobileMenu');
+
+                if (menuBtn && mobileMenu) {
+                    menuBtn.addEventListener('click', function() {
+                        mobileMenu.classList.add('active');
+                        document.body.style.overflow = 'hidden';
+                    });
+
+                    if (menuClose) {
+                        menuClose.addEventListener('click', function() {
+                            mobileMenu.classList.remove('active');
+                            document.body.style.overflow = '';
+                        });
+                    }
+
+                    mobileMenu.querySelectorAll('a').forEach(link => {
+                        link.addEventListener('click', function() {
+                            mobileMenu.classList.remove('active');
+                            document.body.style.overflow = '';
+                        });
+                    });
+
+                    document.addEventListener('keydown', function(e) {
+                        if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
+                            mobileMenu.classList.remove('active');
+                            document.body.style.overflow = '';
+                        }
+                    });
+                }
+            });
+        })();
+
+        // Navigation scroll effect
+        (function() {
+            window.addEventListener('scroll', function() {
+                const nav = document.querySelector('.nav-main');
+                if (nav) {
+                    if (window.scrollY > 50) {
+                        nav.classList.add('scrolled');
+                    } else {
+                        nav.classList.remove('scrolled');
+                    }
+                }
+            });
+        })();
+    </script>
+</body>
+</html>

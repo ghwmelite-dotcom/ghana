@@ -1,0 +1,2314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Theme initialization (prevents flash of wrong theme) -->
+    <script>(function(){var t=localStorage.getItem('ghana-gov-theme');if(t==='light'||(t===null&&window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches))document.documentElement.setAttribute('data-theme','light');})();</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visit Ghana | Explore the Gateway to Africa</title>
+    <meta name="description" content="Discover Ghana's rich culture, stunning landscapes, historic castles, and warm hospitality. Plan your visit to West Africa's most welcoming nation.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <style>
+        /* ========== Theme System Variables ========== */
+        :root {
+            /* Semantic Color Variables - Dark Mode (Default) */
+            --bg-primary: #0A0A0A;
+            --bg-secondary: #1A1A1A;
+            --bg-tertiary: #2D2D2D;
+            --bg-elevated: #151515;
+
+            --text-primary: #FAFAF8;
+            --text-secondary: rgba(250, 250, 248, 0.8);
+            --text-tertiary: rgba(250, 250, 248, 0.6);
+            --text-muted: rgba(250, 250, 248, 0.5);
+
+            --card-bg: #1A1A1A;
+            --card-bg-hover: #252525;
+            --card-border: rgba(255, 255, 255, 0.1);
+            --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+
+            --nav-bg: rgba(10, 10, 10, 0.95);
+            --nav-border: rgba(255, 255, 255, 0.1);
+
+            --border-subtle: rgba(255, 255, 255, 0.1);
+            --border-medium: rgba(255, 255, 255, 0.2);
+
+            --accent-primary: var(--gold-burnished);
+            --accent-secondary: #E5C158;
+            --accent-gradient: linear-gradient(135deg, var(--gold-burnished), #E8C547);
+
+            --hero-gradient: linear-gradient(135deg, var(--green-deep) 0%, #0d2a22 50%, var(--black-obsidian) 100%);
+            --hero-overlay: rgba(0, 0, 0, 0.9);
+
+            --section-light-bg: var(--white-ivory);
+            --section-alt-bg: #f5f5f0;
+
+            --theme-transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        /* Light Mode Overrides */
+        [data-theme="light"] {
+            --bg-primary: #FAFAF8;
+            --bg-secondary: #F5F4F0;
+            --bg-tertiary: #EEEEE8;
+            --bg-elevated: #FFFFFF;
+
+            --text-primary: #1A1A1A;
+            --text-secondary: #2D2D2D;
+            --text-tertiary: #5A5A5A;
+            --text-muted: #888888;
+
+            --card-bg: #FFFFFF;
+            --card-bg-hover: #FAFAF8;
+            --card-border: rgba(13, 61, 46, 0.15);
+            --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+
+            --nav-bg: rgba(250, 250, 248, 0.95);
+            --nav-border: rgba(13, 61, 46, 0.1);
+
+            --border-subtle: rgba(13, 61, 46, 0.1);
+            --border-medium: rgba(13, 61, 46, 0.2);
+
+            --accent-primary: #0D3D2E;
+            --accent-secondary: #1A5C45;
+            --accent-gradient: linear-gradient(135deg, #0D3D2E, #1A5C45);
+
+            --hero-gradient: linear-gradient(135deg, #0D3D2E 0%, #1A5C45 50%, #0D3D2E 100%);
+            --hero-overlay: rgba(13, 61, 46, 0.85);
+
+            --section-light-bg: #FFFFFF;
+            --section-alt-bg: #F5F4F0;
+
+            /* Override base color variables for light mode */
+            --gold-burnished: #0D3D2E;
+            --gold-light: #1A5C45;
+        }
+
+        /* Apply theme transition to key elements */
+        body,
+        .header,
+        .nav-container,
+        .tourism-hero,
+        .destinations-section,
+        .experiences-section,
+        .regions-section,
+        .visa-section,
+        .practical-section,
+        .cta-section,
+        .footer,
+        .destination-card,
+        .experience-card,
+        .visa-info-card,
+        .practical-card {
+            transition: var(--theme-transition);
+        }
+
+        /* ========== Theme Toggle Button Styles ========== */
+        .theme-toggle {
+            position: relative;
+            width: 48px;
+            height: 48px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1);
+            background: rgba(255, 255, 255, 0.15);
+            border-color: var(--gold-burnished);
+            box-shadow: 0 0 20px rgba(201, 162, 39, 0.3);
+        }
+
+        .toggle-stars {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+        }
+
+        .toggle-star {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: #FFD700;
+            border-radius: 50%;
+            opacity: 0.8;
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+
+        .toggle-star:nth-child(1) { top: 8px; left: 10px; animation: twinkle 2s ease-in-out infinite; }
+        .toggle-star:nth-child(2) { top: 12px; right: 8px; animation: twinkle 2s ease-in-out infinite 0.3s; }
+        .toggle-star:nth-child(3) { bottom: 10px; left: 14px; animation: twinkle 2s ease-in-out infinite 0.6s; }
+        .toggle-star:nth-child(4) { bottom: 14px; right: 12px; animation: twinkle 2s ease-in-out infinite 0.9s; }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.8; transform: scale(1); }
+            50% { opacity: 0.3; transform: scale(0.5); }
+        }
+
+        .toggle-orb {
+            position: relative;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .toggle-icon {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .toggle-icon.moon {
+            color: #F5F3CE;
+            opacity: 1;
+            transform: rotate(0deg) scale(1);
+        }
+
+        .toggle-icon.sun {
+            color: #FFD700;
+            opacity: 0;
+            transform: rotate(-90deg) scale(0.5);
+        }
+
+        /* Light mode toggle states */
+        [data-theme="light"] .theme-toggle {
+            background: rgba(13, 61, 46, 0.1);
+            border-color: rgba(13, 61, 46, 0.2);
+        }
+
+        [data-theme="light"] .theme-toggle:hover {
+            background: rgba(13, 61, 46, 0.15);
+            border-color: #0D3D2E;
+            box-shadow: 0 0 20px rgba(13, 61, 46, 0.2);
+        }
+
+        [data-theme="light"] .toggle-star {
+            opacity: 0;
+            transform: scale(0);
+        }
+
+        [data-theme="light"] .toggle-icon.moon {
+            opacity: 0;
+            transform: rotate(90deg) scale(0.5);
+        }
+
+        [data-theme="light"] .toggle-icon.sun {
+            color: #0D3D2E;
+            opacity: 1;
+            transform: rotate(0deg) scale(1);
+        }
+
+        /* Tourism Hero - Immersive Full Screen */
+        .tourism-hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--green-deep) 0%, #0d2a22 50%, var(--black-obsidian) 100%);
+            overflow: hidden;
+        }
+
+        .tourism-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(circle at 20% 80%, rgba(201,162,39,0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(139,35,50,0.1) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(27,77,62,0.3) 0%, transparent 70%);
+        }
+
+        /* Animated Adinkra Pattern Background */
+        .adinkra-pattern {
+            position: absolute;
+            inset: 0;
+            opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 5 L55 30 L30 55 L5 30 Z M30 15 L45 30 L30 45 L15 30 Z' fill='none' stroke='%23C9A227' stroke-width='1'/%3E%3C/svg%3E");
+            background-size: 60px 60px;
+        }
+
+        .tourism-hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 900px;
+            padding: 2rem;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(201,162,39,0.15);
+            border: 1px solid rgba(201,162,39,0.3);
+            padding: 0.5rem 1.25rem;
+            border-radius: 100px;
+            font-size: 0.85rem;
+            color: var(--gold-burnished);
+            margin-bottom: 2rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .hero-badge svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .tourism-hero h1 {
+            font-family: 'Fraunces', serif;
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 700;
+            color: var(--white-ivory);
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        .tourism-hero h1 span {
+            display: block;
+            background: linear-gradient(135deg, var(--gold-burnished), #E8C547);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-tagline {
+            font-size: 1.35rem;
+            color: rgba(250,250,248,0.8);
+            max-width: 600px;
+            margin: 0 auto 2.5rem;
+            line-height: 1.6;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .hero-stat {
+            text-align: center;
+        }
+
+        .hero-stat-number {
+            font-family: 'Fraunces', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--gold-burnished);
+        }
+
+        .hero-stat-label {
+            font-size: 0.85rem;
+            color: rgba(250,250,248,0.6);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-hero {
+            padding: 1rem 2.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-hero-primary {
+            background: var(--gold-burnished);
+            color: var(--black-obsidian);
+        }
+
+        .btn-hero-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(201,162,39,0.4);
+        }
+
+        .btn-hero-secondary {
+            background: rgba(255,255,255,0.1);
+            color: var(--white-ivory);
+            border: 1px solid rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-hero-secondary:hover {
+            background: rgba(255,255,255,0.2);
+            border-color: rgba(255,255,255,0.4);
+        }
+
+        /* Scroll Indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            color: rgba(250,250,248,0.5);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+        }
+
+        .scroll-indicator .mouse {
+            width: 24px;
+            height: 38px;
+            border: 2px solid rgba(250,250,248,0.3);
+            border-radius: 12px;
+            position: relative;
+        }
+
+        .scroll-indicator .wheel {
+            width: 4px;
+            height: 8px;
+            background: var(--gold-burnished);
+            border-radius: 2px;
+            position: absolute;
+            top: 6px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: scrollWheel 2s infinite;
+        }
+
+        @keyframes scrollWheel {
+            0%, 100% { opacity: 1; top: 6px; }
+            50% { opacity: 0.3; top: 16px; }
+        }
+
+        /* Destinations Grid */
+        .destinations-section {
+            padding: 6rem 2rem;
+            background: var(--white-ivory);
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 4rem;
+        }
+
+        .section-label {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--gold-burnished);
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-family: 'Fraunces', serif;
+            font-size: 2.75rem;
+            color: var(--black-obsidian);
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            color: var(--gray-mid);
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .destinations-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 1.5rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .destination-card {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            background: var(--green-deep);
+            min-height: 320px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+        }
+
+        .destination-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+        }
+
+        .destination-card.large {
+            grid-column: span 8;
+            min-height: 450px;
+        }
+
+        .destination-card.medium {
+            grid-column: span 4;
+        }
+
+        .destination-card.small {
+            grid-column: span 4;
+        }
+
+        .destination-image {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, var(--green-deep) 0%, #2d5a4a 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .destination-image-placeholder {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: rgba(201,162,39,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .destination-image-placeholder svg {
+            width: 40px;
+            height: 40px;
+            color: var(--gold-burnished);
+        }
+
+        .destination-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.3) 50%, transparent 100%);
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
+
+        .destination-tag {
+            position: absolute;
+            top: 1.5rem;
+            left: 1.5rem;
+            background: var(--gold-burnished);
+            color: var(--black-obsidian);
+            padding: 0.35rem 0.75rem;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .destination-name {
+            font-family: 'Fraunces', serif;
+            font-size: 1.75rem;
+            color: var(--white-ivory);
+            margin-bottom: 0.5rem;
+        }
+
+        .destination-card.large .destination-name {
+            font-size: 2.5rem;
+        }
+
+        .destination-location {
+            color: rgba(250,250,248,0.7);
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .destination-location svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* Experiences Section */
+        .experiences-section {
+            padding: 6rem 2rem;
+            background: linear-gradient(180deg, #f5f5f0 0%, var(--white-ivory) 100%);
+        }
+
+        .experiences-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .experience-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .experience-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .experience-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            background: linear-gradient(135deg, var(--green-deep) 0%, #2d5a4a 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .experience-icon svg {
+            width: 36px;
+            height: 36px;
+            color: var(--gold-burnished);
+        }
+
+        .experience-title {
+            font-family: 'Fraunces', serif;
+            font-size: 1.35rem;
+            color: var(--black-obsidian);
+            margin-bottom: 0.75rem;
+        }
+
+        .experience-description {
+            color: var(--gray-mid);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Regions Map Section */
+        .regions-section {
+            padding: 6rem 2rem;
+            background: var(--green-deep);
+            color: var(--white-ivory);
+        }
+
+        .regions-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .regions-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .region-item {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 1rem 1.25rem;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .region-item:hover {
+            background: rgba(201,162,39,0.15);
+            border-color: rgba(201,162,39,0.3);
+            transform: translateX(5px);
+        }
+
+        .region-number {
+            width: 28px;
+            height: 28px;
+            background: var(--gold-burnished);
+            color: var(--black-obsidian);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .region-name {
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .regions-map-placeholder {
+            aspect-ratio: 1;
+            background: rgba(255,255,255,0.05);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .map-placeholder-content {
+            text-align: center;
+        }
+
+        .map-placeholder-content svg {
+            width: 120px;
+            height: 120px;
+            color: var(--gold-burnished);
+            opacity: 0.5;
+            margin-bottom: 1rem;
+        }
+
+        .map-placeholder-content p {
+            color: rgba(250,250,248,0.5);
+            font-size: 0.9rem;
+        }
+
+        /* Visa Info Section */
+        .visa-section {
+            padding: 6rem 2rem;
+            background: var(--white-ivory);
+        }
+
+        .visa-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .visa-info-card {
+            background: white;
+            border-radius: 16px;
+            padding: 3rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+
+        .visa-info-card h3 {
+            font-family: 'Fraunces', serif;
+            font-size: 1.75rem;
+            color: var(--black-obsidian);
+            margin-bottom: 1.5rem;
+        }
+
+        .visa-types {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .visa-type {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.25rem;
+            background: #f8f8f6;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .visa-type:hover {
+            background: rgba(27,77,62,0.05);
+        }
+
+        .visa-type-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .visa-type-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--green-deep);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .visa-type-icon svg {
+            width: 24px;
+            height: 24px;
+            color: var(--gold-burnished);
+        }
+
+        .visa-type-name {
+            font-weight: 600;
+            color: var(--black-obsidian);
+            margin-bottom: 0.25rem;
+        }
+
+        .visa-type-desc {
+            font-size: 0.85rem;
+            color: var(--gray-mid);
+        }
+
+        .visa-type-duration {
+            font-weight: 600;
+            color: var(--green-deep);
+            white-space: nowrap;
+        }
+
+        .visa-sidebar {
+            position: sticky;
+            top: 100px;
+        }
+
+        .visa-cta-card {
+            background: linear-gradient(135deg, var(--green-deep) 0%, #0d2a22 100%);
+            border-radius: 16px;
+            padding: 2.5rem;
+            color: var(--white-ivory);
+            text-align: center;
+        }
+
+        .visa-cta-card h4 {
+            font-family: 'Fraunces', serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .visa-cta-card p {
+            color: rgba(250,250,248,0.8);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .visa-cta-card .btn {
+            width: 100%;
+            justify-content: center;
+        }
+
+        .visa-free-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(201,162,39,0.2);
+            color: var(--gold-burnished);
+            padding: 0.75rem 1.25rem;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-top: 1.5rem;
+        }
+
+        .visa-free-badge svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        /* Practical Info Section */
+        .practical-section {
+            padding: 6rem 2rem;
+            background: #f5f5f0;
+        }
+
+        .practical-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .practical-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.75rem;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .practical-card h4 {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-family: 'Fraunces', serif;
+            font-size: 1.1rem;
+            color: var(--black-obsidian);
+            margin-bottom: 1rem;
+        }
+
+        .practical-card h4 svg {
+            width: 24px;
+            height: 24px;
+            color: var(--green-deep);
+        }
+
+        .practical-card p {
+            color: var(--gray-mid);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .practical-card ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .practical-card li {
+            color: var(--gray-mid);
+            font-size: 0.9rem;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .practical-card li:last-child {
+            border-bottom: none;
+        }
+
+        /* Call to Action Section */
+        .cta-section {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, var(--gold-burnished) 0%, #D4AF37 100%);
+            text-align: center;
+        }
+
+        .cta-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .cta-section h2 {
+            font-family: 'Fraunces', serif;
+            font-size: 2.5rem;
+            color: var(--black-obsidian);
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            color: rgba(10,10,10,0.7);
+            font-size: 1.15rem;
+            margin-bottom: 2rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-cta-dark {
+            background: var(--black-obsidian);
+            color: var(--white-ivory);
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-cta-dark:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .btn-cta-outline {
+            background: transparent;
+            color: var(--black-obsidian);
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 2px solid var(--black-obsidian);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-cta-outline:hover {
+            background: var(--black-obsidian);
+            color: var(--white-ivory);
+        }
+
+        /* ═══════════════════════════════════════════════════════════════════════════════
+           MINIMAL NAVIGATION
+           ═══════════════════════════════════════════════════════════════════════════════ */
+
+        .nav-main {
+            background: var(--nav-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 0 3rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-subtle);
+            transition: all 0.3s ease;
+        }
+
+        .nav-main.scrolled {
+            background: rgba(3, 3, 3, 0.95);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 80px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+            color: var(--text-primary);
+        }
+
+        .logo-emblem {
+            width: 48px;
+            height: 48px;
+            flex-shrink: 0;
+        }
+
+        .logo-star {
+            width: 100%;
+            height: 100%;
+            fill: #D4AF37;
+            transition: transform 0.4s ease;
+        }
+
+        .logo:hover .logo-star {
+            transform: rotate(36deg);
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.2;
+        }
+
+        .logo-title {
+            font-family: 'Fraunces', serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .logo-subtitle {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--text-muted);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            font-weight: 500;
+            padding: 0.5rem 0;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #D4AF37;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #D4AF37;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .nav-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            color: var(--text-secondary);
+            transition: color 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav-btn:hover {
+            color: #D4AF37;
+        }
+
+        .nav-btn svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .nav-cta {
+            background: #D4AF37;
+            color: #0A0A0A;
+            padding: 0.65rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+        }
+
+        .nav-cta:hover {
+            background: #E5C158;
+            transform: translateY(-1px);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .mobile-menu-btn svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--bg-primary);
+            z-index: 999;
+            padding: 6rem 2rem 2rem;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .mobile-menu-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            list-style: none;
+        }
+
+        .mobile-menu-links a {
+            display: block;
+            padding: 1rem 0;
+            text-decoration: none;
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            font-family: 'Fraunces', serif;
+            border-bottom: 1px solid var(--border-subtle);
+            transition: color 0.3s ease;
+        }
+
+        .mobile-menu-links a:hover {
+            color: #D4AF37;
+        }
+
+        .mobile-menu-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--text-primary);
+            padding: 0.5rem;
+        }
+
+        .mobile-menu-close svg {
+            width: 28px;
+            height: 28px;
+        }
+
+        @media (max-width: 1024px) {
+            .nav-main {
+                padding: 0 1.5rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .nav-cta {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .logo-text {
+                display: none;
+            }
+
+            .nav-container {
+                height: 70px;
+            }
+        }
+
+        [data-theme="light"] .nav-main {
+            border-bottom-color: rgba(0, 0, 0, 0.08);
+        }
+
+        [data-theme="light"] .nav-main.scrolled {
+            background: rgba(250, 250, 248, 0.98);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        [data-theme="light"] .nav-cta {
+            background: #0D3D2E;
+            color: #fff;
+        }
+
+        [data-theme="light"] .nav-cta:hover {
+            background: #1A5C45;
+        }
+
+        [data-theme="light"] .nav-links a:hover,
+        [data-theme="light"] .nav-links a.active {
+            color: #0D3D2E;
+        }
+
+        [data-theme="light"] .nav-links a::after {
+            background: #0D3D2E;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .destination-card.large,
+            .destination-card.medium,
+            .destination-card.small {
+                grid-column: span 6;
+            }
+
+            .regions-content {
+                grid-template-columns: 1fr;
+            }
+
+            .regions-map-placeholder {
+                display: none;
+            }
+
+            .visa-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .tourism-hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-stats {
+                gap: 1.5rem;
+            }
+
+            .hero-stat-number {
+                font-size: 2rem;
+            }
+
+            .destination-card.large,
+            .destination-card.medium,
+            .destination-card.small {
+                grid-column: span 12;
+                min-height: 280px;
+            }
+
+            .regions-list {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ========== Light Mode Page Element Overrides ========== */
+        /* Header & Navigation */
+        [data-theme="light"] .header {
+            background: var(--nav-bg);
+            border-bottom: 1px solid var(--nav-border);
+            backdrop-filter: blur(20px);
+        }
+
+        [data-theme="light"] .logo {
+            color: var(--text-primary);
+        }
+
+        [data-theme="light"] .nav-link {
+            color: var(--text-secondary);
+        }
+
+        [data-theme="light"] .nav-link:hover,
+        [data-theme="light"] .nav-link.active {
+            color: #0D3D2E;
+        }
+
+        [data-theme="light"] .search-btn {
+            color: var(--text-secondary);
+        }
+
+        [data-theme="light"] .search-btn:hover {
+            color: #0D3D2E;
+        }
+
+        /* Hero Section Light Mode */
+        [data-theme="light"] .tourism-hero {
+            background: var(--hero-gradient);
+        }
+
+        [data-theme="light"] .tourism-hero::before {
+            background:
+                radial-gradient(circle at 20% 80%, rgba(26, 92, 69, 0.2) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(13, 61, 46, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+        }
+
+        [data-theme="light"] .hero-badge {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.3);
+            color: #FFFFFF;
+        }
+
+        [data-theme="light"] .tourism-hero h1 {
+            color: #FFFFFF;
+        }
+
+        [data-theme="light"] .tourism-hero h1 span {
+            background: linear-gradient(135deg, #FFFFFF, #F5F4F0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        [data-theme="light"] .hero-tagline {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        [data-theme="light"] .hero-stat-number {
+            color: #FFFFFF;
+        }
+
+        [data-theme="light"] .hero-stat-label {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        [data-theme="light"] .btn-hero-primary {
+            background: #FFFFFF;
+            color: #0D3D2E;
+        }
+
+        [data-theme="light"] .btn-hero-primary:hover {
+            box-shadow: 0 15px 40px rgba(255, 255, 255, 0.3);
+        }
+
+        [data-theme="light"] .btn-hero-secondary {
+            background: rgba(255, 255, 255, 0.15);
+            color: #FFFFFF;
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        [data-theme="light"] .btn-hero-secondary:hover {
+            background: rgba(255, 255, 255, 0.25);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        [data-theme="light"] .scroll-indicator {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        [data-theme="light"] .scroll-indicator .mouse {
+            border-color: rgba(255, 255, 255, 0.4);
+        }
+
+        [data-theme="light"] .scroll-indicator .wheel {
+            background: #FFFFFF;
+        }
+
+        /* Destinations Section Light Mode */
+        [data-theme="light"] .destinations-section {
+            background: var(--section-light-bg);
+        }
+
+        [data-theme="light"] .section-label {
+            color: #0D3D2E;
+        }
+
+        [data-theme="light"] .section-title {
+            color: var(--text-primary);
+        }
+
+        [data-theme="light"] .section-subtitle {
+            color: var(--text-tertiary);
+        }
+
+        [data-theme="light"] .destination-card {
+            background: #0D3D2E;
+            border: 1px solid var(--card-border);
+        }
+
+        [data-theme="light"] .destination-card:hover {
+            box-shadow: 0 25px 50px rgba(13, 61, 46, 0.2);
+        }
+
+        [data-theme="light"] .destination-image {
+            background: linear-gradient(135deg, #0D3D2E 0%, #1A5C45 100%);
+        }
+
+        [data-theme="light"] .destination-tag {
+            background: #FFFFFF;
+            color: #0D3D2E;
+        }
+
+        /* Experiences Section Light Mode */
+        [data-theme="light"] .experiences-section {
+            background: linear-gradient(180deg, var(--section-alt-bg) 0%, var(--section-light-bg) 100%);
+        }
+
+        [data-theme="light"] .experience-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            box-shadow: var(--card-shadow);
+        }
+
+        [data-theme="light"] .experience-card:hover {
+            box-shadow: 0 20px 40px rgba(13, 61, 46, 0.12);
+            border-color: rgba(13, 61, 46, 0.25);
+        }
+
+        [data-theme="light"] .experience-icon {
+            background: linear-gradient(135deg, #0D3D2E 0%, #1A5C45 100%);
+        }
+
+        [data-theme="light"] .experience-icon svg {
+            color: #FFFFFF;
+        }
+
+        [data-theme="light"] .experience-title {
+            color: var(--text-primary);
+        }
+
+        [data-theme="light"] .experience-description {
+            color: var(--text-tertiary);
+        }
+
+        /* Regions Section Light Mode */
+        [data-theme="light"] .regions-section {
+            background: #0D3D2E;
+        }
+
+        [data-theme="light"] .regions-section .section-title {
+            color: #FFFFFF !important;
+        }
+
+        [data-theme="light"] .region-item {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.15);
+        }
+
+        [data-theme="light"] .region-item:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        [data-theme="light"] .region-number {
+            background: #FFFFFF;
+            color: #0D3D2E;
+        }
+
+        [data-theme="light"] .region-name {
+            color: #FFFFFF;
+        }
+
+        [data-theme="light"] .regions-map-placeholder {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        [data-theme="light"] .map-placeholder-content svg {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        [data-theme="light"] .map-placeholder-content p {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Visa Section Light Mode */
+        [data-theme="light"] .visa-section {
+            background: var(--section-light-bg);
+        }
+
+        [data-theme="light"] .visa-info-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            box-shadow: var(--card-shadow);
+        }
+
+        [data-theme="light"] .visa-info-card h3 {
+            color: var(--text-primary);
+        }
+
+        [data-theme="light"] .visa-type {
+            background: var(--section-alt-bg);
+            border: 1px solid var(--border-subtle);
+        }
+
+        [data-theme="light"] .visa-type:hover {
+            background: rgba(13, 61, 46, 0.05);
+            border-color: rgba(13, 61, 46, 0.2);
+        }
+
+        [data-theme="light"] .visa-type-icon {
+            background: #0D3D2E;
+        }
+
+        [data-theme="light"] .visa-type-icon svg {
+            color: #FFFFFF;
+        }
+
+        [data-theme="light"] .visa-type-name {
+            color: var(--text-primary);
+        }
+
+        [data-theme="light"] .visa-type-desc {
+            color: var(--text-tertiary);
+        }
+
+        [data-theme="light"] .visa-type-duration {
+            color: #0D3D2E;
+        }
+
+        [data-theme="light"] .visa-cta-card {
+            background: linear-gradient(135deg, #0D3D2E 0%, #1A5C45 100%);
+        }
+
+        [data-theme="light"] .visa-cta-card h4,
+        [data-theme="light"] .visa-cta-card p {
+            color: #FFFFFF;
+        }
+
+        [data-theme="light"] .visa-cta-card p {
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        [data-theme="light"] .visa-cta-card .btn {
+            background: #FFFFFF;
+            color: #0D3D2E;
+        }
+
+        [data-theme="light"] .visa-cta-card .btn:hover {
+            background: #F5F4F0;
+        }
+
+        [data-theme="light"] .visa-free-badge {
+            background: rgba(255, 255, 255, 0.2);
+            color: #FFFFFF;
+        }
+
+        [data-theme="light"] .visa-free-badge svg {
+            color: #FFFFFF;
+        }
+
+        /* Practical Section Light Mode */
+        [data-theme="light"] .practical-section {
+            background: var(--section-alt-bg);
+        }
+
+        [data-theme="light"] .practical-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            box-shadow: var(--card-shadow);
+        }
+
+        [data-theme="light"] .practical-card h4 {
+            color: var(--text-primary);
+        }
+
+        [data-theme="light"] .practical-card h4 svg {
+            color: #0D3D2E;
+        }
+
+        [data-theme="light"] .practical-card p,
+        [data-theme="light"] .practical-card li {
+            color: var(--text-tertiary);
+        }
+
+        [data-theme="light"] .practical-card li {
+            border-bottom-color: var(--border-subtle);
+        }
+
+        /* CTA Section Light Mode */
+        [data-theme="light"] .cta-section {
+            background: linear-gradient(135deg, #0D3D2E 0%, #1A5C45 100%);
+        }
+
+        [data-theme="light"] .cta-section h2 {
+            color: #FFFFFF;
+        }
+
+        [data-theme="light"] .cta-section p {
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        [data-theme="light"] .btn-cta-dark {
+            background: #FFFFFF;
+            color: #0D3D2E;
+        }
+
+        [data-theme="light"] .btn-cta-dark:hover {
+            background: #F5F4F0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        [data-theme="light"] .btn-cta-outline {
+            background: transparent;
+            color: #FFFFFF;
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        [data-theme="light"] .btn-cta-outline:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: #FFFFFF;
+            color: #FFFFFF;
+        }
+
+        /* Footer Light Mode */
+        [data-theme="light"] .footer {
+            background: #0D3D2E;
+        }
+
+        [data-theme="light"] .footer-logo svg {
+            fill: #FFFFFF;
+        }
+
+        [data-theme="light"] .footer-logo span,
+        [data-theme="light"] .footer-tagline {
+            color: #FFFFFF;
+        }
+
+        [data-theme="light"] .footer-column h4 {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        [data-theme="light"] .footer-column a {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        [data-theme="light"] .footer-column a:hover {
+            color: #FFFFFF;
+        }
+
+        [data-theme="light"] .footer-bottom {
+            border-top-color: rgba(255, 255, 255, 0.15);
+        }
+
+        [data-theme="light"] .footer-bottom p {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        [data-theme="light"] .footer-legal a {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        [data-theme="light"] .footer-legal a:hover {
+            color: #FFFFFF;
+        }
+
+        /* Adinkra Pattern Light Mode */
+        [data-theme="light"] .adinkra-pattern {
+            opacity: 0.05;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 5 L55 30 L30 55 L5 30 Z M30 15 L45 30 L30 45 L15 30 Z' fill='none' stroke='%23FFFFFF' stroke-width='1'/%3E%3C/svg%3E");
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav-main">
+        <div class="nav-container">
+            <a href="../index.html" class="logo">
+                <div class="logo-emblem">
+                    <svg class="logo-star" viewBox="0 0 100 100">
+                        <polygon points="50,5 61,40 98,40 68,62 79,97 50,75 21,97 32,62 2,40 39,40"/>
+                    </svg>
+                </div>
+                <div class="logo-text">
+                    <span class="logo-title">Republic of Ghana</span>
+                    <span class="logo-subtitle">Official Government Portal</span>
+                </div>
+            </a>
+
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../services/index.html">Services</a></li>
+                <li><a href="../government/index.html">Government</a></li>
+                <li><a href="../business/index.html">Invest</a></li>
+                <li><a href="index.html" class="active">Visit Ghana</a></li>
+                <li><a href="../contact.html">Contact</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <button class="nav-btn" aria-label="Search">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"/>
+                        <path d="M21 21l-4.35-4.35"/>
+                    </svg>
+                </button>
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <div class="toggle-orb">
+                        <svg class="toggle-icon moon" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                        </svg>
+                        <svg class="toggle-icon sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="5"/>
+                            <line x1="12" y1="1" x2="12" y2="3"/>
+                            <line x1="12" y1="21" x2="12" y2="23"/>
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                            <line x1="1" y1="12" x2="3" y2="12"/>
+                            <line x1="21" y1="12" x2="23" y2="12"/>
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                        </svg>
+                    </div>
+                </button>
+                <a href="../services/index.html" class="nav-cta">Access Services</a>
+                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open menu">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="3" y1="6" x2="21" y2="6"/>
+                        <line x1="3" y1="12" x2="21" y2="12"/>
+                        <line x1="3" y1="18" x2="21" y2="18"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close menu">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="18" y1="6" x2="6" y2="18"/>
+                <line x1="6" y1="6" x2="18" y2="18"/>
+            </svg>
+        </button>
+        <ul class="mobile-menu-links">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../services/index.html">Services</a></li>
+            <li><a href="../government/index.html">Government</a></li>
+            <li><a href="../business/index.html">Invest</a></li>
+            <li><a href="index.html">Visit Ghana</a></li>
+            <li><a href="../contact.html">Contact</a></li>
+        </ul>
+    </div>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="tourism-hero">
+            <div class="adinkra-pattern"></div>
+            <div class="tourism-hero-content">
+                <div class="hero-badge">
+                    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path d="M3.055 11H5a2 2 0 0 1 2 2v1a2 2 0 0 0 2 2 2 2 0 0 1 2 2v2.945M8 3.935V5.5A2.5 2.5 0 0 0 10.5 8h.5a2 2 0 0 1 2 2 2 2 0 1 0 4 0 2 2 0 0 1 2-2h1.064M15 20.488V18a2 2 0 0 1 2-2h3.064"/>
+                        <circle cx="12" cy="12" r="10"/>
+                    </svg>
+                    West Africa's Gateway
+                </div>
+                <h1>
+                    Discover
+                    <span>Ghana</span>
+                </h1>
+                <p class="hero-tagline">
+                    Where ancient kingdoms meet vibrant modernity. Experience the warmth, culture, and natural beauty of the Gold Coast.
+                </p>
+                <div class="hero-stats">
+                    <div class="hero-stat">
+                        <div class="hero-stat-number">16</div>
+                        <div class="hero-stat-label">Regions</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="hero-stat-number">500+</div>
+                        <div class="hero-stat-label">Attractions</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="hero-stat-number">540km</div>
+                        <div class="hero-stat-label">Coastline</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="hero-stat-number">100+</div>
+                        <div class="hero-stat-label">Ethnic Groups</div>
+                    </div>
+                </div>
+                <div class="hero-cta">
+                    <a href="visa.html" class="btn-hero btn-hero-primary">
+                        Plan Your Visit
+                        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                    <a href="attractions.html" class="btn-hero btn-hero-secondary">
+                        Explore Attractions
+                    </a>
+                </div>
+            </div>
+            <div class="scroll-indicator">
+                <div class="mouse">
+                    <div class="wheel"></div>
+                </div>
+                <span>Scroll to explore</span>
+            </div>
+        </section>
+
+        <!-- Top Destinations -->
+        <section class="destinations-section">
+            <div class="section-header">
+                <span class="section-label">Must-Visit Destinations</span>
+                <h2 class="section-title">Explore Ghana's Treasures</h2>
+                <p class="section-subtitle">From UNESCO World Heritage sites to pristine beaches, discover the diverse landscapes and rich history of Ghana.</p>
+            </div>
+            <div class="destinations-grid">
+                <div class="destination-card large">
+                    <div class="destination-image">
+                        <div class="destination-image-placeholder">
+                            <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                                <path d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 0 1 3 12c0-1.605.42-3.113 1.157-4.418"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="destination-overlay">
+                        <span class="destination-tag">UNESCO Heritage</span>
+                        <h3 class="destination-name">Cape Coast Castle</h3>
+                        <p class="destination-location">
+                            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/>
+                                <path d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"/>
+                            </svg>
+                            Central Region
+                        </p>
+                    </div>
+                </div>
+                <div class="destination-card medium">
+                    <div class="destination-image">
+                        <div class="destination-image-placeholder">
+                            <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                                <path d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="destination-overlay">
+                        <span class="destination-tag">Nature</span>
+                        <h3 class="destination-name">Kakum National Park</h3>
+                        <p class="destination-location">
+                            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/>
+                                <path d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"/>
+                            </svg>
+                            Central Region
+                        </p>
+                    </div>
+                </div>
+                <div class="destination-card small">
+                    <div class="destination-image">
+                        <div class="destination-image-placeholder">
+                            <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                                <path d="M8.25 21v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21m0 0h4.5V3.545M12.75 21h7.5V10.75M2.25 21h1.5m18 0h-18M2.25 9l4.5-1.636M18.75 3l-1.5.545m0 6.205l3 1m1.5.5l-1.5-.5M6.75 7.364V3h-3v18m3-13.636l10.5-3.819"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="destination-overlay">
+                        <h3 class="destination-name">Manhyia Palace</h3>
+                        <p class="destination-location">
+                            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/>
+                                <path d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"/>
+                            </svg>
+                            Ashanti Region
+                        </p>
+                    </div>
+                </div>
+                <div class="destination-card small">
+                    <div class="destination-image">
+                        <div class="destination-image-placeholder">
+                            <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                                <path d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="destination-overlay">
+                        <span class="destination-tag">Beach</span>
+                        <h3 class="destination-name">Busua Beach</h3>
+                        <p class="destination-location">
+                            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/>
+                                <path d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"/>
+                            </svg>
+                            Western Region
+                        </p>
+                    </div>
+                </div>
+                <div class="destination-card small">
+                    <div class="destination-image">
+                        <div class="destination-image-placeholder">
+                            <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                                <path d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 3m8.5-3l1 3m0 0l.5 1.5m-.5-1.5h-9.5m0 0l-.5 1.5M9 11.25v1.5M12 9v3.75m3-6v6"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="destination-overlay">
+                        <span class="destination-tag">Waterfall</span>
+                        <h3 class="destination-name">Wli Waterfalls</h3>
+                        <p class="destination-location">
+                            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/>
+                                <path d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"/>
+                            </svg>
+                            Volta Region
+                        </p>
+                    </div>
+                </div>
+                <div class="destination-card medium">
+                    <div class="destination-image">
+                        <div class="destination-image-placeholder">
+                            <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                                <path d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0012 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="destination-overlay">
+                        <span class="destination-tag">Heritage</span>
+                        <h3 class="destination-name">Elmina Castle</h3>
+                        <p class="destination-location">
+                            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/>
+                                <path d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"/>
+                            </svg>
+                            Central Region
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experiences -->
+        <section class="experiences-section">
+            <div class="section-header">
+                <span class="section-label">Unique Experiences</span>
+                <h2 class="section-title">What Awaits You</h2>
+                <p class="section-subtitle">Immerse yourself in authentic Ghanaian experiences that will stay with you forever.</p>
+            </div>
+            <div class="experiences-grid">
+                <div class="experience-card">
+                    <div class="experience-icon">
+                        <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                            <path d="M9 9l10.5-3m0 6.553v3.75a2.25 2.25 0 01-1.632 2.163l-1.32.377a1.803 1.803 0 11-.99-3.467l2.31-.66a2.25 2.25 0 001.632-2.163zm0 0V2.25L9 5.25v10.303m0 0v3.75a2.25 2.25 0 01-1.632 2.163l-1.32.377a1.803 1.803 0 01-.99-3.467l2.31-.66A2.25 2.25 0 009 15.553z"/>
+                        </svg>
+                    </div>
+                    <h3 class="experience-title">Festivals & Culture</h3>
+                    <p class="experience-description">Experience vibrant festivals like Homowo, Aboakyir, and the famous Chale Wote Street Art Festival.</p>
+                </div>
+                <div class="experience-card">
+                    <div class="experience-icon">
+                        <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                            <path d="M12.75 3.03v.568c0 .334.148.65.405.864l1.068.89c.442.369.535 1.01.216 1.49l-.51.766a2.25 2.25 0 01-1.161.886l-.143.048a1.107 1.107 0 00-.57 1.664c.369.555.169 1.307-.427 1.605L9 13.125l.423 1.059a.956.956 0 01-1.652.928l-.679-.906a1.125 1.125 0 00-1.906.172L4.5 15.75l-.612.153M12.75 3.031a9 9 0 00-8.862 12.872M12.75 3.031a9 9 0 016.69 14.036m0 0l-.177-.529A2.25 2.25 0 0017.128 15H16.5l-.324-.324a1.453 1.453 0 00-2.328.377l-.036.073a1.586 1.586 0 01-.982.816l-.99.282c-.55.157-.894.702-.8 1.267l.073.438c.08.474.49.821.97.821.846 0 1.598.542 1.865 1.345l.215.643m5.276-3.67a9.012 9.012 0 01-5.276 3.67m0 0a9 9 0 01-10.275-4.835M15.75 9c0 .896-.393 1.7-1.016 2.25"/>
+                        </svg>
+                    </div>
+                    <h3 class="experience-title">Wildlife & Safari</h3>
+                    <p class="experience-description">Spot elephants at Mole National Park, Ghana's largest wildlife refuge with diverse fauna.</p>
+                </div>
+                <div class="experience-card">
+                    <div class="experience-icon">
+                        <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                            <path d="M15.362 5.214A8.252 8.252 0 0112 21 8.25 8.25 0 016.038 7.048 8.287 8.287 0 009 9.6a8.983 8.983 0 013.361-6.867 8.21 8.21 0 003 2.48z"/>
+                            <path d="M12 18a3.75 3.75 0 00.495-7.467 5.99 5.99 0 00-1.925 3.546 5.974 5.974 0 01-2.133-1A3.75 3.75 0 0012 18z"/>
+                        </svg>
+                    </div>
+                    <h3 class="experience-title">Cuisine & Markets</h3>
+                    <p class="experience-description">Taste jollof rice, kelewele, and waakye while exploring bustling markets like Makola.</p>
+                </div>
+                <div class="experience-card">
+                    <div class="experience-icon">
+                        <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                            <path d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5"/>
+                        </svg>
+                    </div>
+                    <h3 class="experience-title">History & Heritage</h3>
+                    <p class="experience-description">Walk through history at slave castles, Ashanti palaces, and the W.E.B. Du Bois Centre.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 16 Regions -->
+        <section class="regions-section">
+            <div class="section-header" style="color: var(--white-ivory);">
+                <span class="section-label">Discover Every Corner</span>
+                <h2 class="section-title" style="color: var(--white-ivory);">Ghana's 16 Regions</h2>
+                <p class="section-subtitle" style="color: rgba(250,250,248,0.7);">Each region offers unique landscapes, cultures, and attractions waiting to be explored.</p>
+            </div>
+            <div class="regions-content">
+                <div class="regions-list">
+                    <div class="region-item"><span class="region-number">1</span><span class="region-name">Greater Accra</span></div>
+                    <div class="region-item"><span class="region-number">2</span><span class="region-name">Ashanti</span></div>
+                    <div class="region-item"><span class="region-number">3</span><span class="region-name">Western</span></div>
+                    <div class="region-item"><span class="region-number">4</span><span class="region-name">Central</span></div>
+                    <div class="region-item"><span class="region-number">5</span><span class="region-name">Eastern</span></div>
+                    <div class="region-item"><span class="region-number">6</span><span class="region-name">Volta</span></div>
+                    <div class="region-item"><span class="region-number">7</span><span class="region-name">Northern</span></div>
+                    <div class="region-item"><span class="region-number">8</span><span class="region-name">Upper East</span></div>
+                    <div class="region-item"><span class="region-number">9</span><span class="region-name">Upper West</span></div>
+                    <div class="region-item"><span class="region-number">10</span><span class="region-name">Brong-Ahafo</span></div>
+                    <div class="region-item"><span class="region-number">11</span><span class="region-name">Oti</span></div>
+                    <div class="region-item"><span class="region-number">12</span><span class="region-name">Bono East</span></div>
+                    <div class="region-item"><span class="region-number">13</span><span class="region-name">Ahafo</span></div>
+                    <div class="region-item"><span class="region-number">14</span><span class="region-name">Savannah</span></div>
+                    <div class="region-item"><span class="region-number">15</span><span class="region-name">North East</span></div>
+                    <div class="region-item"><span class="region-number">16</span><span class="region-name">Western North</span></div>
+                </div>
+                <div class="regions-map-placeholder">
+                    <div class="map-placeholder-content">
+                        <svg fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24">
+                            <path d="M9 6.75V15m6-6v8.25m.503 3.498l4.875-2.437c.381-.19.622-.58.622-1.006V4.82c0-.836-.88-1.38-1.628-1.006l-3.869 1.934c-.317.159-.69.159-1.006 0L9.503 3.252a1.125 1.125 0 00-1.006 0L3.622 5.689C3.24 5.88 3 6.27 3 6.695V19.18c0 .836.88 1.38 1.628 1.006l3.869-1.934c.317-.159.69-.159 1.006 0l4.994 2.497c.317.158.69.158 1.006 0z"/>
+                        </svg>
+                        <p>Interactive Map Coming Soon</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Visa Information -->
+        <section class="visa-section">
+            <div class="section-header">
+                <span class="section-label">Entry Requirements</span>
+                <h2 class="section-title">Visa Information</h2>
+                <p class="section-subtitle">Ghana welcomes visitors from around the world. Find out what you need to enter.</p>
+            </div>
+            <div class="visa-grid">
+                <div class="visa-info-card">
+                    <h3>Visa Types</h3>
+                    <div class="visa-types">
+                        <div class="visa-type">
+                            <div class="visa-type-info">
+                                <div class="visa-type-icon">
+                                    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                        <path d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3.75h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008z"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <div class="visa-type-name">Tourist Visa</div>
+                                    <div class="visa-type-desc">For leisure and sightseeing</div>
+                                </div>
+                            </div>
+                            <span class="visa-type-duration">Up to 90 days</span>
+                        </div>
+                        <div class="visa-type">
+                            <div class="visa-type-info">
+                                <div class="visa-type-icon">
+                                    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                        <path d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 00.75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 00-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0112 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 01-.673-.38m0 0A2.18 2.18 0 013 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 013.413-.387m7.5 0V5.25A2.25 2.25 0 0013.5 3h-3a2.25 2.25 0 00-2.25 2.25v.894m7.5 0a48.667 48.667 0 00-7.5 0M12 12.75h.008v.008H12v-.008z"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <div class="visa-type-name">Business Visa</div>
+                                    <div class="visa-type-desc">For business meetings & trade</div>
+                                </div>
+                            </div>
+                            <span class="visa-type-duration">Up to 60 days</span>
+                        </div>
+                        <div class="visa-type">
+                            <div class="visa-type-info">
+                                <div class="visa-type-icon">
+                                    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                        <path d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <div class="visa-type-name">Transit Visa</div>
+                                    <div class="visa-type-desc">Passing through Ghana</div>
+                                </div>
+                            </div>
+                            <span class="visa-type-duration">Up to 48 hours</span>
+                        </div>
+                        <div class="visa-type">
+                            <div class="visa-type-info">
+                                <div class="visa-type-icon">
+                                    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                        <path d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <div class="visa-type-name">Year of Return</div>
+                                    <div class="visa-type-desc">For African diaspora</div>
+                                </div>
+                            </div>
+                            <span class="visa-type-duration">Right of Abode</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="visa-sidebar">
+                    <div class="visa-cta-card">
+                        <h4>Apply for Your Visa</h4>
+                        <p>Start your journey to Ghana today. Apply online through our streamlined visa application system.</p>
+                        <a href="visa.html" class="btn btn-primary">
+                            Apply Now
+                            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"/>
+                            </svg>
+                        </a>
+                        <div class="visa-free-badge">
+                            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z"/>
+                            </svg>
+                            ECOWAS Citizens: Visa-Free
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Practical Information -->
+        <section class="practical-section">
+            <div class="section-header">
+                <span class="section-label">Traveler's Guide</span>
+                <h2 class="section-title">Practical Information</h2>
+                <p class="section-subtitle">Everything you need to know for a smooth and enjoyable visit.</p>
+            </div>
+            <div class="practical-grid">
+                <div class="practical-card">
+                    <h4>
+                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                        Currency
+                    </h4>
+                    <p>Ghana Cedi (GHS). ATMs widely available. Major credit cards accepted in cities.</p>
+                </div>
+                <div class="practical-card">
+                    <h4>
+                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.383a14.406 14.406 0 01-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 10-7.517 0c.85.493 1.509 1.333 1.509 2.316V18"/>
+                        </svg>
+                        Language
+                    </h4>
+                    <p>English (official). Twi, Ga, Ewe, Hausa also widely spoken across regions.</p>
+                </div>
+                <div class="practical-card">
+                    <h4>
+                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"/>
+                        </svg>
+                        Climate
+                    </h4>
+                    <p>Tropical. Dry season Nov-Mar (best for travel). Rainy season Apr-Oct.</p>
+                </div>
+                <div class="practical-card">
+                    <h4>
+                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                        Time Zone
+                    </h4>
+                    <p>GMT (UTC+0). No daylight saving time observed.</p>
+                </div>
+                <div class="practical-card">
+                    <h4>
+                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M21 10.5h.375c.621 0 1.125.504 1.125 1.125v2.25c0 .621-.504 1.125-1.125 1.125H21M4.5 10.5H18V15H4.5v-4.5zM3.75 18h15A2.25 2.25 0 0021 15.75v-6a2.25 2.25 0 00-2.25-2.25h-15A2.25 2.25 0 001.5 9.75v6A2.25 2.25 0 003.75 18z"/>
+                        </svg>
+                        Electricity
+                    </h4>
+                    <p>230V, 50Hz. UK-style plugs (Type G). Bring adapter if needed.</p>
+                </div>
+                <div class="practical-card">
+                    <h4>
+                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/>
+                        </svg>
+                        Emergency
+                    </h4>
+                    <ul>
+                        <li>Police: 191</li>
+                        <li>Fire: 192</li>
+                        <li>Ambulance: 193</li>
+                        <li>General: 112</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to Action -->
+        <section class="cta-section">
+            <div class="cta-content">
+                <h2>Ready for Your Ghana Adventure?</h2>
+                <p>Start planning your unforgettable journey to the heart of West Africa today.</p>
+                <div class="cta-buttons">
+                    <a href="visa.html" class="btn-cta-dark">
+                        Apply for Visa
+                        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"/>
+                        </svg>
+                    </a>
+                    <a href="../contact.html" class="btn-cta-outline">
+                        Contact Tourism Office
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-main">
+                <div class="footer-brand">
+                    <a href="../index.html" class="footer-logo">
+                        <svg viewBox="0 0 100 100" width="40" height="40">
+                            <polygon points="50,5 61,40 98,40 68,62 79,97 50,75 21,97 32,62 2,40 39,40" fill="currentColor"/>
+                        </svg>
+                        <span>Republic of Ghana</span>
+                    </a>
+                    <p class="footer-tagline">Freedom and Justice</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Explore</h4>
+                        <a href="attractions.html">Attractions</a>
+                        <a href="visa.html">Visa Information</a>
+                        <a href="#regions">Regions</a>
+                        <a href="#experiences">Experiences</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Plan Your Trip</h4>
+                        <a href="#">Accommodation</a>
+                        <a href="#">Transportation</a>
+                        <a href="#">Tours & Guides</a>
+                        <a href="#">Events Calendar</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Government</h4>
+                        <a href="../government/index.html">About Government</a>
+                        <a href="../services/index.html">Services</a>
+                        <a href="../contact.html">Contact Us</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Republic of Ghana. All rights reserved.</p>
+                <div class="footer-legal">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Use</a>
+                    <a href="#">Accessibility</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Theme Toggle JavaScript -->
+    <script>
+    (function(){const STORAGE_KEY='ghana-gov-theme',DARK='dark',LIGHT='light';function getSavedTheme(){const saved=localStorage.getItem(STORAGE_KEY);if(saved)return saved;if(window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches)return LIGHT;return DARK;}function applyTheme(theme){if(theme===LIGHT)document.documentElement.setAttribute('data-theme','light');else document.documentElement.removeAttribute('data-theme');localStorage.setItem(STORAGE_KEY,theme);}applyTheme(getSavedTheme());document.addEventListener('DOMContentLoaded',function(){const toggle=document.getElementById('themeToggle');if(toggle){toggle.addEventListener('click',function(){const current=document.documentElement.getAttribute('data-theme');applyTheme(current==='light'?DARK:LIGHT);this.style.transform='scale(0.95)';setTimeout(()=>{this.style.transform='';},150);});}});})();
+    </script>
+
+    <!-- Mobile Menu JavaScript -->
+    <script>
+    (function() {
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuBtn = document.getElementById('mobileMenuBtn');
+            const menuClose = document.getElementById('mobileMenuClose');
+            const mobileMenu = document.getElementById('mobileMenu');
+
+            if (menuBtn && mobileMenu) {
+                menuBtn.addEventListener('click', function() {
+                    mobileMenu.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                });
+
+                if (menuClose) {
+                    menuClose.addEventListener('click', function() {
+                        mobileMenu.classList.remove('active');
+                        document.body.style.overflow = '';
+                    });
+                }
+
+                mobileMenu.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', function() {
+                        mobileMenu.classList.remove('active');
+                        document.body.style.overflow = '';
+                    });
+                });
+
+                document.addEventListener('keydown', function(e) {
+                    if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
+                        mobileMenu.classList.remove('active');
+                        document.body.style.overflow = '';
+                    }
+                });
+            }
+        });
+    })();
+    </script>
+    <script src="../js/main.js"></script>
+</body>
+</html>

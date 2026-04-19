@@ -1,0 +1,1127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Government Ministries | Republic of Ghana</title>
+    <meta name="description" content="Browse all government ministries of the Republic of Ghana. Access ministry information, services, and contact details.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/variables.css">
+    <link rel="stylesheet" href="../../css/main.css">
+    <style>
+        /* Theme System Variables */
+        :root {
+            /* Semantic color variables - Dark mode defaults */
+            --bg-primary: #0A0A0A;
+            --bg-secondary: #111111;
+            --bg-tertiary: #1A1A1A;
+            --bg-elevated: #1E1E1E;
+            --text-primary: #FAFAF8;
+            --text-secondary: rgba(250, 250, 248, 0.85);
+            --text-muted: rgba(250, 250, 248, 0.6);
+            --text-faint: rgba(250, 250, 248, 0.4);
+            --card-bg: #1A1A1A;
+            --card-border: rgba(255, 255, 255, 0.08);
+            --card-hover-border: var(--gold-burnished);
+            --nav-bg: rgba(10, 10, 10, 0.95);
+            --border-subtle: rgba(255, 255, 255, 0.08);
+            --border-medium: rgba(255, 255, 255, 0.12);
+            --search-bg: #1A1A1A;
+            --filter-bg: #111111;
+            --tag-bg: rgba(255, 255, 255, 0.08);
+            --tag-text: rgba(250, 250, 248, 0.7);
+            --hero-gradient: linear-gradient(135deg, var(--green-deep) 0%, #0d2a22 100%);
+            --accent-primary: var(--gold-burnished);
+            --accent-secondary: var(--green-deep);
+            --stats-bg: var(--green-deep);
+            --stats-number: var(--gold-burnished);
+            --theme-transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        /* Light Mode Overrides */
+        [data-theme="light"] {
+            --bg-primary: #FAFAF8;
+            --bg-secondary: #F5F4F0;
+            --bg-tertiary: #EEEEE8;
+            --bg-elevated: #FFFFFF;
+            --text-primary: #1A1A1A;
+            --text-secondary: #2D2D2D;
+            --text-muted: #5A5A5A;
+            --text-faint: #8A8A8A;
+            --card-bg: #FFFFFF;
+            --card-border: rgba(13, 61, 46, 0.15);
+            --card-hover-border: #0D3D2E;
+            --nav-bg: rgba(250, 250, 248, 0.95);
+            --border-subtle: rgba(0, 0, 0, 0.08);
+            --border-medium: rgba(0, 0, 0, 0.12);
+            --search-bg: #FFFFFF;
+            --filter-bg: #F5F4F0;
+            --tag-bg: #F5F4F0;
+            --tag-text: #5A5A5A;
+            --hero-gradient: linear-gradient(135deg, #0D3D2E 0%, #1A5C45 100%);
+            --accent-primary: #0D3D2E;
+            --accent-secondary: #1A5C45;
+            --stats-bg: linear-gradient(135deg, #0D3D2E 0%, #1A5C45 100%);
+            --stats-number: #FFFFFF;
+        }
+
+        /* Theme Toggle Styles */
+        .theme-toggle {
+            position: relative;
+            width: 48px;
+            height: 48px;
+            border: none;
+            border-radius: 50%;
+            background: linear-gradient(145deg, #1a1a2e 0%, #0d0d1a 100%);
+            cursor: pointer;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow:
+                0 4px 15px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.08);
+            box-shadow:
+                0 6px 20px rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.15);
+        }
+
+        .toggle-stars {
+            position: absolute;
+            inset: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .toggle-star {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: #FFD700;
+            border-radius: 50%;
+            opacity: 0.8;
+            animation: twinkle 2s ease-in-out infinite;
+        }
+
+        .toggle-star:nth-child(1) { top: 20%; left: 15%; animation-delay: 0s; }
+        .toggle-star:nth-child(2) { top: 30%; right: 20%; animation-delay: 0.5s; }
+        .toggle-star:nth-child(3) { bottom: 35%; left: 25%; animation-delay: 1s; }
+        .toggle-star:nth-child(4) { top: 15%; right: 30%; animation-delay: 1.5s; width: 2px; height: 2px; }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.4; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+
+        .toggle-orb {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: linear-gradient(145deg, #E8E8E8 0%, #B8B8B8 50%, #888888 100%);
+            box-shadow:
+                0 0 15px rgba(255, 255, 255, 0.3),
+                inset -3px -3px 6px rgba(0, 0, 0, 0.2),
+                inset 3px 3px 6px rgba(255, 255, 255, 0.4);
+            transition: all 0.4s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .toggle-icon {
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .toggle-icon.moon {
+            color: #2D2D2D;
+            opacity: 1;
+            transform: rotate(0deg);
+        }
+
+        .toggle-icon.sun {
+            color: #FDB813;
+            opacity: 0;
+            transform: rotate(-90deg);
+        }
+
+        /* Light mode toggle styles */
+        [data-theme="light"] .theme-toggle {
+            background: linear-gradient(145deg, #87CEEB 0%, #5BA3C6 100%);
+            box-shadow:
+                0 4px 15px rgba(0, 0, 0, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.4);
+        }
+
+        [data-theme="light"] .toggle-stars {
+            opacity: 0;
+        }
+
+        [data-theme="light"] .toggle-orb {
+            background: linear-gradient(145deg, #FFD93D 0%, #FDB813 50%, #E8A000 100%);
+            box-shadow:
+                0 0 20px rgba(253, 184, 19, 0.5),
+                0 0 40px rgba(253, 184, 19, 0.2),
+                inset -3px -3px 6px rgba(0, 0, 0, 0.1),
+                inset 3px 3px 6px rgba(255, 255, 255, 0.5);
+        }
+
+        [data-theme="light"] .toggle-icon.moon {
+            opacity: 0;
+            transform: rotate(90deg);
+        }
+
+        [data-theme="light"] .toggle-icon.sun {
+            opacity: 1;
+            transform: rotate(0deg);
+        }
+
+        /* Page Styles with Theme Support */
+        .page-hero {
+            padding: 8rem 2rem 4rem;
+            background: var(--hero-gradient);
+            text-align: center;
+            transition: var(--theme-transition);
+        }
+
+        .page-hero h1 {
+            font-family: 'Fraunces', serif;
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            color: var(--white-ivory);
+            margin-bottom: 1rem;
+        }
+
+        .page-hero p {
+            color: rgba(250,250,248,0.8);
+            font-size: 1.15rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Light mode hero adjustments */
+        [data-theme="light"] .page-hero h1 {
+            color: #FFFFFF;
+        }
+
+        [data-theme="light"] .page-hero p {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        [data-theme="light"] .page-hero .breadcrumb a {
+            color: rgba(255, 255, 255, 0.8) !important;
+        }
+
+        [data-theme="light"] .page-hero .breadcrumb span:not(:last-child) {
+            color: rgba(255, 255, 255, 0.5) !important;
+        }
+
+        [data-theme="light"] .page-hero .breadcrumb span:last-child {
+            color: #FFFFFF !important;
+        }
+
+        /* Search/Filter */
+        .filter-section {
+            padding: 2rem;
+            background: var(--bg-elevated);
+            border-bottom: 1px solid var(--border-subtle);
+            position: sticky;
+            top: 70px;
+            z-index: 90;
+            transition: var(--theme-transition);
+        }
+
+        .filter-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .search-box {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: var(--search-bg);
+            border-radius: 12px;
+            padding: 1rem 1.5rem;
+            border: 1px solid var(--border-subtle);
+            transition: var(--theme-transition);
+        }
+
+        .search-box svg {
+            width: 20px;
+            height: 20px;
+            color: var(--text-muted);
+        }
+
+        .search-box input {
+            flex: 1;
+            border: none;
+            background: none;
+            font-size: 1rem;
+            font-family: inherit;
+            color: var(--text-primary);
+            transition: var(--theme-transition);
+        }
+
+        .search-box input::placeholder {
+            color: var(--text-muted);
+        }
+
+        .search-box input:focus {
+            outline: none;
+        }
+
+        [data-theme="light"] .search-box {
+            background: var(--bg-tertiary);
+            border-color: var(--border-medium);
+        }
+
+        /* Ministries Grid */
+        .ministries-section {
+            padding: 4rem 2rem;
+            background: var(--bg-primary);
+            transition: var(--theme-transition);
+        }
+
+        .ministries-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .ministry-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 2rem;
+            border: 1px solid var(--card-border);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: block;
+        }
+
+        .ministry-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+            border-color: var(--card-hover-border);
+        }
+
+        [data-theme="light"] .ministry-card:hover {
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .ministry-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .ministry-icon {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, var(--green-deep) 0%, #2d5a4a 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        [data-theme="light"] .ministry-icon {
+            background: linear-gradient(135deg, #0D3D2E 0%, #1A5C45 100%);
+        }
+
+        .ministry-icon svg {
+            width: 28px;
+            height: 28px;
+            color: var(--gold-burnished);
+        }
+
+        [data-theme="light"] .ministry-icon svg {
+            color: #FFFFFF;
+        }
+
+        .ministry-info {
+            flex: 1;
+        }
+
+        .ministry-name {
+            font-family: 'Fraunces', serif;
+            font-size: 1.15rem;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+            line-height: 1.3;
+            transition: var(--theme-transition);
+        }
+
+        .ministry-abbr {
+            font-size: 0.8rem;
+            color: var(--accent-primary);
+            font-weight: 600;
+        }
+
+        [data-theme="light"] .ministry-abbr {
+            color: #1A5C45;
+        }
+
+        .ministry-minister {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .minister-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .minister-name {
+            font-size: 0.9rem;
+            color: var(--text-primary);
+            font-weight: 500;
+            transition: var(--theme-transition);
+        }
+
+        .ministry-services {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-tag {
+            background: var(--tag-bg);
+            color: var(--tag-text);
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            transition: var(--theme-transition);
+        }
+
+        .ministry-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent-primary);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        [data-theme="light"] .ministry-link {
+            color: #0D3D2E;
+        }
+
+        .ministry-link svg {
+            width: 16px;
+            height: 16px;
+            transition: transform 0.3s ease;
+        }
+
+        .ministry-card:hover .ministry-link svg {
+            transform: translateX(4px);
+        }
+
+        /* Categories */
+        .categories-section {
+            padding: 3rem 2rem;
+            background: var(--bg-secondary);
+            transition: var(--theme-transition);
+        }
+
+        .categories-header {
+            max-width: 1200px;
+            margin: 0 auto 2rem;
+        }
+
+        .categories-header h2 {
+            font-family: 'Fraunces', serif;
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            transition: var(--theme-transition);
+        }
+
+        .categories-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .category-btn {
+            padding: 0.6rem 1.25rem;
+            background: var(--card-bg);
+            border: 1px solid var(--border-medium);
+            border-radius: 100px;
+            font-size: 0.9rem;
+            color: var(--text-primary);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .category-btn:hover,
+        .category-btn.active {
+            background: var(--accent-secondary);
+            color: var(--white-ivory);
+            border-color: var(--accent-secondary);
+        }
+
+        [data-theme="light"] .category-btn:hover,
+        [data-theme="light"] .category-btn.active {
+            background: #0D3D2E;
+            color: #FFFFFF;
+            border-color: #0D3D2E;
+        }
+
+        /* Stats */
+        .stats-section {
+            padding: 4rem 2rem;
+            background: var(--green-deep);
+            transition: var(--theme-transition);
+        }
+
+        [data-theme="light"] .stats-section {
+            background: linear-gradient(135deg, #0D3D2E 0%, #1A5C45 100%);
+        }
+
+        .stats-grid {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .stat-item {
+            color: var(--white-ivory);
+        }
+
+        .stat-number {
+            font-family: 'Fraunces', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--gold-burnished);
+            margin-bottom: 0.5rem;
+        }
+
+        [data-theme="light"] .stat-number {
+            color: #FFFFFF;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: rgba(250,250,248,0.7);
+        }
+
+        [data-theme="light"] .stat-label {
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        /* Header theme adjustments */
+        [data-theme="light"] .header {
+            background: var(--nav-bg);
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        [data-theme="light"] .nav-link {
+            color: var(--text-secondary);
+        }
+
+        [data-theme="light"] .nav-link:hover,
+        [data-theme="light"] .nav-link.active {
+            color: #0D3D2E;
+        }
+
+        [data-theme="light"] .logo {
+            color: #0D3D2E;
+        }
+
+        [data-theme="light"] .logo-star {
+            color: #0D3D2E;
+        }
+
+        /* Footer theme adjustments */
+        [data-theme="light"] .footer {
+            background: var(--bg-tertiary);
+            color: var(--text-secondary);
+        }
+
+        [data-theme="light"] .footer-content {
+            border-top-color: var(--border-subtle);
+        }
+
+        @media (max-width: 768px) {
+            .ministries-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .theme-toggle {
+                width: 42px;
+                height: 42px;
+            }
+
+            .toggle-orb {
+                width: 24px;
+                height: 24px;
+            }
+
+            .toggle-icon {
+                width: 14px;
+                height: 14px;
+            }
+        }
+
+        /* ===== MINIMAL NAVIGATION ===== */
+        .nav-main { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: var(--nav-bg); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid var(--border-subtle); transition: var(--theme-transition); }
+        .nav-container { max-width: 1400px; margin: 0 auto; padding: 1rem 2rem; display: flex; align-items: center; justify-content: space-between; }
+        .logo { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; color: var(--text-primary); }
+        .logo-emblem { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; }
+        .logo-star { width: 32px; height: 32px; fill: var(--gold-burnished); }
+        .logo-text { display: flex; flex-direction: column; }
+        .logo-title { font-family: 'Fraunces', serif; font-size: 1.1rem; font-weight: 600; color: var(--text-primary); }
+        .logo-subtitle { font-size: 0.7rem; color: var(--text-muted); }
+        .nav-links { display: flex; align-items: center; gap: 0.25rem; list-style: none; margin: 0; padding: 0; }
+        .nav-links a { padding: 0.5rem 1rem; color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; font-weight: 500; border-radius: 6px; transition: all 0.2s ease; }
+        .nav-links a:hover { color: var(--text-primary); background: var(--tag-bg); }
+        .nav-links a.active { color: var(--gold-burnished); background: rgba(184, 134, 11, 0.1); }
+        .nav-actions { display: flex; align-items: center; gap: 0.75rem; }
+        .nav-cta { padding: 0.6rem 1.25rem; background: var(--green-deep); color: var(--white-ivory); text-decoration: none; font-size: 0.85rem; font-weight: 600; border-radius: 6px; transition: all 0.2s ease; }
+        .nav-cta:hover { background: var(--green-forest); transform: translateY(-1px); }
+        .mobile-menu-btn { display: none; width: 44px; height: 44px; border: none; border-radius: 8px; background: var(--tag-bg); color: var(--text-primary); cursor: pointer; align-items: center; justify-content: center; }
+        .mobile-menu-btn svg { width: 24px; height: 24px; }
+        .mobile-menu { display: none; position: fixed; top: 70px; left: 0; right: 0; background: var(--bg-elevated); border-bottom: 1px solid var(--border-subtle); padding: 1rem; flex-direction: column; gap: 0.5rem; z-index: 999; }
+        .mobile-menu.active { display: flex; }
+        .mobile-menu a { padding: 0.75rem 1rem; color: var(--text-secondary); text-decoration: none; font-size: 1rem; border-radius: 6px; transition: all 0.2s ease; }
+        .mobile-menu a:hover, .mobile-menu a.active { color: var(--text-primary); background: var(--tag-bg); }
+        .mobile-menu .mobile-cta { margin-top: 0.5rem; padding: 0.75rem 1rem; background: var(--green-deep); color: var(--white-ivory); text-align: center; font-weight: 600; }
+        @media (max-width: 900px) { .nav-links, .nav-cta { display: none; } .mobile-menu-btn { display: flex; } }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav-main">
+        <div class="nav-container">
+            <a href="../../index.html" class="logo">
+                <div class="logo-emblem"><svg class="logo-star" viewBox="0 0 100 100"><polygon points="50,5 61,40 98,40 68,62 79,97 50,75 21,97 32,62 2,40 39,40"/></svg></div>
+                <div class="logo-text"><span class="logo-title">Republic of Ghana</span><span class="logo-subtitle">Official Government Portal</span></div>
+            </a>
+            <ul class="nav-links">
+                <li><a href="../../index.html">Home</a></li>
+                <li><a href="../../services/index.html">Services</a></li>
+                <li><a href="../index.html" class="active">Government</a></li>
+                <li><a href="../../business/index.html">Invest</a></li>
+                <li><a href="../../tourism/index.html">Visit Ghana</a></li>
+                <li><a href="../../contact.html">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme"><svg class="toggle-icon moon" viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg><svg class="toggle-icon sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button>
+                <a href="../../services/index.html" class="nav-cta">Access Services</a>
+                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+            </div>
+        </div>
+    </nav>
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="../../index.html">Home</a>
+        <a href="../../services/index.html">Services</a>
+        <a href="../index.html" class="active">Government</a>
+        <a href="../../business/index.html">Invest</a>
+        <a href="../../tourism/index.html">Visit Ghana</a>
+        <a href="../../contact.html">Contact</a>
+        <a href="../../services/index.html" class="mobile-cta">Access Services</a>
+    </div>
+
+    <main>
+        <!-- Hero -->
+        <section class="page-hero">
+            <nav class="breadcrumb" style="margin-bottom: 2rem;">
+                <a href="../../index.html" style="color: rgba(250,250,248,0.6); text-decoration: none;">Home</a>
+                <span style="color: rgba(250,250,248,0.4); margin: 0 0.5rem;">/</span>
+                <a href="../index.html" style="color: rgba(250,250,248,0.6); text-decoration: none;">Government</a>
+                <span style="color: rgba(250,250,248,0.4); margin: 0 0.5rem;">/</span>
+                <span style="color: var(--gold-burnished);">Ministries</span>
+            </nav>
+            <h1>Government Ministries</h1>
+            <p>Explore the ministries of the Republic of Ghana responsible for implementing government policies and delivering public services.</p>
+        </section>
+
+        <!-- Search -->
+        <section class="filter-section">
+            <div class="filter-container">
+                <div class="search-box">
+                    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <circle cx="11" cy="11" r="8"/>
+                        <path d="m21 21-4.35-4.35"/>
+                    </svg>
+                    <input type="text" placeholder="Search ministries..." id="ministrySearch">
+                </div>
+            </div>
+        </section>
+
+        <!-- Categories -->
+        <section class="categories-section">
+            <div class="categories-header">
+                <h2>Browse by Sector</h2>
+            </div>
+            <div class="categories-grid">
+                <button class="category-btn active">All Ministries</button>
+                <button class="category-btn">Economic</button>
+                <button class="category-btn">Social Services</button>
+                <button class="category-btn">Infrastructure</button>
+                <button class="category-btn">Security</button>
+                <button class="category-btn">Governance</button>
+            </div>
+        </section>
+
+        <!-- Ministries Grid -->
+        <section class="ministries-section">
+            <div class="ministries-grid">
+                <!-- Ministry of Finance -->
+                <a href="finance.html" class="ministry-card">
+                    <div class="ministry-header">
+                        <div class="ministry-icon">
+                            <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                                <path d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                        </div>
+                        <div class="ministry-info">
+                            <h3 class="ministry-name">Ministry of Finance</h3>
+                            <span class="ministry-abbr">MoF</span>
+                        </div>
+                    </div>
+                    <div class="ministry-minister">
+                        <span class="minister-label">Minister:</span>
+                        <span class="minister-name">Hon. Dr. Mohammed Amin Adam</span>
+                    </div>
+                    <div class="ministry-services">
+                        <span class="service-tag">Budget</span>
+                        <span class="service-tag">Revenue</span>
+                        <span class="service-tag">Economic Policy</span>
+                    </div>
+                    <span class="ministry-link">
+                        View Ministry
+                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"/>
+                        </svg>
+                    </span>
+                </a>
+
+                <!-- Ministry of Health -->
+                <a href="health.html" class="ministry-card">
+                    <div class="ministry-header">
+                        <div class="ministry-icon">
+                            <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                                <path d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"/>
+                            </svg>
+                        </div>
+                        <div class="ministry-info">
+                            <h3 class="ministry-name">Ministry of Health</h3>
+                            <span class="ministry-abbr">MoH</span>
+                        </div>
+                    </div>
+                    <div class="ministry-minister">
+                        <span class="minister-label">Minister:</span>
+                        <span class="minister-name">Hon. Dr. Bernard Okoe-Boye</span>
+                    </div>
+                    <div class="ministry-services">
+                        <span class="service-tag">Healthcare</span>
+                        <span class="service-tag">NHIS</span>
+                        <span class="service-tag">Public Health</span>
+                    </div>
+                    <span class="ministry-link">
+                        View Ministry
+                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"/>
+                        </svg>
+                    </span>
+                </a>
+
+                <!-- Ministry of Education -->
+                <a href="education.html" class="ministry-card">
+                    <div class="ministry-header">
+                        <div class="ministry-icon">
+                            <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                                <path d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5"/>
+                            </svg>
+                        </div>
+                        <div class="ministry-info">
+                            <h3 class="ministry-name">Ministry of Education</h3>
+                            <span class="ministry-abbr">MoE</span>
+                        </div>
+                    </div>
+                    <div class="ministry-minister">
+                        <span class="minister-label">Minister:</span>
+                        <span class="minister-name">Hon. Dr. Yaw Osei Adutwum</span>
+                    </div>
+                    <div class="ministry-services">
+                        <span class="service-tag">Free SHS</span>
+                        <span class="service-tag">Basic Education</span>
+                        <span class="service-tag">TVET</span>
+                    </div>
+                    <span class="ministry-link">
+                        View Ministry
+                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"/>
+                        </svg>
+                    </span>
+                </a>
+
+                <!-- Ministry of Foreign Affairs -->
+                <a href="#" class="ministry-card">
+                    <div class="ministry-header">
+                        <div class="ministry-icon">
+                            <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                                <path d="M12.75 3.03v.568c0 .334.148.65.405.864l1.068.89c.442.369.535 1.01.216 1.49l-.51.766a2.25 2.25 0 01-1.161.886l-.143.048a1.107 1.107 0 00-.57 1.664c.369.555.169 1.307-.427 1.605L9 13.125l.423 1.059a.956.956 0 01-1.652.928l-.679-.906a1.125 1.125 0 00-1.906.172L4.5 15.75l-.612.153M12.75 3.031a9 9 0 00-8.862 12.872M12.75 3.031a9 9 0 016.69 14.036m0 0l-.177-.529A2.25 2.25 0 0017.128 15H16.5l-.324-.324a1.453 1.453 0 00-2.328.377l-.036.073a1.586 1.586 0 01-.982.816l-.99.282c-.55.157-.894.702-.8 1.267l.073.438c.08.474.49.821.97.821.846 0 1.598.542 1.865 1.345l.215.643m5.276-3.67a9.012 9.012 0 01-5.276 3.67m0 0a9 9 0 01-10.275-4.835M15.75 9c0 .896-.393 1.7-1.016 2.25"/>
+                            </svg>
+                        </div>
+                        <div class="ministry-info">
+                            <h3 class="ministry-name">Ministry of Foreign Affairs</h3>
+                            <span class="ministry-abbr">MFA</span>
+                        </div>
+                    </div>
+                    <div class="ministry-minister">
+                        <span class="minister-label">Minister:</span>
+                        <span class="minister-name">Hon. Shirley Ayorkor Botchwey</span>
+                    </div>
+                    <div class="ministry-services">
+                        <span class="service-tag">Diplomacy</span>
+                        <span class="service-tag">Consular</span>
+                        <span class="service-tag">Treaties</span>
+                    </div>
+                    <span class="ministry-link">
+                        View Ministry
+                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"/>
+                        </svg>
+                    </span>
+                </a>
+
+                <!-- Ministry of Interior -->
+                <a href="#" class="ministry-card">
+                    <div class="ministry-header">
+                        <div class="ministry-icon">
+                            <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                                <path d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/>
+                            </svg>
+                        </div>
+                        <div class="ministry-info">
+                            <h3 class="ministry-name">Ministry of the Interior</h3>
+                            <span class="ministry-abbr">MoI</span>
+                        </div>
+                    </div>
+                    <div class="ministry-minister">
+                        <span class="minister-label">Minister:</span>
+                        <span class="minister-name">Hon. Ambrose Dery</span>
+                    </div>
+                    <div class="ministry-services">
+                        <span class="service-tag">Immigration</span>
+                        <span class="service-tag">Police</span>
+                        <span class="service-tag">Fire Service</span>
+                    </div>
+                    <span class="ministry-link">
+                        View Ministry
+                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"/>
+                        </svg>
+                    </span>
+                </a>
+
+                <!-- Ministry of Trade and Industry -->
+                <a href="#" class="ministry-card">
+                    <div class="ministry-header">
+                        <div class="ministry-icon">
+                            <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                                <path d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z"/>
+                            </svg>
+                        </div>
+                        <div class="ministry-info">
+                            <h3 class="ministry-name">Ministry of Trade and Industry</h3>
+                            <span class="ministry-abbr">MoTI</span>
+                        </div>
+                    </div>
+                    <div class="ministry-minister">
+                        <span class="minister-label">Minister:</span>
+                        <span class="minister-name">Hon. K.T. Hammond</span>
+                    </div>
+                    <div class="ministry-services">
+                        <span class="service-tag">1D1F</span>
+                        <span class="service-tag">Export</span>
+                        <span class="service-tag">SME Support</span>
+                    </div>
+                    <span class="ministry-link">
+                        View Ministry
+                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"/>
+                        </svg>
+                    </span>
+                </a>
+
+                <!-- Ministry of Energy -->
+                <a href="#" class="ministry-card">
+                    <div class="ministry-header">
+                        <div class="ministry-icon">
+                            <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                                <path d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"/>
+                            </svg>
+                        </div>
+                        <div class="ministry-info">
+                            <h3 class="ministry-name">Ministry of Energy</h3>
+                            <span class="ministry-abbr">MoEn</span>
+                        </div>
+                    </div>
+                    <div class="ministry-minister">
+                        <span class="minister-label">Minister:</span>
+                        <span class="minister-name">Hon. Dr. Matthew Opoku Prempeh</span>
+                    </div>
+                    <div class="ministry-services">
+                        <span class="service-tag">Electricity</span>
+                        <span class="service-tag">Oil & Gas</span>
+                        <span class="service-tag">Renewables</span>
+                    </div>
+                    <span class="ministry-link">
+                        View Ministry
+                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"/>
+                        </svg>
+                    </span>
+                </a>
+
+                <!-- Ministry of Roads and Highways -->
+                <a href="#" class="ministry-card">
+                    <div class="ministry-header">
+                        <div class="ministry-icon">
+                            <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                                <path d="M9 6.75V15m6-6v8.25m.503 3.498l4.875-2.437c.381-.19.622-.58.622-1.006V4.82c0-.836-.88-1.38-1.628-1.006l-3.869 1.934c-.317.159-.69.159-1.006 0L9.503 3.252a1.125 1.125 0 00-1.006 0L3.622 5.689C3.24 5.88 3 6.27 3 6.695V19.18c0 .836.88 1.38 1.628 1.006l3.869-1.934c.317-.159.69-.159 1.006 0l4.994 2.497c.317.158.69.158 1.006 0z"/>
+                            </svg>
+                        </div>
+                        <div class="ministry-info">
+                            <h3 class="ministry-name">Ministry of Roads and Highways</h3>
+                            <span class="ministry-abbr">MRH</span>
+                        </div>
+                    </div>
+                    <div class="ministry-minister">
+                        <span class="minister-label">Minister:</span>
+                        <span class="minister-name">Hon. Francis Asenso-Boakye</span>
+                    </div>
+                    <div class="ministry-services">
+                        <span class="service-tag">Road Construction</span>
+                        <span class="service-tag">Maintenance</span>
+                        <span class="service-tag">Tolls</span>
+                    </div>
+                    <span class="ministry-link">
+                        View Ministry
+                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"/>
+                        </svg>
+                    </span>
+                </a>
+
+                <!-- Ministry of Agriculture -->
+                <a href="#" class="ministry-card">
+                    <div class="ministry-header">
+                        <div class="ministry-icon">
+                            <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                                <path d="M6.429 9.75L2.25 12l4.179 2.25m0-4.5l5.571 3 5.571-3m-11.142 0L2.25 7.5 12 2.25l9.75 5.25-4.179 2.25m0 0L21.75 12l-4.179 2.25m0 0l4.179 2.25L12 21.75 2.25 16.5l4.179-2.25m11.142 0l-5.571 3-5.571-3"/>
+                            </svg>
+                        </div>
+                        <div class="ministry-info">
+                            <h3 class="ministry-name">Ministry of Food and Agriculture</h3>
+                            <span class="ministry-abbr">MoFA</span>
+                        </div>
+                    </div>
+                    <div class="ministry-minister">
+                        <span class="minister-label">Minister:</span>
+                        <span class="minister-name">Hon. Bryan Acheampong</span>
+                    </div>
+                    <div class="ministry-services">
+                        <span class="service-tag">PFJ</span>
+                        <span class="service-tag">Extension</span>
+                        <span class="service-tag">Subsidies</span>
+                    </div>
+                    <span class="ministry-link">
+                        View Ministry
+                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"/>
+                        </svg>
+                    </span>
+                </a>
+
+                <!-- Ministry of Communications -->
+                <a href="#" class="ministry-card">
+                    <div class="ministry-header">
+                        <div class="ministry-icon">
+                            <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                                <path d="M8.288 15.038a5.25 5.25 0 017.424 0M5.106 11.856c3.807-3.808 9.98-3.808 13.788 0M1.924 8.674c5.565-5.565 14.587-5.565 20.152 0M12.53 18.22l-.53.53-.53-.53a.75.75 0 011.06 0z"/>
+                            </svg>
+                        </div>
+                        <div class="ministry-info">
+                            <h3 class="ministry-name">Ministry of Communications & Digitalisation</h3>
+                            <span class="ministry-abbr">MoCD</span>
+                        </div>
+                    </div>
+                    <div class="ministry-minister">
+                        <span class="minister-label">Minister:</span>
+                        <span class="minister-name">Hon. Ursula Owusu-Ekuful</span>
+                    </div>
+                    <div class="ministry-services">
+                        <span class="service-tag">Digital Ghana</span>
+                        <span class="service-tag">Telecom</span>
+                        <span class="service-tag">E-Gov</span>
+                    </div>
+                    <span class="ministry-link">
+                        View Ministry
+                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"/>
+                        </svg>
+                    </span>
+                </a>
+
+                <!-- Ministry of Justice -->
+                <a href="#" class="ministry-card">
+                    <div class="ministry-header">
+                        <div class="ministry-icon">
+                            <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                                <path d="M12 3v17.25m0 0c-1.472 0-2.882.265-4.185.75M12 20.25c1.472 0 2.882.265 4.185.75M18.75 4.97A48.416 48.416 0 0012 4.5c-2.291 0-4.545.16-6.75.47m13.5 0c1.01.143 2.01.317 3 .52m-3-.52l2.62 10.726c.122.499-.106 1.028-.589 1.202a5.988 5.988 0 01-2.031.352 5.988 5.988 0 01-2.031-.352c-.483-.174-.711-.703-.59-1.202L18.75 4.971zm-16.5.52c.99-.203 1.99-.377 3-.52m0 0l2.62 10.726c.122.499-.106 1.028-.589 1.202a5.989 5.989 0 01-2.031.352 5.989 5.989 0 01-2.031-.352c-.483-.174-.711-.703-.59-1.202L5.25 4.971z"/>
+                            </svg>
+                        </div>
+                        <div class="ministry-info">
+                            <h3 class="ministry-name">Ministry of Justice & Attorney General</h3>
+                            <span class="ministry-abbr">MoJ/AG</span>
+                        </div>
+                    </div>
+                    <div class="ministry-minister">
+                        <span class="minister-label">Minister:</span>
+                        <span class="minister-name">Hon. Godfred Yeboah Dame</span>
+                    </div>
+                    <div class="ministry-services">
+                        <span class="service-tag">Legal Affairs</span>
+                        <span class="service-tag">Legislation</span>
+                        <span class="service-tag">Prosecution</span>
+                    </div>
+                    <span class="ministry-link">
+                        View Ministry
+                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"/>
+                        </svg>
+                    </span>
+                </a>
+
+                <!-- Ministry of Tourism -->
+                <a href="#" class="ministry-card">
+                    <div class="ministry-header">
+                        <div class="ministry-icon">
+                            <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                                <path d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                <path d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/>
+                            </svg>
+                        </div>
+                        <div class="ministry-info">
+                            <h3 class="ministry-name">Ministry of Tourism, Arts & Culture</h3>
+                            <span class="ministry-abbr">MoTAC</span>
+                        </div>
+                    </div>
+                    <div class="ministry-minister">
+                        <span class="minister-label">Minister:</span>
+                        <span class="minister-name">Hon. Andrew Egyapa Mercer</span>
+                    </div>
+                    <div class="ministry-services">
+                        <span class="service-tag">Tourism</span>
+                        <span class="service-tag">Heritage</span>
+                        <span class="service-tag">Creative Arts</span>
+                    </div>
+                    <span class="ministry-link">
+                        View Ministry
+                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"/>
+                        </svg>
+                    </span>
+                </a>
+            </div>
+        </section>
+
+        <!-- Stats -->
+        <section class="stats-section">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">29</div>
+                    <div class="stat-label">Ministries</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">85+</div>
+                    <div class="stat-label">Agencies</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">500K+</div>
+                    <div class="stat-label">Public Servants</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">16</div>
+                    <div class="stat-label">Regions Served</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-bottom">
+                <p>&copy; 2025 Republic of Ghana. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../js/main.js"></script>
+    <script>
+        // Theme toggle functionality
+        (function(){const STORAGE_KEY='ghana-gov-theme',DARK='dark',LIGHT='light';function getSavedTheme(){const saved=localStorage.getItem(STORAGE_KEY);if(saved)return saved;if(window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches)return LIGHT;return DARK;}function applyTheme(theme){if(theme===LIGHT)document.documentElement.setAttribute('data-theme','light');else document.documentElement.removeAttribute('data-theme');localStorage.setItem(STORAGE_KEY,theme);}applyTheme(getSavedTheme());document.addEventListener('DOMContentLoaded',function(){const toggle=document.getElementById('themeToggle');if(toggle){toggle.addEventListener('click',function(){const current=document.documentElement.getAttribute('data-theme');applyTheme(current==='light'?DARK:LIGHT);this.style.transform='scale(0.95)';setTimeout(()=>{this.style.transform='';},150);});}});})();
+
+        // Search functionality
+        const searchInput = document.getElementById('ministrySearch');
+        const ministryCards = document.querySelectorAll('.ministry-card');
+
+        searchInput.addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase();
+            ministryCards.forEach(card => {
+                const name = card.querySelector('.ministry-name').textContent.toLowerCase();
+                const services = card.querySelector('.ministry-services').textContent.toLowerCase();
+                if (name.includes(query) || services.includes(query)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+
+        // Category filter
+        document.querySelectorAll('.category-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // Mobile Menu Toggle
+        (function(){document.addEventListener('DOMContentLoaded',function(){const mobileMenuBtn=document.getElementById('mobileMenuBtn');const mobileMenu=document.getElementById('mobileMenu');if(mobileMenuBtn&&mobileMenu){mobileMenuBtn.addEventListener('click',function(){mobileMenu.classList.toggle('active');});}});})();
+    </script>
+</body>
+</html>

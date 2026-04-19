@@ -1,0 +1,145 @@
+---
+/**
+ * <NotificationBanner> — Ghana Design System Tier-2 component.
+ *
+ * Page-level banner for status, success, and warning messages. Ported in
+ * intent from GOV.UK Frontend's `govuk-notification-banner`, per ADR-003.
+ *
+ * Types (colour + ARIA semantics come as a pair):
+ *   info      — blue edge, `role="region"`. Informational; renders on load.
+ *   success   — green edge, `role="alert"`. Announces a successful action
+ *               on page-mount (e.g. "Passport application submitted").
+ *   warning   — red edge, `role="alert"`. Announces a blocking condition
+ *               (e.g. "Service temporarily unavailable").
+ *
+ * Multiple on one page:
+ *   Pass a unique `id` to every banner. The default `id` is shared, and
+ *   duplicate ids break the `aria-labelledby` wiring (axe `landmark-unique`).
+ *
+ * Usage:
+ *   <NotificationBanner
+ *     id="banner-application-sent"
+ *     type="success"
+ *     title="Application sent"
+ *   >
+ *     <p>
+ *       Your ARN is <strong>ARN-2026-04-000123</strong>. We will text
+ *       your next step within 48 hours.
+ *     </p>
+ *   </NotificationBanner>
+ *
+ *   <NotificationBanner
+ *     id="banner-maintenance"
+ *     type="warning"
+ *     title="Scheduled maintenance"
+ *   >
+ *     <p>Payments are offline from 22:00 to 23:30 on 18 April 2026.</p>
+ *   </NotificationBanner>
+ */
+
+type BannerType = 'info' | 'success' | 'warning';
+
+interface Props {
+  type?: BannerType;
+  title: string;
+  /** DOM id for the wrapping element. Defaults to `notification-banner`. */
+  id?: string;
+  /** HTML heading level for the title. Defaults to `h2`. */
+  headingLevel?: 'h2' | 'h3';
+  class?: string;
+}
+
+const {
+  type = 'info',
+  title,
+  id = 'notification-banner',
+  headingLevel = 'h2',
+  class: extraClass,
+} = Astro.props;
+
+const role = type === 'info' ? 'region' : 'alert';
+const Heading = headingLevel;
+
+const classes = ['gh-banner', `gh-banner--${type}`, extraClass].filter(Boolean).join(' ');
+---
+
+<div class={classes} role={role} aria-labelledby={`${id}-title`} tabindex="-1" id={id}>
+  <div class="gh-banner__header">
+    <Heading class="gh-banner__title" id={`${id}-title`}>
+      {title}
+    </Heading>
+  </div>
+  <div class="gh-banner__body">
+    <slot />
+  </div>
+</div>
+
+<style>
+  .gh-banner {
+    margin: 0 0 var(--space-8);
+    background: var(--color-surface-raised);
+    border: 5px solid var(--color-action-primary);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+  }
+
+  .gh-banner:focus {
+    outline: var(--border-width-focus) solid var(--color-focus-ring);
+    outline-offset: 2px;
+  }
+
+  .gh-banner__header {
+    padding: var(--space-2) var(--space-6);
+    background: var(--color-action-primary);
+    color: #ffffff;
+  }
+
+  .gh-banner__title {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-heading);
+    color: #ffffff;
+  }
+
+  .gh-banner__body {
+    padding: var(--space-5) var(--space-6);
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-body);
+    color: var(--color-text-default);
+  }
+
+  .gh-banner__body > :first-child {
+    margin-top: 0;
+  }
+
+  .gh-banner__body > :last-child {
+    margin-bottom: 0;
+  }
+
+  /* ─── Variants ───────────────────────────────────────── */
+  .gh-banner--info {
+    border-color: var(--color-info);
+  }
+
+  .gh-banner--info .gh-banner__header {
+    background: var(--color-info);
+  }
+
+  .gh-banner--success {
+    border-color: var(--color-success);
+  }
+
+  .gh-banner--success .gh-banner__header {
+    background: var(--color-success);
+  }
+
+  .gh-banner--warning {
+    border-color: var(--color-error);
+  }
+
+  .gh-banner--warning .gh-banner__header {
+    background: var(--color-error);
+  }
+</style>

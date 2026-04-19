@@ -1,0 +1,170 @@
+---
+/**
+ * <Footer> — Ghana Design System Tier-1 foundation component.
+ *
+ * Footer identifier per `.claude/CLAUDE.md §5` Weeks 11–14:
+ *   About / Privacy / Accessibility / RTI / Anti-Corruption Hotline /
+ *   parent ministry.
+ *
+ * Every `.gov.gh` property ships this footer. Ministry sites override
+ * `parentOrganisation` and may adjust nav if a specific legal notice
+ * differs.
+ *
+ * Phone format per §6.4: `+233 XX XXX XXXX`.
+ */
+
+interface FooterNavItem {
+  href: string;
+  label: string;
+  /** When set, rendered inside a <tel: href="+233..."> link instead of href. */
+  tel?: string;
+}
+
+interface Props {
+  /** Top navigation list. Renders the default 4-item set when omitted. */
+  navItems?: ReadonlyArray<FooterNavItem>;
+  /** Anti-Corruption Hotline number. Separate prop so the tel link is exact. */
+  hotlineLabel?: string;
+  hotlineNumber?: string;
+  /** One-line parent-organisation attribution. */
+  parentOrganisation?: string;
+  /** The full sentence of the ministry line. HTML permitted through `<strong>`. */
+  parentOrganisationLong?: string;
+  /** Year for the copyright. Defaults to the current year at build time. */
+  year?: number;
+  /** Content licence URL. Defaults to CC BY 4.0. */
+  licenceHref?: string;
+  /** Visible licence label. */
+  licenceLabel?: string;
+  motto?: string;
+}
+
+const {
+  navItems = [
+    { href: '#about', label: 'About' },
+    { href: '#privacy', label: 'Privacy' },
+    { href: '#accessibility', label: 'Accessibility' },
+    { href: '#rti', label: 'Right to Information' },
+  ],
+  hotlineLabel = 'Anti-Corruption Hotline',
+  hotlineNumber = '+233 800 900 900',
+  parentOrganisation = 'Office of the Head of Civil Service',
+  parentOrganisationLong = 'A service of the <strong>Office of the Head of Civil Service</strong>, under the <strong>Office of the President, Republic of Ghana</strong>.',
+  year = new Date().getFullYear(),
+  licenceHref = 'https://creativecommons.org/licenses/by/4.0/',
+  licenceLabel = 'CC BY 4.0',
+  motto = 'Freedom and Justice.',
+} = Astro.props;
+
+const telHref = `tel:${hotlineNumber.replace(/\s+/g, '')}`;
+---
+
+<footer class="gh-footer" aria-labelledby="gh-footer-heading">
+  <div class="gh-footer__inner">
+    <h2 id="gh-footer-heading" class="gh-visually-hidden">Site information</h2>
+
+    <nav aria-label="Footer" class="gh-footer__nav">
+      <ul>
+        {
+          navItems.map((item) => (
+            <li>
+              <a href={item.href}>{item.label}</a>
+            </li>
+          ))
+        }
+        <li>
+          <a href={telHref}>
+            {hotlineLabel} — <span class="gh-nowrap">{hotlineNumber}</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="gh-footer__identity">
+      <p class="gh-footer__ministry" set:html={parentOrganisationLong} />
+      <p class="gh-footer__copy">
+        © {year} Republic of Ghana. Content licensed
+        <a href={licenceHref} rel="noopener">{licenceLabel}</a>
+        unless noted.
+      </p>
+      <p class="gh-footer__motto">{motto}</p>
+    </div>
+  </div>
+
+  {
+    /* parentOrganisation is available as a prop for future micro-footers
+      or ministry overrides; referenced here so TS sees it as used. */
+  }
+  <span class="gh-visually-hidden" data-parent={parentOrganisation}></span>
+</footer>
+
+<style>
+  .gh-footer {
+    background: var(--ghana-ink-900);
+    color: var(--color-surface);
+    padding-top: var(--space-10);
+    padding-bottom: var(--space-10);
+    margin-top: var(--space-16);
+  }
+
+  .gh-footer a {
+    color: var(--ghana-gold-400);
+  }
+
+  .gh-footer a:visited {
+    color: var(--ghana-gold-400);
+  }
+
+  .gh-footer__inner {
+    max-width: 72rem;
+    margin: 0 auto;
+    padding: 0 var(--space-4);
+    display: grid;
+    gap: var(--space-8);
+  }
+
+  .gh-footer__nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2) var(--space-6);
+  }
+
+  .gh-footer__identity p {
+    margin-bottom: var(--space-3);
+    font-size: var(--font-size-sm);
+  }
+
+  .gh-footer__motto {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: var(--font-size-base);
+    color: var(--ghana-gold-400);
+    margin-top: var(--space-4);
+  }
+
+  .gh-nowrap {
+    white-space: nowrap;
+  }
+
+  .gh-visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  @media (min-width: 48rem) {
+    .gh-footer__inner {
+      grid-template-columns: 2fr 3fr;
+      align-items: start;
+    }
+  }
+</style>

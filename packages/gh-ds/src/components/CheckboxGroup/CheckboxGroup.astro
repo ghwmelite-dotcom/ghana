@@ -1,0 +1,351 @@
+---
+/**
+ * <CheckboxGroup> — Ghana Design System Tier-1 foundation component.
+ *
+ * Mirror of `<RadioGroup>` but for multi-select choice and single-checkbox
+ * use (e.g. "I accept the terms"). Ported in intent from GOV.UK Frontend's
+ * `govuk-checkboxes`, per ADR-003.
+ *
+ * Differences from RadioGroup:
+ *   - `value` is `ReadonlyArray<string>` — any subset of option values can
+ *     be pre-checked.
+ *   - The pseudo-control is a square with a tick instead of a circle with
+ *     a filled dot.
+ *   - `name` renders as `name[]` on every input so server-side receivers
+ *     get an array by default. Pass `nameIsArray={false}` to disable.
+ *
+ * Usage:
+ *   <CheckboxGroup
+ *     name="services-needed"
+ *     legend="Which services do you need today?"
+ *     hint="Select all that apply."
+ *     options={[
+ *       { value: 'passport',  label: 'Passport renewal' },
+ *       { value: 'card',      label: 'Ghana Card' },
+ *       { value: 'tax',       label: 'File a tax return' },
+ *       { value: 'licence',   label: 'Driving licence' },
+ *     ]}
+ *   />
+ *
+ *   <CheckboxGroup
+ *     name="terms"
+ *     legend=""
+ *     nameIsArray={false}
+ *     options={[
+ *       { value: 'yes', label: 'I accept the terms and conditions.' },
+ *     ]}
+ *     required
+ *   />
+ */
+
+interface CheckboxOption {
+  value: string;
+  label: string;
+  hint?: string;
+  disabled?: boolean;
+}
+
+interface Props {
+  name: string;
+  legend: string;
+  options: ReadonlyArray<CheckboxOption>;
+  hint?: string;
+  error?: string;
+  id?: string;
+  /** Pre-checked values. */
+  value?: ReadonlyArray<string>;
+  orientation?: 'vertical' | 'inline';
+  required?: boolean;
+  /**
+   * When true (default) the form field name is rendered as `name[]` so the
+   * receiving server unpacks an array. Set false for single-checkbox use
+   * (e.g. an accept-terms checkbox where you want a scalar value).
+   */
+  nameIsArray?: boolean;
+  /** When true, the legend is visually hidden but available to SR. Used
+   *  for single-checkbox accept-terms patterns where the label carries
+   *  the full statement and a separate legend would be redundant. */
+  legendHidden?: boolean;
+  class?: string;
+}
+
+const {
+  name,
+  legend,
+  options,
+  hint,
+  error,
+  id: idProp,
+  value = [],
+  orientation = 'vertical',
+  required = false,
+  nameIsArray = true,
+  legendHidden = false,
+  class: extraClass,
+} = Astro.props;
+
+const id = idProp ?? name;
+const hintId = hint ? `${id}-hint` : undefined;
+const errorId = error ? `${id}-error` : undefined;
+const describedBy = [hintId, errorId].filter(Boolean).join(' ') || undefined;
+const fieldName = nameIsArray ? `${name}[]` : name;
+
+const groupClass = ['gh-form-group', error ? 'gh-form-group--error' : null, extraClass]
+  .filter(Boolean)
+  .join(' ');
+
+const checkboxesClass = ['gh-checkboxes', orientation === 'inline' ? 'gh-checkboxes--inline' : null]
+  .filter(Boolean)
+  .join(' ');
+
+const legendTextClass = [
+  'gh-fieldset__legend-text',
+  legendHidden ? 'gh-fieldset__legend-text--hidden' : null,
+]
+  .filter(Boolean)
+  .join(' ');
+
+const checkedSet = new Set(value);
+---
+
+<div class={groupClass}>
+  <fieldset class="gh-fieldset" aria-describedby={describedBy}>
+    <legend class="gh-fieldset__legend">
+      <span class={legendTextClass}>
+        {legend}
+        {
+          required && !legendHidden && (
+            <span class="gh-label__required" aria-hidden="true">
+              *
+            </span>
+          )
+        }
+      </span>
+    </legend>
+
+    {
+      hint && (
+        <p id={hintId} class="gh-hint">
+          {hint}
+        </p>
+      )
+    }
+
+    {
+      error && (
+        <p id={errorId} class="gh-error-message" role="alert">
+          <span class="gh-error-message__prefix">Error:</span> {error}
+        </p>
+      )
+    }
+
+    <div class={checkboxesClass}>
+      {
+        options.map((option, i) => {
+          const optionId = `${id}-${i}`;
+          const optionHintId = option.hint ? `${optionId}-hint` : undefined;
+          const isChecked = checkedSet.has(option.value);
+          return (
+            <div class="gh-checkboxes__item">
+              <input
+                class="gh-checkboxes__input"
+                type="checkbox"
+                id={optionId}
+                name={fieldName}
+                value={option.value}
+                checked={isChecked}
+                disabled={option.disabled}
+                required={required && options.length === 1}
+                aria-describedby={optionHintId}
+              />
+              <label class="gh-checkboxes__label" for={optionId}>
+                {option.label}
+              </label>
+              {option.hint && (
+                <div id={optionHintId} class="gh-checkboxes__hint">
+                  {option.hint}
+                </div>
+              )}
+            </div>
+          );
+        })
+      }
+    </div>
+  </fieldset>
+</div>
+
+<style>
+  .gh-form-group {
+    display: block;
+    margin-bottom: var(--space-6);
+  }
+
+  .gh-form-group--error {
+    padding-left: var(--space-4);
+    border-left: 5px solid var(--color-error);
+  }
+
+  .gh-fieldset {
+    border: 0;
+    padding: 0;
+    margin: 0;
+    min-width: 0;
+  }
+
+  .gh-fieldset__legend {
+    padding: 0;
+    display: table;
+  }
+
+  .gh-fieldset__legend-text {
+    display: block;
+    font-weight: var(--font-weight-semibold);
+    font-size: var(--font-size-lg);
+    line-height: var(--line-height-heading);
+    color: var(--color-text-default);
+    margin-bottom: var(--space-3);
+  }
+
+  .gh-fieldset__legend-text--hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .gh-label__required {
+    color: var(--color-error);
+    margin-left: 0.2em;
+  }
+
+  .gh-hint {
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-body);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-3);
+  }
+
+  .gh-error-message {
+    color: var(--color-error);
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-body);
+    margin-bottom: var(--space-3);
+  }
+
+  .gh-error-message__prefix {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  /* ─── Checkboxes layout ───────────────────────────────── */
+  .gh-checkboxes {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .gh-checkboxes--inline {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: var(--space-2) var(--space-6);
+  }
+
+  .gh-checkboxes__item {
+    position: relative;
+    display: block;
+    min-height: 2.75rem;
+  }
+
+  .gh-checkboxes__input {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 2.75rem;
+    height: 2.75rem;
+    margin: 0;
+    opacity: 0;
+    cursor: pointer;
+  }
+
+  .gh-checkboxes__input:disabled {
+    cursor: not-allowed;
+  }
+
+  .gh-checkboxes__label {
+    display: inline-block;
+    padding: var(--space-2) 0 var(--space-2) 3.25rem;
+    min-height: 2.75rem;
+    line-height: var(--line-height-body);
+    cursor: pointer;
+    touch-action: manipulation;
+  }
+
+  .gh-checkboxes__label::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 2.75rem;
+    height: 2.75rem;
+    border: var(--border-width-default) solid var(--color-text-default);
+    border-radius: var(--radius-sm);
+    background: var(--color-surface-raised);
+  }
+
+  /* Tick drawn from two rotated borders — scales with rem. */
+  .gh-checkboxes__label::after {
+    content: '';
+    position: absolute;
+    top: 0.875rem;
+    left: 0.75rem;
+    width: 1.25rem;
+    height: 0.625rem;
+    border-left: 0.2rem solid var(--color-text-default);
+    border-bottom: 0.2rem solid var(--color-text-default);
+    transform: rotate(-45deg);
+    opacity: 0;
+  }
+
+  .gh-checkboxes__input:checked + .gh-checkboxes__label::after {
+    opacity: 1;
+  }
+
+  .gh-checkboxes__input:focus-visible + .gh-checkboxes__label::before {
+    outline: var(--border-width-focus) solid var(--color-focus-ring);
+    outline-offset: 0;
+    box-shadow: inset 0 0 0 2px var(--color-text-default);
+  }
+
+  .gh-checkboxes__input:disabled + .gh-checkboxes__label,
+  .gh-checkboxes__input:disabled ~ .gh-checkboxes__hint {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .gh-checkboxes__hint {
+    display: block;
+    padding-left: 3.25rem;
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-body);
+  }
+
+  .gh-form-group--error .gh-checkboxes__label::before {
+    border-color: var(--color-error);
+    border-width: var(--border-width-default);
+  }
+</style>

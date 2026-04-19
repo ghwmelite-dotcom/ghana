@@ -1,0 +1,56 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Build outputs
+dist/
+build/
+.astro/
+.output/
+.vercel/
+
+# Cloudflare
+.wrangler/
+.dev.vars
+wrangler.local.toml
+
+# Turbo
+.turbo/
+
+# Env & secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+
+# Editor & OS
+.DS_Store
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+.idea/
+*.swp
+Thumbs.db
+
+# Test & coverage
+coverage/
+.nyc_output/
+.lighthouseci/
+playwright-report/
+test-results/
+
+# Claude Code — track CLAUDE.md and skills, ignore local user settings only
+.claude/settings.local.json
+.claude/cache/
+.claude/logs/
+
+# Temporary
+tmp/
+*.tmp

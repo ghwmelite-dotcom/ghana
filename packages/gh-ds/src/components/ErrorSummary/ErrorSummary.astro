@@ -1,0 +1,164 @@
+---
+/**
+ * <ErrorSummary> — Ghana Design System Tier-1 foundation component.
+ *
+ * Top-of-page banner that lists every validation error on a form and lets
+ * the user click each entry to jump straight to the field. Ported in intent
+ * from GOV.UK Frontend's `govuk-error-summary`, per ADR-003.
+ *
+ * Why this component exists:
+ *   - A citizen fills a long form, hits submit, gets 6 errors. Without this
+ *     banner, they scroll the page hunting for red borders. With it, they
+ *     click one link per error and focus lands on the right field.
+ *   - Screen-reader users rely on `role="alert"` to hear the error count on
+ *     page load.
+ *   - WCAG 3.3.1 (Error Identification) + 3.3.3 (Error Suggestion).
+ *
+ * Progressive-enhancement contract (§1):
+ *   - Without JavaScript: the banner is visible and every `<a href="#fieldId">`
+ *     uses native anchor navigation. Users see the errors and click to jump.
+ *   - With JavaScript (future PR): a tiny enhancement script will set focus
+ *     to this container on page load for more reliable SR announcement. The
+ *     `tabindex="-1"` is already in place to make that focus call work.
+ *
+ * Usage:
+ *   <ErrorSummary
+ *     errors={[
+ *       { fieldId: 'pin', message: 'Enter your Ghana Card PIN' },
+ *       { fieldId: 'phone', message: 'Enter a valid Ghanaian mobile number' },
+ *     ]}
+ *   />
+ *
+ *   <ErrorSummary
+ *     title="We could not process your passport renewal"
+ *     description="Fix the following problems before resubmitting."
+ *     errors={…}
+ *   />
+ */
+
+interface ErrorItem {
+  /** DOM id of the field the link should jump to. */
+  fieldId: string;
+  /** User-facing error message. Plain language, Grade-8, second person. */
+  message: string;
+}
+
+interface Props {
+  /**
+   * Banner heading. Defaults to the GOV.UK phrasing "There is a problem".
+   * Override for flows that benefit from context, e.g. "We could not process
+   * your passport renewal". Keep under 8 words per §6.4.
+   */
+  title?: string;
+  /** Optional paragraph between the title and the error list. */
+  description?: string;
+  /** DOM id of the wrapper element. Defaults to `error-summary`. */
+  id?: string;
+  errors: ReadonlyArray<ErrorItem>;
+  class?: string;
+}
+
+const {
+  title = 'There is a problem',
+  description,
+  id = 'error-summary',
+  errors,
+  class: extraClass,
+} = Astro.props;
+
+const classes = ['gh-error-summary', extraClass].filter(Boolean).join(' ');
+
+// Hide the banner entirely when there are no errors. Prevents "0 errors"
+// empty states from reaching the DOM or the screen reader.
+const hasErrors = errors.length > 0;
+---
+
+{
+  hasErrors && (
+    <div id={id} class={classes} role="alert" tabindex="-1" aria-labelledby={`${id}-title`}>
+      <h2 id={`${id}-title`} class="gh-error-summary__title">
+        {title}
+      </h2>
+      <div class="gh-error-summary__body">
+        {description && <p class="gh-error-summary__description">{description}</p>}
+        <ul class="gh-error-summary__list">
+          {errors.map((err) => (
+            <li>
+              <a href={`#${err.fieldId}`}>{err.message}</a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  )
+}
+
+<style>
+  .gh-error-summary {
+    /* Consistent with the TextInput error-state group — red edge plus a
+       raised surface so the banner stands out against the page background. */
+    padding: var(--space-5) var(--space-6);
+    margin-bottom: var(--space-8);
+    background: var(--color-surface-raised);
+    border: 5px solid var(--color-error);
+    border-radius: var(--radius-md);
+  }
+
+  .gh-error-summary:focus {
+    outline: var(--border-width-focus) solid var(--color-focus-ring);
+    outline-offset: 2px;
+  }
+
+  .gh-error-summary__title {
+    margin: 0 0 var(--space-3) 0;
+    font-family: var(--font-display);
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-heading);
+    color: var(--color-text-default);
+  }
+
+  .gh-error-summary__description {
+    margin: 0 0 var(--space-3) 0;
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-body);
+    color: var(--color-text-default);
+  }
+
+  .gh-error-summary__list {
+    margin: 0;
+    padding: 0;
+    list-style-position: outside;
+    padding-left: var(--space-4);
+  }
+
+  .gh-error-summary__list li {
+    margin-bottom: var(--space-2);
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-body);
+  }
+
+  .gh-error-summary__list li:last-child {
+    margin-bottom: 0;
+  }
+
+  .gh-error-summary__list a {
+    color: var(--color-error);
+    font-weight: var(--font-weight-bold);
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
+    text-decoration-thickness: 0.08em;
+  }
+
+  .gh-error-summary__list a:hover {
+    text-decoration-thickness: 0.15em;
+  }
+
+  .gh-error-summary__list a:focus-visible {
+    outline: var(--border-width-focus) solid var(--color-focus-ring);
+    outline-offset: 2px;
+    background: var(--color-focus-ring);
+    color: var(--color-text-default);
+    text-decoration: none;
+  }
+</style>

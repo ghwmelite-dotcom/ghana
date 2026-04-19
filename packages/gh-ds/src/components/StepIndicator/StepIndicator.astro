@@ -1,0 +1,197 @@
+---
+/**
+ * <StepIndicator> — Ghana Design System Tier-3 service-flow component.
+ *
+ * Renders the progress of a multi-step service flow (apply for passport,
+ * file tax return, etc.). Ported in intent from GOV.UK Frontend's
+ * "task list / step by step" pattern, per ADR-003, trimmed to the
+ * essentials our form flows need in Phase 1.
+ *
+ * Contract (WCAG 1.3.1, 2.4.8):
+ *   - Wrapped in `<nav aria-label={label}>` so SR users hear "Progress,
+ *     navigation" and can land on it via rotor.
+ *   - Items render as `<ol>` — the numeric order is semantic.
+ *   - Current step carries `aria-current="step"`.
+ *   - Completed steps link back to the page they correspond to (if
+ *     `href` is set); upcoming steps are non-linked `<span>`s.
+ *   - Every step has a leading numeric badge for sighted users; the
+ *     badge is `aria-hidden` because SR users get the number from the
+ *     `<ol>` structure.
+ *
+ * Progressive enhancement: native anchor links + plain list markup, no
+ * JavaScript.
+ *
+ * Multiple on one page:
+ *   Pass a unique `label` to each StepIndicator. The default label is
+ *   shared across instances, and duplicate landmark names fail axe's
+ *   `landmark-unique` rule.
+ *
+ * Usage:
+ *   <StepIndicator
+ *     steps={[
+ *       { label: 'Identity',   status: 'completed', href: '/apply/identity' },
+ *       { label: 'Photo',      status: 'completed', href: '/apply/photo' },
+ *       { label: 'Fee',        status: 'current' },
+ *       { label: 'Review',     status: 'upcoming' },
+ *       { label: 'Submit',     status: 'upcoming' },
+ *     ]}
+ *   />
+ */
+
+type StepStatus = 'completed' | 'current' | 'upcoming';
+
+interface Step {
+  label: string;
+  status?: StepStatus;
+  /** Target href for a completed step. Ignored for current/upcoming. */
+  href?: string;
+}
+
+interface Props {
+  steps: ReadonlyArray<Step>;
+  /** Accessible name for the nav. Defaults to "Progress". */
+  label?: string;
+  class?: string;
+}
+
+const { steps, label = 'Progress', class: extraClass } = Astro.props;
+const classes = ['gh-steps', extraClass].filter(Boolean).join(' ');
+---
+
+<nav class={classes} aria-label={label}>
+  <ol class="gh-steps__list">
+    {
+      steps.map((step, i) => {
+        const status = step.status ?? 'upcoming';
+        const n = i + 1;
+        const itemClass = `gh-steps__item gh-steps__item--${status}`;
+        const isCompletedLink = status === 'completed' && step.href;
+        return (
+          <li class={itemClass} aria-current={status === 'current' ? 'step' : undefined}>
+            <span class="gh-steps__number" aria-hidden="true">
+              {n}
+            </span>
+            {isCompletedLink ? (
+              <a class="gh-steps__label" href={step.href}>
+                <span class="gh-visually-hidden">Step {n}, completed: </span>
+                {step.label}
+              </a>
+            ) : (
+              <span class="gh-steps__label">
+                <span class="gh-visually-hidden">
+                  Step {n}
+                  {status === 'current'
+                    ? ', current: '
+                    : status === 'completed'
+                      ? ', completed: '
+                      : ': '}
+                </span>
+                {step.label}
+              </span>
+            )}
+          </li>
+        );
+      })
+    }
+  </ol>
+</nav>
+
+<style>
+  .gh-steps {
+    margin: var(--space-4) 0 var(--space-8);
+  }
+
+  .gh-steps__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4) var(--space-6);
+    font-size: var(--font-size-base);
+  }
+
+  .gh-steps__item {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    color: var(--color-text-secondary);
+  }
+
+  .gh-steps__number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: var(--radius-full);
+    font-weight: var(--font-weight-bold);
+    font-variant-numeric: tabular-nums;
+    background: var(--color-surface-raised);
+    border: var(--border-width-default) solid var(--color-text-secondary);
+    color: var(--color-text-secondary);
+  }
+
+  .gh-steps__label {
+    color: inherit;
+  }
+
+  .gh-steps__item--completed {
+    color: var(--color-text-default);
+  }
+
+  .gh-steps__item--completed .gh-steps__number {
+    background: var(--color-action-primary);
+    border-color: var(--color-action-primary);
+    color: #ffffff;
+  }
+
+  .gh-steps__item--completed .gh-steps__label {
+    color: var(--color-link);
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
+    text-decoration-thickness: 0.06em;
+  }
+
+  .gh-steps__item--completed .gh-steps__label:hover {
+    text-decoration-thickness: 0.12em;
+  }
+
+  .gh-steps__item--current {
+    color: var(--color-text-default);
+  }
+
+  .gh-steps__item--current .gh-steps__number {
+    background: var(--color-text-default);
+    border-color: var(--color-text-default);
+    color: var(--color-surface-raised);
+  }
+
+  .gh-steps__item--current .gh-steps__label {
+    font-weight: var(--font-weight-bold);
+  }
+
+  .gh-steps__item--upcoming .gh-steps__label {
+    color: var(--color-text-muted);
+  }
+
+  .gh-visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  a.gh-steps__label:focus-visible {
+    outline: var(--border-width-focus) solid var(--color-focus-ring);
+    outline-offset: 2px;
+    background: var(--color-focus-ring);
+    color: var(--color-text-default);
+    text-decoration: none;
+  }
+</style>

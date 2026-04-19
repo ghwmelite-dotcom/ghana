@@ -1,0 +1,12 @@
+{
+  "name": "@gh/search",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "typecheck": "echo '@gh/search: no typecheck yet' && exit 0",
+    "lint": "echo '@gh/search: no lint yet' && exit 0",
+    "test": "echo '@gh/search: no test yet' && exit 0",
+    "build": "echo '@gh/search: no build yet' && exit 0"
+  }
+}

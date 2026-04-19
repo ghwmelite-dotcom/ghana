@@ -1,0 +1,264 @@
+---
+/**
+ * <Select> — Ghana Design System Tier-1 foundation component.
+ *
+ * Native <select> wrapped in the standard label/hint/error composite.
+ * Ported in intent from GOV.UK Frontend's `govuk-select`, per ADR-003.
+ *
+ * We intentionally do NOT build a custom combobox. Reasons:
+ *   - The native mobile picker is better than anything we could ship:
+ *     bottom-sheet on iOS, wheel picker on Android, full keyboard on
+ *     desktop, voice-input support, screen-reader support.
+ *   - A custom combobox would need keyboard trapping, live-region
+ *     announcements, and arrow-key navigation — high complexity for
+ *     no citizen benefit.
+ *   - The only legitimate reason to ship a custom widget is type-ahead
+ *     filtering on > 50 options. When that need arises (e.g. the "select
+ *     your district" with 261 options) we add an Autocomplete component
+ *     in Tier 2/3, not by replacing Select.
+ *
+ * Usage:
+ *   <Select
+ *     name="region"
+ *     label="Region"
+ *     options={[
+ *       { value: 'greater-accra', label: 'Greater Accra' },
+ *       { value: 'ashanti',       label: 'Ashanti' },
+ *       …
+ *     ]}
+ *     required
+ *   />
+ *
+ *   <Select
+ *     name="agency"
+ *     label="Which agency are you reporting to?"
+ *     value="gra"
+ *     options={[
+ *       { value: '',    label: 'Choose an agency' },
+ *       { value: 'gra', label: 'Ghana Revenue Authority (GRA)' },
+ *       { value: 'nia', label: 'National Identification Authority (NIA)' },
+ *       { value: 'dvla', label: 'Driver and Vehicle Licensing Authority (DVLA)' },
+ *     ]}
+ *   />
+ */
+
+interface SelectOption {
+  value: string;
+  label: string;
+  disabled?: boolean;
+}
+
+type Width = 'full' | '30' | '20' | '10' | '5' | '4' | '3' | '2';
+
+interface Props {
+  name: string;
+  label: string;
+  options: ReadonlyArray<SelectOption>;
+  id?: string;
+  hint?: string;
+  error?: string;
+  value?: string;
+  required?: boolean;
+  disabled?: boolean;
+  autocomplete?: string;
+  width?: Width;
+  class?: string;
+}
+
+const {
+  name,
+  label,
+  options,
+  id: idProp,
+  hint,
+  error,
+  value,
+  required = false,
+  disabled = false,
+  autocomplete,
+  width = 'full',
+  class: extraClass,
+} = Astro.props;
+
+const id = idProp ?? name;
+const hintId = hint ? `${id}-hint` : undefined;
+const errorId = error ? `${id}-error` : undefined;
+const describedBy = [hintId, errorId].filter(Boolean).join(' ') || undefined;
+
+const groupClass = ['gh-form-group', error ? 'gh-form-group--error' : null, extraClass]
+  .filter(Boolean)
+  .join(' ');
+
+const selectClass = [
+  'gh-select',
+  width !== 'full' ? `gh-select--width-${width}` : null,
+  error ? 'gh-select--error' : null,
+]
+  .filter(Boolean)
+  .join(' ');
+---
+
+<div class={groupClass}>
+  <label class="gh-label" for={id}>
+    {label}
+    {
+      required && (
+        <span class="gh-label__required" aria-hidden="true">
+          *
+        </span>
+      )
+    }
+  </label>
+
+  {
+    hint && (
+      <p id={hintId} class="gh-hint">
+        {hint}
+      </p>
+    )
+  }
+
+  {
+    error && (
+      <p id={errorId} class="gh-error-message" role="alert">
+        <span class="gh-error-message__prefix">Error:</span> {error}
+      </p>
+    )
+  }
+
+  <select
+    class={selectClass}
+    id={id}
+    name={name}
+    required={required}
+    disabled={disabled}
+    autocomplete={autocomplete}
+    aria-describedby={describedBy}
+    aria-invalid={error ? 'true' : undefined}
+    aria-required={required ? 'true' : undefined}
+  >
+    {
+      options.map((opt) => (
+        <option value={opt.value} selected={opt.value === value} disabled={opt.disabled}>
+          {opt.label}
+        </option>
+      ))
+    }
+  </select>
+</div>
+
+<style>
+  .gh-form-group {
+    display: block;
+    margin-bottom: var(--space-6);
+  }
+
+  .gh-form-group--error {
+    padding-left: var(--space-4);
+    border-left: 5px solid var(--color-error);
+  }
+
+  .gh-label {
+    display: block;
+    font-weight: var(--font-weight-semibold);
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-heading);
+    color: var(--color-text-default);
+    margin-bottom: var(--space-2);
+  }
+
+  .gh-label__required {
+    color: var(--color-error);
+    margin-left: 0.2em;
+  }
+
+  .gh-hint {
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-body);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-2);
+  }
+
+  .gh-error-message {
+    color: var(--color-error);
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-body);
+    margin-bottom: var(--space-2);
+  }
+
+  .gh-error-message__prefix {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .gh-select {
+    display: block;
+    width: 100%;
+    min-height: 2.75rem;
+    padding: var(--space-2) var(--space-10) var(--space-2) var(--space-3);
+    font-family: var(--font-body);
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-body);
+    color: var(--color-text-default);
+    background: var(--color-surface-raised);
+    border: var(--border-width-default) solid var(--color-text-default);
+    border-radius: var(--radius-md);
+    /* Keep some native affordance: a chevron icon. Use an inline SVG data
+       URI so we don't add a new asset. `background-image` with
+       `background-repeat: no-repeat` drops it on the right side. */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right var(--space-3) center;
+    background-size: 12px 8px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  }
+
+  .gh-select:focus-visible {
+    outline: var(--border-width-focus) solid var(--color-focus-ring);
+    outline-offset: 0;
+    box-shadow: inset 0 0 0 2px var(--color-text-default);
+  }
+
+  .gh-select:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background-color: var(--ghana-ink-50);
+  }
+
+  .gh-select--error {
+    border-color: var(--color-error);
+  }
+
+  /* Width modifiers identical to TextInput. */
+  .gh-select--width-30 {
+    max-width: 29.5em;
+  }
+  .gh-select--width-20 {
+    max-width: 20em;
+  }
+  .gh-select--width-10 {
+    max-width: 11.5em;
+  }
+  .gh-select--width-5 {
+    max-width: 5.5em;
+  }
+  .gh-select--width-4 {
+    max-width: 4.5em;
+  }
+  .gh-select--width-3 {
+    max-width: 3.75em;
+  }
+  .gh-select--width-2 {
+    max-width: 2.75em;
+  }
+</style>

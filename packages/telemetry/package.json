@@ -1,0 +1,12 @@
+{
+  "name": "@gh/telemetry",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "typecheck": "echo '@gh/telemetry: no typecheck yet' && exit 0",
+    "lint": "echo '@gh/telemetry: no lint yet' && exit 0",
+    "test": "echo '@gh/telemetry: no test yet' && exit 0",
+    "build": "echo '@gh/telemetry: no build yet' && exit 0"
+  }
+}

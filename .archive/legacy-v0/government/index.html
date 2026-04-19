@@ -1,0 +1,1891 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Learn about Ghana's government structure - The Executive, Legislature, and Judiciary. Meet the President, Cabinet, Parliament, and Supreme Court.">
+    <title>Government of Ghana | Republic of Ghana</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/main.css">
+
+    <style>
+        /* Theme System Variables */
+        :root {
+            --bg-primary: #0A0A0A;
+            --bg-secondary: #1A1A1A;
+            --bg-tertiary: #2A2A2A;
+            --text-primary: #FAFAF8;
+            --text-secondary: rgba(250, 250, 248, 0.85);
+            --text-muted: rgba(250, 250, 248, 0.7);
+            --card-bg: #1A1A1A;
+            --card-border: rgba(201, 162, 39, 0.2);
+            --nav-bg: rgba(10, 10, 10, 0.95);
+            --border-subtle: rgba(255, 255, 255, 0.1);
+            --theme-transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+            --accent-primary: #C9A227;
+            --accent-secondary: #E5C44D;
+            --hero-gradient: linear-gradient(135deg, var(--black-obsidian) 0%, var(--green-deep) 100%);
+            --section-bg-alt: var(--white-cream);
+        }
+
+        [data-theme="light"] {
+            --bg-primary: #FAFAF8;
+            --bg-secondary: #F5F4F0;
+            --bg-tertiary: #EEEEE8;
+            --text-primary: #1A1A1A;
+            --text-secondary: #2D2D2D;
+            --text-muted: #5A5A5A;
+            --card-bg: #FFFFFF;
+            --card-border: rgba(13, 61, 46, 0.2);
+            --nav-bg: rgba(250, 250, 248, 0.95);
+            --border-subtle: rgba(0, 0, 0, 0.1);
+            --accent-primary: #0D3D2E;
+            --accent-secondary: #1A5C45;
+            --hero-gradient: linear-gradient(135deg, #0D3D2E 0%, #1A5C45 100%);
+            --section-bg-alt: #F5F4F0;
+        }
+
+        /* Theme Toggle Styles */
+        .theme-toggle {
+            position: relative;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            border: 2px solid rgba(201, 162, 39, 0.3);
+            cursor: pointer;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .theme-toggle:hover {
+            border-color: var(--gold-burnished);
+            box-shadow: 0 0 20px rgba(201, 162, 39, 0.3);
+            transform: scale(1.05);
+        }
+
+        .toggle-stars {
+            position: absolute;
+            inset: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .toggle-star {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: #fff;
+            border-radius: 50%;
+            opacity: 0.8;
+            animation: twinkle 2s ease-in-out infinite;
+        }
+
+        .toggle-star:nth-child(1) { top: 20%; left: 25%; animation-delay: 0s; }
+        .toggle-star:nth-child(2) { top: 35%; left: 70%; animation-delay: 0.5s; }
+        .toggle-star:nth-child(3) { top: 60%; left: 20%; animation-delay: 1s; }
+        .toggle-star:nth-child(4) { top: 70%; left: 75%; animation-delay: 1.5s; }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.4; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+
+        .toggle-orb {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #f5f5dc 0%, #ffd700 50%, #daa520 100%);
+            position: relative;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.5), inset -3px -3px 6px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .toggle-icon {
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .toggle-icon.moon {
+            color: #1a1a2e;
+            opacity: 1;
+            transform: rotate(0deg) scale(1);
+        }
+
+        .toggle-icon.sun {
+            color: #1a1a2e;
+            opacity: 0;
+            transform: rotate(-90deg) scale(0.5);
+        }
+
+        /* Light mode toggle styles */
+        [data-theme="light"] .theme-toggle {
+            background: linear-gradient(135deg, #87CEEB 0%, #E0F6FF 100%);
+            border-color: rgba(13, 61, 46, 0.3);
+        }
+
+        [data-theme="light"] .theme-toggle:hover {
+            border-color: #0D3D2E;
+            box-shadow: 0 0 20px rgba(13, 61, 46, 0.3);
+        }
+
+        [data-theme="light"] .toggle-stars {
+            opacity: 0;
+        }
+
+        [data-theme="light"] .toggle-orb {
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 50%, #FF8C00 100%);
+            box-shadow: 0 0 20px rgba(255, 165, 0, 0.6), inset -3px -3px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        [data-theme="light"] .toggle-icon.moon {
+            opacity: 0;
+            transform: rotate(90deg) scale(0.5);
+        }
+
+        [data-theme="light"] .toggle-icon.sun {
+            opacity: 1;
+            transform: rotate(0deg) scale(1);
+        }
+
+        /* Government Page Styles */
+        .gov-hero {
+            background: linear-gradient(135deg, var(--black-obsidian) 0%, var(--green-deep) 100%);
+            padding: var(--space-20) 0 var(--space-24);
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .gov-hero::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(201,162,39,0.08) 0%, transparent 60%);
+        }
+
+        .gov-hero-star {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            height: 400px;
+            opacity: 0.05;
+            animation: rotate-slow 120s linear infinite;
+        }
+
+        @keyframes rotate-slow {
+            from { transform: translate(-50%, -50%) rotate(0deg); }
+            to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        .gov-hero-content {
+            position: relative;
+            z-index: 2;
+            color: var(--white-ivory);
+        }
+
+        .gov-hero .breadcrumbs {
+            justify-content: center;
+            margin-bottom: var(--space-6);
+            color: rgba(250,250,248,0.7);
+        }
+
+        .gov-hero .breadcrumbs a {
+            color: rgba(250,250,248,0.7);
+        }
+
+        .gov-hero h1 {
+            font-size: var(--text-5xl);
+            color: var(--white-ivory);
+            margin-bottom: var(--space-4);
+        }
+
+        .gov-hero h1 span {
+            color: var(--gold-burnished);
+        }
+
+        .gov-hero-desc {
+            font-size: var(--text-xl);
+            color: rgba(250,250,248,0.85);
+            max-width: 700px;
+            margin: 0 auto var(--space-8);
+        }
+
+        .gov-motto {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-3);
+            background: rgba(201,162,39,0.15);
+            border: 1px solid rgba(201,162,39,0.3);
+            padding: var(--space-3) var(--space-6);
+            border-radius: var(--radius-full);
+            color: var(--gold-light);
+            font-family: var(--font-display);
+            font-style: italic;
+            font-size: var(--text-lg);
+        }
+
+        /* Three Branches */
+        .branches-section {
+            padding: var(--space-20) 0;
+            background: var(--white-ivory);
+        }
+
+        .branches-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-8);
+        }
+
+        .branch-card {
+            background: var(--white-cream);
+            border-radius: var(--radius-2xl);
+            padding: var(--space-10);
+            text-align: center;
+            transition: all var(--transition-base);
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .branch-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gold-burnished);
+            transform: scaleX(0);
+            transition: transform var(--transition-base);
+        }
+
+        .branch-card:hover {
+            border-color: var(--gold-burnished);
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .branch-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .branch-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--green-deep), var(--green-forest));
+            border-radius: var(--radius-2xl);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto var(--space-6);
+            color: var(--gold-burnished);
+        }
+
+        .branch-title {
+            font-size: var(--text-2xl);
+            margin-bottom: var(--space-2);
+        }
+
+        .branch-subtitle {
+            font-size: var(--text-sm);
+            color: var(--gold-burnished);
+            text-transform: uppercase;
+            letter-spacing: var(--tracking-wider);
+            margin-bottom: var(--space-4);
+        }
+
+        .branch-desc {
+            color: var(--gray-mid);
+            margin-bottom: var(--space-6);
+            line-height: var(--leading-relaxed);
+        }
+
+        .branch-link {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-2);
+            color: var(--green-deep);
+            font-weight: var(--weight-semibold);
+        }
+
+        /* President Section */
+        .president-section {
+            padding: var(--space-20) 0;
+            background: var(--white-cream);
+        }
+
+        .president-card {
+            display: grid;
+            grid-template-columns: 400px 1fr;
+            gap: var(--space-12);
+            align-items: center;
+            background: var(--white-ivory);
+            border-radius: var(--radius-3xl);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .president-image {
+            height: 100%;
+            min-height: 500px;
+            background: linear-gradient(135deg, var(--green-deep), var(--black-soft));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .president-image::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolygon points='50,5 61,40 98,40 68,62 79,97 50,75 21,97 32,62 2,40 39,40' fill='rgba(201,162,39,0.1)'/%3E%3C/svg%3E") center/200px repeat;
+            opacity: 0.5;
+        }
+
+        .president-placeholder {
+            width: 200px;
+            height: 200px;
+            background: rgba(255,255,255,0.1);
+            border-radius: var(--radius-full);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold-burnished);
+            position: relative;
+            z-index: 2;
+        }
+
+        .president-content {
+            padding: var(--space-10);
+        }
+
+        .president-label {
+            font-size: var(--text-sm);
+            color: var(--gold-burnished);
+            text-transform: uppercase;
+            letter-spacing: var(--tracking-wider);
+            font-weight: var(--weight-semibold);
+            margin-bottom: var(--space-2);
+        }
+
+        .president-name {
+            font-size: var(--text-4xl);
+            margin-bottom: var(--space-2);
+        }
+
+        .president-title {
+            font-size: var(--text-lg);
+            color: var(--gray-mid);
+            margin-bottom: var(--space-6);
+        }
+
+        .president-bio {
+            color: var(--gray-dark);
+            line-height: var(--leading-relaxed);
+            margin-bottom: var(--space-6);
+        }
+
+        .president-stats {
+            display: flex;
+            gap: var(--space-8);
+            padding: var(--space-6) 0;
+            border-top: 1px solid var(--gray-warm);
+            border-bottom: 1px solid var(--gray-warm);
+            margin-bottom: var(--space-6);
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-family: var(--font-display);
+            font-size: var(--text-2xl);
+            font-weight: var(--weight-bold);
+            color: var(--green-deep);
+        }
+
+        .stat-label {
+            font-size: var(--text-xs);
+            color: var(--gray-mid);
+            text-transform: uppercase;
+            letter-spacing: var(--tracking-wide);
+        }
+
+        /* Cabinet Section */
+        .cabinet-section {
+            padding: var(--space-20) 0;
+            background: var(--white-ivory);
+        }
+
+        .cabinet-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--space-6);
+        }
+
+        .cabinet-card {
+            background: var(--white-cream);
+            border-radius: var(--radius-xl);
+            padding: var(--space-6);
+            text-align: center;
+            transition: all var(--transition-base);
+            text-decoration: none;
+            color: var(--black-obsidian);
+        }
+
+        .cabinet-card:hover {
+            background: var(--white-ivory);
+            box-shadow: var(--shadow-md);
+            transform: translateY(-4px);
+        }
+
+        .cabinet-avatar {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--green-deep), var(--green-forest));
+            border-radius: var(--radius-full);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto var(--space-4);
+            color: var(--gold-burnished);
+            font-family: var(--font-display);
+            font-size: var(--text-xl);
+            font-weight: var(--weight-bold);
+        }
+
+        .cabinet-name {
+            font-family: var(--font-display);
+            font-size: var(--text-base);
+            font-weight: var(--weight-semibold);
+            margin-bottom: var(--space-1);
+        }
+
+        .cabinet-role {
+            font-size: var(--text-xs);
+            color: var(--gray-mid);
+            line-height: var(--leading-snug);
+        }
+
+        /* Parliament Section */
+        .parliament-section {
+            padding: var(--space-20) 0;
+            background: linear-gradient(135deg, var(--green-deep) 0%, var(--black-soft) 100%);
+            color: var(--white-ivory);
+        }
+
+        .parliament-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-12);
+            align-items: center;
+        }
+
+        .parliament-text h2 {
+            color: var(--white-ivory);
+            margin-bottom: var(--space-6);
+        }
+
+        .parliament-text p {
+            color: rgba(250,250,248,0.85);
+            margin-bottom: var(--space-6);
+            line-height: var(--leading-relaxed);
+        }
+
+        .parliament-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--space-6);
+            margin-top: var(--space-8);
+        }
+
+        .parliament-stat {
+            background: rgba(255,255,255,0.08);
+            border-radius: var(--radius-xl);
+            padding: var(--space-5);
+            text-align: center;
+        }
+
+        .parliament-stat-value {
+            font-family: var(--font-display);
+            font-size: var(--text-3xl);
+            font-weight: var(--weight-bold);
+            color: var(--gold-burnished);
+        }
+
+        .parliament-stat-label {
+            font-size: var(--text-sm);
+            color: rgba(250,250,248,0.7);
+        }
+
+        .parliament-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hemicycle {
+            width: 100%;
+            max-width: 400px;
+            aspect-ratio: 2/1;
+            background: rgba(255,255,255,0.05);
+            border-radius: 200px 200px 0 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hemicycle::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 30px;
+            background: var(--gold-burnished);
+            border-radius: 60px 60px 0 0;
+        }
+
+        .party-section {
+            position: absolute;
+            bottom: 0;
+            height: 100%;
+        }
+
+        .party-section.majority {
+            left: 0;
+            width: 55%;
+            background: linear-gradient(to top, var(--green-deep) 0%, rgba(27,77,62,0.3) 100%);
+            border-radius: 0 200px 0 0;
+        }
+
+        .party-section.minority {
+            right: 0;
+            width: 45%;
+            background: linear-gradient(to top, var(--red-crimson) 0%, rgba(139,35,50,0.3) 100%);
+            border-radius: 200px 0 0 0;
+        }
+
+        /* Judiciary Section */
+        .judiciary-section {
+            padding: var(--space-20) 0;
+            background: var(--white-cream);
+        }
+
+        .judiciary-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--space-8);
+        }
+
+        .court-card {
+            background: var(--white-ivory);
+            border-radius: var(--radius-xl);
+            padding: var(--space-8);
+            transition: all var(--transition-base);
+            border: 1px solid var(--gray-warm);
+        }
+
+        .court-card:hover {
+            border-color: var(--gold-burnished);
+            box-shadow: var(--shadow-md);
+        }
+
+        .court-level {
+            display: inline-block;
+            font-size: var(--text-xs);
+            color: var(--gold-burnished);
+            text-transform: uppercase;
+            letter-spacing: var(--tracking-wider);
+            font-weight: var(--weight-semibold);
+            margin-bottom: var(--space-2);
+        }
+
+        .court-name {
+            font-size: var(--text-xl);
+            margin-bottom: var(--space-3);
+        }
+
+        .court-desc {
+            color: var(--gray-mid);
+            font-size: var(--text-sm);
+            line-height: var(--leading-relaxed);
+            margin-bottom: var(--space-4);
+        }
+
+        .court-meta {
+            display: flex;
+            gap: var(--space-6);
+            font-size: var(--text-xs);
+            color: var(--gray-mid);
+        }
+
+        .court-meta span {
+            display: flex;
+            align-items: center;
+            gap: var(--space-1);
+        }
+
+        /* Regions Section */
+        .regions-section {
+            padding: var(--space-20) 0;
+            background: var(--white-ivory);
+        }
+
+        .regions-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--space-4);
+        }
+
+        .region-card {
+            background: var(--white-cream);
+            border-radius: var(--radius-lg);
+            padding: var(--space-5);
+            text-decoration: none;
+            color: var(--black-obsidian);
+            transition: all var(--transition-fast);
+            display: flex;
+            align-items: center;
+            gap: var(--space-3);
+        }
+
+        .region-card:hover {
+            background: var(--green-deep);
+            color: var(--white-ivory);
+        }
+
+        .region-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--green-pale);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--green-deep);
+            flex-shrink: 0;
+            transition: all var(--transition-fast);
+        }
+
+        .region-card:hover .region-icon {
+            background: rgba(255,255,255,0.2);
+            color: var(--gold-burnished);
+        }
+
+        .region-name {
+            font-weight: var(--weight-medium);
+            font-size: var(--text-sm);
+        }
+
+        /* Light Mode Overrides */
+        [data-theme="light"] .gov-hero {
+            background: linear-gradient(135deg, #0D3D2E 0%, #1A5C45 100%);
+        }
+
+        [data-theme="light"] .gov-hero::before {
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%);
+        }
+
+        [data-theme="light"] .gov-hero h1 span {
+            color: #90EE90;
+        }
+
+        [data-theme="light"] .gov-motto {
+            background: rgba(255,255,255,0.15);
+            border-color: rgba(255,255,255,0.3);
+            color: #FFFFFF;
+        }
+
+        [data-theme="light"] .branches-section {
+            background: var(--bg-primary);
+        }
+
+        [data-theme="light"] .branch-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            transition: var(--theme-transition);
+        }
+
+        [data-theme="light"] .branch-card::before {
+            background: var(--accent-primary);
+        }
+
+        [data-theme="light"] .branch-card:hover {
+            border-color: var(--accent-primary);
+            box-shadow: 0 8px 30px rgba(13, 61, 46, 0.15);
+        }
+
+        [data-theme="light"] .branch-icon {
+            background: linear-gradient(135deg, #0D3D2E, #1A5C45);
+            color: #FFFFFF;
+        }
+
+        [data-theme="light"] .branch-subtitle {
+            color: var(--accent-primary);
+        }
+
+        [data-theme="light"] .branch-title {
+            color: var(--text-primary);
+        }
+
+        [data-theme="light"] .branch-desc {
+            color: var(--text-muted);
+        }
+
+        [data-theme="light"] .branch-link {
+            color: var(--accent-primary);
+        }
+
+        [data-theme="light"] .president-section {
+            background: var(--bg-secondary);
+        }
+
+        [data-theme="light"] .president-card {
+            background: var(--card-bg);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        [data-theme="light"] .president-image {
+            background: linear-gradient(135deg, #0D3D2E, #1A5C45);
+        }
+
+        [data-theme="light"] .president-label {
+            color: var(--accent-primary);
+        }
+
+        [data-theme="light"] .president-name {
+            color: var(--text-primary);
+        }
+
+        [data-theme="light"] .president-title {
+            color: var(--text-muted);
+        }
+
+        [data-theme="light"] .president-bio {
+            color: var(--text-secondary);
+        }
+
+        [data-theme="light"] .president-stats {
+            border-color: var(--border-subtle);
+        }
+
+        [data-theme="light"] .stat-value {
+            color: var(--accent-primary);
+        }
+
+        [data-theme="light"] .stat-label {
+            color: var(--text-muted);
+        }
+
+        [data-theme="light"] .cabinet-section {
+            background: var(--bg-primary);
+        }
+
+        [data-theme="light"] .cabinet-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            color: var(--text-primary);
+        }
+
+        [data-theme="light"] .cabinet-card:hover {
+            background: var(--bg-secondary);
+            box-shadow: 0 4px 20px rgba(13, 61, 46, 0.1);
+        }
+
+        [data-theme="light"] .cabinet-avatar {
+            background: linear-gradient(135deg, #0D3D2E, #1A5C45);
+            color: #FFFFFF;
+        }
+
+        [data-theme="light"] .cabinet-name {
+            color: var(--text-primary);
+        }
+
+        [data-theme="light"] .cabinet-role {
+            color: var(--text-muted);
+        }
+
+        [data-theme="light"] .parliament-section {
+            background: linear-gradient(135deg, #0D3D2E 0%, #1A5C45 100%);
+        }
+
+        [data-theme="light"] .parliament-stat {
+            background: rgba(255,255,255,0.12);
+        }
+
+        [data-theme="light"] .parliament-stat-value {
+            color: #90EE90;
+        }
+
+        [data-theme="light"] .judiciary-section {
+            background: var(--bg-secondary);
+        }
+
+        [data-theme="light"] .court-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+        }
+
+        [data-theme="light"] .court-card:hover {
+            border-color: var(--accent-primary);
+            box-shadow: 0 4px 20px rgba(13, 61, 46, 0.1);
+        }
+
+        [data-theme="light"] .court-level {
+            color: var(--accent-primary);
+        }
+
+        [data-theme="light"] .court-name {
+            color: var(--text-primary);
+        }
+
+        [data-theme="light"] .court-desc {
+            color: var(--text-muted);
+        }
+
+        [data-theme="light"] .court-meta {
+            color: var(--text-muted);
+        }
+
+        [data-theme="light"] .regions-section {
+            background: var(--bg-primary);
+        }
+
+        [data-theme="light"] .region-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            color: var(--text-primary);
+        }
+
+        [data-theme="light"] .region-card:hover {
+            background: var(--accent-primary);
+            color: #FFFFFF;
+        }
+
+        [data-theme="light"] .region-icon {
+            background: rgba(13, 61, 46, 0.1);
+            color: var(--accent-primary);
+        }
+
+        [data-theme="light"] .region-card:hover .region-icon {
+            background: rgba(255,255,255,0.2);
+            color: #FFFFFF;
+        }
+
+        [data-theme="light"] .section-label {
+            color: var(--accent-primary);
+        }
+
+        [data-theme="light"] .section-title {
+            color: var(--text-primary);
+        }
+
+        [data-theme="light"] .section-desc {
+            color: var(--text-muted);
+        }
+
+        [data-theme="light"] .footer {
+            background: #0D3D2E;
+        }
+
+        [data-theme="light"] .top-bar {
+            background: var(--bg-tertiary);
+            border-color: var(--border-subtle);
+        }
+
+        [data-theme="light"] .nav-main {
+            background: var(--nav-bg);
+            border-color: var(--border-subtle);
+        }
+
+        [data-theme="light"] .nav-links a {
+            color: var(--text-primary);
+        }
+
+        [data-theme="light"] .nav-links a:hover,
+        [data-theme="light"] .nav-links a.active {
+            color: var(--accent-primary);
+        }
+
+        [data-theme="light"] .logo-title {
+            color: var(--text-primary);
+        }
+
+        [data-theme="light"] .logo-subtitle {
+            color: var(--text-muted);
+        }
+
+        [data-theme="light"] .logo-star {
+            fill: var(--accent-primary);
+        }
+
+        [data-theme="light"] .search-toggle {
+            color: var(--text-primary);
+        }
+
+        [data-theme="light"] .nav-cta {
+            background: var(--accent-primary);
+            color: #FFFFFF;
+        }
+
+        [data-theme="light"] .nav-cta:hover {
+            background: var(--accent-secondary);
+        }
+
+        [data-theme="light"] .btn-secondary {
+            background: transparent;
+            border-color: var(--accent-primary);
+            color: var(--accent-primary);
+        }
+
+        [data-theme="light"] .btn-secondary:hover {
+            background: var(--accent-primary);
+            color: #FFFFFF;
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .branches-grid {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+                margin: 0 auto;
+            }
+
+            .cabinet-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .president-card {
+                grid-template-columns: 1fr;
+            }
+
+            .president-image {
+                min-height: 300px;
+            }
+
+            .parliament-content {
+                grid-template-columns: 1fr;
+            }
+
+            .parliament-visual {
+                order: -1;
+            }
+
+            .judiciary-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cabinet-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .gov-hero h1 {
+                font-size: var(--text-3xl);
+            }
+
+            .regions-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .cabinet-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .parliament-stats {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ===== MINIMAL NAVIGATION ===== */
+        .nav-main {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: var(--nav-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-subtle);
+            transition: var(--theme-transition);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: var(--text-primary);
+        }
+
+        .logo-emblem {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-star {
+            width: 32px;
+            height: 32px;
+            fill: var(--accent-primary);
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-title {
+            font-family: 'Fraunces', serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            line-height: 1.2;
+        }
+
+        .logo-subtitle {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links a {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.6rem 1rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+            background: var(--bg-tertiary);
+        }
+
+        .nav-links a.active {
+            color: var(--accent-primary);
+            background: rgba(201, 162, 39, 0.1);
+        }
+
+        [data-theme="light"] .nav-links a.active {
+            background: rgba(13, 61, 46, 0.1);
+        }
+
+        .nav-links svg {
+            width: 18px;
+            height: 18px;
+            opacity: 0.7;
+        }
+
+        .nav-links a:hover svg,
+        .nav-links a.active svg {
+            opacity: 1;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .nav-cta {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.6rem 1.25rem;
+            background: var(--accent-primary);
+            color: var(--bg-primary);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .nav-cta:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+
+        [data-theme="light"] .nav-cta {
+            background: var(--accent-primary);
+            color: #FFFFFF;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            width: 44px;
+            height: 44px;
+            align-items: center;
+            justify-content: center;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-subtle);
+            border-radius: 8px;
+            cursor: pointer;
+            color: var(--text-primary);
+        }
+
+        .mobile-menu-btn svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 70px;
+            left: 0;
+            right: 0;
+            background: var(--bg-primary);
+            border-bottom: 1px solid var(--border-subtle);
+            padding: 1rem;
+            z-index: 999;
+        }
+
+        .mobile-menu.active {
+            display: block;
+        }
+
+        .mobile-menu a {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem;
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 1rem;
+            border-radius: 8px;
+            transition: background 0.2s ease;
+        }
+
+        .mobile-menu a:hover {
+            background: var(--bg-tertiary);
+        }
+
+        .mobile-menu a.active {
+            color: var(--accent-primary);
+            background: rgba(201, 162, 39, 0.1);
+        }
+
+        [data-theme="light"] .mobile-menu a.active {
+            background: rgba(13, 61, 46, 0.1);
+        }
+
+        .mobile-menu svg {
+            width: 20px;
+            height: 20px;
+            opacity: 0.7;
+        }
+
+        @media (max-width: 900px) {
+            .nav-links, .nav-cta {
+                display: none;
+            }
+            .mobile-menu-btn {
+                display: flex;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="kente-pattern"></div>
+
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <a href="tel:112" class="emergency-link">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+            </svg>
+            Emergency: 112 | COVID-19: 311
+        </a>
+        <div class="language-selector">
+            <span style="color: var(--gray-mid);">Language:</span>
+            <button class="active">English</button>
+            <button>Twi</button>
+            <button>Hausa</button>
+            <button>Ewe</button>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="nav-main">
+        <div class="nav-container">
+            <a href="../index.html" class="logo">
+                <div class="logo-emblem">
+                    <svg class="logo-star" viewBox="0 0 100 100">
+                        <polygon points="50,5 61,40 98,40 68,62 79,97 50,75 21,97 32,62 2,40 39,40"/>
+                    </svg>
+                </div>
+                <div class="logo-text">
+                    <span class="logo-title">Republic of Ghana</span>
+                    <span class="logo-subtitle">Official Government Portal</span>
+                </div>
+            </a>
+
+            <ul class="nav-links">
+                <li><a href="../index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>Home</a></li>
+                <li><a href="../services/index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>Services</a></li>
+                <li><a href="index.html" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 21v-6h6v6"/></svg>Government</a></li>
+                <li><a href="../business/index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></svg>Invest</a></li>
+                <li><a href="../tourism/index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="10" r="3"/><path d="M12 21.7C17.3 17 20 13 20 10a8 8 0 1 0-16 0c0 3 2.7 7 8 11.7z"/></svg>Visit Ghana</a></li>
+                <li><a href="../contact.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.82.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.99.58 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Contact</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <div class="toggle-stars">
+                        <span class="toggle-star"></span>
+                        <span class="toggle-star"></span>
+                        <span class="toggle-star"></span>
+                        <span class="toggle-star"></span>
+                    </div>
+                    <div class="toggle-orb">
+                        <svg class="toggle-icon moon" viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                        <svg class="toggle-icon sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                    </div>
+                </button>
+                <a href="../services/index.html" class="nav-cta">Access Services</a>
+                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="../index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>Home</a>
+        <a href="../services/index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>Services</a>
+        <a href="index.html" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 21v-6h6v6"/></svg>Government</a>
+        <a href="../business/index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></svg>Invest</a>
+        <a href="../tourism/index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="10" r="3"/><path d="M12 21.7C17.3 17 20 13 20 10a8 8 0 1 0-16 0c0 3 2.7 7 8 11.7z"/></svg>Visit Ghana</a>
+        <a href="../contact.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.82.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.99.58 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Contact</a>
+    </div>
+
+    <!-- Search Modal -->
+    <div class="search-modal" id="searchModal">
+        <button class="search-close" onclick="closeSearch()">
+            <svg width="32" height="32" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M18 6L6 18M6 6l12 12"/>
+            </svg>
+        </button>
+        <div class="search-container">
+            <div class="search-input-wrapper">
+                <svg class="search-icon-lg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
+                </svg>
+                <input type="text" class="search-input-lg" placeholder="Search government...">
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero -->
+    <section class="gov-hero">
+        <svg class="gov-hero-star" viewBox="0 0 100 100" fill="currentColor">
+            <polygon points="50,5 61,40 98,40 68,62 79,97 50,75 21,97 32,62 2,40 39,40"/>
+        </svg>
+        <div class="container">
+            <div class="gov-hero-content">
+                <nav class="breadcrumbs">
+                    <a href="../index.html">Home</a>
+                    <span class="separator">/</span>
+                    <span class="current">Government</span>
+                </nav>
+                <h1 class="reveal">Government of <span>Ghana</span></h1>
+                <p class="gov-hero-desc reveal">A constitutional democracy with three branches of government working together to serve the people of Ghana.</p>
+                <span class="gov-motto reveal">
+                    <svg width="20" height="20" viewBox="0 0 100 100" fill="currentColor">
+                        <polygon points="50,5 61,40 98,40 68,62 79,97 50,75 21,97 32,62 2,40 39,40"/>
+                    </svg>
+                    "Freedom and Justice"
+                </span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- Three Branches -->
+        <section class="branches-section">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="section-label">Structure</span>
+                    <h2 class="section-title">Three Branches of Government</h2>
+                    <p class="section-desc">Ghana's government is organized into three independent branches, each with distinct powers and responsibilities.</p>
+                </div>
+
+                <div class="branches-grid">
+                    <div class="branch-card reveal">
+                        <div class="branch-icon">
+                            <svg width="36" height="36" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                                <path d="M2 17l10 5 10-5"/>
+                                <path d="M2 12l10 5 10-5"/>
+                            </svg>
+                        </div>
+                        <span class="branch-subtitle">The Executive</span>
+                        <h3 class="branch-title">The Presidency</h3>
+                        <p class="branch-desc">Led by the President, who serves as both Head of State and Head of Government. The Executive implements and enforces laws passed by Parliament.</p>
+                        <a href="#president" class="branch-link">
+                            Learn More
+                            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </a>
+                    </div>
+
+                    <div class="branch-card reveal">
+                        <div class="branch-icon">
+                            <svg width="36" height="36" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M3 21h18"/>
+                                <path d="M5 21V7l7-4 7 4v14"/>
+                                <path d="M9 21v-6h6v6"/>
+                                <path d="M9 9h.01"/>
+                                <path d="M15 9h.01"/>
+                            </svg>
+                        </div>
+                        <span class="branch-subtitle">The Legislature</span>
+                        <h3 class="branch-title">Parliament</h3>
+                        <p class="branch-desc">A unicameral legislature with 275 elected Members of Parliament. Parliament makes laws, approves the national budget, and provides oversight.</p>
+                        <a href="#parliament" class="branch-link">
+                            Learn More
+                            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </a>
+                    </div>
+
+                    <div class="branch-card reveal">
+                        <div class="branch-icon">
+                            <svg width="36" height="36" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <circle cx="12" cy="12" r="10"/>
+                                <path d="M12 6v6l4 2"/>
+                            </svg>
+                        </div>
+                        <span class="branch-subtitle">The Judiciary</span>
+                        <h3 class="branch-title">The Courts</h3>
+                        <p class="branch-desc">An independent judiciary headed by the Supreme Court. The courts interpret laws, resolve disputes, and protect constitutional rights.</p>
+                        <a href="#judiciary" class="branch-link">
+                            Learn More
+                            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- President Section -->
+        <section class="president-section" id="president">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="section-label">The Executive</span>
+                    <h2 class="section-title">Office of the President</h2>
+                </div>
+
+                <div class="president-card reveal">
+                    <div class="president-image">
+                        <div class="president-placeholder">
+                            <svg width="80" height="80" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                                <circle cx="12" cy="7" r="4"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="president-content">
+                        <span class="president-label">His Excellency</span>
+                        <h3 class="president-name">The President</h3>
+                        <p class="president-title">President of the Republic of Ghana & Commander-in-Chief of the Ghana Armed Forces</p>
+                        <p class="president-bio">The President of Ghana is the Head of State, Head of Government, and Commander-in-Chief of the Ghana Armed Forces. The President is elected by universal adult suffrage for a term of four years and may serve a maximum of two terms.</p>
+                        <p class="president-bio">The Executive branch is responsible for implementing and enforcing laws, conducting foreign affairs, commanding the military, and managing the day-to-day operations of the government through various ministries and agencies.</p>
+                        <div class="president-stats">
+                            <div class="stat">
+                                <div class="stat-value">30+</div>
+                                <div class="stat-label">Ministries</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">16</div>
+                                <div class="stat-label">Regions</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">261</div>
+                                <div class="stat-label">Districts</div>
+                            </div>
+                        </div>
+                        <a href="president.html" class="btn btn-secondary">
+                            Learn More About the Presidency
+                            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Cabinet Section -->
+        <section class="cabinet-section">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="section-label">Leadership</span>
+                    <h2 class="section-title">Cabinet Ministers</h2>
+                    <p class="section-desc">The Cabinet advises the President and oversees the various ministries of government.</p>
+                </div>
+
+                <div class="cabinet-grid">
+                    <a href="ministries.html#finance" class="cabinet-card reveal">
+                        <div class="cabinet-avatar">MF</div>
+                        <h4 class="cabinet-name">Minister of Finance</h4>
+                        <p class="cabinet-role">Economic Policy & Budget</p>
+                    </a>
+                    <a href="ministries.html#foreign" class="cabinet-card reveal">
+                        <div class="cabinet-avatar">FA</div>
+                        <h4 class="cabinet-name">Minister of Foreign Affairs</h4>
+                        <p class="cabinet-role">International Relations</p>
+                    </a>
+                    <a href="ministries.html#interior" class="cabinet-card reveal">
+                        <div class="cabinet-avatar">MI</div>
+                        <h4 class="cabinet-name">Minister of Interior</h4>
+                        <p class="cabinet-role">Internal Security</p>
+                    </a>
+                    <a href="ministries.html#defence" class="cabinet-card reveal">
+                        <div class="cabinet-avatar">MD</div>
+                        <h4 class="cabinet-name">Minister of Defence</h4>
+                        <p class="cabinet-role">National Defence</p>
+                    </a>
+                    <a href="ministries.html#health" class="cabinet-card reveal">
+                        <div class="cabinet-avatar">MH</div>
+                        <h4 class="cabinet-name">Minister of Health</h4>
+                        <p class="cabinet-role">Healthcare Services</p>
+                    </a>
+                    <a href="ministries.html#education" class="cabinet-card reveal">
+                        <div class="cabinet-avatar">ME</div>
+                        <h4 class="cabinet-name">Minister of Education</h4>
+                        <p class="cabinet-role">Education Policy</p>
+                    </a>
+                    <a href="ministries.html#trade" class="cabinet-card reveal">
+                        <div class="cabinet-avatar">TI</div>
+                        <h4 class="cabinet-name">Minister of Trade & Industry</h4>
+                        <p class="cabinet-role">Commerce & Industry</p>
+                    </a>
+                    <a href="ministries.html" class="cabinet-card reveal">
+                        <div class="cabinet-avatar" style="background: var(--gold-burnished); color: var(--black-obsidian);">+</div>
+                        <h4 class="cabinet-name">View All Ministers</h4>
+                        <p class="cabinet-role">30+ Ministries</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Parliament Section -->
+        <section class="parliament-section" id="parliament">
+            <div class="container">
+                <div class="parliament-content">
+                    <div class="parliament-text reveal">
+                        <span class="section-label" style="color: var(--gold-light);">The Legislature</span>
+                        <h2>Parliament of Ghana</h2>
+                        <p>The Parliament of Ghana is the legislative body of the Republic. It is a unicameral legislature consisting of 275 Members of Parliament (MPs) elected from single-member constituencies across the 16 regions of Ghana.</p>
+                        <p>Parliament's primary functions include making laws, approving the national budget, ratifying international agreements, and providing oversight of the Executive branch.</p>
+
+                        <div class="parliament-stats">
+                            <div class="parliament-stat">
+                                <div class="parliament-stat-value">275</div>
+                                <div class="parliament-stat-label">Members of Parliament</div>
+                            </div>
+                            <div class="parliament-stat">
+                                <div class="parliament-stat-value">16</div>
+                                <div class="parliament-stat-label">Regional Constituencies</div>
+                            </div>
+                            <div class="parliament-stat">
+                                <div class="parliament-stat-value">26</div>
+                                <div class="parliament-stat-label">Standing Committees</div>
+                            </div>
+                            <div class="parliament-stat">
+                                <div class="parliament-stat-value">4</div>
+                                <div class="parliament-stat-label">Year Term</div>
+                            </div>
+                        </div>
+
+                        <a href="parliament.html" class="btn btn-primary" style="margin-top: var(--space-6);">
+                            Explore Parliament
+                            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </a>
+                    </div>
+
+                    <div class="parliament-visual reveal">
+                        <div class="hemicycle">
+                            <div class="party-section majority"></div>
+                            <div class="party-section minority"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Judiciary Section -->
+        <section class="judiciary-section" id="judiciary">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="section-label">The Judiciary</span>
+                    <h2 class="section-title">Courts of Ghana</h2>
+                    <p class="section-desc">An independent judiciary that interprets laws and administers justice.</p>
+                </div>
+
+                <div class="judiciary-grid">
+                    <div class="court-card reveal">
+                        <span class="court-level">Superior Court</span>
+                        <h3 class="court-name">Supreme Court</h3>
+                        <p class="court-desc">The highest court in Ghana. It has exclusive original jurisdiction in all matters relating to the enforcement or interpretation of the Constitution.</p>
+                        <div class="court-meta">
+                            <span>
+                                <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                    <circle cx="9" cy="7" r="4"/>
+                                </svg>
+                                15 Justices
+                            </span>
+                            <span>
+                                <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                    <circle cx="12" cy="10" r="3"/>
+                                </svg>
+                                Accra
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="court-card reveal">
+                        <span class="court-level">Superior Court</span>
+                        <h3 class="court-name">Court of Appeal</h3>
+                        <p class="court-desc">Hears appeals from the High Court and Circuit Courts. Has jurisdiction to enforce fundamental human rights and freedoms.</p>
+                        <div class="court-meta">
+                            <span>
+                                <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                    <circle cx="9" cy="7" r="4"/>
+                                </svg>
+                                30+ Justices
+                            </span>
+                            <span>
+                                <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                    <circle cx="12" cy="10" r="3"/>
+                                </svg>
+                                Regional
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="court-card reveal">
+                        <span class="court-level">Superior Court</span>
+                        <h3 class="court-name">High Court</h3>
+                        <p class="court-desc">Has original jurisdiction in civil and criminal matters. Also serves as an appellate court for lower courts.</p>
+                        <div class="court-meta">
+                            <span>
+                                <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                    <circle cx="9" cy="7" r="4"/>
+                                </svg>
+                                100+ Judges
+                            </span>
+                            <span>
+                                <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                    <circle cx="12" cy="10" r="3"/>
+                                </svg>
+                                All Regions
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="court-card reveal">
+                        <span class="court-level">Lower Courts</span>
+                        <h3 class="court-name">Circuit & District Courts</h3>
+                        <p class="court-desc">Handle criminal cases, civil matters up to certain limits, and family cases. Present in all districts across Ghana.</p>
+                        <div class="court-meta">
+                            <span>
+                                <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                    <circle cx="9" cy="7" r="4"/>
+                                </svg>
+                                200+ Magistrates
+                            </span>
+                            <span>
+                                <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                    <circle cx="12" cy="10" r="3"/>
+                                </svg>
+                                261 Districts
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Regions Section -->
+        <section class="regions-section">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="section-label">Administration</span>
+                    <h2 class="section-title">16 Regions of Ghana</h2>
+                    <p class="section-desc">Ghana is divided into 16 administrative regions, each with its own Regional Coordinating Council.</p>
+                </div>
+
+                <div class="regions-grid">
+                    <a href="regions.html#greater-accra" class="region-card reveal">
+                        <div class="region-icon">
+                            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                            </svg>
+                        </div>
+                        <span class="region-name">Greater Accra</span>
+                    </a>
+                    <a href="regions.html#ashanti" class="region-card reveal">
+                        <div class="region-icon">
+                            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                            </svg>
+                        </div>
+                        <span class="region-name">Ashanti</span>
+                    </a>
+                    <a href="regions.html#western" class="region-card reveal">
+                        <div class="region-icon">
+                            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                            </svg>
+                        </div>
+                        <span class="region-name">Western</span>
+                    </a>
+                    <a href="regions.html#eastern" class="region-card reveal">
+                        <div class="region-icon">
+                            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                            </svg>
+                        </div>
+                        <span class="region-name">Eastern</span>
+                    </a>
+                    <a href="regions.html#central" class="region-card reveal">
+                        <div class="region-icon">
+                            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                            </svg>
+                        </div>
+                        <span class="region-name">Central</span>
+                    </a>
+                    <a href="regions.html#northern" class="region-card reveal">
+                        <div class="region-icon">
+                            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                            </svg>
+                        </div>
+                        <span class="region-name">Northern</span>
+                    </a>
+                    <a href="regions.html#volta" class="region-card reveal">
+                        <div class="region-icon">
+                            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                            </svg>
+                        </div>
+                        <span class="region-name">Volta</span>
+                    </a>
+                    <a href="regions.html#upper-east" class="region-card reveal">
+                        <div class="region-icon">
+                            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                            </svg>
+                        </div>
+                        <span class="region-name">Upper East</span>
+                    </a>
+                    <a href="regions.html#upper-west" class="region-card reveal">
+                        <div class="region-icon">
+                            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                            </svg>
+                        </div>
+                        <span class="region-name">Upper West</span>
+                    </a>
+                    <a href="regions.html#bono" class="region-card reveal">
+                        <div class="region-icon">
+                            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                            </svg>
+                        </div>
+                        <span class="region-name">Bono</span>
+                    </a>
+                    <a href="regions.html#bono-east" class="region-card reveal">
+                        <div class="region-icon">
+                            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                            </svg>
+                        </div>
+                        <span class="region-name">Bono East</span>
+                    </a>
+                    <a href="regions.html#ahafo" class="region-card reveal">
+                        <div class="region-icon">
+                            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                            </svg>
+                        </div>
+                        <span class="region-name">Ahafo</span>
+                    </a>
+                    <a href="regions.html#savannah" class="region-card reveal">
+                        <div class="region-icon">
+                            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                            </svg>
+                        </div>
+                        <span class="region-name">Savannah</span>
+                    </a>
+                    <a href="regions.html#north-east" class="region-card reveal">
+                        <div class="region-icon">
+                            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                            </svg>
+                        </div>
+                        <span class="region-name">North East</span>
+                    </a>
+                    <a href="regions.html#oti" class="region-card reveal">
+                        <div class="region-icon">
+                            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                            </svg>
+                        </div>
+                        <span class="region-name">Oti</span>
+                    </a>
+                    <a href="regions.html#western-north" class="region-card reveal">
+                        <div class="region-icon">
+                            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                            </svg>
+                        </div>
+                        <span class="region-name">Western North</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <div class="footer-logo">
+                    <svg viewBox="0 0 100 100">
+                        <polygon points="50,5 61,40 98,40 68,62 79,97 50,75 21,97 32,62 2,40 39,40"/>
+                    </svg>
+                    <span class="footer-logo-text">Republic of Ghana</span>
+                </div>
+                <p class="footer-desc">The official digital gateway to Ghana's government services.</p>
+                <div class="footer-social">
+                    <a href="#" class="social-link"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+                    <a href="#" class="social-link"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h4>Government</h4>
+                <ul>
+                    <li><a href="president.html">The Presidency</a></li>
+                    <li><a href="parliament.html">Parliament</a></li>
+                    <li><a href="judiciary.html">Judiciary</a></li>
+                    <li><a href="ministries.html">Ministries</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="../services/passport.html">Passport</a></li>
+                    <li><a href="../services/ghana-card.html">Ghana Card</a></li>
+                    <li><a href="../services/tax.html">Tax Filing</a></li>
+                    <li><a href="../services/business.html">Business Reg.</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="../contact.html">Contact Us</a></li>
+                    <li><a href="../faq.html">FAQs</a></li>
+                    <li><a href="../accessibility.html">Accessibility</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p class="footer-copy">&copy; 2026 Republic of Ghana. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="../privacy.html">Privacy Policy</a>
+                <a href="../terms.html">Terms of Use</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    (function(){const STORAGE_KEY='ghana-gov-theme',DARK='dark',LIGHT='light';function getSavedTheme(){const saved=localStorage.getItem(STORAGE_KEY);if(saved)return saved;if(window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches)return LIGHT;return DARK;}function applyTheme(theme){if(theme===LIGHT)document.documentElement.setAttribute('data-theme','light');else document.documentElement.removeAttribute('data-theme');localStorage.setItem(STORAGE_KEY,theme);}applyTheme(getSavedTheme());document.addEventListener('DOMContentLoaded',function(){const toggle=document.getElementById('themeToggle');if(toggle){toggle.addEventListener('click',function(){const current=document.documentElement.getAttribute('data-theme');applyTheme(current==='light'?DARK:LIGHT);this.style.transform='scale(0.95)';setTimeout(()=>{this.style.transform='';},150);});}});})();
+
+    // Mobile Menu Toggle
+    (function() {
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mobileMenu = document.getElementById('mobileMenu');
+            if (mobileMenuBtn && mobileMenu) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    mobileMenu.classList.toggle('active');
+                });
+            }
+        });
+    })();
+    </script>
+    <script src="../js/main.js"></script>
+</body>
+</html>

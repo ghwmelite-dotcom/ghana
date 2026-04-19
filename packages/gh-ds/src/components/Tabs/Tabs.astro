@@ -1,0 +1,128 @@
+---
+/**
+ * <Tabs> — Ghana Design System Tier-2 navigation component.
+ *
+ * Renders a navigation list of jump-links at the top and a stack of
+ * sections below. Named "Tabs" to match the `.claude/CLAUDE.md §5` Tier-2
+ * spec and authoring mental model, but the v0 implementation is **section
+ * navigation**, not an ARIA-tablist widget.
+ *
+ * Why ship without JS:
+ *   - `§1` mandates progressive enhancement: every feature must work with
+ *     JavaScript disabled.
+ *   - The ARIA tablist pattern has no non-JS fallback: without JS the
+ *     "selected panel" concept has no meaning.
+ *   - The jump-link-over-stacked-sections pattern is the progressive-
+ *     enhancement baseline GOV.UK uses for its own tabs component.
+ *
+ * Future v1 (follow-up PR):
+ *   A small inline `<script>` enhancement will convert the nav into a
+ *   `role="tablist"` and hide inactive panels. The no-JS rendering stays
+ *   the canonical fallback; we will ship the enhancement only when a page
+ *   actually benefits from hiding panels (long content, mobile screens).
+ *
+ * Usage:
+ *   <Tabs
+ *     label="Passport services"
+ *     tabs={[
+ *       { id: 'renew',    label: 'Renew' },
+ *       { id: 'apply',    label: 'First-time apply' },
+ *       { id: 'lost',     label: 'Lost or stolen' },
+ *     ]}
+ *   >
+ *     <section id="renew"><h3>Renew</h3><p>…</p></section>
+ *     <section id="apply"><h3>First-time apply</h3><p>…</p></section>
+ *     <section id="lost"><h3>Lost or stolen</h3><p>…</p></section>
+ *   </Tabs>
+ */
+
+interface TabItem {
+  /** Must match the id on the corresponding <section> inside the slot. */
+  id: string;
+  label: string;
+}
+
+interface Props {
+  /** Accessible name for the nav. Required — multiple Tabs on a page
+   *  each need a distinct label to satisfy axe's `landmark-unique`. */
+  label: string;
+  tabs: ReadonlyArray<TabItem>;
+  class?: string;
+}
+
+const { label, tabs, class: extraClass } = Astro.props;
+const classes = ['gh-tabs', extraClass].filter(Boolean).join(' ');
+---
+
+<div class={classes}>
+  <nav aria-label={label} class="gh-tabs__nav">
+    <ul>
+      {
+        tabs.map((tab) => (
+          <li>
+            <a href={`#${tab.id}`}>{tab.label}</a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+
+  <div class="gh-tabs__panels">
+    <slot />
+  </div>
+</div>
+
+<style>
+  .gh-tabs {
+    margin: var(--space-4) 0 var(--space-8);
+  }
+
+  .gh-tabs__nav {
+    border-bottom: var(--border-width-default) solid var(--color-text-default);
+    margin-bottom: var(--space-6);
+  }
+
+  .gh-tabs__nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-1);
+  }
+
+  .gh-tabs__nav a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.75rem;
+    padding: var(--space-2) var(--space-4);
+    color: var(--color-link);
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
+    text-decoration-thickness: 0.06em;
+    border-radius: var(--radius-md) var(--radius-md) 0 0;
+  }
+
+  .gh-tabs__nav a:hover {
+    background: var(--ghana-green-50);
+    text-decoration-thickness: 0.12em;
+  }
+
+  .gh-tabs__nav a:focus-visible {
+    outline: var(--border-width-focus) solid var(--color-focus-ring);
+    outline-offset: -2px;
+    background: var(--color-focus-ring);
+    color: var(--color-text-default);
+    text-decoration: none;
+  }
+
+  .gh-tabs__panels :global(> section) {
+    scroll-margin-top: var(--space-8);
+  }
+
+  .gh-tabs__panels :global(> section + section) {
+    margin-top: var(--space-12);
+    padding-top: var(--space-6);
+    border-top: var(--border-width-hairline) solid var(--color-border-default);
+  }
+</style>

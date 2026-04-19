@@ -1,0 +1,3583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Republic of Ghana | Official Government Portal</title>
+
+    <!-- PWA Support -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#0A0A0A">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Ghana.Gov">
+    <link rel="apple-touch-icon" href="assets/icons/icon-192x192.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* ═══════════════════════════════════════════════════════════
+               CELESTIAL SOVEREIGNTY THEME SYSTEM
+               Dark Mode (Default) - Obsidian Majesty
+               ═══════════════════════════════════════════════════════════ */
+
+            /* Core Background Hierarchy */
+            --bg-primary: #030303;
+            --bg-secondary: #0A0A0A;
+            --bg-tertiary: #141414;
+            --bg-elevated: #1E1E1E;
+            --bg-surface: #2A2A2A;
+
+            /* Text Hierarchy */
+            --text-primary: #FAF9F6;
+            --text-secondary: #E8E6E1;
+            --text-muted: #9A9A9A;
+            --text-subtle: #666666;
+
+            /* Ghana National Colors - Adaptive */
+            --gold-brilliant: #D4AF37;
+            --gold-glow: #F5D061;
+            --gold-pale: rgba(212, 175, 55, 0.15);
+            --gold-mist: rgba(212, 175, 55, 0.08);
+
+            --emerald-deep: #0D3D2E;
+            --emerald-rich: #1A5C45;
+            --emerald-glow: #2ECC71;
+
+            --crimson-deep: #6B1E28;
+            --crimson-rich: #8B2332;
+            --crimson-glow: #E74C3C;
+
+            /* Semantic Surfaces */
+            --card-bg: rgba(255, 255, 255, 0.02);
+            --card-bg-hover: rgba(255, 255, 255, 0.05);
+            --card-border: rgba(255, 255, 255, 0.05);
+            --card-border-hover: rgba(212, 175, 55, 0.3);
+
+            /* Navigation */
+            --nav-bg: rgba(10, 10, 10, 0.8);
+            --nav-bg-scrolled: rgba(3, 3, 3, 0.95);
+            --topbar-bg: linear-gradient(90deg, #0A0A0A 0%, #141414 50%, #0A0A0A 100%);
+
+            /* Interactive Elements */
+            --border-subtle: rgba(212, 175, 55, 0.1);
+            --border-accent: rgba(212, 175, 55, 0.2);
+
+            /* Legacy Variables (for compatibility) */
+            --obsidian: #030303;
+            --onyx: #0A0A0A;
+            --charcoal: #141414;
+            --slate: #1E1E1E;
+            --graphite: #2A2A2A;
+            --ivory: #FAF9F6;
+            --pearl: #E8E6E1;
+            --silver: #9A9A9A;
+            --smoke: #666666;
+
+            /* Typography */
+            --font-display: 'Cormorant Garamond', serif;
+            --font-body: 'DM Sans', sans-serif;
+
+            /* Effects */
+            --glow-gold: 0 0 60px rgba(212, 175, 55, 0.4);
+            --glow-soft: 0 0 40px rgba(212, 175, 55, 0.2);
+            --shadow-deep: 0 25px 80px rgba(0, 0, 0, 0.8);
+            --shadow-float: 0 15px 50px rgba(0, 0, 0, 0.5);
+
+            /* Theme Transition */
+            --theme-transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* ═══════════════════════════════════════════════════════════
+           LIGHT MODE - Golden Dawn
+           Warm ivory with deep emerald accents
+           ═══════════════════════════════════════════════════════════ */
+        [data-theme="light"] {
+            /* Core Background Hierarchy */
+            --bg-primary: #FAFAF8;
+            --bg-secondary: #F5F4F0;
+            --bg-tertiary: #EEEEE8;
+            --bg-elevated: #FFFFFF;
+            --bg-surface: #FFFFFF;
+
+            /* Text Hierarchy - Perfect Contrast */
+            --text-primary: #1A1A1A;
+            --text-secondary: #2D2D2D;
+            --text-muted: #5A5A5A;
+            --text-subtle: #7A7A7A;
+
+            /* Ghana National Colors - Light Adapted */
+            --gold-brilliant: #B8942C;
+            --gold-glow: #D4A93A;
+            --gold-pale: rgba(13, 61, 46, 0.08);
+            --gold-mist: rgba(13, 61, 46, 0.04);
+
+            --emerald-deep: #0D3D2E;
+            --emerald-rich: #1A5C45;
+            --emerald-glow: #25A35A;
+
+            --crimson-deep: #8B2332;
+            --crimson-rich: #A62D3C;
+            --crimson-glow: #D64545;
+
+            /* Semantic Surfaces */
+            --card-bg: #FFFFFF;
+            --card-bg-hover: #FAFAFA;
+            --card-border: rgba(13, 61, 46, 0.1);
+            --card-border-hover: rgba(13, 61, 46, 0.25);
+
+            /* Navigation */
+            --nav-bg: rgba(250, 250, 248, 0.9);
+            --nav-bg-scrolled: rgba(255, 255, 255, 0.98);
+            --topbar-bg: linear-gradient(90deg, #0D3D2E 0%, #1A5C45 50%, #0D3D2E 100%);
+
+            /* Interactive Elements */
+            --border-subtle: rgba(13, 61, 46, 0.1);
+            --border-accent: rgba(13, 61, 46, 0.2);
+
+            /* Legacy Variables Override */
+            --obsidian: #FAFAF8;
+            --onyx: #F5F4F0;
+            --charcoal: #EEEEE8;
+            --slate: #E8E8E2;
+            --graphite: #D8D8D0;
+            --ivory: #1A1A1A;
+            --pearl: #2D2D2D;
+            --silver: #5A5A5A;
+            --smoke: #7A7A7A;
+
+            /* Effects - Softer for light mode */
+            --glow-gold: 0 0 40px rgba(13, 61, 46, 0.2);
+            --glow-soft: 0 0 30px rgba(13, 61, 46, 0.1);
+            --shadow-deep: 0 25px 60px rgba(0, 0, 0, 0.12);
+            --shadow-float: 0 15px 40px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Theme Transition for all elements */
+        body,
+        .nav-main,
+        .top-bar,
+        .hero,
+        .service-card,
+        .action-card,
+        .agency-card,
+        .news-item,
+        .news-featured,
+        .footer,
+        .preloader {
+            transition: background var(--theme-transition),
+                        color var(--theme-transition),
+                        border-color var(--theme-transition),
+                        box-shadow var(--theme-transition);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--obsidian);
+            color: var(--ivory);
+            line-height: 1.6;
+            overflow-x: hidden;
+            cursor: none;
+        }
+
+        /* Custom Cursor */
+        .cursor {
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--gold-brilliant);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.15s ease, opacity 0.15s ease;
+            mix-blend-mode: difference;
+        }
+
+        .cursor-dot {
+            width: 6px;
+            height: 6px;
+            background: var(--gold-brilliant);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            box-shadow: 0 0 20px var(--gold-brilliant);
+        }
+
+        .cursor.hover {
+            transform: scale(2);
+            border-color: var(--gold-glow);
+        }
+
+        /* Preloader */
+        .preloader {
+            position: fixed;
+            inset: 0;
+            background: var(--obsidian);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 2rem;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+        }
+
+        .preloader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .preloader-star {
+            width: 80px;
+            height: 80px;
+            fill: var(--gold-brilliant);
+            animation: pulse-glow 2s ease-in-out infinite, rotate-star 8s linear infinite;
+            filter: drop-shadow(0 0 30px var(--gold-brilliant));
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { filter: drop-shadow(0 0 30px var(--gold-brilliant)); }
+            50% { filter: drop-shadow(0 0 60px var(--gold-glow)); }
+        }
+
+        @keyframes rotate-star {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .preloader-text {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--silver);
+            animation: fade-pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes fade-pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        /* Ambient Background Effects */
+        .ambient-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .ambient-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.3;
+            animation: float-orb 20s ease-in-out infinite;
+        }
+
+        .ambient-orb-1 {
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, var(--emerald-deep) 0%, transparent 70%);
+            top: -200px;
+            left: -200px;
+            animation-delay: 0s;
+        }
+
+        .ambient-orb-2 {
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, var(--gold-pale) 0%, transparent 70%);
+            bottom: -300px;
+            right: -300px;
+            animation-delay: -5s;
+        }
+
+        .ambient-orb-3 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, var(--crimson-deep) 0%, transparent 70%);
+            top: 50%;
+            left: 30%;
+            animation-delay: -10s;
+        }
+
+        @keyframes float-orb {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(50px, -30px) scale(1.1); }
+            50% { transform: translate(-30px, 50px) scale(0.9); }
+            75% { transform: translate(-50px, -20px) scale(1.05); }
+        }
+
+        /* Noise Texture Overlay */
+        .noise-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 1;
+            pointer-events: none;
+            opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        /* Floating Adinkra Symbols */
+        .adinkra-float {
+            position: fixed;
+            z-index: 0;
+            opacity: 0.04;
+            fill: var(--gold-brilliant);
+            animation: drift 30s linear infinite;
+        }
+
+        @keyframes drift {
+            0% { transform: translateY(100vh) rotate(0deg); }
+            100% { transform: translateY(-100vh) rotate(360deg); }
+        }
+
+        /* Top Bar */
+        .top-bar {
+            background: linear-gradient(90deg, var(--onyx) 0%, var(--charcoal) 50%, var(--onyx) 100%);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+            color: var(--pearl);
+            padding: 0.6rem 2rem;
+            font-size: 0.8rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 100;
+        }
+
+        .top-bar a {
+            color: var(--gold-brilliant);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .top-bar a:hover {
+            color: var(--gold-glow);
+            text-shadow: 0 0 20px var(--gold-brilliant);
+        }
+
+        .emergency-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: linear-gradient(135deg, var(--crimson-deep) 0%, var(--crimson-rich) 100%);
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-weight: 600;
+            color: white !important;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            animation: emergency-pulse 3s ease-in-out infinite;
+            box-shadow: 0 0 20px rgba(139, 35, 50, 0.5);
+        }
+
+        @keyframes emergency-pulse {
+            0%, 100% { box-shadow: 0 0 20px rgba(139, 35, 50, 0.5); }
+            50% { box-shadow: 0 0 40px rgba(139, 35, 50, 0.8); }
+        }
+
+        .language-selector {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .language-selector span {
+            color: var(--smoke);
+        }
+
+        .language-selector button {
+            background: none;
+            border: none;
+            color: var(--smoke);
+            cursor: pointer;
+            font-size: 0.8rem;
+            font-family: var(--font-body);
+            transition: all 0.3s ease;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+        }
+
+        .language-selector button:hover,
+        .language-selector button.active {
+            color: var(--gold-brilliant);
+            background: var(--gold-mist);
+        }
+
+        /* ═══════════════════════════════════════════════════════════════════════════════
+           NAVIGATION - Minimal & Elegant
+           ═══════════════════════════════════════════════════════════════════════════════ */
+
+        .nav-main {
+            background: var(--nav-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 0 3rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-subtle);
+            transition: all 0.3s ease;
+        }
+
+        .nav-main.scrolled {
+            background: var(--nav-bg-scrolled);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 80px;
+        }
+
+        /* Logo */
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+            color: var(--text-primary);
+        }
+
+        .logo-emblem {
+            width: 48px;
+            height: 48px;
+            flex-shrink: 0;
+        }
+
+        .logo-star {
+            width: 100%;
+            height: 100%;
+            fill: var(--gold-brilliant);
+            transition: transform 0.4s ease;
+        }
+
+        .logo:hover .logo-star {
+            transform: rotate(36deg);
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.2;
+        }
+
+        .logo-title {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .logo-subtitle {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--text-muted);
+        }
+
+        /* Navigation Links */
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            font-weight: 500;
+            padding: 0.5rem 0;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gold-brilliant);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--gold-brilliant);
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        /* Nav Actions */
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .nav-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            color: var(--text-secondary);
+            transition: color 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav-btn:hover {
+            color: var(--gold-brilliant);
+        }
+
+        .nav-btn svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .nav-cta {
+            background: var(--gold-brilliant);
+            color: var(--obsidian);
+            padding: 0.65rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+        }
+
+        .nav-cta:hover {
+            background: var(--gold-glow);
+            transform: translateY(-1px);
+        }
+
+        /* Mobile Menu Button */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .mobile-menu-btn svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--bg-primary);
+            z-index: 999;
+            padding: 6rem 2rem 2rem;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .mobile-menu-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            list-style: none;
+        }
+
+        .mobile-menu-links a {
+            display: block;
+            padding: 1rem 0;
+            text-decoration: none;
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            font-family: var(--font-display);
+            border-bottom: 1px solid var(--border-subtle);
+            transition: color 0.3s ease;
+        }
+
+        .mobile-menu-links a:hover {
+            color: var(--gold-brilliant);
+        }
+
+        .mobile-menu-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--text-primary);
+            padding: 0.5rem;
+        }
+
+        .mobile-menu-close svg {
+            width: 28px;
+            height: 28px;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .nav-main {
+                padding: 0 1.5rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .nav-cta {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .logo-text {
+                display: none;
+            }
+
+            .nav-container {
+                height: 70px;
+            }
+        }
+
+        /* Light mode nav adjustments */
+        [data-theme="light"] .nav-main {
+            border-bottom-color: rgba(0, 0, 0, 0.08);
+        }
+
+        [data-theme="light"] .nav-main.scrolled {
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        [data-theme="light"] .nav-cta {
+            background: var(--emerald-deep);
+            color: #fff;
+        }
+
+        [data-theme="light"] .nav-cta:hover {
+            background: var(--emerald-rich);
+        }
+
+        [data-theme="light"] .nav-links a:hover,
+        [data-theme="light"] .nav-links a.active {
+            color: var(--emerald-deep);
+        }
+
+        [data-theme="light"] .nav-links a::after {
+            background: var(--emerald-deep);
+        }
+
+        /* ═══════════════════════════════════════════════════════════
+           THEME TOGGLE - Celestial Orb
+           ═══════════════════════════════════════════════════════════ */
+        .theme-toggle {
+            position: relative;
+            width: 56px;
+            height: 28px;
+            background: linear-gradient(135deg, var(--bg-tertiary) 0%, var(--bg-secondary) 100%);
+            border: 1px solid var(--border-subtle);
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            padding: 3px;
+        }
+
+        .theme-toggle::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, var(--emerald-deep) 0%, var(--emerald-rich) 100%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            border-radius: 50px;
+        }
+
+        [data-theme="light"] .theme-toggle::before {
+            opacity: 1;
+        }
+
+        .theme-toggle:hover {
+            border-color: var(--gold-brilliant);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+            transform: scale(1.05);
+        }
+
+        .toggle-orb {
+            position: relative;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--gold-brilliant) 0%, var(--gold-glow) 100%);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3),
+                        0 0 15px rgba(212, 175, 55, 0.4);
+            transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        [data-theme="light"] .toggle-orb {
+            transform: translateX(26px);
+            background: linear-gradient(135deg, #FFFFFF 0%, #F5F4F0 100%);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15),
+                        0 0 15px rgba(255, 255, 255, 0.5);
+        }
+
+        .toggle-icon {
+            width: 14px;
+            height: 14px;
+            transition: all 0.4s ease;
+        }
+
+        .toggle-icon.sun {
+            color: #0D3D2E;
+            opacity: 0;
+            transform: rotate(-90deg) scale(0);
+            position: absolute;
+        }
+
+        .toggle-icon.moon {
+            color: var(--emerald-deep);
+            opacity: 1;
+            transform: rotate(0deg) scale(1);
+        }
+
+        [data-theme="light"] .toggle-icon.sun {
+            opacity: 1;
+            transform: rotate(0deg) scale(1);
+        }
+
+        [data-theme="light"] .toggle-icon.moon {
+            opacity: 0;
+            transform: rotate(90deg) scale(0);
+        }
+
+        /* Star field animation in toggle */
+        .toggle-stars {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+            border-radius: 50px;
+            pointer-events: none;
+        }
+
+        .toggle-star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: var(--gold-brilliant);
+            border-radius: 50%;
+            opacity: 0.6;
+            animation: twinkle 2s ease-in-out infinite;
+        }
+
+        .toggle-star:nth-child(1) { top: 6px; left: 8px; animation-delay: 0s; }
+        .toggle-star:nth-child(2) { top: 14px; left: 15px; animation-delay: 0.5s; }
+        .toggle-star:nth-child(3) { top: 8px; left: 22px; animation-delay: 1s; }
+        .toggle-star:nth-child(4) { top: 18px; left: 10px; animation-delay: 1.5s; }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.3); }
+        }
+
+        [data-theme="light"] .toggle-star {
+            opacity: 0;
+        }
+
+        /* Theme toggle label */
+        .theme-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-muted);
+            margin-right: 0.75rem;
+            font-weight: 500;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .nav-search:hover .theme-label {
+            opacity: 1;
+        }
+
+        @media (max-width: 1024px) {
+            .theme-label {
+                display: none;
+            }
+        }
+
+        .nav-cta {
+            background: linear-gradient(135deg, var(--gold-brilliant) 0%, var(--gold-glow) 100%);
+            color: var(--obsidian);
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            letter-spacing: 0.02em;
+        }
+
+        .nav-cta::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, var(--gold-glow) 0%, var(--gold-brilliant) 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--glow-gold);
+        }
+
+        .nav-cta:hover::before {
+            opacity: 1;
+        }
+
+        .nav-cta span {
+            position: relative;
+            z-index: 1;
+        }
+
+        .mobile-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .mobile-toggle span {
+            width: 25px;
+            height: 2px;
+            background: var(--gold-brilliant);
+            transition: all 0.3s;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            background: var(--obsidian);
+        }
+
+        .hero-bg-layer {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+        }
+
+        .hero-gradient {
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 80% 50% at 20% 40%, rgba(13, 61, 46, 0.3) 0%, transparent 60%),
+                radial-gradient(ellipse 60% 60% at 80% 20%, rgba(212, 175, 55, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse 50% 50% at 70% 80%, rgba(107, 30, 40, 0.2) 0%, transparent 50%),
+                linear-gradient(180deg, var(--obsidian) 0%, var(--onyx) 50%, var(--charcoal) 100%);
+        }
+
+        .hero-particles {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: var(--gold-brilliant);
+            border-radius: 50%;
+            opacity: 0.6;
+            animation: float-particle 25s infinite linear;
+            box-shadow: 0 0 10px var(--gold-brilliant);
+        }
+
+        @keyframes float-particle {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.6; }
+            90% { opacity: 0.6; }
+            100% { transform: translateY(-100vh) rotate(720deg); opacity: 0; }
+        }
+
+        .hero-star {
+            position: absolute;
+            right: 5%;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 600px;
+            height: 600px;
+            opacity: 0.04;
+            z-index: 2;
+            animation: rotate-slow 120s linear infinite;
+            filter: blur(1px);
+        }
+
+        @keyframes rotate-slow {
+            from { transform: translateY(-50%) rotate(0deg); }
+            to { transform: translateY(-50%) rotate(360deg); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 8rem 2rem 4rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-text {
+            color: var(--ivory);
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: var(--gold-mist);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            padding: 0.6rem 1.25rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            color: var(--gold-brilliant);
+            margin-bottom: 2rem;
+            animation: fadeInUp 0.8s ease forwards, glow-border 3s ease-in-out infinite;
+            opacity: 0;
+            letter-spacing: 0.05em;
+        }
+
+        @keyframes glow-border {
+            0%, 100% { border-color: rgba(212, 175, 55, 0.2); box-shadow: none; }
+            50% { border-color: rgba(212, 175, 55, 0.5); box-shadow: 0 0 20px rgba(212, 175, 55, 0.2); }
+        }
+
+        .hero-badge svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(3rem, 6vw, 5rem);
+            font-weight: 500;
+            line-height: 1.05;
+            margin-bottom: 2rem;
+            animation: fadeInUp 0.8s ease 0.2s forwards;
+            opacity: 0;
+            letter-spacing: -0.02em;
+        }
+
+        .hero-title .highlight {
+            background: linear-gradient(135deg, var(--gold-brilliant) 0%, var(--gold-glow) 50%, var(--gold-brilliant) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-style: italic;
+            position: relative;
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            color: var(--silver);
+            margin-bottom: 3rem;
+            max-width: 520px;
+            line-height: 1.8;
+            animation: fadeInUp 0.8s ease 0.4s forwards;
+            opacity: 0;
+            font-weight: 300;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1.25rem;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease 0.6s forwards;
+            opacity: 0;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1.1rem 2.2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            border: none;
+            letter-spacing: 0.02em;
+            font-family: var(--font-body);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--gold-brilliant) 0%, var(--gold-glow) 100%);
+            color: var(--obsidian);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, var(--gold-glow) 0%, var(--gold-brilliant) 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .btn-primary span,
+        .btn-primary svg {
+            position: relative;
+            z-index: 1;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--glow-gold);
+        }
+
+        .btn-primary:hover::before {
+            opacity: 1;
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--ivory);
+            border: 1px solid rgba(250, 249, 246, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--gold-brilliant);
+            color: var(--gold-brilliant);
+            background: var(--gold-mist);
+            box-shadow: var(--glow-soft);
+        }
+
+        .hero-cards {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.25rem;
+            animation: fadeInUp 0.8s ease 0.8s forwards;
+            opacity: 0;
+        }
+
+        .hero-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 1.75rem;
+            text-decoration: none;
+            color: var(--ivory);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.05) 0%, transparent 50%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .hero-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold-brilliant), transparent);
+            transform: scaleX(0);
+            transition: transform 0.5s ease;
+        }
+
+        .hero-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(212, 175, 55, 0.3);
+            background: rgba(255, 255, 255, 0.06);
+            box-shadow: var(--shadow-float), 0 0 40px rgba(212, 175, 55, 0.1);
+        }
+
+        .hero-card:hover::before {
+            opacity: 1;
+        }
+
+        .hero-card:hover::after {
+            transform: scaleX(1);
+        }
+
+        .hero-card-icon {
+            width: 52px;
+            height: 52px;
+            background: linear-gradient(135deg, var(--gold-brilliant) 0%, var(--gold-glow) 100%);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.25rem;
+            color: var(--obsidian);
+            transition: all 0.4s ease;
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
+        }
+
+        .hero-card:hover .hero-card-icon {
+            transform: scale(1.1) rotate(-5deg);
+            box-shadow: 0 12px 35px rgba(212, 175, 55, 0.4);
+        }
+
+        .hero-card-title {
+            font-family: var(--font-display);
+            font-size: 1.35rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.01em;
+        }
+
+        .hero-card-desc {
+            font-size: 0.9rem;
+            color: var(--silver);
+            line-height: 1.6;
+            font-weight: 300;
+        }
+
+        .hero-card-arrow {
+            position: absolute;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.4s ease;
+        }
+
+        .hero-card:hover .hero-card-arrow {
+            background: var(--gold-brilliant);
+            color: var(--obsidian);
+            border-color: var(--gold-brilliant);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+        }
+
+        /* Search Modal */
+        .search-modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(3, 3, 3, 0.98);
+            z-index: 2000;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            padding-top: 15vh;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(20px);
+        }
+
+        .search-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .search-container {
+            width: 90%;
+            max-width: 750px;
+            transform: translateY(-40px) scale(0.95);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .search-modal.active .search-container {
+            transform: translateY(0) scale(1);
+        }
+
+        .search-input-wrapper {
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 1.75rem 2rem;
+            padding-left: 4.5rem;
+            font-size: 1.5rem;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 20px;
+            background: var(--charcoal);
+            color: var(--ivory);
+            font-family: var(--font-body);
+            transition: all 0.4s ease;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--gold-brilliant);
+            box-shadow: 0 0 40px rgba(212, 175, 55, 0.2);
+        }
+
+        .search-input::placeholder {
+            color: var(--smoke);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 1.75rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gold-brilliant);
+        }
+
+        .search-close {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            background: none;
+            border: none;
+            color: var(--silver);
+            cursor: pointer;
+            padding: 1rem;
+            transition: all 0.3s ease;
+            border-radius: 50%;
+        }
+
+        .search-close:hover {
+            color: var(--gold-brilliant);
+            background: var(--gold-mist);
+        }
+
+        .search-suggestions {
+            margin-top: 2.5rem;
+            color: var(--ivory);
+        }
+
+        .search-suggestions h4 {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--smoke);
+            margin-bottom: 1.25rem;
+            font-weight: 500;
+        }
+
+        .search-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .search-tag {
+            background: var(--graphite);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 0.6rem 1.25rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            color: var(--pearl);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .search-tag:hover {
+            background: var(--gold-brilliant);
+            color: var(--obsidian);
+            border-color: var(--gold-brilliant);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+        }
+
+        /* Quick Services Section */
+        .quick-services {
+            padding: 8rem 2rem;
+            background: linear-gradient(180deg, var(--charcoal) 0%, var(--onyx) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .quick-services::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.3), transparent);
+        }
+
+        .section-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+            color: var(--gold-brilliant);
+            margin-bottom: 1.25rem;
+            font-weight: 500;
+        }
+
+        .section-label::before,
+        .section-label::after {
+            content: '';
+            width: 40px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold-brilliant));
+        }
+
+        .section-label::after {
+            background: linear-gradient(90deg, var(--gold-brilliant), transparent);
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 500;
+            color: var(--ivory);
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+
+        .section-desc {
+            font-size: 1.15rem;
+            color: var(--silver);
+            max-width: 600px;
+            margin: 0 auto;
+            font-weight: 300;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+        }
+
+        .service-card {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 24px;
+            padding: 2rem;
+            text-decoration: none;
+            color: var(--ivory);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 0;
+            background: linear-gradient(180deg, var(--gold-brilliant), var(--gold-glow));
+            transition: height 0.5s ease;
+            border-radius: 3px;
+        }
+
+        .service-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at top left, rgba(212, 175, 55, 0.1), transparent 70%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .service-card:hover {
+            background: rgba(255, 255, 255, 0.04);
+            border-color: rgba(212, 175, 55, 0.2);
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-deep);
+        }
+
+        .service-card:hover::before {
+            height: 100%;
+        }
+
+        .service-card:hover::after {
+            opacity: 1;
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--emerald-deep) 0%, var(--emerald-rich) 100%);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold-brilliant);
+            margin-bottom: 1.5rem;
+            transition: all 0.5s ease;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 10px 30px rgba(13, 61, 46, 0.4);
+        }
+
+        .service-card:hover .service-icon {
+            transform: scale(1.1) rotate(-5deg);
+            box-shadow: 0 15px 40px rgba(13, 61, 46, 0.5);
+        }
+
+        .service-title {
+            font-family: var(--font-display);
+            font-size: 1.35rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .service-desc {
+            font-size: 0.9rem;
+            color: var(--silver);
+            line-height: 1.7;
+            margin-bottom: 1.25rem;
+            position: relative;
+            z-index: 1;
+            font-weight: 300;
+        }
+
+        .service-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--gold-brilliant);
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        .service-card:hover .service-link {
+            gap: 0.75rem;
+        }
+
+        /* Action Cards Section */
+        .action-section {
+            padding: 8rem 2rem;
+            background: var(--emerald-deep);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .action-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 100% 100% at 0% 0%, rgba(212, 175, 55, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse 80% 80% at 100% 100%, rgba(212, 175, 55, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .action-section .section-label {
+            color: var(--gold-glow);
+        }
+
+        .action-section .section-title {
+            color: var(--ivory);
+        }
+
+        .action-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .action-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 28px;
+            padding: 2.5rem 2rem;
+            text-decoration: none;
+            color: var(--ivory);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .action-card::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gold-brilliant), var(--gold-glow), var(--gold-brilliant));
+            transform: scaleX(0);
+            transition: transform 0.5s ease;
+        }
+
+        .action-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at bottom, rgba(212, 175, 55, 0.1), transparent 70%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .action-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-12px);
+            border-color: rgba(212, 175, 55, 0.3);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5), 0 0 50px rgba(212, 175, 55, 0.15);
+        }
+
+        .action-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .action-card:hover::after {
+            opacity: 1;
+        }
+
+        .action-emoji {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            display: block;
+            position: relative;
+            z-index: 1;
+            filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.3));
+            transition: transform 0.4s ease;
+        }
+
+        .action-card:hover .action-emoji {
+            transform: scale(1.1) translateY(-5px);
+        }
+
+        .action-title {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .action-desc {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
+            font-weight: 300;
+        }
+
+        .action-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--gold-brilliant);
+            font-weight: 600;
+            font-size: 0.95rem;
+            position: relative;
+            z-index: 1;
+            transition: all 0.3s ease;
+        }
+
+        .action-card:hover .action-link {
+            gap: 0.75rem;
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+        }
+
+        /* Agencies Section */
+        .agencies-section {
+            padding: 8rem 2rem;
+            background: linear-gradient(180deg, var(--onyx) 0%, var(--charcoal) 100%);
+            position: relative;
+        }
+
+        .agencies-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.2), transparent);
+        }
+
+        .agencies-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .agency-card {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 2rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+            text-decoration: none;
+            color: var(--ivory);
+            transition: all 0.4s ease;
+        }
+
+        .agency-card:hover {
+            border-color: rgba(212, 175, 55, 0.3);
+            background: rgba(255, 255, 255, 0.04);
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-float);
+        }
+
+        .agency-logo {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--emerald-deep) 0%, var(--emerald-rich) 100%);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold-brilliant);
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            letter-spacing: 0.05em;
+        }
+
+        .agency-card:hover .agency-logo {
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(13, 61, 46, 0.4);
+        }
+
+        .agency-info {
+            flex: 1;
+        }
+
+        .agency-name {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .agency-full {
+            font-size: 0.85rem;
+            color: var(--silver);
+            margin-bottom: 1rem;
+            font-weight: 300;
+        }
+
+        .agency-services {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .agency-tag {
+            font-size: 0.75rem;
+            background: var(--gold-mist);
+            color: var(--gold-brilliant);
+            padding: 0.3rem 0.75rem;
+            border-radius: 50px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .agency-card:hover .agency-tag {
+            background: rgba(212, 175, 55, 0.15);
+            border-color: rgba(212, 175, 55, 0.3);
+        }
+
+        /* News Section */
+        .news-section {
+            padding: 8rem 2rem;
+            background: var(--onyx);
+            position: relative;
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 2rem;
+        }
+
+        .news-featured {
+            position: relative;
+            border-radius: 28px;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--emerald-deep) 0%, var(--charcoal) 100%);
+            min-height: 520px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            text-decoration: none;
+            color: var(--ivory);
+            transition: all 0.5s ease;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .news-featured:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-deep);
+            border-color: rgba(212, 175, 55, 0.2);
+        }
+
+        .news-featured-bg {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 0%, transparent 30%, rgba(3, 3, 3, 0.9) 100%);
+        }
+
+        .news-featured-content {
+            position: relative;
+            padding: 3rem;
+            z-index: 2;
+        }
+
+        .news-category {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--gold-brilliant), var(--gold-glow));
+            color: var(--obsidian);
+            padding: 0.5rem 1.25rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 1.25rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .news-title {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            line-height: 1.25;
+        }
+
+        .news-meta {
+            font-size: 0.9rem;
+            color: var(--silver);
+            font-weight: 300;
+        }
+
+        .news-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        .news-item {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 1.75rem;
+            text-decoration: none;
+            color: var(--ivory);
+            transition: all 0.4s ease;
+        }
+
+        .news-item:hover {
+            border-color: rgba(212, 175, 55, 0.3);
+            background: rgba(255, 255, 255, 0.04);
+            transform: translateX(5px);
+        }
+
+        .news-item .news-category {
+            background: linear-gradient(135deg, var(--emerald-rich), var(--emerald-glow));
+            color: var(--ivory);
+        }
+
+        .news-item .news-title {
+            font-size: 1.15rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            padding: 6rem 2rem;
+            background: var(--obsidian);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stats-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 50% 80% at 20% 50%, rgba(13, 61, 46, 0.2), transparent),
+                radial-gradient(ellipse 50% 80% at 80% 50%, rgba(212, 175, 55, 0.1), transparent);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 3rem;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .stat-item {
+            padding: 2.5rem;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.4s ease;
+        }
+
+        .stat-item:hover {
+            border-color: rgba(212, 175, 55, 0.2);
+            background: rgba(255, 255, 255, 0.04);
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-family: var(--font-display);
+            font-size: clamp(3rem, 6vw, 4.5rem);
+            font-weight: 600;
+            background: linear-gradient(135deg, var(--gold-brilliant), var(--gold-glow));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+            margin-bottom: 0.75rem;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: var(--silver);
+            font-weight: 300;
+            letter-spacing: 0.02em;
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(180deg, var(--onyx) 0%, var(--obsidian) 100%);
+            color: var(--ivory);
+            padding: 6rem 2rem 2rem;
+            position: relative;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.3), transparent);
+        }
+
+        .footer-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr repeat(3, 1fr);
+            gap: 4rem;
+            margin-bottom: 4rem;
+        }
+
+        .footer-brand {
+            max-width: 320px;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.75rem;
+        }
+
+        .footer-logo svg {
+            width: 45px;
+            height: 45px;
+            fill: var(--gold-brilliant);
+            filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.5));
+        }
+
+        .footer-logo-text {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 600;
+            background: linear-gradient(135deg, var(--ivory), var(--gold-brilliant));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .footer-desc {
+            color: var(--silver);
+            font-size: 0.95rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-link {
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--pearl);
+            transition: all 0.4s ease;
+        }
+
+        .social-link:hover {
+            background: var(--gold-brilliant);
+            color: var(--obsidian);
+            border-color: var(--gold-brilliant);
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.4);
+            transform: translateY(-3px);
+        }
+
+        .footer-column h4 {
+            font-family: var(--font-display);
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-bottom: 1.75rem;
+            color: var(--gold-brilliant);
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column li {
+            margin-bottom: 0.9rem;
+        }
+
+        .footer-column a {
+            color: var(--silver);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            font-weight: 300;
+        }
+
+        .footer-column a:hover {
+            color: var(--gold-brilliant);
+            padding-left: 5px;
+        }
+
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .footer-copy {
+            font-size: 0.9rem;
+            color: var(--smoke);
+            font-weight: 300;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        .footer-links a {
+            color: var(--smoke);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+            font-weight: 300;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold-brilliant);
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .services-grid,
+            .action-grid,
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .agencies-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 992px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                padding-top: 6rem;
+            }
+
+            .hero-description {
+                margin: 0 auto 2.5rem;
+            }
+
+            .hero-actions {
+                justify-content: center;
+            }
+
+            .hero-star {
+                width: 400px;
+                height: 400px;
+                right: -150px;
+                top: 20%;
+            }
+
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .cursor, .cursor-dot {
+                display: none;
+            }
+
+            body {
+                cursor: auto;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .top-bar {
+                display: none;
+            }
+
+            .hero-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .services-grid,
+            .action-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .agencies-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .section-label::before,
+            .section-label::after {
+                width: 20px;
+            }
+        }
+
+        /* Scroll Reveal Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Selection Style */
+        ::selection {
+            background: var(--gold-brilliant);
+            color: var(--obsidian);
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--obsidian);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--graphite);
+            border-radius: 5px;
+            border: 2px solid var(--obsidian);
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--gold-brilliant);
+        }
+
+        /* ═══════════════════════════════════════════════════════════
+           LIGHT MODE SPECIFIC OVERRIDES
+           ═══════════════════════════════════════════════════════════ */
+
+        /* Ambient Background - Light Mode */
+        [data-theme="light"] .ambient-bg {
+            opacity: 0.5;
+        }
+
+        [data-theme="light"] .ambient-orb-1 {
+            background: radial-gradient(circle, rgba(13, 61, 46, 0.2) 0%, transparent 70%);
+        }
+
+        [data-theme="light"] .ambient-orb-2 {
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.15) 0%, transparent 70%);
+        }
+
+        [data-theme="light"] .ambient-orb-3 {
+            background: radial-gradient(circle, rgba(139, 35, 50, 0.1) 0%, transparent 70%);
+        }
+
+        /* Noise Overlay - Lighter in light mode */
+        [data-theme="light"] .noise-overlay {
+            opacity: 0.02;
+        }
+
+        /* Preloader - Light Mode */
+        [data-theme="light"] .preloader {
+            background: var(--bg-primary);
+        }
+
+        [data-theme="light"] .preloader-star {
+            fill: var(--emerald-deep);
+            filter: drop-shadow(0 0 30px var(--emerald-rich));
+        }
+
+        [data-theme="light"] .preloader-text {
+            color: var(--text-muted);
+        }
+
+        /* Top Bar - Light Mode */
+        [data-theme="light"] .top-bar {
+            background: var(--topbar-bg);
+            color: var(--text-primary);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        [data-theme="light"] .top-bar a,
+        [data-theme="light"] .top-bar span,
+        [data-theme="light"] .language-selector span {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        [data-theme="light"] .language-selector button {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        [data-theme="light"] .language-selector button:hover,
+        [data-theme="light"] .language-selector button.active {
+            color: #FFFFFF;
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        /* Navigation - Light Mode */
+        [data-theme="light"] .nav-main {
+            background: var(--nav-bg);
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        [data-theme="light"] .nav-main.scrolled {
+            background: var(--nav-bg-scrolled);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        [data-theme="light"] .logo-title {
+            background: linear-gradient(135deg, var(--emerald-deep) 0%, var(--emerald-rich) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        [data-theme="light"] .logo-subtitle {
+            color: var(--text-muted);
+        }
+
+        [data-theme="light"] .logo-star {
+            fill: var(--emerald-deep);
+            filter: drop-shadow(0 0 10px rgba(13, 61, 46, 0.3));
+        }
+
+        [data-theme="light"] .nav-links a {
+            color: var(--text-secondary);
+        }
+
+        [data-theme="light"] .nav-links a:hover {
+            color: var(--emerald-deep);
+        }
+
+        [data-theme="light"] .nav-links a::before {
+            background: linear-gradient(90deg, transparent, var(--emerald-rich), transparent);
+        }
+
+        [data-theme="light"] .nav-links a::after {
+            background: var(--emerald-deep);
+            box-shadow: 0 0 10px var(--emerald-rich);
+        }
+
+        [data-theme="light"] .search-toggle {
+            color: var(--text-secondary);
+        }
+
+        [data-theme="light"] .search-toggle:hover {
+            color: var(--emerald-deep);
+            filter: drop-shadow(0 0 10px var(--emerald-rich));
+        }
+
+        [data-theme="light"] .nav-cta {
+            background: linear-gradient(135deg, var(--emerald-deep) 0%, var(--emerald-rich) 100%);
+            color: #FFFFFF;
+        }
+
+        [data-theme="light"] .nav-cta:hover {
+            box-shadow: 0 0 40px rgba(13, 61, 46, 0.4);
+        }
+
+        /* Hero - Light Mode */
+        [data-theme="light"] .hero {
+            background: var(--bg-primary);
+        }
+
+        [data-theme="light"] .hero-gradient {
+            background:
+                radial-gradient(ellipse 80% 50% at 20% 40%, rgba(13, 61, 46, 0.15) 0%, transparent 60%),
+                radial-gradient(ellipse 60% 60% at 80% 20%, rgba(212, 175, 55, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse 50% 50% at 70% 80%, rgba(139, 35, 50, 0.08) 0%, transparent 50%),
+                linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 50%, var(--bg-tertiary) 100%);
+        }
+
+        [data-theme="light"] .hero-text {
+            color: var(--text-primary);
+        }
+
+        [data-theme="light"] .hero-badge {
+            background: rgba(13, 61, 46, 0.08);
+            border: 1px solid rgba(13, 61, 46, 0.15);
+            color: var(--emerald-deep);
+        }
+
+        [data-theme="light"] .hero-title .highlight {
+            background: linear-gradient(135deg, var(--emerald-deep) 30%, var(--gold-brilliant) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        [data-theme="light"] .hero-description {
+            color: var(--text-secondary);
+        }
+
+        [data-theme="light"] .btn-primary {
+            background: linear-gradient(135deg, var(--emerald-deep) 0%, var(--emerald-rich) 100%);
+            color: #FFFFFF;
+        }
+
+        [data-theme="light"] .btn-outline {
+            border-color: var(--emerald-deep);
+            color: var(--emerald-deep);
+        }
+
+        [data-theme="light"] .btn-outline:hover {
+            background: var(--emerald-deep);
+            color: #FFFFFF;
+        }
+
+        [data-theme="light"] .particle {
+            background: var(--emerald-deep);
+            box-shadow: 0 0 10px var(--emerald-rich);
+        }
+
+        [data-theme="light"] .hero-star {
+            fill: rgba(13, 61, 46, 0.06);
+        }
+
+        /* Hero Cards - Light Mode */
+        [data-theme="light"] .hero-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+        }
+
+        [data-theme="light"] .hero-card:hover {
+            border-color: var(--card-border-hover);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+        }
+
+        [data-theme="light"] .hero-card-icon {
+            background: linear-gradient(135deg, var(--emerald-deep) 0%, var(--emerald-rich) 100%);
+            color: #FFFFFF;
+        }
+
+        [data-theme="light"] .hero-card-title {
+            color: var(--text-primary);
+        }
+
+        [data-theme="light"] .hero-card-desc {
+            color: var(--text-muted);
+        }
+
+        [data-theme="light"] .hero-card-arrow {
+            background: rgba(13, 61, 46, 0.08);
+            color: var(--emerald-deep);
+        }
+
+        /* Service Cards - Light Mode */
+        [data-theme="light"] .service-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+        }
+
+        [data-theme="light"] .service-card:hover {
+            border-color: var(--card-border-hover);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+        }
+
+        [data-theme="light"] .service-icon {
+            background: linear-gradient(135deg, var(--emerald-deep) 0%, var(--emerald-rich) 100%);
+            box-shadow: 0 10px 30px rgba(13, 61, 46, 0.25);
+        }
+
+        [data-theme="light"] .service-title {
+            color: var(--text-primary);
+        }
+
+        [data-theme="light"] .service-desc {
+            color: var(--text-muted);
+        }
+
+        [data-theme="light"] .service-link {
+            color: var(--emerald-deep);
+        }
+
+        /* Action Section - Light Mode */
+        [data-theme="light"] .action-section {
+            background: linear-gradient(135deg, var(--emerald-deep) 0%, var(--emerald-rich) 100%);
+        }
+
+        [data-theme="light"] .action-section .section-label {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        [data-theme="light"] .action-section .section-title {
+            color: #FFFFFF;
+        }
+
+        [data-theme="light"] .action-card {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        [data-theme="light"] .action-card:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.25);
+        }
+
+        [data-theme="light"] .action-title,
+        [data-theme="light"] .action-desc {
+            color: #FFFFFF;
+        }
+
+        [data-theme="light"] .action-link {
+            color: rgba(255, 255, 255, 0.95);
+        }
+
+        /* Agencies - Light Mode */
+        [data-theme="light"] .agencies-section {
+            background: var(--bg-secondary);
+        }
+
+        [data-theme="light"] .agency-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+        }
+
+        [data-theme="light"] .agency-card:hover {
+            border-color: var(--card-border-hover);
+            box-shadow: var(--shadow-float);
+        }
+
+        [data-theme="light"] .agency-name {
+            color: var(--text-primary);
+        }
+
+        [data-theme="light"] .agency-full {
+            color: var(--text-muted);
+        }
+
+        [data-theme="light"] .agency-tag {
+            background: rgba(13, 61, 46, 0.08);
+            color: var(--emerald-deep);
+            border: 1px solid rgba(13, 61, 46, 0.15);
+        }
+
+        /* News - Light Mode */
+        [data-theme="light"] .news-section {
+            background: var(--bg-primary);
+        }
+
+        [data-theme="light"] .news-featured {
+            background: linear-gradient(135deg, var(--emerald-deep) 0%, var(--emerald-rich) 100%);
+        }
+
+        [data-theme="light"] .news-item {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+        }
+
+        [data-theme="light"] .news-item:hover {
+            border-color: var(--card-border-hover);
+        }
+
+        [data-theme="light"] .news-item .news-title {
+            color: var(--text-primary);
+        }
+
+        [data-theme="light"] .news-meta {
+            color: var(--text-muted);
+        }
+
+        /* Stats - Light Mode */
+        [data-theme="light"] .stats-section {
+            background: var(--bg-tertiary);
+        }
+
+        [data-theme="light"] .stat-number {
+            color: var(--emerald-deep);
+        }
+
+        [data-theme="light"] .stat-label {
+            color: var(--text-secondary);
+        }
+
+        /* Quick Services Section - Light Mode */
+        [data-theme="light"] .quick-services {
+            background: var(--bg-primary);
+        }
+
+        [data-theme="light"] .section-label {
+            color: var(--emerald-deep);
+        }
+
+        [data-theme="light"] .section-title {
+            color: var(--text-primary);
+        }
+
+        [data-theme="light"] .section-desc {
+            color: var(--text-muted);
+        }
+
+        /* Footer - Light Mode */
+        [data-theme="light"] .footer {
+            background: linear-gradient(180deg, var(--bg-tertiary) 0%, var(--bg-secondary) 100%);
+            border-top: 1px solid var(--border-subtle);
+        }
+
+        [data-theme="light"] .footer-title {
+            color: var(--text-primary);
+        }
+
+        [data-theme="light"] .footer a {
+            color: var(--text-muted);
+        }
+
+        [data-theme="light"] .footer a:hover {
+            color: var(--emerald-deep);
+        }
+
+        [data-theme="light"] .social-link {
+            background: rgba(13, 61, 46, 0.08);
+            color: var(--emerald-deep);
+            border: 1px solid rgba(13, 61, 46, 0.15);
+        }
+
+        [data-theme="light"] .social-link:hover {
+            background: var(--emerald-deep);
+            color: #FFFFFF;
+        }
+
+        /* Search Modal - Light Mode */
+        [data-theme="light"] .search-modal {
+            background: rgba(250, 250, 248, 0.98);
+        }
+
+        [data-theme="light"] .search-input-wrapper {
+            background: var(--bg-elevated);
+            border: 2px solid var(--border-subtle);
+        }
+
+        [data-theme="light"] .search-input {
+            color: var(--text-primary);
+        }
+
+        [data-theme="light"] .search-input::placeholder {
+            color: var(--text-muted);
+        }
+
+        [data-theme="light"] .search-tag {
+            background: rgba(13, 61, 46, 0.08);
+            color: var(--emerald-deep);
+            border: 1px solid rgba(13, 61, 46, 0.15);
+        }
+
+        [data-theme="light"] .search-tag:hover {
+            background: var(--emerald-deep);
+            color: #FFFFFF;
+        }
+
+        /* Adinkra Symbols - Light Mode */
+        [data-theme="light"] .adinkra-float {
+            fill: var(--emerald-deep);
+            opacity: 0.03;
+        }
+
+        /* Custom Cursor - Light Mode */
+        [data-theme="light"] .cursor {
+            border-color: var(--emerald-deep);
+        }
+
+        [data-theme="light"] .cursor-dot {
+            background: var(--emerald-deep);
+            box-shadow: 0 0 20px var(--emerald-deep);
+        }
+
+        /* Scrollbar - Light Mode */
+        [data-theme="light"]::-webkit-scrollbar-track {
+            background: var(--bg-secondary);
+        }
+
+        [data-theme="light"]::-webkit-scrollbar-thumb {
+            background: var(--bg-surface);
+            border: 2px solid var(--bg-secondary);
+        }
+
+        [data-theme="light"]::-webkit-scrollbar-thumb:hover {
+            background: var(--emerald-deep);
+        }
+    </style>
+</head>
+<body>
+    <!-- Preloader -->
+    <div class="preloader" id="preloader">
+        <svg class="preloader-star" viewBox="0 0 100 100">
+            <polygon points="50,5 61,40 98,40 68,62 79,97 50,75 21,97 32,62 2,40 39,40"/>
+        </svg>
+        <span class="preloader-text">Republic of Ghana</span>
+    </div>
+
+    <!-- Custom Cursor -->
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-dot" id="cursorDot"></div>
+
+    <!-- Ambient Background -->
+    <div class="ambient-bg">
+        <div class="ambient-orb ambient-orb-1"></div>
+        <div class="ambient-orb ambient-orb-2"></div>
+        <div class="ambient-orb ambient-orb-3"></div>
+    </div>
+
+    <!-- Noise Overlay -->
+    <div class="noise-overlay"></div>
+
+    <!-- Floating Adinkra Symbols -->
+    <svg class="adinkra-float" style="width: 60px; left: 5%; animation-delay: 0s;" viewBox="0 0 100 100">
+        <circle cx="50" cy="50" r="45" fill="none" stroke="currentColor" stroke-width="4"/>
+        <circle cx="50" cy="50" r="25" fill="none" stroke="currentColor" stroke-width="4"/>
+        <line x1="50" y1="5" x2="50" y2="25" stroke="currentColor" stroke-width="4"/>
+        <line x1="50" y1="75" x2="50" y2="95" stroke="currentColor" stroke-width="4"/>
+        <line x1="5" y1="50" x2="25" y2="50" stroke="currentColor" stroke-width="4"/>
+        <line x1="75" y1="50" x2="95" y2="50" stroke="currentColor" stroke-width="4"/>
+    </svg>
+    <svg class="adinkra-float" style="width: 40px; left: 85%; animation-delay: -10s;" viewBox="0 0 100 100">
+        <path d="M50 10 L90 50 L50 90 L10 50 Z" fill="none" stroke="currentColor" stroke-width="4"/>
+        <circle cx="50" cy="50" r="15" fill="currentColor"/>
+    </svg>
+    <svg class="adinkra-float" style="width: 50px; left: 45%; animation-delay: -20s;" viewBox="0 0 100 100">
+        <path d="M50 5 C80 25, 80 75, 50 95 C20 75, 20 25, 50 5" fill="none" stroke="currentColor" stroke-width="4"/>
+        <line x1="50" y1="5" x2="50" y2="95" stroke="currentColor" stroke-width="4"/>
+    </svg>
+
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <a href="tel:112" class="emergency-link">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+            </svg>
+            Emergency: 112 | COVID-19: 311
+        </a>
+        <div class="language-selector">
+            <span>Language:</span>
+            <button class="active">English</button>
+            <button>Twi</button>
+            <button>Hausa</button>
+            <button>Ewe</button>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="nav-main">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-emblem">
+                    <svg class="logo-star" viewBox="0 0 100 100">
+                        <polygon points="50,5 61,40 98,40 68,62 79,97 50,75 21,97 32,62 2,40 39,40"/>
+                    </svg>
+                </div>
+                <div class="logo-text">
+                    <span class="logo-title">Republic of Ghana</span>
+                    <span class="logo-subtitle">Official Government Portal</span>
+                </div>
+            </a>
+
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="services/index.html">Services</a></li>
+                <li><a href="government/index.html">Government</a></li>
+                <li><a href="business/index.html">Invest</a></li>
+                <li><a href="tourism/index.html">Visit Ghana</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <button class="nav-btn" aria-label="Search" onclick="openSearch()">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"/>
+                        <path d="M21 21l-4.35-4.35"/>
+                    </svg>
+                </button>
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <div class="toggle-orb">
+                        <svg class="toggle-icon moon" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                        </svg>
+                        <svg class="toggle-icon sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="5"/>
+                            <line x1="12" y1="1" x2="12" y2="3"/>
+                            <line x1="12" y1="21" x2="12" y2="23"/>
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                            <line x1="1" y1="12" x2="3" y2="12"/>
+                            <line x1="21" y1="12" x2="23" y2="12"/>
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                        </svg>
+                    </div>
+                </button>
+                <a href="services/index.html" class="nav-cta">Access Services</a>
+                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open menu">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="3" y1="6" x2="21" y2="6"/>
+                        <line x1="3" y1="12" x2="21" y2="12"/>
+                        <line x1="3" y1="18" x2="21" y2="18"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close menu">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="18" y1="6" x2="6" y2="18"/>
+                <line x1="6" y1="6" x2="18" y2="18"/>
+            </svg>
+        </button>
+        <ul class="mobile-menu-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services/index.html">Services</a></li>
+            <li><a href="government/index.html">Government</a></li>
+            <li><a href="business/index.html">Invest</a></li>
+            <li><a href="tourism/index.html">Visit Ghana</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </div>
+
+    <!-- Search Modal -->
+    <div class="search-modal" id="searchModal">
+        <button class="search-close" onclick="closeSearch()" aria-label="Close search">
+            <svg width="32" height="32" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M18 6L6 18M6 6l12 12"/>
+            </svg>
+        </button>
+        <div class="search-container">
+            <div class="search-input-wrapper">
+                <svg class="search-icon" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <circle cx="11" cy="11" r="8"/>
+                    <path d="M21 21l-4.35-4.35"/>
+                </svg>
+                <input type="text" class="search-input" placeholder="What are you looking for?" autofocus>
+            </div>
+            <div class="search-suggestions">
+                <h4>Popular Searches</h4>
+                <div class="search-tags">
+                    <a href="#" class="search-tag">Passport Application</a>
+                    <a href="#" class="search-tag">Business Registration</a>
+                    <a href="#" class="search-tag">Tax Filing</a>
+                    <a href="#" class="search-tag">Birth Certificate</a>
+                    <a href="#" class="search-tag">Driver's License</a>
+                    <a href="#" class="search-tag">Visa Services</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg-layer">
+            <div class="hero-gradient"></div>
+            <div class="hero-particles" id="particles"></div>
+        </div>
+
+        <svg class="hero-star" viewBox="0 0 100 100" fill="rgba(212,175,55,0.5)">
+            <polygon points="50,5 61,40 98,40 68,62 79,97 50,75 21,97 32,62 2,40 39,40"/>
+        </svg>
+
+        <div class="hero-content">
+            <div class="hero-text">
+                <span class="hero-badge">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                    </svg>
+                    Digital Government Services
+                </span>
+                <h1 class="hero-title">
+                    Your Gateway to<br>
+                    <span class="highlight">Ghana's</span> Government
+                </h1>
+                <p class="hero-description">
+                    Access all government services, information, and resources from one unified platform. Built for every Ghanaian, wherever you are.
+                </p>
+                <div class="hero-actions">
+                    <a href="services/index.html" class="btn btn-primary">
+                        <span>Explore Services</span>
+                        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                    <a href="government/index.html" class="btn btn-outline">Learn More</a>
+                </div>
+            </div>
+
+            <div class="hero-cards">
+                <a href="tourism/index.html" class="hero-card">
+                    <div class="hero-card-icon">
+                        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                            <circle cx="12" cy="10" r="3"/>
+                        </svg>
+                    </div>
+                    <h3 class="hero-card-title">Visit Ghana</h3>
+                    <p class="hero-card-desc">Explore our rich culture, heritage sites, and natural beauty</p>
+                    <span class="hero-card-arrow">
+                        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </span>
+                </a>
+
+                <a href="business/index.html" class="hero-card">
+                    <div class="hero-card-icon">
+                        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                        </svg>
+                    </div>
+                    <h3 class="hero-card-title">Invest in Ghana</h3>
+                    <p class="hero-card-desc">Discover opportunities in Africa's gateway economy</p>
+                    <span class="hero-card-arrow">
+                        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </span>
+                </a>
+
+                <a href="services/business-registration.html" class="hero-card">
+                    <div class="hero-card-icon">
+                        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+                            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+                        </svg>
+                    </div>
+                    <h3 class="hero-card-title">Do Business</h3>
+                    <p class="hero-card-desc">Register, license, and grow your business seamlessly</p>
+                    <span class="hero-card-arrow">
+                        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </span>
+                </a>
+
+                <a href="services/index.html" class="hero-card">
+                    <div class="hero-card-icon">
+                        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                            <circle cx="9" cy="7" r="4"/>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
+                        </svg>
+                    </div>
+                    <h3 class="hero-card-title">Diaspora Services</h3>
+                    <p class="hero-card-desc">Stay connected with home from anywhere in the world</p>
+                    <span class="hero-card-arrow">
+                        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Services -->
+    <section class="quick-services">
+        <div class="section-container">
+            <div class="section-header reveal">
+                <span class="section-label">Services</span>
+                <h2 class="section-title">What would you like to do today?</h2>
+                <p class="section-desc">Access essential government services quickly and easily from anywhere</p>
+            </div>
+
+            <div class="services-grid">
+                <a href="services/passport.html" class="service-card reveal">
+                    <div class="service-icon">
+                        <svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                            <line x1="16" y1="2" x2="16" y2="6"/>
+                            <line x1="8" y1="2" x2="8" y2="6"/>
+                            <line x1="3" y1="10" x2="21" y2="10"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Passport Services</h3>
+                    <p class="service-desc">Apply for new passport, renew, or report lost documents</p>
+                    <span class="service-link">Get Started <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                </a>
+
+                <a href="services/vital-records.html" class="service-card reveal">
+                    <div class="service-icon">
+                        <svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                            <polyline points="14 2 14 8 20 8"/>
+                            <line x1="16" y1="13" x2="8" y2="13"/>
+                            <line x1="16" y1="17" x2="8" y2="17"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Birth & Death Records</h3>
+                    <p class="service-desc">Register births, obtain certificates, and vital records</p>
+                    <span class="service-link">Get Started <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                </a>
+
+                <a href="services/tax.html" class="service-card reveal">
+                    <div class="service-icon">
+                        <svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <rect x="1" y="4" width="22" height="16" rx="2" ry="2"/>
+                            <line x1="1" y1="10" x2="23" y2="10"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Tax Services</h3>
+                    <p class="service-desc">File returns, make payments, and manage your tax account</p>
+                    <span class="service-link">Get Started <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                </a>
+
+                <a href="services/drivers-license.html" class="service-card reveal">
+                    <div class="service-icon">
+                        <svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="10"/>
+                            <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Driver's License</h3>
+                    <p class="service-desc">Apply, renew, or replace your driver's license</p>
+                    <span class="service-link">Get Started <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                </a>
+
+                <a href="services/ghana-card.html" class="service-card reveal">
+                    <div class="service-icon">
+                        <svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                            <circle cx="8.5" cy="7" r="4"/>
+                            <line x1="20" y1="8" x2="20" y2="14"/>
+                            <line x1="23" y1="11" x2="17" y2="11"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">National ID (Ghana Card)</h3>
+                    <p class="service-desc">Register for or collect your National Identification</p>
+                    <span class="service-link">Get Started <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                </a>
+
+                <a href="services/business-registration.html" class="service-card reveal">
+                    <div class="service-icon">
+                        <svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                            <polyline points="22 4 12 14.01 9 11.01"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Business Registration</h3>
+                    <p class="service-desc">Register your company with the Registrar General</p>
+                    <span class="service-link">Get Started <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                </a>
+
+                <a href="services/education.html" class="service-card reveal">
+                    <div class="service-icon">
+                        <svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+                            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Education Services</h3>
+                    <p class="service-desc">School enrollment, results, and scholarship applications</p>
+                    <span class="service-link">Get Started <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                </a>
+
+                <a href="services/health.html" class="service-card reveal">
+                    <div class="service-icon">
+                        <svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Health Services</h3>
+                    <p class="service-desc">NHIS registration, hospital locator, and health records</p>
+                    <span class="service-link">Get Started <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Action Cards Section -->
+    <section class="action-section">
+        <div class="section-container">
+            <div class="section-header reveal" style="margin-bottom: 4rem;">
+                <span class="section-label">Discover Ghana</span>
+                <h2 class="section-title">Gateway to Opportunity</h2>
+            </div>
+
+            <div class="action-grid">
+                <a href="tourism/index.html" class="action-card reveal">
+                    <span class="action-emoji">🌍</span>
+                    <h3 class="action-title">Visit Ghana</h3>
+                    <p class="action-desc">Experience the warmth of West Africa. From historic castles to pristine beaches, discover why Ghana is called the Gateway to Africa.</p>
+                    <span class="action-link">Plan Your Visit <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                </a>
+
+                <a href="business/index.html" class="action-card reveal">
+                    <span class="action-emoji">📈</span>
+                    <h3 class="action-title">Invest in Ghana</h3>
+                    <p class="action-desc">Africa's most stable democracy welcomes your investment. Explore incentives, free zones, and growth sectors driving Ghana's economy.</p>
+                    <span class="action-link">Explore Opportunities <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                </a>
+
+                <a href="services/index.html" class="action-card reveal">
+                    <span class="action-emoji">🎓</span>
+                    <h3 class="action-title">Study in Ghana</h3>
+                    <p class="action-desc">World-class universities, rich academic traditions, and a welcoming environment for international students seeking excellence.</p>
+                    <span class="action-link">Find Programs <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                </a>
+
+                <a href="services/index.html" class="action-card reveal">
+                    <span class="action-emoji">🤝</span>
+                    <h3 class="action-title">Work in Ghana</h3>
+                    <p class="action-desc">Join a dynamic workforce in Africa's fastest-growing digital economy. Find opportunities across technology, finance, and more.</p>
+                    <span class="action-link">View Opportunities <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Government Agencies -->
+    <section class="agencies-section">
+        <div class="section-container">
+            <div class="section-header reveal">
+                <span class="section-label">Agencies</span>
+                <h2 class="section-title">Key Government Agencies</h2>
+                <p class="section-desc">Direct access to the ministries and departments serving you</p>
+            </div>
+
+            <div class="agencies-grid">
+                <a href="#" class="agency-card reveal">
+                    <div class="agency-logo">GRA</div>
+                    <div class="agency-info">
+                        <h3 class="agency-name">Ghana Revenue Authority</h3>
+                        <p class="agency-full">Tax collection and customs administration</p>
+                        <div class="agency-services">
+                            <span class="agency-tag">Tax Filing</span>
+                            <span class="agency-tag">Customs</span>
+                            <span class="agency-tag">TIN Registration</span>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="#" class="agency-card reveal">
+                    <div class="agency-logo">NIA</div>
+                    <div class="agency-info">
+                        <h3 class="agency-name">National Identification Authority</h3>
+                        <p class="agency-full">Ghana Card and identity management</p>
+                        <div class="agency-services">
+                            <span class="agency-tag">Ghana Card</span>
+                            <span class="agency-tag">Verification</span>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="#" class="agency-card reveal">
+                    <div class="agency-logo">GIS</div>
+                    <div class="agency-info">
+                        <h3 class="agency-name">Ghana Immigration Service</h3>
+                        <p class="agency-full">Visa, immigration, and border control</p>
+                        <div class="agency-services">
+                            <span class="agency-tag">Visa</span>
+                            <span class="agency-tag">Permits</span>
+                            <span class="agency-tag">Citizenship</span>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="#" class="agency-card reveal">
+                    <div class="agency-logo">DVLA</div>
+                    <div class="agency-info">
+                        <h3 class="agency-name">Driver & Vehicle Licensing Authority</h3>
+                        <p class="agency-full">Licensing and vehicle registration</p>
+                        <div class="agency-services">
+                            <span class="agency-tag">License</span>
+                            <span class="agency-tag">Registration</span>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="#" class="agency-card reveal">
+                    <div class="agency-logo">RGD</div>
+                    <div class="agency-info">
+                        <h3 class="agency-name">Registrar General's Department</h3>
+                        <p class="agency-full">Business and vital records registration</p>
+                        <div class="agency-services">
+                            <span class="agency-tag">Business Reg</span>
+                            <span class="agency-tag">Births</span>
+                            <span class="agency-tag">Marriages</span>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="#" class="agency-card reveal">
+                    <div class="agency-logo">NHIA</div>
+                    <div class="agency-info">
+                        <h3 class="agency-name">National Health Insurance Authority</h3>
+                        <p class="agency-full">Healthcare coverage for all Ghanaians</p>
+                        <div class="agency-services">
+                            <span class="agency-tag">NHIS Card</span>
+                            <span class="agency-tag">Claims</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- News Section -->
+    <section class="news-section">
+        <div class="section-container">
+            <div class="section-header reveal">
+                <span class="section-label">Latest Updates</span>
+                <h2 class="section-title">News & Announcements</h2>
+                <p class="section-desc">Stay informed with official government communications</p>
+            </div>
+
+            <div class="news-grid reveal">
+                <a href="#" class="news-featured">
+                    <div class="news-featured-bg"></div>
+                    <div class="news-featured-content">
+                        <span class="news-category">Featured</span>
+                        <h3 class="news-title">President Announces New Digital Ghana Agenda for 2026</h3>
+                        <p class="news-meta">Office of the President • January 15, 2026</p>
+                    </div>
+                </a>
+
+                <div class="news-list">
+                    <a href="#" class="news-item">
+                        <span class="news-category">Economy</span>
+                        <h3 class="news-title">Ghana Stock Exchange Records Historic Growth in Q4</h3>
+                        <p class="news-meta">Ministry of Finance • January 12, 2026</p>
+                    </a>
+
+                    <a href="#" class="news-item">
+                        <span class="news-category">Health</span>
+                        <h3 class="news-title">New Regional Hospitals to Open Across Northern Regions</h3>
+                        <p class="news-meta">Ministry of Health • January 10, 2026</p>
+                    </a>
+
+                    <a href="#" class="news-item">
+                        <span class="news-category">Education</span>
+                        <h3 class="news-title">Free SHS Program Expanded to Include Technical Education</h3>
+                        <p class="news-meta">Ministry of Education • January 8, 2026</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="section-container">
+            <div class="stats-grid reveal">
+                <div class="stat-item">
+                    <div class="stat-number" data-count="32">0</div>
+                    <div class="stat-label">Million Citizens Served</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-count="500">0</div>
+                    <div class="stat-label">Digital Services Available</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-count="16">0</div>
+                    <div class="stat-label">Regional Offices</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-count="98">0</div>
+                    <div class="stat-label">% Uptime Reliability</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <div class="footer-logo">
+                    <svg viewBox="0 0 100 100">
+                        <polygon points="50,5 61,40 98,40 68,62 79,97 50,75 21,97 32,62 2,40 39,40"/>
+                    </svg>
+                    <span class="footer-logo-text">Republic of Ghana</span>
+                </div>
+                <p class="footer-desc">
+                    The official digital gateway to Ghana's government services. Building a transparent, efficient, and citizen-centered administration.
+                </p>
+                <div class="footer-social">
+                    <a href="#" class="social-link" aria-label="Facebook">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                    </a>
+                    <a href="#" class="social-link" aria-label="Twitter">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg>
+                    </a>
+                    <a href="#" class="social-link" aria-label="Instagram">
+                        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                    </a>
+                    <a href="#" class="social-link" aria-label="YouTube">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="var(--obsidian)"/></svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-column">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="services/passport.html">Passport Services</a></li>
+                    <li><a href="services/tax.html">Tax Filing</a></li>
+                    <li><a href="services/business-registration.html">Business Registration</a></li>
+                    <li><a href="services/drivers-license.html">Driver's License</a></li>
+                    <li><a href="services/ghana-card.html">National ID</a></li>
+                    <li><a href="services/vital-records.html">Birth Certificates</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h4>Government</h4>
+                <ul>
+                    <li><a href="government/presidency.html">The Presidency</a></li>
+                    <li><a href="government/parliament.html">Parliament</a></li>
+                    <li><a href="government/judiciary.html">Judiciary</a></li>
+                    <li><a href="government/ministries.html">Ministries</a></li>
+                    <li><a href="government/regional.html">Regional Offices</a></li>
+                    <li><a href="government/publications.html">Publications</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="help/index.html">Help Center</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="help/faq.html">FAQs</a></li>
+                    <li><a href="accessibility.html">Accessibility</a></li>
+                    <li><a href="sitemap.html">Sitemap</a></li>
+                    <li><a href="report-issue.html">Report Issue</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p class="footer-copy">&copy; 2026 Republic of Ghana. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="terms.html">Terms of Use</a>
+                <a href="cookies.html">Cookie Policy</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ═══════════════════════════════════════════════════════════
+        // THEME SYSTEM - Celestial/Golden Dawn Toggle
+        // ═══════════════════════════════════════════════════════════
+        (function() {
+            const STORAGE_KEY = 'ghana-gov-theme';
+            const DARK = 'dark';
+            const LIGHT = 'light';
+
+            // Get saved theme or default to dark
+            function getSavedTheme() {
+                const saved = localStorage.getItem(STORAGE_KEY);
+                if (saved) return saved;
+                // Check system preference as fallback
+                if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+                    return LIGHT;
+                }
+                return DARK;
+            }
+
+            // Apply theme to document
+            function applyTheme(theme) {
+                if (theme === LIGHT) {
+                    document.documentElement.setAttribute('data-theme', 'light');
+                } else {
+                    document.documentElement.removeAttribute('data-theme');
+                }
+                localStorage.setItem(STORAGE_KEY, theme);
+            }
+
+            // Initialize theme immediately (before DOM ready)
+            applyTheme(getSavedTheme());
+
+            // Set up toggle functionality after DOM loads
+            document.addEventListener('DOMContentLoaded', function() {
+                const toggle = document.getElementById('themeToggle');
+                if (toggle) {
+                    toggle.addEventListener('click', function() {
+                        const current = document.documentElement.getAttribute('data-theme');
+                        const newTheme = current === 'light' ? DARK : LIGHT;
+                        applyTheme(newTheme);
+
+                        // Add a subtle animation feedback
+                        this.style.transform = 'scale(0.95)';
+                        setTimeout(() => {
+                            this.style.transform = '';
+                        }, 150);
+                    });
+
+                    // Keyboard accessibility
+                    toggle.addEventListener('keydown', function(e) {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                            e.preventDefault();
+                            this.click();
+                        }
+                    });
+                }
+            });
+
+            // Listen for system theme changes
+            if (window.matchMedia) {
+                window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', function(e) {
+                    // Only auto-switch if user hasn't manually set a preference
+                    if (!localStorage.getItem(STORAGE_KEY)) {
+                        applyTheme(e.matches ? LIGHT : DARK);
+                    }
+                });
+            }
+        })();
+
+        // ═══════════════════════════════════════════════════════════
+        // MOBILE MENU
+        // ═══════════════════════════════════════════════════════════
+        (function() {
+            document.addEventListener('DOMContentLoaded', function() {
+                const menuBtn = document.getElementById('mobileMenuBtn');
+                const menuClose = document.getElementById('mobileMenuClose');
+                const mobileMenu = document.getElementById('mobileMenu');
+
+                if (menuBtn && mobileMenu) {
+                    menuBtn.addEventListener('click', function() {
+                        mobileMenu.classList.add('active');
+                        document.body.style.overflow = 'hidden';
+                    });
+
+                    if (menuClose) {
+                        menuClose.addEventListener('click', function() {
+                            mobileMenu.classList.remove('active');
+                            document.body.style.overflow = '';
+                        });
+                    }
+
+                    // Close on link click
+                    mobileMenu.querySelectorAll('a').forEach(link => {
+                        link.addEventListener('click', function() {
+                            mobileMenu.classList.remove('active');
+                            document.body.style.overflow = '';
+                        });
+                    });
+
+                    // Close on escape
+                    document.addEventListener('keydown', function(e) {
+                        if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
+                            mobileMenu.classList.remove('active');
+                            document.body.style.overflow = '';
+                        }
+                    });
+                }
+            });
+        })();
+
+        // Preloader
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('preloader').classList.add('hidden');
+            }, 1500);
+        });
+
+        // Custom Cursor
+        const cursor = document.getElementById('cursor');
+        const cursorDot = document.getElementById('cursorDot');
+
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX - 10 + 'px';
+            cursor.style.top = e.clientY - 10 + 'px';
+            cursorDot.style.left = e.clientX - 3 + 'px';
+            cursorDot.style.top = e.clientY - 3 + 'px';
+        });
+
+        document.querySelectorAll('a, button, .hero-card, .service-card, .action-card, .agency-card, .news-item, .news-featured').forEach(el => {
+            el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+            el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+        });
+
+        // Search Modal
+        function openSearch() {
+            document.getElementById('searchModal').classList.add('active');
+            setTimeout(() => document.querySelector('.search-input').focus(), 100);
+        }
+
+        function closeSearch() {
+            document.getElementById('searchModal').classList.remove('active');
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeSearch();
+            if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+                e.preventDefault();
+                openSearch();
+            }
+        });
+
+        // Navbar scroll effect
+        const nav = document.querySelector('.nav-main');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // Generate particles
+        const particlesContainer = document.getElementById('particles');
+        for (let i = 0; i < 40; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.animationDelay = Math.random() * 25 + 's';
+            particle.style.animationDuration = (20 + Math.random() * 15) + 's';
+            particle.style.width = (2 + Math.random() * 3) + 'px';
+            particle.style.height = particle.style.width;
+            particlesContainer.appendChild(particle);
+        }
+
+        // Scroll reveal animations
+        const revealElements = document.querySelectorAll('.reveal');
+
+        const revealOnScroll = () => {
+            revealElements.forEach((el, index) => {
+                const elementTop = el.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+
+                if (elementTop < windowHeight - 100) {
+                    setTimeout(() => {
+                        el.classList.add('active');
+                    }, index * 80);
+                }
+            });
+        };
+
+        window.addEventListener('scroll', revealOnScroll);
+        revealOnScroll();
+
+        // Counter animation
+        const counters = document.querySelectorAll('.stat-number');
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const target = parseInt(entry.target.getAttribute('data-count'));
+                    let current = 0;
+                    const increment = target / 60;
+                    const timer = setInterval(() => {
+                        current += increment;
+                        if (current >= target) {
+                            entry.target.textContent = target + (target === 98 ? '%' : '+');
+                            clearInterval(timer);
+                        } else {
+                            entry.target.textContent = Math.floor(current);
+                        }
+                    }, 25);
+                    counterObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        counters.forEach(counter => counterObserver.observe(counter));
+
+        // Mobile menu toggle
+        const mobileToggle = document.querySelector('.mobile-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileToggle.classList.toggle('active');
+        });
+    </script>
+
+    <!-- Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(registration => {
+                        console.log('ServiceWorker registered:', registration.scope);
+                    })
+                    .catch(error => {
+                        console.log('ServiceWorker registration failed:', error);
+                    });
+            });
+        }
+    </script>
+</body>
+</html>

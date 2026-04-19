@@ -1,0 +1,168 @@
+---
+/**
+ * Hidden ErrorSummary variant gallery — paired with axe-check.
+ * Served at `/internal/error-summary/`. Not linked from public navigation.
+ *
+ * The last section shows a realistic "form rejected on submit" scenario
+ * coupling the ErrorSummary to TextInput error states so jump-links can be
+ * verified manually during review.
+ */
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ErrorSummary from '@gh/gh-ds/ErrorSummary';
+import TextInput from '@gh/gh-ds/TextInput';
+import Button from '@gh/gh-ds/Button';
+---
+
+<BaseLayout
+  title="ErrorSummary variants — internal test"
+  description="Internal test page for GH-DS ErrorSummary variants. Not linked from public navigation."
+  noindex
+>
+  <h1>ErrorSummary variants</h1>
+  <p>
+    Not public. Exercises every presentation state of the
+    <code>@gh/gh-ds/ErrorSummary</code> component. The last section demonstrates how it pairs with <code
+      >TextInput</code
+    > for a real submitted-form-rejected scenario.
+  </p>
+
+  <section aria-labelledby="h-default">
+    <h2 id="h-default">Default (single error)</h2>
+    <ErrorSummary
+      id="demo-1"
+      errors={[{ fieldId: 'demo-1-pin', message: 'Enter your Ghana Card PIN' }]}
+    />
+  </section>
+
+  <section aria-labelledby="h-multi">
+    <h2 id="h-multi">Multiple errors</h2>
+    <ErrorSummary
+      id="demo-2"
+      errors={[
+        { fieldId: 'demo-2-pin', message: 'Enter your Ghana Card PIN' },
+        { fieldId: 'demo-2-phone', message: 'Enter a valid Ghanaian mobile number' },
+        { fieldId: 'demo-2-email', message: 'Enter a valid email address' },
+        { fieldId: 'demo-2-dob', message: 'Enter your date of birth' },
+      ]}
+    />
+  </section>
+
+  <section aria-labelledby="h-described">
+    <h2 id="h-described">With description and custom title</h2>
+    <ErrorSummary
+      id="demo-3"
+      title="We could not process your passport renewal"
+      description="Fix these problems and send the application again. Your ARN is unchanged."
+      errors={[
+        { fieldId: 'demo-3-photo', message: 'Upload a clear passport photo' },
+        { fieldId: 'demo-3-fee', message: 'Choose a payment method' },
+      ]}
+    />
+  </section>
+
+  <section aria-labelledby="h-twi" lang="tw">
+    <h2 id="h-twi" lang="en">Twi fixture</h2>
+    <div lang="tw">
+      <ErrorSummary
+        id="demo-4"
+        title="Nsɛm bi ho asɛm wɔ hɔ"
+        errors={[
+          { fieldId: 'demo-4-din', message: 'Kyerɛw wo din' },
+          { fieldId: 'demo-4-nsateaa', message: 'Kyerɛw wo nsateaa nɔma' },
+        ]}
+      />
+    </div>
+  </section>
+
+  <section aria-labelledby="h-empty">
+    <h2 id="h-empty">No errors — component renders nothing</h2>
+    <p>
+      The ErrorSummary below is invoked with an empty list. Nothing should appear between this
+      paragraph and the next section heading.
+    </p>
+    <ErrorSummary id="demo-5" errors={[]} />
+  </section>
+
+  <section aria-labelledby="h-realistic">
+    <h2 id="h-realistic">Realistic rejected-submission flow</h2>
+    <p>
+      Click each error link in the banner. Focus lands on the matching field below. Each field also
+      shows its own inline error marker via
+      <code>TextInput</code>'s error prop.
+    </p>
+
+    <ErrorSummary
+      id="demo-form-errors"
+      title="Fix 3 problems before you submit"
+      errors={[
+        { fieldId: 'demo-form-pin', message: 'Enter your Ghana Card PIN' },
+        { fieldId: 'demo-form-phone', message: 'Enter a valid Ghanaian mobile number' },
+        { fieldId: 'demo-form-email', message: 'Enter a valid email address' },
+      ]}
+    />
+
+    <form action="#" method="post" novalidate>
+      <TextInput
+        id="demo-form-pin"
+        name="pin"
+        label="Ghana Card PIN"
+        hint="10 characters starting with GHA-"
+        width="20"
+        autocomplete="off"
+        required
+        error="Enter your Ghana Card PIN"
+      />
+      <TextInput
+        id="demo-form-phone"
+        name="phone"
+        label="Mobile number"
+        type="tel"
+        hint="For example, 0244 123 456"
+        width="20"
+        autocomplete="tel"
+        required
+        error="Enter a valid Ghanaian mobile number"
+        value="0244"
+      />
+      <TextInput
+        id="demo-form-email"
+        name="email"
+        label="Email"
+        type="email"
+        autocomplete="email"
+        required
+        error="Enter a valid email address"
+        value="not-an-email"
+      />
+
+      <div class="submit-row">
+        <Button type="submit">Resubmit application</Button>
+      </div>
+    </form>
+  </section>
+</BaseLayout>
+
+<style>
+  section {
+    border-top: var(--border-width-hairline) solid var(--color-border-default);
+    margin-top: var(--space-8);
+    padding-top: var(--space-4);
+  }
+
+  .submit-row {
+    margin-top: var(--space-8);
+  }
+
+  code {
+    font-family: var(--font-mono);
+    font-size: 0.95em;
+    background: var(--ghana-ink-50);
+    padding: 2px 6px;
+    border-radius: var(--radius-sm);
+  }
+
+  form {
+    max-width: 42rem;
+  }
+</style>

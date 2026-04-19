@@ -1,0 +1,457 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+import Button from '@gh/gh-ds/Button';
+import TextInput from '@gh/gh-ds/TextInput';
+import Textarea from '@gh/gh-ds/Textarea';
+import RadioGroup from '@gh/gh-ds/RadioGroup';
+import CheckboxGroup from '@gh/gh-ds/CheckboxGroup';
+import Select from '@gh/gh-ds/Select';
+import DateInput from '@gh/gh-ds/DateInput';
+import ErrorSummary from '@gh/gh-ds/ErrorSummary';
+import BackLink from '@gh/gh-ds/BackLink';
+
+import Breadcrumb from '@gh/gh-ds/Breadcrumb';
+import Card from '@gh/gh-ds/Card';
+import NotificationBanner from '@gh/gh-ds/NotificationBanner';
+import Pagination from '@gh/gh-ds/Pagination';
+import Accordion from '@gh/gh-ds/Accordion';
+import AccordionItem from '@gh/gh-ds/AccordionItem';
+import Table from '@gh/gh-ds/Table';
+import Tabs from '@gh/gh-ds/Tabs';
+
+import StepIndicator from '@gh/gh-ds/StepIndicator';
+import SummaryList from '@gh/gh-ds/SummaryList';
+import ConfirmationPanel from '@gh/gh-ds/ConfirmationPanel';
+import Search from '@gh/gh-ds/Search';
+import MostRequestedBand from '@gh/gh-ds/MostRequestedBand';
+import CookieBanner from '@gh/gh-ds/CookieBanner';
+---
+
+<BaseLayout
+  title="Components"
+  description="Every component in the Ghana Design System, with a canonical example."
+>
+  <div class="toc">
+    <Breadcrumb items={[{ href: '/', label: 'Home' }]} current="Components" />
+  </div>
+
+  <h1>Components</h1>
+  <p class="lede">
+    Every component in the Ghana Design System, in one page. Anchors for each section let you
+    deep-link from the home catalogue. Detailed per-component pages with expanded prop matrices land
+    in follow-up PRs.
+  </p>
+
+  <!-- ─── Tier 1 — Foundation ─────────────────────────────── -->
+  <h2 class="tier-heading" id="tier-1">Tier 1 — Foundation</h2>
+
+  <section aria-labelledby="c-button">
+    <h3 id="button">Button</h3>
+    <p>Primary call to action. Four variants, two sizes, renders as button or anchor.</p>
+    <div class="demo">
+      <div class="row">
+        <Button variant="primary">Continue</Button>
+        <Button variant="secondary">Back</Button>
+        <Button variant="warning">Delete application</Button>
+        <Button variant="start" href="/services/passport/renew">Start now</Button>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="textinput">
+    <h3 id="textinput">TextInput</h3>
+    <p>Single-line input with label, optional hint, optional error, width modifiers.</p>
+    <div class="demo">
+      <TextInput
+        name="demo-pin"
+        label="Ghana Card PIN"
+        hint="10 characters starting with GHA-"
+        width="20"
+        autocomplete="off"
+      />
+    </div>
+  </section>
+
+  <section aria-labelledby="textarea">
+    <h3 id="textarea">Textarea</h3>
+    <p>Multi-line text input for complaint narratives, appeals, long-form feedback.</p>
+    <div class="demo">
+      <Textarea
+        name="demo-complaint"
+        label="Describe what happened"
+        hint="Include dates, names, and reference numbers."
+        rows={4}
+      />
+    </div>
+  </section>
+
+  <section aria-labelledby="radiogroup">
+    <h3 id="radiogroup">RadioGroup</h3>
+    <p>Single-select from a set. Default vertical, optional inline for binary choices.</p>
+    <div class="demo">
+      <RadioGroup
+        name="demo-card"
+        legend="Do you have a Ghana Card?"
+        orientation="inline"
+        options={[
+          { value: 'yes', label: 'Yes' },
+          { value: 'no', label: 'No' },
+        ]}
+      />
+    </div>
+  </section>
+
+  <section aria-labelledby="checkboxgroup">
+    <h3 id="checkboxgroup">CheckboxGroup</h3>
+    <p>Multi-select. Also handles the single "accept terms" pattern via `legendHidden`.</p>
+    <div class="demo">
+      <CheckboxGroup
+        name="demo-services"
+        legend="Which services do you need today?"
+        hint="Select all that apply."
+        options={[
+          { value: 'passport', label: 'Passport renewal' },
+          { value: 'card', label: 'Ghana Card' },
+          { value: 'tax', label: 'File a tax return' },
+        ]}
+      />
+    </div>
+  </section>
+
+  <section aria-labelledby="select">
+    <h3 id="select">Select</h3>
+    <p>Native dropdown. GOV.UK-scale width modifiers. No custom combobox — mobile picker wins.</p>
+    <div class="demo">
+      <Select
+        name="demo-region"
+        label="Region"
+        width="20"
+        options={[
+          { value: '', label: 'Choose' },
+          { value: 'greater-accra', label: 'Greater Accra' },
+          { value: 'ashanti', label: 'Ashanti' },
+          { value: 'northern', label: 'Northern' },
+        ]}
+      />
+    </div>
+  </section>
+
+  <section aria-labelledby="dateinput">
+    <h3 id="dateinput">DateInput</h3>
+    <p>Three narrow inputs for Day / Month / Year. Emits three form fields on submit.</p>
+    <div class="demo">
+      <DateInput
+        name="demo-dob"
+        legend="What is your date of birth?"
+        hint="For example, 27 03 1985."
+        autocomplete="bday"
+      />
+    </div>
+  </section>
+
+  <section aria-labelledby="errorsummary">
+    <h3 id="errorsummary">ErrorSummary</h3>
+    <p>Top-of-page banner listing every validation error with jump-links to fields.</p>
+    <div class="demo">
+      <ErrorSummary
+        id="demo-errs"
+        errors={[
+          { fieldId: 'demo-errs-pin', message: 'Enter your Ghana Card PIN' },
+          { fieldId: 'demo-errs-phone', message: 'Enter a valid Ghanaian mobile number' },
+        ]}
+      />
+    </div>
+  </section>
+
+  <section aria-labelledby="form-composite">
+    <h3 id="form-label-hint-error-composite">Form label/hint/error composite</h3>
+    <p>
+      Shipped as part of every form component (TextInput, Textarea, Select, DateInput, RadioGroup,
+      CheckboxGroup). The label sits above, hint follows, error marks the group with a red edge and <code
+        >role="alert"</code
+      >.
+    </p>
+  </section>
+
+  <section aria-labelledby="skiplink">
+    <h3 id="skiplink">SkipLink</h3>
+    <p>
+      First focusable element on every page — press <kbd>Tab</kbd> from any page on this site and it appears
+      at the top-left. The skip-link is in this page too; try it.
+    </p>
+  </section>
+
+  <section aria-labelledby="backlink">
+    <h3 id="backlink">BackLink</h3>
+    <p>
+      Returns the user to the previous step in a flow. Sankofa-mapped per §6.3; ships with a generic
+      chevron until Folklore-Board clearance (ADR-004).
+    </p>
+    <div class="demo">
+      <BackLink href="/">Back to home</BackLink>
+    </div>
+  </section>
+
+  <section aria-labelledby="header-section">
+    <h3 id="header">Header</h3>
+    <p>
+      Rendered at the top of every page on this site. Flag-rule strip + brand mark + language
+      switcher + primary nav. Parameterised so every ministry site consumes the same component.
+    </p>
+  </section>
+
+  <section aria-labelledby="footer-section">
+    <h3 id="footer">Footer</h3>
+    <p>
+      Rendered at the bottom of every page on this site. Footer identifier (About / Privacy /
+      Accessibility / RTI / Hotline) + parent-organisation line + CC-BY + motto.
+    </p>
+  </section>
+
+  <!-- ─── Tier 2 — Content & nav ──────────────────────────── -->
+  <h2 class="tier-heading" id="tier-2">Tier 2 — Content & navigation</h2>
+
+  <section aria-labelledby="breadcrumb">
+    <h3 id="breadcrumb">Breadcrumb</h3>
+    <p>Shows the user's location in the site hierarchy.</p>
+    <div class="demo">
+      <Breadcrumb
+        ariaLabel="Breadcrumb example"
+        items={[
+          { href: '/', label: 'Home' },
+          { href: '/services/', label: 'Services' },
+          { href: '/services/passport/', label: 'Passport' },
+        ]}
+        current="Renew"
+      />
+    </div>
+  </section>
+
+  <section aria-labelledby="card">
+    <h3 id="card">Card</h3>
+    <p>Content block with optional entire-card-clickable behaviour (no JS).</p>
+    <div class="demo">
+      <Card
+        title="Renew your passport"
+        description="Renew your Ghanaian passport in four steps. Typical processing: 7 working days."
+        href="/services/passport/renew"
+        headingLevel="h4"
+      />
+    </div>
+  </section>
+
+  <section aria-labelledby="notificationbanner">
+    <h3 id="notificationbanner">NotificationBanner</h3>
+    <p>Three types: info, success, warning. Success/warning announce via role=alert.</p>
+    <div class="demo">
+      <NotificationBanner
+        id="demo-banner-success"
+        type="success"
+        title="Application sent"
+        headingLevel="h4"
+      >
+        <p>Your reference is <strong>ARN-2026-04-000123</strong>.</p>
+      </NotificationBanner>
+    </div>
+  </section>
+
+  <section aria-labelledby="pagination">
+    <h3 id="pagination">Pagination</h3>
+    <p>Numeric pagination with ellipsis on large ranges.</p>
+    <div class="demo">
+      <Pagination current={3} total={47} baseUrl="/news/?page=" ariaLabel="News pagination demo" />
+    </div>
+  </section>
+
+  <section aria-labelledby="accordion">
+    <h3 id="accordion">Accordion</h3>
+    <p>Native &lt;details&gt;/&lt;summary&gt;. Works with keyboard, no JS.</p>
+    <div class="demo">
+      <Accordion id="demo-accordion">
+        <AccordionItem heading="How long does a renewal take?">
+          <p>Most renewals are processed within 7 working days.</p>
+        </AccordionItem>
+        <AccordionItem heading="What if I lost my old passport?">
+          <p>Report it at any GIS office before you apply for a new one.</p>
+        </AccordionItem>
+      </Accordion>
+    </div>
+  </section>
+
+  <section aria-labelledby="table">
+    <h3 id="table">Table</h3>
+    <p>Semantic table with required caption and horizontal-scroll on narrow viewports.</p>
+    <div class="demo">
+      <Table caption="Passport fees" id="demo-table">
+        <thead>
+          <tr>
+            <th scope="col">Type</th>
+            <th scope="col" class="gh-table__cell--numeric">Fee</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Standard (32 pages)</td>
+            <td class="gh-table__cell--numeric">GH₵ 100</td>
+          </tr>
+          <tr>
+            <td>Executive (64 pages)</td>
+            <td class="gh-table__cell--numeric">GH₵ 150</td>
+          </tr>
+        </tbody>
+      </Table>
+    </div>
+  </section>
+
+  <section aria-labelledby="tabs">
+    <h3 id="tabs">Tabs</h3>
+    <p>
+      Progressive-enhancement baseline: jump-link nav over stacked sections. Hide/show ARIA-tablist
+      enhancement is a future PR.
+    </p>
+    <div class="demo">
+      <Tabs
+        label="Passport services demo"
+        tabs={[
+          { id: 'demo-tab-renew', label: 'Renew' },
+          { id: 'demo-tab-apply', label: 'Apply' },
+        ]}
+      >
+        <section id="demo-tab-renew">
+          <h4>Renew</h4>
+          <p>Renew online if your passport expires within 12 months.</p>
+        </section>
+        <section id="demo-tab-apply">
+          <h4>Apply</h4>
+          <p>Apply in person at any Ghana Immigration Service office.</p>
+        </section>
+      </Tabs>
+    </div>
+  </section>
+
+  <!-- ─── Tier 3 — Service flow ───────────────────────────── -->
+  <h2 class="tier-heading" id="tier-3">Tier 3 — Service flow</h2>
+
+  <section aria-labelledby="stepindicator">
+    <h3 id="stepindicator">StepIndicator</h3>
+    <p>Progress through a multi-step service flow. Completed / current / upcoming states.</p>
+    <div class="demo">
+      <StepIndicator
+        label="Demo progress"
+        steps={[
+          { label: 'Identity', status: 'completed', href: '#' },
+          { label: 'Photo', status: 'completed', href: '#' },
+          { label: 'Fee', status: 'current' },
+          { label: 'Review', status: 'upcoming' },
+          { label: 'Submit', status: 'upcoming' },
+        ]}
+      />
+    </div>
+  </section>
+
+  <section aria-labelledby="summarylist">
+    <h3 id="summarylist">SummaryList</h3>
+    <p>Check-your-answers pattern. Optional "Change" action per row.</p>
+    <div class="demo">
+      <SummaryList
+        rows={[
+          {
+            key: 'Full name',
+            value: 'Ama Asante',
+            action: { href: '#', label: 'Change', hiddenText: 'full name' },
+          },
+          {
+            key: 'Ghana Card number',
+            value: 'GHA-123456789-0',
+            action: { href: '#', label: 'Change', hiddenText: 'Ghana Card number' },
+          },
+        ]}
+      />
+    </div>
+  </section>
+
+  <section aria-labelledby="confirmationpanel">
+    <h3 id="confirmationpanel">ConfirmationPanel</h3>
+    <p>Success page after submit. Reference number in display type. role=status.</p>
+    <div class="demo">
+      <ConfirmationPanel
+        title="Application sent"
+        reference="ARN-2026-04-000123"
+        referenceLabel="Your reference"
+        headingLevel="h4"
+      />
+    </div>
+  </section>
+
+  <section aria-labelledby="search">
+    <h3 id="search">Search</h3>
+    <p>The "I am looking for…" form that sits at the top of the root portal.</p>
+    <div class="demo">
+      <Search label="I am looking for…" action="/search" placeholder="Passport, Ghana Card, tax…" />
+    </div>
+  </section>
+
+  <section aria-labelledby="mostrequestedband">
+    <h3 id="mostrequestedband">MostRequestedBand</h3>
+    <p>Analytics-seeded list of the most-clicked services.</p>
+    <div class="demo">
+      <MostRequestedBand
+        id="demo-mr"
+        title="Most requested"
+        headingLevel="h4"
+        items={[
+          { label: 'Renew your passport', href: '#' },
+          { label: 'Apply for the Ghana Card', href: '#' },
+          { label: 'File your tax return', href: '#' },
+        ]}
+      />
+    </div>
+  </section>
+
+  <section aria-labelledby="cookiebanner">
+    <h3 id="cookiebanner">CookieBanner</h3>
+    <p>
+      Accept/Reject/View disclosure. v0 ships markup only — server-side accept/reject endpoints land
+      with the first Workers Function in Week 7.
+    </p>
+    <div class="demo">
+      <CookieBanner id="demo-cookie" />
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .lede {
+    font-size: var(--font-size-lg);
+    color: var(--color-text-secondary);
+    max-width: 56rem;
+    margin-bottom: var(--space-8);
+  }
+
+  .toc {
+    margin-top: var(--space-4);
+  }
+
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    align-items: flex-start;
+  }
+
+  section {
+    border-top: var(--border-width-hairline) solid var(--color-border-default);
+    padding-top: var(--space-3);
+    margin-top: var(--space-6);
+  }
+
+  kbd {
+    font-family: var(--font-mono);
+    font-size: 0.9em;
+    background: var(--ghana-ink-50);
+    border: 1px solid var(--color-border-default);
+    padding: 1px 6px;
+    border-radius: var(--radius-sm);
+  }
+</style>

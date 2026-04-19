@@ -1,0 +1,12 @@
+{
+  "name": "@gh/payments",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "typecheck": "echo '@gh/payments: no typecheck yet' && exit 0",
+    "lint": "echo '@gh/payments: no lint yet' && exit 0",
+    "test": "echo '@gh/payments: no test yet' && exit 0",
+    "build": "echo '@gh/payments: no build yet' && exit 0"
+  }
+}

@@ -1,0 +1,119 @@
+---
+/**
+ * Hidden Textarea variant gallery — paired with axe-check.
+ * Served at `/internal/textarea/`. Not linked from public navigation.
+ */
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Textarea from '@gh/gh-ds/Textarea';
+import Button from '@gh/gh-ds/Button';
+---
+
+<BaseLayout
+  title="Textarea variants — internal test"
+  description="Internal test page for GH-DS Textarea. Not linked from public navigation."
+  noindex
+>
+  <h1>Textarea variants</h1>
+  <p>
+    Not public. Exercises every state of the
+    <code>@gh/gh-ds/Textarea</code> component.
+  </p>
+
+  <form action="#" method="post" novalidate>
+    <section aria-labelledby="h-basic">
+      <h2 id="h-basic">Basic</h2>
+      <Textarea name="comment" label="Leave a comment" />
+    </section>
+
+    <section aria-labelledby="h-hint">
+      <h2 id="h-hint">With hint and 8 rows</h2>
+      <Textarea
+        name="complaint"
+        label="Describe what happened"
+        hint="Include dates, names, and any reference numbers you have."
+        rows={8}
+      />
+    </section>
+
+    <section aria-labelledby="h-required">
+      <h2 id="h-required">Required + maxlength</h2>
+      <Textarea
+        name="appeal"
+        label="Your reason for appeal"
+        hint="Keep it under 500 characters. Be specific."
+        rows={6}
+        maxlength={500}
+        required
+      />
+    </section>
+
+    <section aria-labelledby="h-error">
+      <h2 id="h-error">Error state</h2>
+      <Textarea
+        name="feedback"
+        label="Describe the issue"
+        rows={4}
+        error="Enter a description of at least 20 characters"
+        value="Too short"
+      />
+    </section>
+
+    <section aria-labelledby="h-prefilled">
+      <h2 id="h-prefilled">Prefilled with longer content</h2>
+      <Textarea
+        name="bio"
+        label="Short biography"
+        hint="One or two paragraphs."
+        rows={6}
+        value={`I was born in Kumasi and grew up between Accra and Bolgatanga. My work is in civic technology — building the digital public services our country deserves.\n\nOutside work, I write, cycle, and spend time with family.`}
+      />
+    </section>
+
+    <section aria-labelledby="h-disabled">
+      <h2 id="h-disabled">Disabled</h2>
+      <Textarea
+        name="locked"
+        label="Previously submitted answer"
+        value="Submitted 18 April 2026. No further edits accepted."
+        rows={3}
+        disabled
+      />
+    </section>
+
+    <section aria-labelledby="h-twi" lang="tw">
+      <h2 id="h-twi" lang="en">Twi fixture</h2>
+      <div lang="tw">
+        <Textarea name="nsɛm" label="Kyerɛw wo nsɛm" hint="Di nokware. Gyina wo bɔ so." rows={5} />
+      </div>
+    </section>
+
+    <div class="submit-row">
+      <Button type="submit">Send demo</Button>
+    </div>
+  </form>
+</BaseLayout>
+
+<style>
+  section {
+    border-top: var(--border-width-hairline) solid var(--color-border-default);
+    margin-top: var(--space-8);
+    padding-top: var(--space-4);
+  }
+
+  .submit-row {
+    margin-top: var(--space-8);
+  }
+
+  code {
+    font-family: var(--font-mono);
+    font-size: 0.95em;
+    background: var(--ghana-ink-50);
+    padding: 2px 6px;
+    border-radius: var(--radius-sm);
+  }
+
+  form {
+    max-width: 42rem;
+  }
+</style>

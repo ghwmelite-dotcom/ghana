@@ -1,0 +1,12 @@
+{
+  "name": "@gh/data-portal",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "typecheck": "echo '@gh/data-portal: no typecheck yet' && exit 0",
+    "lint": "echo '@gh/data-portal: no lint yet' && exit 0",
+    "test": "echo '@gh/data-portal: no test yet' && exit 0",
+    "build": "echo '@gh/data-portal: no build yet' && exit 0"
+  }
+}

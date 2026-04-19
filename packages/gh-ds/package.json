@@ -1,0 +1,97 @@
+{
+  "name": "@gh/gh-ds",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Ghana Design System — tokens, fonts, and (from Week 3) 25 accessible components. Forks GOV.UK Frontend per ADR-003.",
+  "license": "MIT",
+  "exports": {
+    ".": {
+      "types": "./src/index.ts",
+      "default": "./src/index.ts"
+    },
+    "./tokens.css": "./dist/tokens.css",
+    "./Button": "./src/components/Button/Button.astro",
+    "./components/Button": "./src/components/Button/Button.astro",
+    "./TextInput": "./src/components/TextInput/TextInput.astro",
+    "./components/TextInput": "./src/components/TextInput/TextInput.astro",
+    "./ErrorSummary": "./src/components/ErrorSummary/ErrorSummary.astro",
+    "./components/ErrorSummary": "./src/components/ErrorSummary/ErrorSummary.astro",
+    "./RadioGroup": "./src/components/RadioGroup/RadioGroup.astro",
+    "./components/RadioGroup": "./src/components/RadioGroup/RadioGroup.astro",
+    "./CheckboxGroup": "./src/components/CheckboxGroup/CheckboxGroup.astro",
+    "./components/CheckboxGroup": "./src/components/CheckboxGroup/CheckboxGroup.astro",
+    "./Textarea": "./src/components/Textarea/Textarea.astro",
+    "./components/Textarea": "./src/components/Textarea/Textarea.astro",
+    "./Select": "./src/components/Select/Select.astro",
+    "./components/Select": "./src/components/Select/Select.astro",
+    "./DateInput": "./src/components/DateInput/DateInput.astro",
+    "./components/DateInput": "./src/components/DateInput/DateInput.astro",
+    "./SkipLink": "./src/components/SkipLink/SkipLink.astro",
+    "./components/SkipLink": "./src/components/SkipLink/SkipLink.astro",
+    "./BackLink": "./src/components/BackLink/BackLink.astro",
+    "./components/BackLink": "./src/components/BackLink/BackLink.astro",
+    "./Header": "./src/components/Header/Header.astro",
+    "./components/Header": "./src/components/Header/Header.astro",
+    "./Footer": "./src/components/Footer/Footer.astro",
+    "./components/Footer": "./src/components/Footer/Footer.astro",
+    "./Breadcrumb": "./src/components/Breadcrumb/Breadcrumb.astro",
+    "./components/Breadcrumb": "./src/components/Breadcrumb/Breadcrumb.astro",
+    "./Card": "./src/components/Card/Card.astro",
+    "./components/Card": "./src/components/Card/Card.astro",
+    "./NotificationBanner": "./src/components/NotificationBanner/NotificationBanner.astro",
+    "./components/NotificationBanner": "./src/components/NotificationBanner/NotificationBanner.astro",
+    "./Pagination": "./src/components/Pagination/Pagination.astro",
+    "./components/Pagination": "./src/components/Pagination/Pagination.astro",
+    "./Accordion": "./src/components/Accordion/Accordion.astro",
+    "./components/Accordion": "./src/components/Accordion/Accordion.astro",
+    "./AccordionItem": "./src/components/Accordion/AccordionItem.astro",
+    "./components/AccordionItem": "./src/components/Accordion/AccordionItem.astro",
+    "./Table": "./src/components/Table/Table.astro",
+    "./components/Table": "./src/components/Table/Table.astro",
+    "./Tabs": "./src/components/Tabs/Tabs.astro",
+    "./components/Tabs": "./src/components/Tabs/Tabs.astro",
+    "./StepIndicator": "./src/components/StepIndicator/StepIndicator.astro",
+    "./components/StepIndicator": "./src/components/StepIndicator/StepIndicator.astro",
+    "./SummaryList": "./src/components/SummaryList/SummaryList.astro",
+    "./components/SummaryList": "./src/components/SummaryList/SummaryList.astro",
+    "./ConfirmationPanel": "./src/components/ConfirmationPanel/ConfirmationPanel.astro",
+    "./components/ConfirmationPanel": "./src/components/ConfirmationPanel/ConfirmationPanel.astro",
+    "./Search": "./src/components/Search/Search.astro",
+    "./components/Search": "./src/components/Search/Search.astro",
+    "./MostRequestedBand": "./src/components/MostRequestedBand/MostRequestedBand.astro",
+    "./components/MostRequestedBand": "./src/components/MostRequestedBand/MostRequestedBand.astro",
+    "./CookieBanner": "./src/components/CookieBanner/CookieBanner.astro",
+    "./components/CookieBanner": "./src/components/CookieBanner/CookieBanner.astro"
+  },
+  "files": [
+    "src",
+    "dist",
+    "fonts",
+    "CONTRAST-REPORT.md",
+    "NOTICE"
+  ],
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint --ext .ts,.mjs src scripts",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "build": "node --experimental-strip-types scripts/build-css.mjs",
+    "fonts": "node scripts/fetch-fonts.mjs",
+    "report:contrast": "node --experimental-strip-types scripts/contrast-report.mjs"
+  },
+  "peerDependencies": {
+    "astro": "^5.0.0"
+  },
+  "peerDependenciesMeta": {
+    "astro": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@types/node": "^22.9.0",
+    "fontkit": "^2.0.4",
+    "subset-font": "^2.4.0",
+    "vitest": "^2.1.8"
+  }
+}

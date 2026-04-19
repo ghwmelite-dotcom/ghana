@@ -1,0 +1,75 @@
+---
+/**
+ * Hidden Pagination gallery — served at `/internal/pagination/`.
+ */
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Pagination from '@gh/gh-ds/Pagination';
+---
+
+<BaseLayout
+  title="Pagination — internal test"
+  description="Internal test page for GH-DS Pagination. Not linked from public navigation."
+  noindex
+>
+  <h1>Pagination</h1>
+  <p>
+    Not public. Exercises <code>@gh/gh-ds/Pagination</code> across small, large, and edge-of-range page
+    counts.
+  </p>
+
+  <section aria-labelledby="h-few">
+    <h2 id="h-few">Few pages (≤ 7 — all shown)</h2>
+    <Pagination current={3} total={5} baseUrl="/news/?page=" ariaLabel="Few pages demo" />
+  </section>
+
+  <section aria-labelledby="h-mid">
+    <h2 id="h-mid">Many pages, middle of range</h2>
+    <Pagination current={12} total={47} baseUrl="/news/?page=" ariaLabel="Middle range demo" />
+  </section>
+
+  <section aria-labelledby="h-first">
+    <h2 id="h-first">First page (no Previous link)</h2>
+    <Pagination current={1} total={47} baseUrl="/news/?page=" ariaLabel="First page demo" />
+  </section>
+
+  <section aria-labelledby="h-last">
+    <h2 id="h-last">Last page (no Next link)</h2>
+    <Pagination current={47} total={47} baseUrl="/news/?page=" ariaLabel="Last page demo" />
+  </section>
+
+  <section aria-labelledby="h-single">
+    <h2 id="h-single">Single page (no prev or next)</h2>
+    <Pagination current={1} total={1} baseUrl="/news/?page=" ariaLabel="Single page demo" />
+  </section>
+
+  <section aria-labelledby="h-twi" lang="tw">
+    <h2 id="h-twi" lang="en">Twi labels</h2>
+    <div lang="tw">
+      <Pagination
+        current={5}
+        total={20}
+        baseUrl="/news/?page="
+        previousLabel="Akyi"
+        nextLabel="Anim"
+        ariaLabel="Nkrataa akyi ne anim"
+      />
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  section {
+    border-top: var(--border-width-hairline) solid var(--color-border-default);
+    margin-top: var(--space-8);
+    padding-top: var(--space-4);
+  }
+
+  code {
+    font-family: var(--font-mono);
+    font-size: 0.95em;
+    background: var(--ghana-ink-50);
+    padding: 2px 6px;
+    border-radius: var(--radius-sm);
+  }
+</style>

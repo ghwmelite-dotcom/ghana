@@ -1,0 +1,54 @@
+---
+/**
+ * gov.gh homepage.
+ *
+ * Restraint principle (`.claude/CLAUDE.md §12`): do less. One h1, one search,
+ * one list of five links. No carousel, no marketing copy, no animation.
+ *
+ * All content blocks are `@gh/gh-ds` components — no inline chrome remains
+ * on this page after PR 7b's extract.
+ *
+ * Voice (§6.4): plain Ghanaian English, second person, ≤20-word sentences,
+ * active voice, Grade-8 reading level.
+ */
+
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Search from '@gh/gh-ds/Search';
+import MostRequestedBand from '@gh/gh-ds/MostRequestedBand';
+
+// Seeded five most-requested from the provisional analytics survey documented
+// in docs/research/most-requested-v0.md (to be written alongside PR 4).
+const mostRequested = [
+  { label: 'Renew your passport', href: '/services/passport/renew' },
+  { label: 'Apply for the Ghana Card', href: '/services/ghana-card' },
+  { label: 'File your tax return', href: '/services/tax/file' },
+  { label: 'Register a business', href: '/services/business/register' },
+  { label: 'Check your driving licence', href: '/services/dvla/licence' },
+];
+---
+
+<BaseLayout
+  title="Government services for every Ghanaian"
+  description="Find and use services from the Government of Ghana. Apply for a passport, register a business, pay tax, renew your driver's licence, and more."
+>
+  <section class="hero" aria-labelledby="hero-heading">
+    <h1 id="hero-heading">Government services, in four words or less.</h1>
+    <p class="hero__lede">Say what you need. We will take you there.</p>
+
+    <Search label="I am looking for…" action="/search" placeholder="Passport, Ghana Card, tax…" />
+  </section>
+
+  <MostRequestedBand title="Most requested" items={mostRequested} />
+</BaseLayout>
+
+<style>
+  .hero {
+    max-width: 56rem;
+  }
+
+  .hero__lede {
+    font-size: var(--font-size-lg);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-8);
+  }
+</style>

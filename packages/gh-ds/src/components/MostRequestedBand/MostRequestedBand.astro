@@ -1,0 +1,116 @@
+---
+/**
+ * <MostRequestedBand> — Ghana Design System Tier-3 component.
+ *
+ * The "most requested services" band that follows the hero search on the
+ * gov.gh root portal. Per `.claude/CLAUDE.md §5` Weeks 7–10 the OHCS
+ * reference implementation seeds it with "8 analytics-seeded links" — the
+ * component does not fetch analytics; consumers pass the current list as
+ * `items`.
+ *
+ * Structure:
+ *   - Section heading at a configurable level (default `h2`).
+ *   - Ordered by descending request count (caller decides order).
+ *   - Rendered as `<ul>` — order is presented but not semantic; screen
+ *     readers do not need "1st, 2nd".
+ *   - Each link is big enough to tap on a narrow phone (44 px).
+ *
+ * Usage:
+ *   <MostRequestedBand
+ *     title="Most requested"
+ *     items={[
+ *       { label: 'Renew your passport',       href: '/services/passport/renew' },
+ *       { label: 'Apply for the Ghana Card',  href: '/services/ghana-card' },
+ *       { label: 'File your tax return',      href: '/services/tax/file' },
+ *       { label: 'Register a business',       href: '/services/business/register' },
+ *       { label: 'Check your driving licence', href: '/services/dvla/licence' },
+ *     ]}
+ *   />
+ */
+
+interface MostRequestedItem {
+  label: string;
+  href: string;
+}
+
+interface Props {
+  title: string;
+  items: ReadonlyArray<MostRequestedItem>;
+  /** Heading level. Match the surrounding page hierarchy. Default `h2`. */
+  headingLevel?: 'h2' | 'h3';
+  /** DOM id for the heading so pages can link to it. */
+  id?: string;
+  class?: string;
+}
+
+const { title, items, headingLevel = 'h2', id, class: extraClass } = Astro.props;
+const Heading = headingLevel;
+const headingId = id ?? 'most-requested';
+const classes = ['gh-most-requested', extraClass].filter(Boolean).join(' ');
+---
+
+<section class={classes} aria-labelledby={headingId}>
+  <Heading id={headingId} class="gh-most-requested__title">{title}</Heading>
+  <ul class="gh-most-requested__list">
+    {
+      items.map((item) => (
+        <li>
+          <a href={item.href} class="gh-most-requested__link">
+            {item.label}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</section>
+
+<style>
+  .gh-most-requested {
+    margin: var(--space-12) 0 var(--space-8);
+  }
+
+  .gh-most-requested__title {
+    font-family: var(--font-display);
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-heading);
+    margin: 0 0 var(--space-4) 0;
+  }
+
+  .gh-most-requested__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: var(--space-3);
+  }
+
+  .gh-most-requested__list li {
+    border-top: var(--border-width-hairline) solid var(--color-border-default);
+    padding-top: var(--space-3);
+  }
+
+  .gh-most-requested__link {
+    display: block;
+    padding: var(--space-2) 0;
+    min-height: 2.75rem;
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-link);
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
+    text-decoration-thickness: 0.06em;
+  }
+
+  .gh-most-requested__link:hover {
+    text-decoration-thickness: 0.12em;
+  }
+
+  .gh-most-requested__link:focus-visible {
+    outline: var(--border-width-focus) solid var(--color-focus-ring);
+    outline-offset: 2px;
+    background: var(--color-focus-ring);
+    color: var(--color-text-default);
+    text-decoration: none;
+  }
+</style>

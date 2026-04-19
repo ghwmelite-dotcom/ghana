@@ -1,0 +1,60 @@
+---
+/**
+ * BaseLayout — every page in the portal extends this.
+ *
+ * Responsibilities:
+ *   - <!doctype html> + <html lang>.
+ *   - Meta tags: charset, viewport, theme-color, description, Open Graph.
+ *   - Token sheet from @gh/gh-ds, inlined by Astro when small enough.
+ *   - Preload the two most critical font weights so first paint doesn't FOUT.
+ *   - Skip-link anchor (visually hidden until focused).
+ *   - Header, slot for page content, Footer.
+ *   - No JavaScript. If a future page needs an island, it imports it itself.
+ */
+
+import '@gh/gh-ds/tokens.css';
+import '../styles/global.css';
+import SkipLink from '@gh/gh-ds/SkipLink';
+import Header from '@gh/gh-ds/Header';
+import Footer from '@gh/gh-ds/Footer';
+
+interface Props {
+  title: string;
+  description: string;
+  lang?: 'en' | 'tw';
+  /** Set true on internal / fixture pages that must not be indexed. */
+  noindex?: boolean;
+}
+
+const { title, description, lang = 'en', noindex = false } = Astro.props;
+const htmlTitle = `${title} — gov.gh`;
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#006B3F" />
+    <meta name="description" content={description} />
+    <meta property="og:title" content={htmlTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Preload the two body-text weights most likely to render above the fold. -->
+    <link rel="preload" href="/fonts/noto-sans-400.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/noto-sans-700.woff2" as="font" type="font/woff2" crossorigin />
+
+    <title>{htmlTitle}</title>
+  </head>
+  <body>
+    <SkipLink />
+    <Header />
+    <main id="main" tabindex="-1">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

@@ -1,0 +1,271 @@
+---
+/**
+ * <Header> — Ghana Design System Tier-1 foundation component.
+ *
+ * Site header used across every `.gov.gh` property. Defaults fit the root
+ * gov.gh portal; ministry sites customise `serviceName`, `homeHref`, and
+ * `primaryNav`.
+ *
+ * Visual structure:
+ *   - A 3-band flag-rule strip (red / gold / green) sits above the brand
+ *     bar per `.claude/CLAUDE.md §6.3`: the only Kente-adjacent brand
+ *     element we ship in v0, 8 px tall. No Adinkra (requires Folklore
+ *     Board clearance).
+ *   - Brand bar: placeholder coat-of-arms SVG + country label + service
+ *     name + language switcher.
+ *   - Primary nav: a green bar with `<ul>` items.
+ *
+ * Progressive enhancement: no JavaScript. Language switcher is anchor
+ * links; primary nav is anchor links.
+ */
+
+interface NavItem {
+  href: string;
+  label: string;
+}
+
+interface Language {
+  code: string;
+  label: string;
+  href: string;
+}
+
+interface Props {
+  /** Short service name shown in the brand bar. Defaults to "gov.gh". */
+  serviceName?: string;
+  /** Country label above the service name. Defaults to "Republic of Ghana". */
+  countryLabel?: string;
+  /** Destination of the brand-mark link. Defaults to "/". */
+  homeHref?: string;
+  /** Primary nav links. Empty array hides the green nav bar. */
+  primaryNav?: ReadonlyArray<NavItem>;
+  /** Language switcher items. Two-language default (EN / TW). */
+  languages?: ReadonlyArray<Language>;
+  /** ISO code of the currently-active language. Must appear in `languages`. */
+  currentLanguage?: string;
+  /** Toggle the flag-rule strip. Defaults to true. */
+  flagRule?: boolean;
+}
+
+const {
+  serviceName = 'gov.gh',
+  countryLabel = 'Republic of Ghana',
+  homeHref = '/',
+  primaryNav = [
+    { href: '#services', label: 'Services' },
+    { href: '#government', label: 'Government' },
+    { href: '#news', label: 'News' },
+  ],
+  languages = [
+    { code: 'en', label: 'EN', href: '/' },
+    { code: 'tw', label: 'Twi', href: '#' },
+  ],
+  currentLanguage = 'en',
+  flagRule = true,
+} = Astro.props;
+---
+
+{
+  flagRule && (
+    <div class="gh-flag-rule" aria-hidden="true">
+      <span />
+      <span />
+      <span />
+    </div>
+  )
+}
+
+<header class="gh-header">
+  <div class="gh-header__inner">
+    <a href={homeHref} class="gh-header__brand" aria-label={`${serviceName} — home`}>
+      <svg
+        class="gh-header__mark"
+        width="40"
+        height="40"
+        viewBox="0 0 40 40"
+        role="img"
+        aria-hidden="true"
+        focusable="false"
+      >
+        {
+          /* Placeholder mark: shield silhouette in Ghana green with gold
+            Black Star. Replace with the official Coat of Arms after
+            protocol sign-off. */
+        }
+        <path
+          d="M20 3 L34 9 V20 C34 28 27 34 20 37 C13 34 6 28 6 20 V9 Z"
+          fill="var(--ghana-green-600)"></path>
+        <path
+          d="M20 13 L22 19 H28 L23 23 L25 29 L20 25 L15 29 L17 23 L12 19 H18 Z"
+          fill="var(--ghana-gold-400)"></path>
+      </svg>
+      <span class="gh-header__wordmark">
+        <span class="gh-header__country">{countryLabel}</span>
+        <span class="gh-header__service">{serviceName}</span>
+      </span>
+    </a>
+
+    {
+      languages.length > 1 && (
+        <nav aria-label="Language" class="gh-lang-switch">
+          {languages.map((lang, i) => (
+            <>
+              {i > 0 && <span aria-hidden="true">|</span>}
+              <a
+                href={lang.href}
+                aria-current={lang.code === currentLanguage ? 'page' : undefined}
+                lang={lang.code}
+              >
+                {lang.label}
+              </a>
+            </>
+          ))}
+        </nav>
+      )
+    }
+  </div>
+
+  {
+    primaryNav.length > 0 && (
+      <nav aria-label="Primary" class="gh-primary-nav">
+        <ul>
+          {primaryNav.map((item) => (
+            <li>
+              <a href={item.href}>{item.label}</a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    )
+  }
+</header>
+
+<style>
+  /* Flag-rule: red / gold / green per the national flag, 8 px strip. */
+  .gh-flag-rule {
+    height: 8px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .gh-flag-rule > span {
+    display: block;
+  }
+
+  .gh-flag-rule > span:nth-child(1) {
+    background: var(--ghana-red-500);
+  }
+
+  .gh-flag-rule > span:nth-child(2) {
+    background: var(--ghana-gold-400);
+  }
+
+  .gh-flag-rule > span:nth-child(3) {
+    background: var(--ghana-green-500);
+  }
+
+  .gh-header {
+    background: var(--color-surface-raised);
+    border-bottom: var(--border-width-hairline) solid var(--color-border-default);
+  }
+
+  .gh-header__inner {
+    max-width: 72rem;
+    margin: 0 auto;
+    padding: var(--space-4);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
+  }
+
+  .gh-header__brand {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    color: var(--color-text-default);
+    text-decoration: none;
+    font-family: var(--font-display);
+  }
+
+  .gh-header__brand:hover {
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+
+  .gh-header__mark {
+    flex-shrink: 0;
+  }
+
+  .gh-header__wordmark {
+    display: flex;
+    flex-direction: column;
+    line-height: var(--line-height-heading);
+  }
+
+  .gh-header__country {
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .gh-header__service {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-bold);
+  }
+
+  .gh-lang-switch {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--font-size-sm);
+  }
+
+  .gh-lang-switch a {
+    color: var(--color-text-default);
+    text-decoration: none;
+    padding: var(--space-2) var(--space-3);
+    border-radius: var(--radius-md);
+  }
+
+  .gh-lang-switch a:hover {
+    background: var(--ghana-green-50);
+  }
+
+  .gh-lang-switch a[aria-current='page'] {
+    color: var(--color-link);
+    font-weight: var(--font-weight-bold);
+  }
+
+  .gh-primary-nav {
+    background: var(--ghana-green-700);
+  }
+
+  .gh-primary-nav ul {
+    list-style: none;
+    padding: 0 var(--space-4);
+    margin: 0 auto;
+    max-width: 72rem;
+    display: flex;
+    gap: var(--space-2);
+  }
+
+  .gh-primary-nav a {
+    display: block;
+    padding: var(--space-3) var(--space-4);
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: var(--font-weight-medium);
+  }
+
+  .gh-primary-nav a:hover {
+    background: var(--ghana-green-900);
+  }
+
+  .gh-primary-nav a:focus-visible {
+    outline: var(--border-width-focus) solid var(--color-focus-ring);
+    outline-offset: -3px;
+  }
+</style>

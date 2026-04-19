@@ -1,0 +1,301 @@
+---
+/**
+ * <DateInput> — Ghana Design System Tier-1 foundation component.
+ *
+ * Three narrow inputs for Day / Month / Year inside a single fieldset.
+ * Ported in intent from GOV.UK Frontend's `govuk-date-input`, per ADR-003.
+ *
+ * Why three separate fields and not a single <input type="date">?
+ *   - Native date pickers are inconsistent across browsers and vary wildly
+ *     on low-end Android. Ghana's device baseline (§4) is 2–4 GB Tecno/
+ *     Infinix handsets where the native picker UX can drop below 30 fps.
+ *   - Day/Month/Year matches how Ghanaians say dates aloud — and how the
+ *     `DD Month YYYY` format in §6.4 is spoken.
+ *   - Server-side validation is cleaner when the three parts are separate
+ *     form fields; client-side JS enhancement can still add cross-field
+ *     validation later.
+ *
+ * Server form encoding:
+ *   On submit, the form carries `{name}-day`, `{name}-month`, `{name}-year`
+ *   — three separate keys. Server-side receivers combine them into a Date.
+ *
+ * Error model:
+ *   The whole group has one error message. Each of the three inputs turns
+ *   red (border) when the group is in error, but none has its own
+ *   "Error:"-prefixed message — only the group's.
+ *
+ * Usage:
+ *   <DateInput
+ *     name="dob"
+ *     legend="What is your date of birth?"
+ *     hint="For example, 27 03 1985."
+ *     autocomplete="bday"
+ *     required
+ *   />
+ *
+ *   <DateInput
+ *     name="issue-date"
+ *     legend="When was your Ghana Card issued?"
+ *     value={{ day: '15', month: '08', year: '2023' }}
+ *     error="Enter a valid issue date"
+ *   />
+ */
+
+interface DateValue {
+  day?: string;
+  month?: string;
+  year?: string;
+}
+
+interface Props {
+  name: string;
+  legend: string;
+  id?: string;
+  hint?: string;
+  error?: string;
+  value?: DateValue;
+  required?: boolean;
+  disabled?: boolean;
+  /**
+   * Maps to the HTML `autocomplete` tokens for dates. Passing 'bday'
+   * applies `bday-day` / `bday-month` / `bday-year` to the three inputs so
+   * the browser fills them with the user's date of birth.
+   */
+  autocomplete?: 'bday' | 'off';
+  class?: string;
+}
+
+const {
+  name,
+  legend,
+  id: idProp,
+  hint,
+  error,
+  value,
+  required = false,
+  disabled = false,
+  autocomplete,
+  class: extraClass,
+} = Astro.props;
+
+const id = idProp ?? name;
+const hintId = hint ? `${id}-hint` : undefined;
+const errorId = error ? `${id}-error` : undefined;
+const describedBy = [hintId, errorId].filter(Boolean).join(' ') || undefined;
+
+const groupClass = ['gh-form-group', error ? 'gh-form-group--error' : null, extraClass]
+  .filter(Boolean)
+  .join(' ');
+
+const partClass = ['gh-date-input__input', error ? 'gh-date-input__input--error' : null]
+  .filter(Boolean)
+  .join(' ');
+
+const autocompleteMap =
+  autocomplete === 'bday'
+    ? { day: 'bday-day', month: 'bday-month', year: 'bday-year' }
+    : { day: autocomplete, month: autocomplete, year: autocomplete };
+---
+
+<div class={groupClass}>
+  <fieldset class="gh-fieldset" aria-describedby={describedBy} role="group" disabled={disabled}>
+    <legend class="gh-fieldset__legend">
+      <span class="gh-fieldset__legend-text">
+        {legend}
+        {
+          required && (
+            <span class="gh-label__required" aria-hidden="true">
+              *
+            </span>
+          )
+        }
+      </span>
+    </legend>
+
+    {
+      hint && (
+        <p id={hintId} class="gh-hint">
+          {hint}
+        </p>
+      )
+    }
+
+    {
+      error && (
+        <p id={errorId} class="gh-error-message" role="alert">
+          <span class="gh-error-message__prefix">Error:</span> {error}
+        </p>
+      )
+    }
+
+    <div class="gh-date-input">
+      <div class="gh-date-input__item">
+        <label class="gh-date-input__label" for={`${id}-day`}>Day</label>
+        <input
+          class={partClass}
+          id={`${id}-day`}
+          name={`${name}-day`}
+          type="text"
+          inputmode="numeric"
+          pattern="[0-9]*"
+          maxlength={2}
+          value={value?.day}
+          autocomplete={autocompleteMap.day}
+          aria-invalid={error ? 'true' : undefined}
+        />
+      </div>
+
+      <div class="gh-date-input__item">
+        <label class="gh-date-input__label" for={`${id}-month`}>Month</label>
+        <input
+          class={partClass}
+          id={`${id}-month`}
+          name={`${name}-month`}
+          type="text"
+          inputmode="numeric"
+          pattern="[0-9]*"
+          maxlength={2}
+          value={value?.month}
+          autocomplete={autocompleteMap.month}
+          aria-invalid={error ? 'true' : undefined}
+        />
+      </div>
+
+      <div class="gh-date-input__item gh-date-input__item--year">
+        <label class="gh-date-input__label" for={`${id}-year`}>Year</label>
+        <input
+          class={partClass}
+          id={`${id}-year`}
+          name={`${name}-year`}
+          type="text"
+          inputmode="numeric"
+          pattern="[0-9]*"
+          maxlength={4}
+          value={value?.year}
+          autocomplete={autocompleteMap.year}
+          aria-invalid={error ? 'true' : undefined}
+        />
+      </div>
+    </div>
+  </fieldset>
+</div>
+
+<style>
+  .gh-form-group {
+    display: block;
+    margin-bottom: var(--space-6);
+  }
+
+  .gh-form-group--error {
+    padding-left: var(--space-4);
+    border-left: 5px solid var(--color-error);
+  }
+
+  .gh-fieldset {
+    border: 0;
+    padding: 0;
+    margin: 0;
+    min-width: 0;
+  }
+
+  .gh-fieldset__legend {
+    padding: 0;
+    display: table;
+  }
+
+  .gh-fieldset__legend-text {
+    display: block;
+    font-weight: var(--font-weight-semibold);
+    font-size: var(--font-size-lg);
+    line-height: var(--line-height-heading);
+    color: var(--color-text-default);
+    margin-bottom: var(--space-3);
+  }
+
+  .gh-label__required {
+    color: var(--color-error);
+    margin-left: 0.2em;
+  }
+
+  .gh-hint {
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-body);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-3);
+  }
+
+  .gh-error-message {
+    color: var(--color-error);
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-body);
+    margin-bottom: var(--space-3);
+  }
+
+  .gh-error-message__prefix {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .gh-date-input {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+  }
+
+  .gh-date-input__item {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .gh-date-input__label {
+    font-weight: var(--font-weight-regular);
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-heading);
+    color: var(--color-text-default);
+    margin-bottom: var(--space-1);
+  }
+
+  .gh-date-input__input {
+    width: 3rem; /* 2-char width for day/month */
+    min-height: 2.75rem;
+    padding: var(--space-2) var(--space-3);
+    font-family: var(--font-body);
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-body);
+    color: var(--color-text-default);
+    background: var(--color-surface-raised);
+    border: var(--border-width-default) solid var(--color-text-default);
+    border-radius: var(--radius-md);
+    text-align: left;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+
+  .gh-date-input__input:focus-visible {
+    outline: var(--border-width-focus) solid var(--color-focus-ring);
+    outline-offset: 0;
+    box-shadow: inset 0 0 0 2px var(--color-text-default);
+  }
+
+  .gh-date-input__input--error {
+    border-color: var(--color-error);
+  }
+
+  .gh-date-input__item--year .gh-date-input__input {
+    width: 4.75rem; /* 4-char width for year */
+  }
+
+  .gh-fieldset[disabled] .gh-date-input__input {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background: var(--ghana-ink-50);
+  }
+</style>

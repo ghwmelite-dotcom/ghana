@@ -1,0 +1,42 @@
+---
+/**
+ * <Accordion> — Ghana Design System Tier-2 navigation component.
+ *
+ * Wrapper for one or more <AccordionItem>s. Use when a page has a long
+ * list of related sections (e.g. FAQs, service steps, policy clauses)
+ * where most users only want a subset at a time.
+ *
+ * Uses the native `<details>` + `<summary>` pair via <AccordionItem>.
+ * No JavaScript. Multiple panels can be open simultaneously — that is
+ * the native behaviour and matches GOV.UK's "show all sections"
+ * pattern except for the open-all toggle (a future JS enhancement).
+ *
+ * Usage:
+ *   <Accordion id="passport-faq">
+ *     <AccordionItem heading="How long does a renewal take?">
+ *       <p>Most renewals are processed within 7 working days.</p>
+ *     </AccordionItem>
+ *     <AccordionItem heading="What if I lost my old passport?">
+ *       <p>Report it at any GIS office before you apply for a new one.</p>
+ *     </AccordionItem>
+ *   </Accordion>
+ */
+
+interface Props {
+  id?: string;
+  class?: string;
+}
+
+const { id, class: extraClass } = Astro.props;
+const classes = ['gh-accordion', extraClass].filter(Boolean).join(' ');
+---
+
+<div class={classes} id={id}>
+  <slot />
+</div>
+
+<style>
+  .gh-accordion {
+    margin: var(--space-4) 0 var(--space-8);
+  }
+</style>

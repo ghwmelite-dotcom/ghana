@@ -1,0 +1,12 @@
+{
+  "name": "@gh/myinfo-client",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "typecheck": "echo '@gh/myinfo-client: no typecheck yet' && exit 0",
+    "lint": "echo '@gh/myinfo-client: no lint yet' && exit 0",
+    "test": "echo '@gh/myinfo-client: no test yet' && exit 0",
+    "build": "echo '@gh/myinfo-client: no build yet' && exit 0"
+  }
+}

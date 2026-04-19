@@ -1,0 +1,1174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frequently Asked Questions | Ghana.Gov</title>
+    <meta name="description" content="Find answers to frequently asked questions about Ghana government services, documents, business registration, travel, and more.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --font-display: 'Cormorant Garamond', serif;
+            --font-body: 'DM Sans', sans-serif;
+            --bg-primary: #030303;
+            --bg-secondary: #0A0A0A;
+            --bg-tertiary: #141414;
+            --bg-elevated: #1E1E1E;
+            --text-primary: #FAF9F6;
+            --text-secondary: #E8E6E1;
+            --text-muted: #9A9A9A;
+            --gold-brilliant: #D4AF37;
+            --gold-glow: #F5D061;
+            --emerald-deep: #0D3D2E;
+            --emerald-rich: #1A5C45;
+            --crimson-deep: #6B1E28;
+            --crimson-rich: #8B2332;
+            --card-bg: rgba(255, 255, 255, 0.02);
+            --card-border: rgba(255, 255, 255, 0.05);
+            --nav-bg: rgba(10, 10, 10, 0.8);
+            --border-subtle: rgba(212, 175, 55, 0.1);
+            --obsidian: #030303;
+            --ivory: #FAF9F6;
+            --pearl: #E8E6E1;
+            --silver: #9A9A9A;
+            --smoke: #666666;
+            --green-deep: #1B4D3E;
+            --green-forest: #2D5A4A;
+            --gold-burnished: #C9A227;
+            --gold-light: #E8D48A;
+            --black-obsidian: #0A0A0A;
+            --white-ivory: #FAFAF8;
+            --glow-gold: 0 0 60px rgba(212, 175, 55, 0.4);
+            --bg-card: #151515;
+            --border-color: #2A2A2A;
+            --accent-primary: #C9A227;
+            --accent-secondary: #E8D48A;
+            --hero-gradient-start: #1B4D3E;
+            --hero-gradient-end: #2D5A4A;
+            --header-bg: #0A0A0A;
+        }
+
+        [data-theme="light"] {
+            --bg-primary: #FAFAF8;
+            --bg-secondary: #F5F4F0;
+            --bg-tertiary: #EEEEE8;
+            --bg-elevated: #FFFFFF;
+            --bg-card: #FFFFFF;
+            --text-primary: #1A1A1A;
+            --text-secondary: #2D2D2D;
+            --text-muted: #5A5A5A;
+            --border-color: #E0E0DC;
+            --card-border: rgba(0, 0, 0, 0.08);
+            --accent-primary: #0D3D2E;
+            --accent-secondary: #1A5C45;
+            --hero-gradient-start: #0D3D2E;
+            --hero-gradient-end: #1A5C45;
+            --header-bg: #FFFFFF;
+            --green-deep: #0D3D2E;
+            --green-forest: #1A5C45;
+            --gold-burnished: #0D3D2E;
+            --gold-light: #1A5C45;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: var(--font-body), 'Plus Jakarta Sans', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        /* Minimal Navigation */
+        .nav-main {
+            background: var(--bg-secondary);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 0 2rem;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-subtle);
+            transition: all 0.3s ease;
+        }
+        .nav-main.scrolled { background: rgba(10, 10, 10, 0.95); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); }
+        .nav-container { max-width: 1400px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 80px; }
+        .logo { display: flex; align-items: center; gap: 1rem; text-decoration: none; color: var(--text-primary); }
+        .logo-emblem { width: 48px; height: 48px; flex-shrink: 0; }
+        .logo-star { width: 100%; height: 100%; fill: var(--gold-brilliant); transition: transform 0.4s ease; }
+        .logo:hover .logo-star { transform: rotate(36deg); }
+        .logo-text { display: flex; flex-direction: column; line-height: 1.2; }
+        .logo-title { font-family: var(--font-display); font-size: 1.4rem; font-weight: 600; color: var(--text-primary); }
+        .logo-subtitle { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--text-muted); }
+        .nav-links { display: flex; align-items: center; gap: 2.5rem; list-style: none; }
+        .nav-links a { text-decoration: none; color: var(--text-secondary); font-weight: 500; font-size: 0.9rem; padding: 0.5rem 0; position: relative; transition: color 0.3s ease; }
+        .nav-links a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: var(--gold-brilliant); transition: width 0.3s ease; }
+        .nav-links a:hover, .nav-links a.active { color: var(--gold-brilliant); }
+        .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+        .nav-actions { display: flex; align-items: center; gap: 1rem; }
+        .nav-btn { background: none; border: none; cursor: pointer; padding: 0.5rem; color: var(--text-secondary); transition: color 0.3s ease; }
+        .nav-btn:hover { color: var(--gold-brilliant); }
+        .nav-btn svg { width: 22px; height: 22px; }
+
+        /* Theme Toggle */
+        .theme-toggle { position: relative; width: 56px; height: 28px; background: linear-gradient(135deg, var(--bg-tertiary) 0%, var(--bg-secondary) 100%); border: 1px solid var(--border-subtle); border-radius: 50px; cursor: pointer; transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); overflow: hidden; display: flex; align-items: center; padding: 3px; }
+        .theme-toggle::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, var(--emerald-deep) 0%, var(--emerald-rich) 100%); opacity: 0; transition: opacity 0.5s ease; border-radius: 50px; }
+        [data-theme="light"] .theme-toggle::before { opacity: 1; }
+        .theme-toggle:hover { border-color: var(--gold-brilliant); box-shadow: 0 0 20px rgba(212, 175, 55, 0.3); transform: scale(1.05); }
+        .toggle-orb { position: relative; width: 22px; height: 22px; border-radius: 50%; background: linear-gradient(135deg, var(--gold-brilliant) 0%, var(--gold-glow) 100%); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3), 0 0 15px rgba(212, 175, 55, 0.4); transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55); z-index: 2; display: flex; align-items: center; justify-content: center; }
+        [data-theme="light"] .toggle-orb { transform: translateX(26px); background: linear-gradient(135deg, #FFFFFF 0%, #F5F4F0 100%); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15), 0 0 15px rgba(255, 255, 255, 0.5); }
+        .toggle-icon { width: 14px; height: 14px; transition: all 0.4s ease; }
+        .toggle-icon.sun { color: #0D3D2E; opacity: 0; transform: rotate(-90deg) scale(0); position: absolute; }
+        .toggle-icon.moon { color: var(--emerald-deep); opacity: 1; transform: rotate(0deg) scale(1); }
+        [data-theme="light"] .toggle-icon.sun { opacity: 1; transform: rotate(0deg) scale(1); }
+        [data-theme="light"] .toggle-icon.moon { opacity: 0; transform: rotate(90deg) scale(0); }
+
+        .nav-cta { background: linear-gradient(135deg, var(--gold-brilliant) 0%, var(--gold-glow) 100%); color: #0A0A0A; padding: 0.75rem 1.5rem; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 0.85rem; transition: all 0.3s ease; }
+        .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 0 30px rgba(212, 175, 55, 0.4); }
+        .mobile-menu-btn { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; color: var(--text-primary); }
+        .mobile-menu-btn svg { width: 24px; height: 24px; }
+
+        /* Mobile Menu */
+        .mobile-menu { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: var(--bg-primary); z-index: 999; padding: 6rem 2rem 2rem; opacity: 0; visibility: hidden; transition: all 0.3s ease; }
+        .mobile-menu.active { opacity: 1; visibility: visible; }
+        .mobile-menu-links { display: flex; flex-direction: column; gap: 0.5rem; list-style: none; }
+        .mobile-menu-links a { display: block; padding: 1rem 0; text-decoration: none; color: var(--text-primary); font-size: 1.5rem; font-family: var(--font-display); border-bottom: 1px solid var(--border-subtle); transition: color 0.3s ease; }
+        .mobile-menu-links a:hover { color: var(--gold-brilliant); }
+        .mobile-menu-close { position: absolute; top: 1.5rem; right: 1.5rem; background: none; border: none; cursor: pointer; color: var(--text-primary); padding: 0.5rem; }
+        .mobile-menu-close svg { width: 28px; height: 28px; }
+
+        @media (max-width: 1024px) { .nav-main { padding: 0 1.5rem; } .nav-links { display: none; } .nav-cta { display: none; } .mobile-menu-btn { display: block; } .mobile-menu { display: block; } }
+        @media (max-width: 640px) { .logo-text { display: none; } .nav-container { height: 70px; } }
+
+        /* Light mode nav */
+        [data-theme="light"] .nav-main { background: rgba(250, 250, 248, 0.9); border-bottom-color: rgba(0, 0, 0, 0.08); }
+        [data-theme="light"] .nav-main.scrolled { background: rgba(255, 255, 255, 0.98); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); }
+        [data-theme="light"] .nav-links a:hover, [data-theme="light"] .nav-links a.active { color: var(--emerald-deep); }
+        [data-theme="light"] .nav-links a::after { background: var(--emerald-deep); }
+        [data-theme="light"] .nav-cta { background: var(--emerald-deep); color: #fff; }
+        [data-theme="light"] .logo-title { color: var(--text-primary); }
+        [data-theme="light"] .logo-star { fill: var(--emerald-deep); }
+
+        /* Hero */
+        .hero {
+            padding: 9rem 2rem 3rem;
+            background: linear-gradient(135deg, var(--hero-gradient-start) 0%, var(--hero-gradient-end) 100%);
+            text-align: center;
+        }
+
+        .hero-inner {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .breadcrumb a {
+            color: var(--gold-light);
+            text-decoration: none;
+            font-size: 0.875rem;
+        }
+
+        [data-theme="light"] .breadcrumb a {
+            color: rgba(255,255,255,0.8);
+        }
+
+        .breadcrumb span {
+            color: rgba(255,255,255,0.5);
+            font-size: 0.875rem;
+        }
+
+        .hero h1 {
+            font-family: 'Fraunces', serif;
+            font-size: clamp(2rem, 4vw, 2.75rem);
+            color: #FFFFFF;
+            margin-bottom: 0.75rem;
+        }
+
+        .hero p {
+            color: rgba(255,255,255,0.8);
+            font-size: 1.125rem;
+        }
+
+        /* Main Content */
+        .main-content {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            position: sticky;
+            top: 100px;
+            height: fit-content;
+        }
+
+        .sidebar-nav {
+            background: var(--bg-card);
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+        }
+
+        [data-theme="light"] .sidebar-nav {
+            background: #FFFFFF;
+            border-color: #0D3D2E20;
+        }
+
+        .sidebar-title {
+            padding: 1rem 1.5rem;
+            background: var(--hero-gradient-start);
+            color: white;
+            font-family: 'Fraunces', serif;
+            font-size: 1rem;
+        }
+
+        .sidebar-links {
+            list-style: none;
+        }
+
+        .sidebar-links a {
+            display: block;
+            padding: 0.875rem 1.5rem;
+            text-decoration: none;
+            color: var(--text-primary);
+            border-bottom: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .sidebar-links a:hover,
+        .sidebar-links a.active {
+            background: var(--bg-secondary);
+            color: var(--accent-primary);
+            padding-left: 2rem;
+        }
+
+        [data-theme="light"] .sidebar-links a:hover,
+        [data-theme="light"] .sidebar-links a.active {
+            background: var(--bg-tertiary);
+        }
+
+        .sidebar-links a.active {
+            border-left: 3px solid var(--accent-primary);
+        }
+
+        [data-theme="light"] .sidebar-links a.active {
+            border-left-color: #C9A227;
+        }
+
+        .sidebar-links li:last-child a {
+            border-bottom: none;
+        }
+
+        /* FAQ Content */
+        .faq-content {
+            min-width: 0;
+        }
+
+        .faq-section {
+            margin-bottom: 3rem;
+        }
+
+        .faq-section-title {
+            font-family: 'Fraunces', serif;
+            font-size: 1.75rem;
+            color: var(--accent-primary);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid var(--accent-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        [data-theme="light"] .faq-section-title {
+            border-bottom-color: #C9A227;
+        }
+
+        .faq-section-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--hero-gradient-start);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+        }
+
+        /* Accordion */
+        .accordion {
+            margin-bottom: 1rem;
+        }
+
+        .accordion-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            margin-bottom: 0.75rem;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        [data-theme="light"] .accordion-item {
+            background: #FFFFFF;
+            border-color: #0D3D2E20;
+        }
+
+        .accordion-item:hover {
+            border-color: var(--accent-primary);
+        }
+
+        .accordion-item.active {
+            border-color: var(--accent-primary);
+            box-shadow: 0 4px 20px rgba(27,77,62,0.1);
+        }
+
+        [data-theme="light"] .accordion-item.active {
+            box-shadow: 0 4px 20px rgba(13,61,46,0.15);
+        }
+
+        .accordion-header {
+            width: 100%;
+            background: none;
+            border: none;
+            padding: 1.25rem 1.5rem;
+            text-align: left;
+            font-family: inherit;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .accordion-header:hover {
+            color: var(--accent-primary);
+        }
+
+        .accordion-icon {
+            width: 24px;
+            height: 24px;
+            background: var(--bg-tertiary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+            color: var(--text-primary);
+        }
+
+        [data-theme="light"] .accordion-icon {
+            background: var(--bg-tertiary);
+        }
+
+        .accordion-item.active .accordion-icon {
+            background: var(--accent-primary);
+            color: white;
+            transform: rotate(45deg);
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .accordion-item.active .accordion-content {
+            max-height: 500px;
+        }
+
+        .accordion-body {
+            padding: 0 1.5rem 1.5rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+        }
+
+        .accordion-body ul {
+            margin: 1rem 0;
+            padding-left: 1.5rem;
+        }
+
+        .accordion-body li {
+            margin-bottom: 0.5rem;
+        }
+
+        .accordion-body a {
+            color: var(--accent-primary);
+            text-decoration: none;
+        }
+
+        .accordion-body a:hover {
+            text-decoration: underline;
+        }
+
+        /* CTA Box */
+        .cta-box {
+            background: linear-gradient(135deg, var(--hero-gradient-start), var(--hero-gradient-end));
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            color: white;
+            margin-top: 3rem;
+        }
+
+        .cta-box h3 {
+            font-family: 'Fraunces', serif;
+            font-size: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .cta-box p {
+            opacity: 0.9;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            background: #C9A227;
+            color: #0A0A0A;
+            padding: 0.875rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        [data-theme="light"] .cta-btn {
+            background: #FFFFFF;
+            color: var(--accent-primary);
+        }
+
+        .cta-btn:hover {
+            background: #E8D48A;
+            transform: translateY(-2px);
+        }
+
+        [data-theme="light"] .cta-btn:hover {
+            background: #F5F4F0;
+        }
+
+        /* Footer */
+        .footer {
+            background: #0A0A0A;
+            color: #FAFAF8;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        [data-theme="light"] .footer {
+            background: var(--hero-gradient-start);
+        }
+
+        .footer a {
+            color: #C9A227;
+            text-decoration: none;
+        }
+
+        [data-theme="light"] .footer a {
+            color: #FFFFFF;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .nav-links {
+                display: none;
+            }
+
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                position: static;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding: 8rem 1rem 2rem;
+            }
+
+            .main-content {
+                padding: 2rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav-main">
+        <div class="nav-container">
+            <a href="../index.html" class="logo">
+                <div class="logo-emblem">
+                    <svg class="logo-star" viewBox="0 0 100 100">
+                        <polygon points="50,5 61,40 98,40 68,62 79,97 50,75 21,97 32,62 2,40 39,40"/>
+                    </svg>
+                </div>
+                <div class="logo-text">
+                    <span class="logo-title">Republic of Ghana</span>
+                    <span class="logo-subtitle">Official Government Portal</span>
+                </div>
+            </a>
+
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../services/index.html">Services</a></li>
+                <li><a href="../government/index.html">Government</a></li>
+                <li><a href="../business/index.html">Invest</a></li>
+                <li><a href="../tourism/index.html">Visit Ghana</a></li>
+                <li><a href="../contact.html">Contact</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <button class="nav-btn" aria-label="Search">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"/>
+                        <path d="M21 21l-4.35-4.35"/>
+                    </svg>
+                </button>
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <div class="toggle-orb">
+                        <svg class="toggle-icon moon" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                        </svg>
+                        <svg class="toggle-icon sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="5"/>
+                            <line x1="12" y1="1" x2="12" y2="3"/>
+                            <line x1="12" y1="21" x2="12" y2="23"/>
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                            <line x1="1" y1="12" x2="3" y2="12"/>
+                            <line x1="21" y1="12" x2="23" y2="12"/>
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                        </svg>
+                    </div>
+                </button>
+                <a href="../services/index.html" class="nav-cta">Access Services</a>
+                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open menu">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="3" y1="6" x2="21" y2="6"/>
+                        <line x1="3" y1="12" x2="21" y2="12"/>
+                        <line x1="3" y1="18" x2="21" y2="18"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close menu">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="18" y1="6" x2="6" y2="18"/>
+                <line x1="6" y1="6" x2="18" y2="18"/>
+            </svg>
+        </button>
+        <ul class="mobile-menu-links">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../services/index.html">Services</a></li>
+            <li><a href="../government/index.html">Government</a></li>
+            <li><a href="../business/index.html">Invest</a></li>
+            <li><a href="../tourism/index.html">Visit Ghana</a></li>
+            <li><a href="../contact.html">Contact</a></li>
+        </ul>
+    </div>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-inner">
+            <div class="breadcrumb">
+                <a href="index.html">Help Center</a>
+                <span>/</span>
+                <span>FAQ</span>
+            </div>
+            <h1>Frequently Asked Questions</h1>
+            <p>Find quick answers to common questions about government services</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <nav class="sidebar-nav">
+                <h3 class="sidebar-title">Categories</h3>
+                <ul class="sidebar-links">
+                    <li><a href="#documents" class="active">Identity Documents</a></li>
+                    <li><a href="#business">Business Services</a></li>
+                    <li><a href="#travel">Travel & Immigration</a></li>
+                    <li><a href="#government">Government</a></li>
+                    <li><a href="#health">Health Services</a></li>
+                    <li><a href="#education">Education</a></li>
+                    <li><a href="#social">Social Services</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- FAQ Content -->
+        <div class="faq-content">
+            <!-- Identity Documents -->
+            <section class="faq-section" id="documents">
+                <h2 class="faq-section-title">
+                    <span class="faq-section-icon">🪪</span>
+                    Identity Documents
+                </h2>
+
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span>How do I apply for a Ghana Card?</span>
+                            <span class="accordion-icon">+</span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p>To apply for a Ghana Card (National ID), follow these steps:</p>
+                                <ul>
+                                    <li>Visit <a href="https://nia.gov.gh" target="_blank">nia.gov.gh</a> to pre-register online</li>
+                                    <li>Book an appointment at your nearest NIA registration center</li>
+                                    <li>Bring required documents: birth certificate, passport photo, proof of address</li>
+                                    <li>Complete biometric capture at the registration center</li>
+                                    <li>Collect your card after processing (usually 2-4 weeks)</li>
+                                </ul>
+                                <p><a href="../services/ghana-card.html">View full Ghana Card guide →</a></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span>What documents do I need for a passport?</span>
+                            <span class="accordion-icon">+</span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p>Required documents for passport application:</p>
+                                <ul>
+                                    <li>Ghana Card (National ID)</li>
+                                    <li>Birth Certificate</li>
+                                    <li>Two recent passport photos</li>
+                                    <li>Completed application form</li>
+                                    <li>Payment of applicable fees</li>
+                                </ul>
+                                <p>For renewals, you also need your old passport. <a href="../services/passport.html">Learn more →</a></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span>How do I replace a lost Ghana Card?</span>
+                            <span class="accordion-icon">+</span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p>To replace a lost Ghana Card:</p>
+                                <ul>
+                                    <li>Visit any police station to file a report and obtain an extract</li>
+                                    <li>Go to your nearest NIA district office</li>
+                                    <li>Submit the police extract and fill out a replacement form</li>
+                                    <li>Pay the replacement fee (GHS 30)</li>
+                                    <li>Your new card will be ready within 2 weeks</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span>How long does passport processing take?</span>
+                            <span class="accordion-icon">+</span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p>Passport processing times vary:</p>
+                                <ul>
+                                    <li><strong>Regular processing:</strong> 10-15 working days</li>
+                                    <li><strong>Express processing:</strong> 3-5 working days (additional fee)</li>
+                                    <li><strong>Emergency:</strong> 24-48 hours (limited circumstances)</li>
+                                </ul>
+                                <p>Processing times may vary during peak periods. Track your application at <a href="https://passport.mfa.gov.gh" target="_blank">passport.mfa.gov.gh</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Business Services -->
+            <section class="faq-section" id="business">
+                <h2 class="faq-section-title">
+                    <span class="faq-section-icon">💼</span>
+                    Business Services
+                </h2>
+
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span>How do I register a business in Ghana?</span>
+                            <span class="accordion-icon">+</span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p>To register a business in Ghana:</p>
+                                <ul>
+                                    <li>Search for and reserve your business name at RGD</li>
+                                    <li>Choose your business structure (sole proprietorship, partnership, or limited company)</li>
+                                    <li>Complete the registration form and submit required documents</li>
+                                    <li>Pay registration fees</li>
+                                    <li>Obtain your certificate of incorporation/registration</li>
+                                </ul>
+                                <p>Registration can be done online at <a href="https://rgd.gov.gh" target="_blank">rgd.gov.gh</a>. <a href="../services/business-registration.html">Full guide →</a></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span>How do I get a Tax Identification Number (TIN)?</span>
+                            <span class="accordion-icon">+</span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p>To obtain a TIN from Ghana Revenue Authority:</p>
+                                <ul>
+                                    <li>Visit <a href="https://gra.gov.gh" target="_blank">gra.gov.gh</a> and click on TIN registration</li>
+                                    <li>Fill in personal/business details</li>
+                                    <li>Submit Ghana Card number for verification</li>
+                                    <li>Your TIN will be generated instantly</li>
+                                </ul>
+                                <p>TIN is required for all tax payments and business transactions. <a href="../services/tax.html">Learn more →</a></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span>What incentives are available for investors?</span>
+                            <span class="accordion-icon">+</span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p>Ghana offers various investment incentives:</p>
+                                <ul>
+                                    <li>Tax holidays of 5-10 years in Free Zones</li>
+                                    <li>Reduced corporate tax rates in priority sectors</li>
+                                    <li>Import duty exemptions on capital equipment</li>
+                                    <li>Accelerated depreciation allowances</li>
+                                    <li>Automatic immigrant quotas for foreign investors</li>
+                                </ul>
+                                <p>Visit <a href="../business/index.html">Invest in Ghana</a> for detailed information on incentives.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Travel & Immigration -->
+            <section class="faq-section" id="travel">
+                <h2 class="faq-section-title">
+                    <span class="faq-section-icon">✈️</span>
+                    Travel & Immigration
+                </h2>
+
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span>Do I need a visa to visit Ghana?</span>
+                            <span class="accordion-icon">+</span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p>Visa requirements depend on your nationality:</p>
+                                <ul>
+                                    <li><strong>ECOWAS citizens:</strong> No visa required</li>
+                                    <li><strong>African Union citizens:</strong> Visa on arrival available</li>
+                                    <li><strong>Other nationalities:</strong> Visa required before travel</li>
+                                </ul>
+                                <p>Apply online at <a href="https://ghana.gov.gh/visa" target="_blank">ghana.gov.gh/visa</a>. <a href="../tourism/visa.html">Full visa guide →</a></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span>How do I apply for a Ghana visa?</span>
+                            <span class="accordion-icon">+</span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p>Steps to apply for a Ghana visa:</p>
+                                <ul>
+                                    <li>Complete the online application form</li>
+                                    <li>Upload required documents (passport, photo, itinerary)</li>
+                                    <li>Pay the visa fee online</li>
+                                    <li>Submit to nearest Ghana embassy if required</li>
+                                    <li>Receive your e-visa or collect at embassy</li>
+                                </ul>
+                                <p><a href="../tourism/visa.html">View complete requirements →</a></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span>What vaccinations are required for Ghana?</span>
+                            <span class="accordion-icon">+</span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p>Vaccination requirements for travelers to Ghana:</p>
+                                <ul>
+                                    <li><strong>Required:</strong> Yellow Fever vaccination (certificate required)</li>
+                                    <li><strong>Recommended:</strong> Hepatitis A & B, Typhoid, Meningitis</li>
+                                    <li><strong>Advised:</strong> Malaria prophylaxis</li>
+                                </ul>
+                                <p>Consult your doctor 4-6 weeks before travel for personalized advice.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Government -->
+            <section class="faq-section" id="government">
+                <h2 class="faq-section-title">
+                    <span class="faq-section-icon">🏛️</span>
+                    Government Services
+                </h2>
+
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span>How do I contact a government ministry?</span>
+                            <span class="accordion-icon">+</span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p>You can contact government ministries through:</p>
+                                <ul>
+                                    <li>Our <a href="../government/ministries/index.html">Ministries Directory</a> with contact details</li>
+                                    <li>The government hotline: <strong>311</strong></li>
+                                    <li>Official ministry websites and social media</li>
+                                    <li>Physical visits during working hours (8am-5pm)</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span>How do I request public records?</span>
+                            <span class="accordion-icon">+</span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p>Under the Right to Information Act:</p>
+                                <ul>
+                                    <li>Submit a written request to the relevant public institution</li>
+                                    <li>Specify the information you need clearly</li>
+                                    <li>Pay applicable processing fees if required</li>
+                                    <li>Response should be provided within 14 days</li>
+                                    <li>Appeal to the RTI Commission if denied</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Health Services -->
+            <section class="faq-section" id="health">
+                <h2 class="faq-section-title">
+                    <span class="faq-section-icon">🏥</span>
+                    Health Services
+                </h2>
+
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span>How do I register for National Health Insurance?</span>
+                            <span class="accordion-icon">+</span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p>To register for NHIS:</p>
+                                <ul>
+                                    <li>Visit your nearest NHIS office or accredited registration center</li>
+                                    <li>Bring your Ghana Card and passport photo</li>
+                                    <li>Complete the registration form</li>
+                                    <li>Pay the premium (free for children under 18, pregnant women, elderly 70+, SSNIT contributors)</li>
+                                    <li>Receive your NHIS card</li>
+                                </ul>
+                                <p>Renew annually to maintain coverage.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span>How do I register a birth or death?</span>
+                            <span class="accordion-icon">+</span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p><strong>Birth Registration:</strong></p>
+                                <ul>
+                                    <li>Must be done within 1 year of birth (free)</li>
+                                    <li>Visit Births & Deaths Registry with hospital notification form</li>
+                                    <li>Parents' Ghana Cards required</li>
+                                </ul>
+                                <p><strong>Death Registration:</strong></p>
+                                <ul>
+                                    <li>Must be done within 3 months</li>
+                                    <li>Bring medical certificate of cause of death</li>
+                                    <li>Deceased's Ghana Card and informant's ID</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Education -->
+            <section class="faq-section" id="education">
+                <h2 class="faq-section-title">
+                    <span class="faq-section-icon">🎓</span>
+                    Education
+                </h2>
+
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span>How do I enroll my child in public school?</span>
+                            <span class="accordion-icon">+</span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p>To enroll in public school:</p>
+                                <ul>
+                                    <li>Visit the school during enrollment period (usually January-March)</li>
+                                    <li>Bring child's birth certificate and immunization records</li>
+                                    <li>Parent/guardian Ghana Card</li>
+                                    <li>Proof of residence</li>
+                                    <li>Previous school records (for transfers)</li>
+                                </ul>
+                                <p>Free Compulsory Basic Education covers Kindergarten to JHS.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span>How do I verify educational certificates?</span>
+                            <span class="accordion-icon">+</span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p>Certificate verification services:</p>
+                                <ul>
+                                    <li><strong>WASSCE/BECE:</strong> Contact WAEC Ghana</li>
+                                    <li><strong>University degrees:</strong> Contact the issuing university</li>
+                                    <li><strong>Professional certificates:</strong> Contact relevant professional body</li>
+                                </ul>
+                                <p>Fees apply for verification services. Process usually takes 5-10 working days.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Social Services -->
+            <section class="faq-section" id="social">
+                <h2 class="faq-section-title">
+                    <span class="faq-section-icon">🤝</span>
+                    Social Services
+                </h2>
+
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span>How do I register for SSNIT?</span>
+                            <span class="accordion-icon">+</span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p>Social Security registration:</p>
+                                <ul>
+                                    <li>Employers must register employees within 30 days of employment</li>
+                                    <li>Visit any SSNIT office with Ghana Card</li>
+                                    <li>Self-employed persons can register voluntarily</li>
+                                    <li>Contribution: 13.5% of salary (employer 13%, employee 5.5%)</li>
+                                </ul>
+                                <p>Check your contributions at <a href="https://ssnit.org.gh" target="_blank">ssnit.org.gh</a></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span>How do I apply for LEAP support?</span>
+                            <span class="accordion-icon">+</span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p>Livelihood Empowerment Against Poverty (LEAP) eligibility:</p>
+                                <ul>
+                                    <li>Extremely poor households</li>
+                                    <li>Must have orphans, elderly (65+), or persons with disabilities</li>
+                                    <li>Contact your District Social Welfare Office</li>
+                                    <li>Household assessment will be conducted</li>
+                                    <li>If eligible, receive bi-monthly cash transfers</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CTA -->
+            <div class="cta-box">
+                <h3>Didn't Find Your Answer?</h3>
+                <p>Our support team is ready to help you with any questions about government services.</p>
+                <a href="../contact.html" class="cta-btn">Contact Support</a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2025 Republic of Ghana. All rights reserved. | <a href="../index.html">Ghana.Gov</a></p>
+    </footer>
+
+    <script>
+        // Theme Toggle Script
+        (function(){const STORAGE_KEY='ghana-gov-theme',DARK='dark',LIGHT='light';function getSavedTheme(){const saved=localStorage.getItem(STORAGE_KEY);if(saved)return saved;if(window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches)return LIGHT;return DARK;}function applyTheme(theme){if(theme===LIGHT)document.documentElement.setAttribute('data-theme','light');else document.documentElement.removeAttribute('data-theme');localStorage.setItem(STORAGE_KEY,theme);}applyTheme(getSavedTheme());document.addEventListener('DOMContentLoaded',function(){const toggle=document.getElementById('themeToggle');if(toggle){toggle.addEventListener('click',function(){const current=document.documentElement.getAttribute('data-theme');applyTheme(current==='light'?DARK:LIGHT);this.style.transform='scale(0.95)';setTimeout(()=>{this.style.transform='';},150);});}});})();
+
+        // Mobile Menu Toggle
+        (function() {
+            document.addEventListener('DOMContentLoaded', function() {
+                const menuBtn = document.getElementById('mobileMenuBtn');
+                const menuClose = document.getElementById('mobileMenuClose');
+                const mobileMenu = document.getElementById('mobileMenu');
+
+                if (menuBtn && mobileMenu) {
+                    menuBtn.addEventListener('click', function() {
+                        mobileMenu.classList.add('active');
+                        document.body.style.overflow = 'hidden';
+                    });
+
+                    if (menuClose) {
+                        menuClose.addEventListener('click', function() {
+                            mobileMenu.classList.remove('active');
+                            document.body.style.overflow = '';
+                        });
+                    }
+
+                    mobileMenu.querySelectorAll('a').forEach(link => {
+                        link.addEventListener('click', function() {
+                            mobileMenu.classList.remove('active');
+                            document.body.style.overflow = '';
+                        });
+                    });
+
+                    document.addEventListener('keydown', function(e) {
+                        if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
+                            mobileMenu.classList.remove('active');
+                            document.body.style.overflow = '';
+                        }
+                    });
+                }
+            });
+        })();
+
+        // Navigation scroll effect
+        (function() {
+            window.addEventListener('scroll', function() {
+                const nav = document.querySelector('.nav-main');
+                if (nav) {
+                    if (window.scrollY > 50) {
+                        nav.classList.add('scrolled');
+                    } else {
+                        nav.classList.remove('scrolled');
+                    }
+                }
+            });
+        })();
+
+        // Accordion functionality
+        document.querySelectorAll('.accordion-header').forEach(button => {
+            button.addEventListener('click', () => {
+                const item = button.parentElement;
+                const wasActive = item.classList.contains('active');
+
+                // Close all items in the same accordion
+                item.parentElement.querySelectorAll('.accordion-item').forEach(i => {
+                    i.classList.remove('active');
+                });
+
+                // Toggle the clicked item
+                if (!wasActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // Sidebar active state on scroll
+        const sections = document.querySelectorAll('.faq-section');
+        const navLinks = document.querySelectorAll('.sidebar-links a');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 150;
+                if (pageYOffset >= sectionTop) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Smooth scroll for sidebar links
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('href');
+                const target = document.querySelector(targetId);
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

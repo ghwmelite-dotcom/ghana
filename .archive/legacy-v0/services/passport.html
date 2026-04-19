@@ -1,0 +1,2147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Apply for Ghana passport online. New applications, renewals, and replacements. Fast processing times and secure document delivery.">
+    <title>Passport Services | Republic of Ghana</title>
+
+    <!-- Fonts - Celestial Sovereignty -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+
+    <style>
+        /* ═══════════════════════════════════════════════════════════
+           CELESTIAL SOVEREIGNTY - Passport Services Page
+        ═══════════════════════════════════════════════════════════ */
+
+        :root {
+            /* Dark Mode (Default) - Semantic Variables */
+            --bg-primary: #030303;
+            --bg-secondary: #0A0A0A;
+            --bg-tertiary: #141414;
+            --bg-card: #1A1A1A;
+            --bg-elevated: #252525;
+            --text-primary: #FAF9F6;
+            --text-secondary: #E8E6E1;
+            --text-muted: #9A9A9A;
+            --text-subtle: #6B6B6B;
+            --border-color: rgba(212, 175, 55, 0.15);
+            --border-hover: rgba(212, 175, 55, 0.3);
+            --border-subtle: rgba(212, 175, 55, 0.1);
+            --card-bg: #1A1A1A;
+            --card-border: rgba(212, 175, 55, 0.15);
+            --card-gradient: linear-gradient(145deg, rgba(20, 20, 20, 0.9), rgba(10, 10, 10, 0.95));
+            --nav-bg: rgba(3, 3, 3, 0.85);
+            --hero-gradient: linear-gradient(135deg, #030303 0%, #141414 50%, #0D3D2E 100%);
+            --table-header-bg: linear-gradient(135deg, #0D3D2E, #1A5C45);
+            --input-bg: #141414;
+            --input-border: rgba(212, 175, 55, 0.2);
+            --footer-bg: linear-gradient(180deg, #141414, #030303);
+
+            /* Brand Colors (Constant) */
+            --gold-brilliant: #D4AF37;
+            --gold-glow: #F5D061;
+            --gold-pale: rgba(212, 175, 55, 0.15);
+            --emerald-deep: #0D3D2E;
+            --emerald-rich: #1A5C45;
+            --emerald-glow: rgba(26, 92, 69, 0.4);
+            --crimson-deep: #6B1E28;
+
+            /* Legacy variables for compatibility */
+            --obsidian: #030303;
+            --charcoal: #141414;
+            --graphite: #1A1A1A;
+            --ivory: #FAF9F6;
+            --pearl: #E8E6E1;
+            --silver: #B8B8B8;
+            --ash: #6B6B6B;
+
+            /* Typography */
+            --font-display: 'Cormorant Garamond', serif;
+            --font-body: 'DM Sans', sans-serif;
+
+            /* Spacing */
+            --space-1: 0.25rem; --space-2: 0.5rem; --space-3: 0.75rem;
+            --space-4: 1rem; --space-5: 1.25rem; --space-6: 1.5rem;
+            --space-8: 2rem; --space-10: 2.5rem; --space-12: 3rem;
+            --space-16: 4rem; --space-20: 5rem;
+
+            /* Transitions */
+            --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-base: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-elegant: 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            --transition-theme: 0.4s ease;
+            --theme-transition: 0.4s ease;
+        }
+
+        /* Light Mode */
+        [data-theme="light"] {
+            --bg-primary: #FAFAF8;
+            --bg-secondary: #F5F4F0;
+            --bg-tertiary: #EEEEE8;
+            --bg-card: #FFFFFF;
+            --bg-elevated: #FFFFFF;
+            --text-primary: #1A1A1A;
+            --text-secondary: #2D2D2D;
+            --text-muted: #5A5A5A;
+            --text-subtle: #7A7A7A;
+            --border-color: rgba(13, 61, 46, 0.15);
+            --border-hover: rgba(13, 61, 46, 0.3);
+            --border-subtle: rgba(13, 61, 46, 0.1);
+            --card-bg: #FFFFFF;
+            --card-border: rgba(13, 61, 46, 0.12);
+            --card-gradient: linear-gradient(145deg, #FFFFFF, #F8F8F5);
+            --nav-bg: rgba(250, 250, 248, 0.9);
+            --hero-gradient: linear-gradient(135deg, #0D3D2E 0%, #1A5C45 50%, #0D3D2E 100%);
+            --table-header-bg: linear-gradient(135deg, #0D3D2E, #1A5C45);
+            --input-bg: #FFFFFF;
+            --input-border: rgba(13, 61, 46, 0.2);
+            --footer-bg: linear-gradient(180deg, #EEEEE8, #F5F4F0);
+
+            /* Light mode accent colors - emerald instead of gold */
+            --gold-brilliant: #0D3D2E;
+            --gold-glow: #1A5C45;
+            --gold-pale: rgba(13, 61, 46, 0.08);
+            --emerald-glow: rgba(26, 92, 69, 0.15);
+
+            /* Legacy variables for light mode */
+            --obsidian: #FAFAF8;
+            --charcoal: #F5F4F0;
+            --graphite: #EEEEE8;
+            --ivory: #1A1A1A;
+            --pearl: #2D2D2D;
+            --silver: #5A5A5A;
+            --ash: #7A7A7A;
+        }
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font-body);
+            background: var(--obsidian);
+            color: var(--pearl);
+            line-height: 1.6;
+            overflow-x: hidden;
+            cursor: none;
+        }
+
+        /* Custom Cursor */
+        .cursor-main, .cursor-trail {
+            position: fixed;
+            pointer-events: none;
+            z-index: 99999;
+            border-radius: 50%;
+        }
+        .cursor-main {
+            width: 8px; height: 8px;
+            background: var(--gold-brilliant);
+            mix-blend-mode: difference;
+            transition: transform 0.15s ease;
+        }
+        .cursor-trail {
+            width: 32px; height: 32px;
+            border: 1px solid var(--gold-brilliant);
+            opacity: 0.5;
+            transition: transform 0.3s ease, width 0.3s ease, height 0.3s ease;
+            z-index: 99998;
+        }
+        .cursor-main.hovering { transform: scale(2); }
+        .cursor-trail.hovering { width: 50px; height: 50px; opacity: 0.3; }
+
+        /* Preloader */
+        .preloader {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: var(--obsidian); z-index: 100000;
+            display: flex; align-items: center; justify-content: center; flex-direction: column;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+        }
+        .preloader.hidden { opacity: 0; visibility: hidden; }
+        .preloader-star {
+            width: 60px; height: 60px; fill: var(--gold-brilliant);
+            animation: rotateStar 3s linear infinite, pulseStar 2s ease-in-out infinite;
+        }
+        @keyframes rotateStar { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        @keyframes pulseStar {
+            0%, 100% { filter: drop-shadow(0 0 10px var(--gold-brilliant)); }
+            50% { filter: drop-shadow(0 0 30px var(--gold-glow)); }
+        }
+        .preloader-text {
+            font-family: var(--font-display); font-size: 1rem; color: var(--silver);
+            margin-top: var(--space-4); letter-spacing: 0.3em; text-transform: uppercase;
+        }
+
+        /* Noise Overlay */
+        .noise-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none; z-index: 9999; opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+        }
+
+        /* Ambient Orbs */
+        .ambient-orbs { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: -1; overflow: hidden; }
+        .orb { position: absolute; border-radius: 50%; filter: blur(80px); animation: floatOrb 20s ease-in-out infinite; }
+        .orb-1 { width: 400px; height: 400px; background: var(--emerald-glow); top: 20%; left: -10%; }
+        .orb-2 { width: 300px; height: 300px; background: var(--gold-pale); top: 60%; right: -5%; animation-delay: -5s; }
+        @keyframes floatOrb {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(-20px, 20px) scale(0.95); }
+        }
+
+        .container { max-width: 1400px; margin: 0 auto; padding: 0 var(--space-6); }
+
+        .skip-link {
+            position: absolute; top: -100px; left: var(--space-4);
+            background: var(--gold-brilliant); color: var(--obsidian);
+            padding: var(--space-3) var(--space-6); border-radius: 0 0 8px 8px;
+            font-weight: 600; z-index: 10001; transition: top var(--transition-fast);
+        }
+        .skip-link:focus { top: 0; }
+
+        /* Top Bar */
+        .top-bar {
+            background: linear-gradient(90deg, var(--emerald-deep), var(--charcoal));
+            padding: var(--space-2) var(--space-6);
+            font-size: 0.8rem;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .emergency-link {
+            display: inline-flex; align-items: center; gap: var(--space-2);
+            color: var(--gold-glow); text-decoration: none; font-weight: 500;
+        }
+        .emergency-link:hover { color: var(--ivory); }
+        .language-selector { display: flex; align-items: center; gap: var(--space-3); }
+        .language-selector span { color: var(--silver); }
+        .language-selector button {
+            background: transparent; border: none; color: var(--silver);
+            font-size: 0.8rem; cursor: pointer; padding: var(--space-1) var(--space-2);
+            font-family: var(--font-body); transition: color var(--transition-fast);
+        }
+        .language-selector button:hover, .language-selector button.active { color: var(--gold-brilliant); }
+
+        /* ═══════════════════════════════════════════════════════════════════════════════
+           THE SOVEREIGN GATES NAVIGATION SYSTEM
+           ═══════════════════════════════════════════════════════════════════════════════ */
+
+        /* Main Navigation Bar */
+        .nav-main {
+            background: linear-gradient(180deg, rgba(10, 10, 10, 0.95) 0%, rgba(10, 10, 10, 0.85) 100%);
+            backdrop-filter: blur(30px) saturate(180%);
+            -webkit-backdrop-filter: blur(30px) saturate(180%);
+            padding: 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Kente Pattern Border - Animated */
+        .nav-main::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: repeating-linear-gradient(
+                90deg,
+                var(--gold-brilliant) 0px,
+                var(--gold-brilliant) 20px,
+                var(--emerald-deep) 20px,
+                var(--emerald-deep) 40px,
+                var(--crimson-deep) 40px,
+                var(--crimson-deep) 60px,
+                var(--gold-brilliant) 60px,
+                var(--gold-brilliant) 80px
+            );
+            background-size: 160px 100%;
+            animation: kente-flow 8s linear infinite;
+        }
+
+        @keyframes kente-flow {
+            from { background-position: 0 0; }
+            to { background-position: 160px 0; }
+        }
+
+        .nav-main.scrolled {
+            background: rgba(3, 3, 3, 0.98);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .nav-main.scrolled::after {
+            height: 2px;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            position: relative;
+        }
+
+        /* Logo */
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+            color: var(--ivory);
+            position: relative;
+            z-index: 1001;
+        }
+
+        .logo-emblem {
+            width: 55px;
+            height: 55px;
+            position: relative;
+        }
+
+        .logo-star {
+            width: 100%;
+            height: 100%;
+            fill: var(--gold-brilliant);
+            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+            filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.5));
+        }
+
+        .logo:hover .logo-star {
+            transform: rotate(72deg) scale(1.15);
+            filter: drop-shadow(0 0 30px var(--gold-brilliant));
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-title {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            line-height: 1.1;
+            background: linear-gradient(135deg, var(--ivory) 0%, var(--gold-brilliant) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .logo-subtitle {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--silver);
+        }
+
+        /* Desktop Navigation */
+        .nav-links {
+            display: flex;
+            gap: 0;
+            list-style: none;
+            height: 100%;
+        }
+
+        .nav-links > li {
+            position: relative;
+        }
+
+        .nav-links > li > a {
+            text-decoration: none;
+            color: var(--pearl);
+            font-weight: 500;
+            font-size: 0.9rem;
+            position: relative;
+            padding: 1.5rem 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
+        }
+
+        .nav-links > li > a .nav-icon {
+            width: 18px;
+            height: 18px;
+            opacity: 0.6;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links > li > a:hover .nav-icon,
+        .nav-links > li:hover > a .nav-icon {
+            opacity: 1;
+            color: var(--gold-brilliant);
+        }
+
+        /* Hover effect line */
+        .nav-links > li > a::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 3px;
+            background: var(--gold-brilliant);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateX(-50%);
+            border-radius: 3px 3px 0 0;
+        }
+
+        .nav-links > li:hover > a::before,
+        .nav-links > li > a.active::before {
+            width: calc(100% - 2rem);
+        }
+
+        .nav-links > li:hover > a,
+        .nav-links > li > a.active {
+            color: var(--gold-brilliant);
+        }
+
+        /* Right Side Actions */
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            position: relative;
+            z-index: 1001;
+        }
+
+        .search-toggle {
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            cursor: pointer;
+            color: var(--pearl);
+            transition: all 0.3s ease;
+        }
+
+        .search-toggle:hover {
+            background: rgba(212, 175, 55, 0.1);
+            border-color: rgba(212, 175, 55, 0.3);
+            color: var(--gold-brilliant);
+            transform: scale(1.05);
+        }
+
+        .search-toggle svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* Theme Toggle */
+        .theme-toggle {
+            position: relative;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: linear-gradient(145deg, rgba(20, 20, 20, 0.8), rgba(10, 10, 10, 0.9));
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            cursor: pointer;
+            overflow: hidden;
+            transition: all var(--theme-transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .theme-toggle:hover {
+            border-color: var(--gold-brilliant);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+            transform: scale(1.05);
+        }
+        .toggle-stars {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            transition: opacity var(--theme-transition);
+        }
+        .toggle-star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: #FFFFFF;
+            border-radius: 50%;
+            opacity: 0.8;
+        }
+        .toggle-star:nth-child(1) { top: 20%; left: 25%; animation: twinkle 2s ease-in-out infinite; }
+        .toggle-star:nth-child(2) { top: 35%; left: 70%; animation: twinkle 2s ease-in-out infinite 0.5s; }
+        .toggle-star:nth-child(3) { top: 65%; left: 30%; animation: twinkle 2s ease-in-out infinite 1s; }
+        .toggle-star:nth-child(4) { top: 75%; left: 65%; animation: twinkle 2s ease-in-out infinite 1.5s; }
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+        .toggle-orb {
+            position: relative;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+        }
+        .toggle-icon {
+            position: absolute;
+            width: 18px;
+            height: 18px;
+            transition: all var(--theme-transition);
+        }
+        .toggle-icon.moon {
+            color: var(--gold-brilliant);
+            opacity: 1;
+            transform: rotate(0deg) scale(1);
+        }
+        .toggle-icon.sun {
+            color: var(--gold-brilliant);
+            opacity: 0;
+            transform: rotate(-90deg) scale(0.5);
+        }
+        [data-theme="light"] .theme-toggle {
+            background: linear-gradient(145deg, #FFFFFF, #F0F0EC);
+            border-color: rgba(13, 61, 46, 0.3);
+        }
+        [data-theme="light"] .theme-toggle:hover {
+            border-color: var(--emerald-deep);
+            box-shadow: 0 0 20px rgba(13, 61, 46, 0.2);
+        }
+        [data-theme="light"] .toggle-stars { opacity: 0; }
+        [data-theme="light"] .toggle-icon.moon {
+            opacity: 0;
+            transform: rotate(90deg) scale(0.5);
+        }
+        [data-theme="light"] .toggle-icon.sun {
+            opacity: 1;
+            transform: rotate(0deg) scale(1);
+            color: var(--emerald-deep);
+        }
+
+        .nav-cta {
+            background: linear-gradient(135deg, var(--gold-brilliant) 0%, var(--gold-glow) 100%);
+            color: var(--obsidian);
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            letter-spacing: 0.02em;
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 60px rgba(212, 175, 55, 0.4);
+        }
+
+        /* ═══════════════════════════════════════════════════════════
+           THE GOLDEN STAR TOGGLE (Mobile Menu Button)
+           ═══════════════════════════════════════════════════════════ */
+
+        /* ═══════════════════════════════════════════════════════════
+           THE SOVEREIGN GATES - Full Screen Menu
+           ═══════════════════════════════════════════════════════════ */
+
+        /* Kente Stripe Gates - The Opening Animation */
+
+        /* Gate Content Overlay */
+
+        /* Floating Adinkra Symbols in Menu */
+
+        @keyframes float-gentle {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(20px, -10px) rotate(5deg); }
+            50% { transform: translate(-10px, 20px) rotate(-3deg); }
+            75% { transform: translate(-20px, -15px) rotate(8deg); }
+        }
+
+        /* Gate Menu Container */
+
+        /* Menu Items with Staggered Animation */
+
+        /* Quick Services Panel */
+
+        /* Gate Footer */
+
+        /* Light mode adjustments for Sovereign Gates */
+        [data-theme="light"]
+
+        [data-theme="light"]
+
+        [data-theme="light"]
+
+        [data-theme="light"]
+
+        [data-theme="light"]
+
+        /* Search Modal */
+        .search-modal {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(3, 3, 3, 0.95); backdrop-filter: blur(20px);
+            z-index: 10000; display: flex; align-items: flex-start; justify-content: center;
+            padding-top: 15vh; opacity: 0; visibility: hidden; transition: all var(--transition-base);
+        }
+        .search-modal.active { opacity: 1; visibility: visible; }
+        .search-close {
+            position: absolute; top: var(--space-6); right: var(--space-6);
+            background: transparent; border: 1px solid rgba(212, 175, 55, 0.3);
+            color: var(--pearl); width: 50px; height: 50px; border-radius: 50%;
+            cursor: pointer; display: flex; align-items: center; justify-content: center;
+            transition: all var(--transition-fast);
+        }
+        .search-close:hover { background: rgba(212, 175, 55, 0.1); border-color: var(--gold-brilliant); color: var(--gold-brilliant); }
+        .search-container { width: 100%; max-width: 600px; padding: 0 var(--space-6); }
+        .search-input-wrapper { position: relative; }
+        .search-icon-lg { position: absolute; left: var(--space-5); top: 50%; transform: translateY(-50%); color: var(--silver); }
+        .search-input-lg {
+            width: 100%; padding: var(--space-5) var(--space-5) var(--space-5) var(--space-12);
+            background: var(--charcoal); border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 60px; font-size: 1.1rem; color: var(--ivory); font-family: var(--font-body);
+        }
+        .search-input-lg::placeholder { color: var(--silver); }
+        .search-input-lg:focus { outline: none; border-color: var(--gold-brilliant); box-shadow: 0 0 30px rgba(212, 175, 55, 0.2); }
+
+        /* Service Hero */
+        .service-hero {
+            background: linear-gradient(135deg, var(--obsidian) 0%, var(--charcoal) 50%, var(--emerald-deep) 100%);
+            padding: var(--space-16) 0 var(--space-20);
+            position: relative; overflow: hidden;
+        }
+        .service-hero::before {
+            content: ''; position: absolute; top: -50%; right: -10%;
+            width: 700px; height: 700px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 60%);
+        }
+        .service-hero::after {
+            content: ''; position: absolute; bottom: -30%; left: -10%;
+            width: 500px; height: 500px;
+            background: radial-gradient(circle, var(--emerald-glow) 0%, transparent 60%);
+        }
+        .service-hero-content {
+            position: relative; z-index: 2;
+            display: grid; grid-template-columns: 1fr 400px; gap: var(--space-12); align-items: start;
+        }
+        .service-hero-text { color: var(--ivory); }
+        .breadcrumbs { margin-bottom: var(--space-6); font-size: 0.9rem; }
+        .breadcrumbs a { color: var(--silver); text-decoration: none; transition: color var(--transition-fast); }
+        .breadcrumbs a:hover { color: var(--gold-brilliant); }
+        .breadcrumbs .separator { color: var(--ash); margin: 0 var(--space-2); }
+        .breadcrumbs .current { color: var(--gold-brilliant); }
+        .service-badge {
+            display: inline-flex; align-items: center; gap: var(--space-2);
+            background: var(--gold-pale); border: 1px solid rgba(212, 175, 55, 0.3);
+            padding: var(--space-2) var(--space-4); border-radius: 50px;
+            font-size: 0.75rem; font-weight: 600; color: var(--gold-brilliant);
+            margin-bottom: var(--space-4);
+        }
+        .service-hero h1 {
+            font-family: var(--font-display); font-size: 3.5rem; font-weight: 300;
+            color: var(--ivory); margin-bottom: var(--space-4); line-height: 1.1;
+        }
+        .service-hero h1 span { color: var(--gold-brilliant); }
+        .service-hero-desc {
+            font-size: 1.15rem; color: var(--silver); margin-bottom: var(--space-6);
+            max-width: 550px; line-height: 1.7;
+        }
+        .service-meta-row { display: flex; gap: var(--space-8); margin-bottom: var(--space-8); flex-wrap: wrap; }
+        .meta-item { display: flex; align-items: center; gap: var(--space-2); color: var(--silver); font-size: 0.9rem; }
+        .meta-item svg { color: var(--gold-brilliant); }
+        .service-actions { display: flex; gap: var(--space-4); flex-wrap: wrap; }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex; align-items: center; justify-content: center; gap: var(--space-2);
+            padding: var(--space-4) var(--space-8); border-radius: 50px;
+            font-size: 0.95rem; font-weight: 600; text-decoration: none;
+            cursor: pointer; transition: all var(--transition-base); font-family: var(--font-body); border: none;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, var(--gold-brilliant), var(--gold-glow));
+            color: var(--obsidian); box-shadow: 0 4px 20px rgba(212, 175, 55, 0.3);
+        }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(212, 175, 55, 0.5); }
+        .btn-outline-light {
+            background: transparent; border: 1px solid rgba(212, 175, 55, 0.4);
+            color: var(--gold-brilliant);
+        }
+        .btn-outline-light:hover { background: var(--gold-brilliant); color: var(--obsidian); }
+        .btn-outline {
+            background: transparent; border: 1px solid rgba(212, 175, 55, 0.4); color: var(--gold-brilliant);
+        }
+        .btn-outline:hover { background: var(--gold-brilliant); border-color: var(--gold-brilliant); color: var(--obsidian); }
+        .btn-sm { padding: var(--space-2) var(--space-5); font-size: 0.85rem; }
+        .btn-lg { padding: var(--space-5) var(--space-10); font-size: 1rem; }
+
+        /* Quick Action Card */
+        .quick-action-card {
+            background: linear-gradient(145deg, rgba(20, 20, 20, 0.9), rgba(10, 10, 10, 0.95));
+            backdrop-filter: blur(10px); border: 1px solid rgba(212, 175, 55, 0.15);
+            border-radius: 24px; padding: var(--space-8);
+        }
+        .quick-action-card h3 {
+            font-family: var(--font-display); font-size: 1.3rem; font-weight: 500;
+            color: var(--ivory); margin-bottom: var(--space-4);
+        }
+        .quick-action-card > p { font-size: 0.9rem; color: var(--silver); margin-bottom: var(--space-6); }
+        .quick-action-options { display: flex; flex-direction: column; gap: var(--space-3); }
+        .quick-option {
+            display: flex; align-items: center; gap: var(--space-4);
+            padding: var(--space-4); border: 1px solid rgba(212, 175, 55, 0.15);
+            border-radius: 16px; text-decoration: none; color: var(--pearl);
+            transition: all var(--transition-base);
+        }
+        .quick-option:hover {
+            border-color: var(--gold-brilliant); background: rgba(212, 175, 55, 0.05);
+        }
+        .quick-option-icon {
+            width: 44px; height: 44px;
+            background: linear-gradient(135deg, var(--emerald-deep), var(--emerald-rich));
+            border-radius: 12px; display: flex; align-items: center; justify-content: center;
+            color: var(--gold-brilliant); flex-shrink: 0; transition: all var(--transition-base);
+        }
+        .quick-option:hover .quick-option-icon { transform: scale(1.1); }
+        .quick-option-text { flex: 1; }
+        .quick-option-title { font-weight: 600; font-size: 0.95rem; color: var(--ivory); }
+        .quick-option-desc { font-size: 0.8rem; color: var(--ash); }
+
+        /* Content Section */
+        .service-content { padding: var(--space-16) 0; }
+        .content-grid { display: grid; grid-template-columns: 1fr 350px; gap: var(--space-12); }
+        .content-main { max-width: 100%; }
+        .content-sidebar { position: sticky; top: 100px; height: fit-content; }
+        .content-section { margin-bottom: var(--space-12); }
+        .content-section h2 {
+            font-family: var(--font-display); font-size: 2rem; font-weight: 400;
+            color: var(--ivory); margin-bottom: var(--space-6);
+            padding-bottom: var(--space-4); border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+        .content-section h3 {
+            font-family: var(--font-display); font-size: 1.3rem;
+            color: var(--ivory); margin: var(--space-6) 0 var(--space-4);
+        }
+        .content-section p { color: var(--silver); line-height: 1.7; }
+
+        /* Info Cards */
+        .info-card {
+            background: linear-gradient(145deg, var(--charcoal), var(--graphite));
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            border-radius: 20px; padding: var(--space-6); margin-bottom: var(--space-6);
+        }
+        .info-card h4 {
+            display: flex; align-items: center; gap: var(--space-3);
+            font-family: var(--font-display); font-size: 1.1rem; font-weight: 500;
+            margin-bottom: var(--space-4); color: var(--gold-brilliant);
+        }
+        .info-card ul { list-style: none; }
+        .info-card li {
+            padding: var(--space-2) 0; font-size: 0.9rem; color: var(--silver);
+            display: flex; align-items: flex-start; gap: var(--space-2);
+        }
+        .info-card li svg { flex-shrink: 0; margin-top: 2px; color: var(--gold-brilliant); opacity: 0.7; }
+
+        /* Passport Types Grid */
+        .passport-types { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-4); margin: var(--space-6) 0; }
+        .passport-type-card {
+            background: linear-gradient(145deg, var(--charcoal), var(--graphite));
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            border-radius: 16px; padding: var(--space-5);
+            transition: all var(--transition-base); cursor: pointer;
+        }
+        .passport-type-card:hover { border-color: rgba(212, 175, 55, 0.3); }
+        .passport-type-card.selected { border-color: var(--gold-brilliant); background: rgba(212, 175, 55, 0.05); }
+        .passport-type-header { display: flex; justify-content: space-between; align-items: start; margin-bottom: var(--space-3); }
+        .passport-type-name { font-weight: 600; color: var(--ivory); }
+        .passport-type-price { font-family: var(--font-display); font-weight: 700; color: var(--gold-brilliant); }
+        .passport-type-desc { font-size: 0.85rem; color: var(--silver); margin-bottom: var(--space-3); }
+        .passport-type-features { display: flex; gap: var(--space-4); font-size: 0.75rem; color: var(--ash); }
+        .passport-type-features span { display: flex; align-items: center; gap: var(--space-1); }
+        .passport-type-features svg { color: var(--gold-brilliant); opacity: 0.7; }
+
+        /* Requirements List */
+        .requirements-list { list-style: none; margin: var(--space-6) 0; }
+        .requirements-list li {
+            display: flex; align-items: flex-start; gap: var(--space-4);
+            padding: var(--space-4); background: linear-gradient(145deg, var(--charcoal), var(--graphite));
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            border-radius: 12px; margin-bottom: var(--space-3);
+        }
+        .req-number {
+            width: 28px; height: 28px;
+            background: linear-gradient(135deg, var(--gold-brilliant), var(--gold-glow));
+            color: var(--obsidian); border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 0.85rem; font-weight: 700; flex-shrink: 0;
+        }
+        .req-content { flex: 1; }
+        .req-title { font-weight: 600; color: var(--ivory); margin-bottom: var(--space-1); }
+        .req-desc { font-size: 0.85rem; color: var(--silver); }
+
+        /* Process Steps */
+        .process-steps { position: relative; margin: var(--space-8) 0; }
+        .process-step { display: flex; gap: var(--space-5); padding-bottom: var(--space-8); position: relative; }
+        .process-step:not(:last-child)::after {
+            content: ''; position: absolute; left: 19px; top: 48px; bottom: 0;
+            width: 2px; background: linear-gradient(180deg, var(--gold-brilliant), rgba(212, 175, 55, 0.2));
+        }
+        .step-icon {
+            width: 40px; height: 40px;
+            background: linear-gradient(135deg, var(--gold-brilliant), var(--gold-glow));
+            color: var(--obsidian); border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 700; flex-shrink: 0; position: relative; z-index: 2;
+        }
+        .step-content { flex: 1; padding-top: var(--space-2); }
+        .step-title { font-weight: 600; color: var(--ivory); margin-bottom: var(--space-2); }
+        .step-desc { font-size: 0.9rem; color: var(--silver); }
+
+        /* Fees Table */
+        .fees-table { width: 100%; border-collapse: collapse; margin: var(--space-6) 0; }
+        .fees-table th, .fees-table td { padding: var(--space-4); text-align: left; border-bottom: 1px solid rgba(212, 175, 55, 0.1); }
+        .fees-table th {
+            background: linear-gradient(135deg, var(--emerald-deep), var(--emerald-rich));
+            color: var(--ivory); font-weight: 600;
+        }
+        .fees-table th:first-child { border-radius: 12px 0 0 0; }
+        .fees-table th:last-child { border-radius: 0 12px 0 0; }
+        .fees-table td { color: var(--silver); }
+        .fees-table tr:hover td { background: rgba(212, 175, 55, 0.03); }
+        .fees-table .price { font-weight: 600; color: var(--gold-brilliant); }
+
+        /* FAQ Accordion */
+        .faq-list { margin: var(--space-6) 0; }
+        .faq-item {
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            border-radius: 12px; margin-bottom: var(--space-3); overflow: hidden;
+        }
+        .faq-question {
+            width: 100%; padding: var(--space-5);
+            background: linear-gradient(145deg, var(--charcoal), var(--graphite));
+            border: none; text-align: left; font-family: var(--font-body);
+            font-size: 1rem; font-weight: 500; cursor: pointer;
+            display: flex; justify-content: space-between; align-items: center;
+            color: var(--ivory); transition: background var(--transition-fast);
+        }
+        .faq-question:hover { background: rgba(212, 175, 55, 0.05); }
+        .faq-question svg { color: var(--gold-brilliant); transition: transform var(--transition-fast); }
+        .faq-item.active .faq-question svg { transform: rotate(180deg); }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height var(--transition-base); }
+        .faq-item.active .faq-answer { max-height: 500px; }
+        .faq-answer-content { padding: 0 var(--space-5) var(--space-5); color: var(--silver); font-size: 0.9rem; line-height: 1.7; }
+
+        /* Status Tracker */
+        .status-tracker {
+            background: linear-gradient(145deg, rgba(212, 175, 55, 0.1), rgba(212, 175, 55, 0.05));
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 20px; padding: var(--space-6);
+        }
+        .status-tracker h4 {
+            display: flex; align-items: center; gap: var(--space-2);
+            font-family: var(--font-display); color: var(--gold-brilliant); margin-bottom: var(--space-4);
+        }
+        .status-input { display: flex; gap: var(--space-2); }
+        .status-input input {
+            flex: 1; padding: var(--space-3);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 8px; font-size: 0.9rem;
+            background: var(--charcoal); color: var(--ivory); font-family: var(--font-body);
+        }
+        .status-input input::placeholder { color: var(--ash); }
+        .status-input input:focus { outline: none; border-color: var(--gold-brilliant); }
+        .status-input button {
+            padding: var(--space-3) var(--space-4);
+            background: linear-gradient(135deg, var(--gold-brilliant), var(--gold-glow));
+            color: var(--obsidian); border: none; border-radius: 8px;
+            font-weight: 600; cursor: pointer; transition: all var(--transition-fast);
+        }
+        .status-input button:hover { transform: scale(1.05); }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--emerald-deep), var(--charcoal));
+            padding: var(--space-16) 0; text-align: center; color: var(--ivory);
+            position: relative; overflow: hidden;
+        }
+        .cta-section::before {
+            content: ''; position: absolute; top: -50%; right: -20%;
+            width: 600px; height: 600px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.1), transparent 60%);
+        }
+        .cta-section h2 { font-family: var(--font-display); font-size: 2.5rem; font-weight: 300; margin-bottom: var(--space-4); position: relative; }
+        .cta-section p { font-size: 1.1rem; color: var(--silver); margin-bottom: var(--space-8); max-width: 500px; margin-left: auto; margin-right: auto; position: relative; }
+        .cta-buttons { display: flex; gap: var(--space-4); justify-content: center; flex-wrap: wrap; position: relative; }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(180deg, var(--charcoal), var(--obsidian));
+            padding: var(--space-20) var(--space-6) var(--space-8);
+            border-top: 1px solid rgba(212, 175, 55, 0.1);
+        }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: var(--space-12); max-width: 1400px; margin: 0 auto var(--space-12); }
+        .footer-logo { display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-5); }
+        .footer-logo svg { width: 40px; height: 40px; fill: var(--gold-brilliant); }
+        .footer-logo-text { font-family: var(--font-display); font-size: 1.3rem; font-weight: 600; color: var(--ivory); }
+        .footer-desc { color: var(--silver); font-size: 0.95rem; line-height: 1.7; margin-bottom: var(--space-6); }
+        .footer-social { display: flex; gap: var(--space-3); }
+        .social-link {
+            width: 42px; height: 42px; border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            color: var(--pearl); transition: all var(--transition-fast);
+        }
+        .social-link:hover { background: var(--gold-brilliant); border-color: var(--gold-brilliant); color: var(--obsidian); }
+        .footer-column h4 {
+            font-family: var(--font-display); font-size: 1.1rem; font-weight: 600;
+            color: var(--gold-brilliant); margin-bottom: var(--space-5);
+        }
+        .footer-column ul { list-style: none; }
+        .footer-column li { margin-bottom: var(--space-3); }
+        .footer-column a { color: var(--silver); text-decoration: none; font-size: 0.95rem; transition: color var(--transition-fast); }
+        .footer-column a:hover { color: var(--gold-brilliant); }
+        .footer-bottom {
+            display: flex; justify-content: space-between; align-items: center;
+            padding-top: var(--space-8); border-top: 1px solid rgba(212, 175, 55, 0.1);
+            max-width: 1400px; margin: 0 auto;
+        }
+        .footer-copy { color: var(--ash); font-size: 0.9rem; }
+        .footer-links { display: flex; gap: var(--space-6); }
+        .footer-links a { color: var(--silver); text-decoration: none; font-size: 0.9rem; transition: color var(--transition-fast); }
+        .footer-links a:hover { color: var(--gold-brilliant); }
+
+        /* Reveal Animation */
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        /* ═══════════════════════════════════════════════════════════
+           LIGHT MODE OVERRIDES
+        ═══════════════════════════════════════════════════════════ */
+
+        /* Body & Background */
+        [data-theme="light"] body {
+            background: var(--bg-primary);
+            color: var(--text-primary);
+        }
+
+        /* Preloader */
+        [data-theme="light"] .preloader {
+            background: var(--bg-primary);
+        }
+        [data-theme="light"] .preloader-star {
+            fill: var(--emerald-deep);
+        }
+        [data-theme="light"] .preloader-text {
+            color: var(--text-muted);
+        }
+
+        /* Ambient Orbs - more subtle in light mode */
+        [data-theme="light"] .orb-1 {
+            background: rgba(13, 61, 46, 0.08);
+        }
+        [data-theme="light"] .orb-2 {
+            background: rgba(26, 92, 69, 0.06);
+        }
+
+        /* Top Bar */
+        [data-theme="light"] .top-bar {
+            background: linear-gradient(90deg, var(--emerald-deep), #1A5C45);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        [data-theme="light"] .emergency-link {
+            color: #FFFFFF;
+        }
+        [data-theme="light"] .emergency-link:hover {
+            color: #F5D061;
+        }
+        [data-theme="light"] .language-selector span {
+            color: rgba(255, 255, 255, 0.8);
+        }
+        [data-theme="light"] .language-selector button {
+            color: rgba(255, 255, 255, 0.8);
+        }
+        [data-theme="light"] .language-selector button:hover,
+        [data-theme="light"] .language-selector button.active {
+            color: #F5D061;
+        }
+
+        /* Navigation */
+        [data-theme="light"] .nav-main {
+            background: var(--nav-bg);
+            border-bottom: 1px solid var(--border-subtle);
+            backdrop-filter: blur(20px);
+        }
+        [data-theme="light"] .logo-emblem {
+            background: linear-gradient(135deg, var(--emerald-deep), var(--emerald-rich));
+            box-shadow: 0 0 30px rgba(13, 61, 46, 0.3);
+        }
+        [data-theme="light"] .logo-star {
+            fill: #FFFFFF;
+        }
+        [data-theme="light"] .logo-title {
+            color: var(--text-primary);
+        }
+        [data-theme="light"] .logo-subtitle {
+            color: var(--emerald-deep);
+        }
+        [data-theme="light"] .nav-links a {
+            color: var(--text-secondary);
+        }
+        [data-theme="light"] .nav-links a::after {
+            background: var(--emerald-deep);
+        }
+        [data-theme="light"] .nav-links a:hover,
+        [data-theme="light"] .nav-links a.active {
+            color: var(--emerald-deep);
+        }
+        [data-theme="light"] .search-toggle {
+            border-color: var(--border-color);
+            color: var(--text-secondary);
+        }
+        [data-theme="light"] .search-toggle:hover {
+            background: rgba(13, 61, 46, 0.1);
+            border-color: var(--emerald-deep);
+            color: var(--emerald-deep);
+        }
+        [data-theme="light"] .nav-cta {
+            background: linear-gradient(135deg, var(--emerald-deep), var(--emerald-rich));
+            color: #FFFFFF;
+            box-shadow: 0 4px 20px rgba(13, 61, 46, 0.3);
+        }
+        [data-theme="light"] .nav-cta:hover {
+            box-shadow: 0 8px 30px rgba(13, 61, 46, 0.4);
+        }
+        [data-theme="light"] .mobile-toggle span {
+            background: var(--text-primary);
+        }
+
+        /* Search Modal */
+        [data-theme="light"] .search-modal {
+            background: rgba(250, 250, 248, 0.98);
+        }
+        [data-theme="light"] .search-close {
+            border-color: var(--border-color);
+            color: var(--text-secondary);
+        }
+        [data-theme="light"] .search-close:hover {
+            background: rgba(13, 61, 46, 0.1);
+            border-color: var(--emerald-deep);
+            color: var(--emerald-deep);
+        }
+        [data-theme="light"] .search-icon-lg {
+            color: var(--text-muted);
+        }
+        [data-theme="light"] .search-input-lg {
+            background: var(--bg-card);
+            border-color: var(--border-color);
+            color: var(--text-primary);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        [data-theme="light"] .search-input-lg::placeholder {
+            color: var(--text-muted);
+        }
+        [data-theme="light"] .search-input-lg:focus {
+            border-color: var(--emerald-deep);
+            box-shadow: 0 0 20px rgba(13, 61, 46, 0.15);
+        }
+
+        /* Service Hero - Emerald gradient in light mode */
+        [data-theme="light"] .service-hero {
+            background: var(--hero-gradient);
+        }
+        [data-theme="light"] .service-hero::before {
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 60%);
+        }
+        [data-theme="light"] .service-hero::after {
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.08) 0%, transparent 60%);
+        }
+        [data-theme="light"] .service-hero-text {
+            color: #FFFFFF;
+        }
+        [data-theme="light"] .breadcrumbs a {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        [data-theme="light"] .breadcrumbs a:hover {
+            color: #F5D061;
+        }
+        [data-theme="light"] .breadcrumbs .separator {
+            color: rgba(255, 255, 255, 0.4);
+        }
+        [data-theme="light"] .breadcrumbs .current {
+            color: #F5D061;
+        }
+        [data-theme="light"] .service-badge {
+            background: rgba(245, 208, 97, 0.15);
+            border-color: rgba(245, 208, 97, 0.3);
+            color: #F5D061;
+        }
+        [data-theme="light"] .service-hero h1 {
+            color: #FFFFFF;
+        }
+        [data-theme="light"] .service-hero h1 span {
+            color: #F5D061;
+        }
+        [data-theme="light"] .service-hero-desc {
+            color: rgba(255, 255, 255, 0.85);
+        }
+        [data-theme="light"] .meta-item {
+            color: rgba(255, 255, 255, 0.8);
+        }
+        [data-theme="light"] .meta-item svg {
+            color: #F5D061;
+        }
+
+        /* Buttons in light mode */
+        [data-theme="light"] .btn-primary {
+            background: linear-gradient(135deg, #D4AF37, #F5D061);
+            color: #0D3D2E;
+            box-shadow: 0 4px 20px rgba(212, 175, 55, 0.4);
+        }
+        [data-theme="light"] .btn-primary:hover {
+            box-shadow: 0 8px 30px rgba(212, 175, 55, 0.5);
+        }
+        [data-theme="light"] .btn-outline-light {
+            border-color: rgba(255, 255, 255, 0.5);
+            color: #FFFFFF;
+        }
+        [data-theme="light"] .btn-outline-light:hover {
+            background: #FFFFFF;
+            border-color: #FFFFFF;
+            color: var(--emerald-deep);
+        }
+        [data-theme="light"] .btn-outline {
+            border-color: var(--border-color);
+            color: var(--emerald-deep);
+        }
+        [data-theme="light"] .btn-outline:hover {
+            background: var(--emerald-deep);
+            border-color: var(--emerald-deep);
+            color: #FFFFFF;
+        }
+
+        /* Quick Action Card */
+        [data-theme="light"] .quick-action-card {
+            background: var(--card-gradient);
+            border-color: var(--card-border);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+        [data-theme="light"] .quick-action-card h3 {
+            color: var(--text-primary);
+        }
+        [data-theme="light"] .quick-action-card > p {
+            color: var(--text-muted);
+        }
+        [data-theme="light"] .quick-option {
+            border-color: var(--border-color);
+            color: var(--text-secondary);
+            background: var(--bg-card);
+        }
+        [data-theme="light"] .quick-option:hover {
+            border-color: var(--emerald-deep);
+            background: rgba(13, 61, 46, 0.03);
+        }
+        [data-theme="light"] .quick-option-icon {
+            background: linear-gradient(135deg, var(--emerald-deep), var(--emerald-rich));
+            color: #F5D061;
+        }
+        [data-theme="light"] .quick-option-title {
+            color: var(--text-primary);
+        }
+        [data-theme="light"] .quick-option-desc {
+            color: var(--text-muted);
+        }
+
+        /* Content Section */
+        [data-theme="light"] .service-content {
+            background: var(--bg-primary);
+        }
+        [data-theme="light"] .content-section h2 {
+            color: var(--text-primary);
+            border-bottom-color: var(--border-color);
+        }
+        [data-theme="light"] .content-section h3 {
+            color: var(--text-primary);
+        }
+        [data-theme="light"] .content-section p {
+            color: var(--text-muted);
+        }
+
+        /* Info Cards */
+        [data-theme="light"] .info-card {
+            background: var(--card-gradient);
+            border-color: var(--card-border);
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+        }
+        [data-theme="light"] .info-card h4 {
+            color: var(--emerald-deep);
+        }
+        [data-theme="light"] .info-card li {
+            color: var(--text-muted);
+        }
+        [data-theme="light"] .info-card li svg {
+            color: var(--emerald-deep);
+        }
+
+        /* Passport Type Cards */
+        [data-theme="light"] .passport-type-card {
+            background: var(--card-gradient);
+            border-color: var(--card-border);
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+        }
+        [data-theme="light"] .passport-type-card:hover {
+            border-color: rgba(13, 61, 46, 0.3);
+        }
+        [data-theme="light"] .passport-type-card.selected {
+            border-color: var(--emerald-deep);
+            background: rgba(13, 61, 46, 0.03);
+        }
+        [data-theme="light"] .passport-type-name {
+            color: var(--text-primary);
+        }
+        [data-theme="light"] .passport-type-price {
+            color: var(--emerald-deep);
+        }
+        [data-theme="light"] .passport-type-desc {
+            color: var(--text-muted);
+        }
+        [data-theme="light"] .passport-type-features {
+            color: var(--text-subtle);
+        }
+        [data-theme="light"] .passport-type-features svg {
+            color: var(--emerald-deep);
+        }
+
+        /* Requirements List */
+        [data-theme="light"] .requirements-list li {
+            background: var(--card-gradient);
+            border-color: var(--card-border);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        }
+        [data-theme="light"] .req-number {
+            background: linear-gradient(135deg, var(--emerald-deep), var(--emerald-rich));
+            color: #FFFFFF;
+        }
+        [data-theme="light"] .req-title {
+            color: var(--text-primary);
+        }
+        [data-theme="light"] .req-desc {
+            color: var(--text-muted);
+        }
+
+        /* Process Steps */
+        [data-theme="light"] .process-step:not(:last-child)::after {
+            background: linear-gradient(180deg, var(--emerald-deep), rgba(13, 61, 46, 0.2));
+        }
+        [data-theme="light"] .step-icon {
+            background: linear-gradient(135deg, var(--emerald-deep), var(--emerald-rich));
+            color: #FFFFFF;
+        }
+        [data-theme="light"] .step-title {
+            color: var(--text-primary);
+        }
+        [data-theme="light"] .step-desc {
+            color: var(--text-muted);
+        }
+
+        /* Fees Table */
+        [data-theme="light"] .fees-table th {
+            background: var(--table-header-bg);
+            color: #FFFFFF;
+        }
+        [data-theme="light"] .fees-table td {
+            color: var(--text-muted);
+            border-bottom-color: var(--border-subtle);
+        }
+        [data-theme="light"] .fees-table tr:hover td {
+            background: rgba(13, 61, 46, 0.03);
+        }
+        [data-theme="light"] .fees-table .price {
+            color: var(--emerald-deep);
+        }
+
+        /* FAQ Accordion */
+        [data-theme="light"] .faq-item {
+            border-color: var(--card-border);
+        }
+        [data-theme="light"] .faq-question {
+            background: var(--card-gradient);
+            color: var(--text-primary);
+        }
+        [data-theme="light"] .faq-question:hover {
+            background: rgba(13, 61, 46, 0.03);
+        }
+        [data-theme="light"] .faq-question svg {
+            color: var(--emerald-deep);
+        }
+        [data-theme="light"] .faq-answer-content {
+            color: var(--text-muted);
+            background: var(--bg-secondary);
+        }
+
+        /* Status Tracker */
+        [data-theme="light"] .status-tracker {
+            background: linear-gradient(145deg, rgba(13, 61, 46, 0.08), rgba(13, 61, 46, 0.03));
+            border-color: rgba(13, 61, 46, 0.2);
+        }
+        [data-theme="light"] .status-tracker h4 {
+            color: var(--emerald-deep);
+        }
+        [data-theme="light"] .status-input input {
+            background: var(--bg-card);
+            border-color: var(--input-border);
+            color: var(--text-primary);
+        }
+        [data-theme="light"] .status-input input::placeholder {
+            color: var(--text-subtle);
+        }
+        [data-theme="light"] .status-input input:focus {
+            border-color: var(--emerald-deep);
+        }
+        [data-theme="light"] .status-input button {
+            background: linear-gradient(135deg, var(--emerald-deep), var(--emerald-rich));
+            color: #FFFFFF;
+        }
+
+        /* CTA Section */
+        [data-theme="light"] .cta-section {
+            background: linear-gradient(135deg, var(--emerald-deep), #1A5C45);
+            color: #FFFFFF;
+        }
+        [data-theme="light"] .cta-section::before {
+            background: radial-gradient(circle, rgba(245, 208, 97, 0.1), transparent 60%);
+        }
+        [data-theme="light"] .cta-section h2 {
+            color: #FFFFFF;
+        }
+        [data-theme="light"] .cta-section p {
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        /* Footer */
+        [data-theme="light"] .footer {
+            background: var(--footer-bg);
+            border-top-color: var(--border-subtle);
+        }
+        [data-theme="light"] .footer-logo svg {
+            fill: var(--emerald-deep);
+        }
+        [data-theme="light"] .footer-logo-text {
+            color: var(--text-primary);
+        }
+        [data-theme="light"] .footer-desc {
+            color: var(--text-muted);
+        }
+        [data-theme="light"] .social-link {
+            border-color: var(--border-color);
+            color: var(--text-secondary);
+        }
+        [data-theme="light"] .social-link:hover {
+            background: var(--emerald-deep);
+            border-color: var(--emerald-deep);
+            color: #FFFFFF;
+        }
+        [data-theme="light"] .footer-column h4 {
+            color: var(--emerald-deep);
+        }
+        [data-theme="light"] .footer-column a {
+            color: var(--text-muted);
+        }
+        [data-theme="light"] .footer-column a:hover {
+            color: var(--emerald-deep);
+        }
+        [data-theme="light"] .footer-bottom {
+            border-top-color: var(--border-subtle);
+        }
+        [data-theme="light"] .footer-copy {
+            color: var(--text-subtle);
+        }
+        [data-theme="light"] .footer-links a {
+            color: var(--text-muted);
+        }
+        [data-theme="light"] .footer-links a:hover {
+            color: var(--emerald-deep);
+        }
+
+        /* Custom Cursor - Light Mode */
+        [data-theme="light"] .cursor-main {
+            background: var(--emerald-deep);
+        }
+        [data-theme="light"] .cursor-trail {
+            border-color: var(--emerald-deep);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .service-hero-content { grid-template-columns: 1fr; }
+            .quick-action-card { margin-top: var(--space-8); }
+            .content-grid { grid-template-columns: 1fr; }
+            .content-sidebar { position: static; order: -1; }
+            .passport-types { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 1100px) {
+            .nav-links {
+                display: none;
+            }
+
+            
+
+            .nav-cta {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .top-bar {
+                display: none;
+            }
+
+            .service-hero h1 { font-size: 2.5rem; }
+            .service-meta-row { gap: var(--space-4); }
+            .service-actions { flex-direction: column; }
+            .cta-buttons { flex-direction: column; align-items: center; }
+            .footer-grid { grid-template-columns: 1fr; gap: var(--space-8); }
+            .footer-bottom { flex-direction: column; gap: var(--space-4); text-align: center; }
+            .cursor-main, .cursor-trail { display: none; }
+            body { cursor: auto; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Preloader -->
+    <div class="preloader" id="preloader">
+        <svg class="preloader-star" viewBox="0 0 100 100">
+            <polygon points="50,5 61,40 98,40 68,62 79,97 50,75 21,97 32,62 2,40 39,40"/>
+        </svg>
+        <span class="preloader-text">Loading</span>
+    </div>
+
+    <!-- Custom Cursor -->
+    <div class="cursor-main" id="cursorMain"></div>
+    <div class="cursor-trail" id="cursorTrail"></div>
+
+    <!-- Noise Overlay -->
+    <div class="noise-overlay"></div>
+
+    <!-- Ambient Orbs -->
+    <div class="ambient-orbs">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+    </div>
+
+    <!-- Skip Link -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <a href="tel:112" class="emergency-link">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+            </svg>
+            Emergency: 112 | COVID-19: 311
+        </a>
+        <div class="language-selector">
+            <span>Language:</span>
+            <button class="active">English</button>
+            <button>Twi</button>
+            <button>Hausa</button>
+            <button>Ewe</button>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="nav-main">
+        <div class="nav-container">
+            <a href="../index.html" class="logo">
+                <div class="logo-emblem">
+                    <svg class="logo-star" viewBox="0 0 100 100">
+                        <polygon points="50,5 61,40 98,40 68,62 79,97 50,75 21,97 32,62 2,40 39,40"/>
+                    </svg>
+                </div>
+                <div class="logo-text">
+                    <span class="logo-title">Republic of Ghana</span>
+                    <span class="logo-subtitle">Official Government Portal</span>
+                </div>
+            </a>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="index.html" class="active">Services</a></li>
+                <li><a href="../government/index.html">Government</a></li>
+                <li><a href="../business/index.html">Invest</a></li>
+                <li><a href="../tourism/index.html">Visit Ghana</a></li>
+                <li><a href="../contact.html">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="nav-btn" aria-label="Search" onclick="openSearch()">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+                </button>
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <div class="toggle-orb">
+                        <svg class="toggle-icon moon" viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                        <svg class="toggle-icon sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/></svg>
+                    </div>
+                </button>
+                <a href="index.html" class="nav-cta">Access Services</a>
+                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open menu">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close menu">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+        <ul class="mobile-menu-links">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="index.html" class="active">Services</a></li>
+            <li><a href="../government/index.html">Government</a></li>
+            <li><a href="../business/index.html">Invest</a></li>
+            <li><a href="../tourism/index.html">Visit Ghana</a></li>
+            <li><a href="../contact.html">Contact</a></li>
+        </ul>
+    </div>
+
+    <!-- Search Modal -->
+    <div class="search-modal" id="searchModal">
+        <button class="search-close" onclick="closeSearch()">
+            <svg width="32" height="32" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M18 6L6 18M6 6l12 12"/>
+            </svg>
+        </button>
+        <div class="search-container">
+            <div class="search-input-wrapper">
+                <svg class="search-icon-lg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
+                </svg>
+                <input type="text" class="search-input-lg" placeholder="Search for services...">
+            </div>
+        </div>
+    </div>
+
+    <!-- Service Hero -->
+    <section class="service-hero">
+        <div class="container">
+            <div class="service-hero-content">
+                <div class="service-hero-text">
+                    <nav class="breadcrumbs">
+                        <a href="../index.html">Home</a>
+                        <span class="separator">/</span>
+                        <a href="index.html">Services</a>
+                        <span class="separator">/</span>
+                        <span class="current">Passport Services</span>
+                    </nav>
+
+                    <span class="service-badge">
+                        <svg width="14" height="14" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                        </svg>
+                        Official Service
+                    </span>
+
+                    <h1>Passport <span>Services</span></h1>
+                    <p class="service-hero-desc">Apply for your Ghanaian passport online. Whether you need a new passport, renewal, or replacement, we've streamlined the process for your convenience.</p>
+
+                    <div class="service-meta-row">
+                        <div class="meta-item">
+                            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+                            </svg>
+                            Processing: 3-5 business days
+                        </div>
+                        <div class="meta-item">
+                            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                            </svg>
+                            Fees: GHS 100 - 350
+                        </div>
+                        <div class="meta-item">
+                            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                <circle cx="12" cy="10" r="3"/>
+                            </svg>
+                            Available Nationwide
+                        </div>
+                    </div>
+
+                    <div class="service-actions">
+                        <a href="#apply" class="btn btn-primary">Start Application</a>
+                        <a href="#track" class="btn btn-outline-light">Track Application</a>
+                    </div>
+                </div>
+
+                <div class="quick-action-card">
+                    <h3>Quick Actions</h3>
+                    <p>Select the service you need</p>
+                    <div class="quick-action-options">
+                        <a href="#new" class="quick-option">
+                            <div class="quick-option-icon">
+                                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
+                                </svg>
+                            </div>
+                            <div class="quick-option-text">
+                                <div class="quick-option-title">New Passport</div>
+                                <div class="quick-option-desc">First-time applicants</div>
+                            </div>
+                        </a>
+                        <a href="#renew" class="quick-option">
+                            <div class="quick-option-icon">
+                                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/>
+                                </svg>
+                            </div>
+                            <div class="quick-option-text">
+                                <div class="quick-option-title">Renew Passport</div>
+                                <div class="quick-option-desc">Expired or expiring soon</div>
+                            </div>
+                        </a>
+                        <a href="#replace" class="quick-option">
+                            <div class="quick-option-icon">
+                                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                    <polyline points="14 2 14 8 20 8"/>
+                                </svg>
+                            </div>
+                            <div class="quick-option-text">
+                                <div class="quick-option-title">Replace Passport</div>
+                                <div class="quick-option-desc">Lost, stolen, or damaged</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        <section class="service-content">
+            <div class="container">
+                <div class="content-grid">
+                    <div class="content-main">
+                        <!-- Passport Types -->
+                        <div class="content-section reveal" id="types">
+                            <h2>Passport Types</h2>
+                            <p>Choose the passport type that suits your travel needs. All Ghanaian passports are biometric and comply with international standards.</p>
+
+                            <div class="passport-types">
+                                <div class="passport-type-card" onclick="selectType(this)">
+                                    <div class="passport-type-header">
+                                        <span class="passport-type-name">Standard Passport</span>
+                                        <span class="passport-type-price">GHS 100</span>
+                                    </div>
+                                    <p class="passport-type-desc">32-page passport for regular travel needs</p>
+                                    <div class="passport-type-features">
+                                        <span><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/></svg> 32 pages</span>
+                                        <span><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg> 5 years validity</span>
+                                    </div>
+                                </div>
+
+                                <div class="passport-type-card selected" onclick="selectType(this)">
+                                    <div class="passport-type-header">
+                                        <span class="passport-type-name">Standard Passport (48 pages)</span>
+                                        <span class="passport-type-price">GHS 150</span>
+                                    </div>
+                                    <p class="passport-type-desc">Extended pages for frequent travelers</p>
+                                    <div class="passport-type-features">
+                                        <span><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/></svg> 48 pages</span>
+                                        <span><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg> 5 years validity</span>
+                                    </div>
+                                </div>
+
+                                <div class="passport-type-card" onclick="selectType(this)">
+                                    <div class="passport-type-header">
+                                        <span class="passport-type-name">Express Processing</span>
+                                        <span class="passport-type-price">GHS 250</span>
+                                    </div>
+                                    <p class="passport-type-desc">48-page passport with expedited processing</p>
+                                    <div class="passport-type-features">
+                                        <span><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/></svg> 48 pages</span>
+                                        <span><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 24-48 hours</span>
+                                    </div>
+                                </div>
+
+                                <div class="passport-type-card" onclick="selectType(this)">
+                                    <div class="passport-type-header">
+                                        <span class="passport-type-name">10-Year Passport</span>
+                                        <span class="passport-type-price">GHS 350</span>
+                                    </div>
+                                    <p class="passport-type-desc">Extended validity for adults 18+</p>
+                                    <div class="passport-type-features">
+                                        <span><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/></svg> 48 pages</span>
+                                        <span><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg> 10 years validity</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Requirements -->
+                        <div class="content-section reveal" id="requirements">
+                            <h2>Requirements</h2>
+                            <p>Ensure you have all required documents before starting your application to avoid delays.</p>
+
+                            <ul class="requirements-list">
+                                <li>
+                                    <span class="req-number">1</span>
+                                    <div class="req-content">
+                                        <div class="req-title">Ghana Card (National ID)</div>
+                                        <div class="req-desc">Valid Ghana Card is mandatory for all passport applications</div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="req-number">2</span>
+                                    <div class="req-content">
+                                        <div class="req-title">Birth Certificate</div>
+                                        <div class="req-desc">Original birth certificate issued by Births & Deaths Registry</div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="req-number">3</span>
+                                    <div class="req-content">
+                                        <div class="req-title">Passport Photos</div>
+                                        <div class="req-desc">4 recent passport-size photos (white background, 35mm x 45mm)</div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="req-number">4</span>
+                                    <div class="req-content">
+                                        <div class="req-title">Proof of Ghanaian Citizenship</div>
+                                        <div class="req-desc">For naturalized citizens: Certificate of Naturalization or Registration</div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="req-number">5</span>
+                                    <div class="req-content">
+                                        <div class="req-title">Old Passport (for renewals)</div>
+                                        <div class="req-desc">Previous passport for renewal applications</div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Application Process -->
+                        <div class="content-section reveal" id="process">
+                            <h2>Application Process</h2>
+                            <p>Follow these simple steps to complete your passport application.</p>
+
+                            <div class="process-steps">
+                                <div class="process-step">
+                                    <div class="step-icon">1</div>
+                                    <div class="step-content">
+                                        <div class="step-title">Create Account & Apply Online</div>
+                                        <div class="step-desc">Visit the passport portal, create an account, and fill out the application form with your personal details.</div>
+                                    </div>
+                                </div>
+                                <div class="process-step">
+                                    <div class="step-icon">2</div>
+                                    <div class="step-content">
+                                        <div class="step-title">Upload Documents</div>
+                                        <div class="step-desc">Upload scanned copies of your Ghana Card, birth certificate, and passport photo.</div>
+                                    </div>
+                                </div>
+                                <div class="process-step">
+                                    <div class="step-icon">3</div>
+                                    <div class="step-content">
+                                        <div class="step-title">Pay Application Fee</div>
+                                        <div class="step-desc">Make payment online via mobile money, bank transfer, or card payment.</div>
+                                    </div>
+                                </div>
+                                <div class="process-step">
+                                    <div class="step-icon">4</div>
+                                    <div class="step-content">
+                                        <div class="step-title">Schedule Appointment</div>
+                                        <div class="step-desc">Book an appointment at your preferred passport application center for biometric capture.</div>
+                                    </div>
+                                </div>
+                                <div class="process-step">
+                                    <div class="step-icon">5</div>
+                                    <div class="step-content">
+                                        <div class="step-title">Visit Center for Biometrics</div>
+                                        <div class="step-desc">Attend your appointment with original documents for verification and biometric capture.</div>
+                                    </div>
+                                </div>
+                                <div class="process-step">
+                                    <div class="step-icon">6</div>
+                                    <div class="step-content">
+                                        <div class="step-title">Collect Passport</div>
+                                        <div class="step-desc">Receive notification when your passport is ready for collection or home delivery.</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Fees -->
+                        <div class="content-section reveal" id="fees">
+                            <h2>Fees & Processing Times</h2>
+                            <p>All fees are payable online through the passport application portal.</p>
+
+                            <table class="fees-table">
+                                <thead>
+                                    <tr>
+                                        <th>Passport Type</th>
+                                        <th>Pages</th>
+                                        <th>Validity</th>
+                                        <th>Processing</th>
+                                        <th>Fee</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Standard</td>
+                                        <td>32</td>
+                                        <td>5 years</td>
+                                        <td>5-7 days</td>
+                                        <td class="price">GHS 100</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Standard (Extended)</td>
+                                        <td>48</td>
+                                        <td>5 years</td>
+                                        <td>5-7 days</td>
+                                        <td class="price">GHS 150</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Express</td>
+                                        <td>48</td>
+                                        <td>5 years</td>
+                                        <td>24-48 hours</td>
+                                        <td class="price">GHS 250</td>
+                                    </tr>
+                                    <tr>
+                                        <td>10-Year (Adults)</td>
+                                        <td>48</td>
+                                        <td>10 years</td>
+                                        <td>5-7 days</td>
+                                        <td class="price">GHS 350</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Child Passport</td>
+                                        <td>32</td>
+                                        <td>5 years</td>
+                                        <td>5-7 days</td>
+                                        <td class="price">GHS 80</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- FAQs -->
+                        <div class="content-section reveal" id="faq">
+                            <h2>Frequently Asked Questions</h2>
+
+                            <div class="faq-list">
+                                <div class="faq-item">
+                                    <button class="faq-question" onclick="toggleFaq(this)">
+                                        Can I apply for a passport online?
+                                        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+                                    </button>
+                                    <div class="faq-answer">
+                                        <div class="faq-answer-content">Yes, you can start your passport application online through the official Ghana Passport Application Portal. You'll need to create an account, fill out the application form, upload documents, and pay the fee online. However, you must visit a passport application center in person for biometric capture.</div>
+                                    </div>
+                                </div>
+
+                                <div class="faq-item">
+                                    <button class="faq-question" onclick="toggleFaq(this)">
+                                        How long does it take to get a passport?
+                                        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+                                    </button>
+                                    <div class="faq-answer">
+                                        <div class="faq-answer-content">Standard processing takes 5-7 business days after biometric capture. Express processing is available for 24-48 hours at an additional fee. Processing times may vary during peak periods.</div>
+                                    </div>
+                                </div>
+
+                                <div class="faq-item">
+                                    <button class="faq-question" onclick="toggleFaq(this)">
+                                        What documents do I need for a child's passport?
+                                        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+                                    </button>
+                                    <div class="faq-answer">
+                                        <div class="faq-answer-content">For a child's passport, you'll need: Child's birth certificate, Child's Ghana Card (if 6 years or older), Parent/Guardian's Ghana Card, Parent/Guardian's passport, Consent letter from both parents (if applicable), and 4 passport photos of the child.</div>
+                                    </div>
+                                </div>
+
+                                <div class="faq-item">
+                                    <button class="faq-question" onclick="toggleFaq(this)">
+                                        Can I renew my passport before it expires?
+                                        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+                                    </button>
+                                    <div class="faq-answer">
+                                        <div class="faq-answer-content">Yes, you can renew your passport up to 12 months before it expires. We recommend renewing at least 6 months before expiry, as many countries require your passport to be valid for at least 6 months beyond your travel dates.</div>
+                                    </div>
+                                </div>
+
+                                <div class="faq-item">
+                                    <button class="faq-question" onclick="toggleFaq(this)">
+                                        What should I do if my passport is lost or stolen?
+                                        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+                                    </button>
+                                    <div class="faq-answer">
+                                        <div class="faq-answer-content">If your passport is lost or stolen, you should: 1) Report to the nearest police station and obtain a police report, 2) Report the loss to the Passport Office, 3) Apply for a replacement passport with the police report, an affidavit, and standard requirements. If lost abroad, contact the nearest Ghana Embassy or Consulate.</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sidebar -->
+                    <aside class="content-sidebar">
+                        <div class="status-tracker" id="track">
+                            <h4>
+                                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
+                                </svg>
+                                Track Application
+                            </h4>
+                            <div class="status-input">
+                                <input type="text" placeholder="Enter application ID">
+                                <button>Track</button>
+                            </div>
+                        </div>
+
+                        <div class="info-card">
+                            <h4>
+                                <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                    <circle cx="12" cy="10" r="3"/>
+                                </svg>
+                                Application Centers
+                            </h4>
+                            <ul>
+                                <li><svg width="14" height="14" fill="currentColor" viewBox="0 0 16 16"><path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/></svg> Accra - Head Office, Ridge</li>
+                                <li><svg width="14" height="14" fill="currentColor" viewBox="0 0 16 16"><path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/></svg> Kumasi - Adum</li>
+                                <li><svg width="14" height="14" fill="currentColor" viewBox="0 0 16 16"><path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/></svg> Takoradi - Market Circle</li>
+                                <li><svg width="14" height="14" fill="currentColor" viewBox="0 0 16 16"><path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/></svg> Tamale - Central</li>
+                            </ul>
+                        </div>
+
+                        <div class="info-card">
+                            <h4>
+                                <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+                                </svg>
+                                Office Hours
+                            </h4>
+                            <ul>
+                                <li><svg width="14" height="14" fill="currentColor" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/></svg> Monday - Friday: 8:00 AM - 5:00 PM</li>
+                                <li><svg width="14" height="14" fill="currentColor" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/></svg> Saturday: 9:00 AM - 1:00 PM</li>
+                                <li><svg width="14" height="14" fill="currentColor" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"/></svg> Sunday & Holidays: Closed</li>
+                            </ul>
+                        </div>
+
+                        <div class="info-card">
+                            <h4>
+                                <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                                </svg>
+                                Contact
+                            </h4>
+                            <ul>
+                                <li><svg width="14" height="14" fill="currentColor" viewBox="0 0 16 16"><path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328z"/></svg> +233 302 123 456</li>
+                                <li><svg width="14" height="14" fill="currentColor" viewBox="0 0 16 16"><path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Z"/></svg> passport@mfa.gov.gh</li>
+                            </ul>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section" id="apply">
+            <div class="container">
+                <h2 class="reveal">Ready to Apply?</h2>
+                <p class="reveal">Start your passport application now and travel the world with your Ghanaian passport.</p>
+                <div class="cta-buttons reveal">
+                    <a href="https://passport.mfa.gov.gh" class="btn btn-primary btn-lg" target="_blank">
+                        Start Application
+                        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                            <polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
+                        </svg>
+                    </a>
+                    <a href="../contact.html" class="btn btn-outline-light btn-lg">Contact Us</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <div class="footer-logo">
+                    <svg viewBox="0 0 100 100"><polygon points="50,5 61,40 98,40 68,62 79,97 50,75 21,97 32,62 2,40 39,40"/></svg>
+                    <span class="footer-logo-text">Republic of Ghana</span>
+                </div>
+                <p class="footer-desc">The official digital gateway to Ghana's government services.</p>
+                <div class="footer-social">
+                    <a href="#" class="social-link"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+                    <a href="#" class="social-link"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="passport.html">Passport Services</a></li>
+                    <li><a href="ghana-card.html">Ghana Card</a></li>
+                    <li><a href="tax.html">Tax Filing</a></li>
+                    <li><a href="business.html">Business Registration</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Government</h4>
+                <ul>
+                    <li><a href="../government/president.html">The Presidency</a></li>
+                    <li><a href="../government/parliament.html">Parliament</a></li>
+                    <li><a href="../government/ministries.html">Ministries</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="../contact.html">Contact Us</a></li>
+                    <li><a href="../faq.html">FAQs</a></li>
+                    <li><a href="../accessibility.html">Accessibility</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p class="footer-copy">&copy; 2026 Republic of Ghana. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="../privacy.html">Privacy Policy</a>
+                <a href="../terms.html">Terms of Use</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Theme Toggle - Apply early to prevent flash
+        (function() {
+            const STORAGE_KEY = 'ghana-gov-theme';
+            const DARK = 'dark';
+            const LIGHT = 'light';
+            function getSavedTheme() {
+                const saved = localStorage.getItem(STORAGE_KEY);
+                if (saved) return saved;
+                if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) return LIGHT;
+                return DARK;
+            }
+            function applyTheme(theme) {
+                if (theme === LIGHT) document.documentElement.setAttribute('data-theme', 'light');
+                else document.documentElement.removeAttribute('data-theme');
+                localStorage.setItem(STORAGE_KEY, theme);
+            }
+            applyTheme(getSavedTheme());
+            document.addEventListener('DOMContentLoaded', function() {
+                const toggle = document.getElementById('themeToggle');
+                if (toggle) {
+                    toggle.addEventListener('click', function() {
+                        const current = document.documentElement.getAttribute('data-theme');
+                        applyTheme(current === 'light' ? DARK : LIGHT);
+                        this.style.transform = 'scale(0.95)';
+                        setTimeout(() => { this.style.transform = ''; }, 150);
+                    });
+                }
+            });
+        })();
+
+        // Preloader
+        window.addEventListener('load', () => {
+            setTimeout(() => { document.getElementById('preloader').classList.add('hidden'); }, 800);
+        });
+
+        // Custom Cursor
+        const cursorMain = document.getElementById('cursorMain');
+        const cursorTrail = document.getElementById('cursorTrail');
+        if (window.matchMedia('(pointer: fine)').matches) {
+            document.addEventListener('mousemove', (e) => {
+                cursorMain.style.left = e.clientX - 4 + 'px';
+                cursorMain.style.top = e.clientY - 4 + 'px';
+                setTimeout(() => {
+                    cursorTrail.style.left = e.clientX - 16 + 'px';
+                    cursorTrail.style.top = e.clientY - 16 + 'px';
+                }, 80);
+            });
+            document.querySelectorAll('a, button, .passport-type-card, .quick-option').forEach(el => {
+                el.addEventListener('mouseenter', () => {
+                    cursorMain.classList.add('hovering');
+                    cursorTrail.classList.add('hovering');
+                });
+                el.addEventListener('mouseleave', () => {
+                    cursorMain.classList.remove('hovering');
+                    cursorTrail.classList.remove('hovering');
+                });
+            });
+        }
+
+        // Search Modal
+        function openSearch() { document.getElementById('searchModal').classList.add('active'); document.querySelector('.search-input-lg').focus(); }
+        function closeSearch() { document.getElementById('searchModal').classList.remove('active'); }
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeSearch();
+            if ((e.metaKey || e.ctrlKey) && e.key === 'k') { e.preventDefault(); openSearch(); }
+        });
+
+        // Passport type selection
+        function selectType(card) {
+            document.querySelectorAll('.passport-type-card').forEach(c => c.classList.remove('selected'));
+            card.classList.add('selected');
+        }
+
+        // FAQ accordion
+        function toggleFaq(button) {
+            const item = button.parentElement;
+            const wasActive = item.classList.contains('active');
+            document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+            if (!wasActive) item.classList.add('active');
+        }
+
+        // Scroll Reveal
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry, i) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => entry.target.classList.add('visible'), i * 100);
+                }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+        // Mobile Menu Toggle
+        (function() {
+            document.addEventListener('DOMContentLoaded', function() {
+                const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+                const mobileMenuClose = document.getElementById('mobileMenuClose');
+                const mobileMenu = document.getElementById('mobileMenu');
+                if (mobileMenuBtn && mobileMenu) {
+                    mobileMenuBtn.addEventListener('click', function() {
+                        mobileMenu.classList.add('active');
+                        document.body.style.overflow = 'hidden';
+                    });
+                    if (mobileMenuClose) {
+                        mobileMenuClose.addEventListener('click', function() {
+                            mobileMenu.classList.remove('active');
+                            document.body.style.overflow = '';
+                        });
+                    }
+                    mobileMenu.querySelectorAll('a').forEach(link => {
+                        link.addEventListener('click', function() {
+                            mobileMenu.classList.remove('active');
+                            document.body.style.overflow = '';
+                        });
+                    });
+                    document.addEventListener('keydown', function(e) {
+                        if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
+                            mobileMenu.classList.remove('active');
+                            document.body.style.overflow = '';
+                        }
+                    });
+                }
+            });
+        })();
+    </script>
+</body>
+</html>

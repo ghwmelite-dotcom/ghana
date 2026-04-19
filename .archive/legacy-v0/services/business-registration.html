@@ -1,0 +1,1560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Registration | Government Services</title>
+    <meta name="description" content="Register your business in Ghana with the Registrar General's Department. Company registration, sole proprietorships, and partnerships.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <style>
+        /* Theme System Variables */
+        :root {
+            /* Semantic Color Variables - Dark Mode (Default) */
+            --bg-primary: #0A0A0A;
+            --bg-secondary: #111111;
+            --bg-tertiary: #1A1A1A;
+            --text-primary: #FAFAF8;
+            --text-secondary: rgba(250, 250, 248, 0.8);
+            --text-muted: rgba(250, 250, 248, 0.6);
+            --card-bg: #1A1A1A;
+            --card-border: rgba(255, 255, 255, 0.1);
+            --nav-bg: rgba(10, 10, 10, 0.95);
+            --border-subtle: rgba(255, 255, 255, 0.1);
+            --accent-primary: #C9A227;
+            --accent-secondary: #D4AF37;
+            --hero-gradient-start: #1B4D3E;
+            --hero-gradient-end: #0d2a22;
+            --section-bg-alt: #f5f5f0;
+            --theme-transition: 0.3s ease;
+        }
+
+        /* Light Mode Variables */
+        [data-theme="light"] {
+            --bg-primary: #FAFAF8;
+            --bg-secondary: #F5F4F0;
+            --bg-tertiary: #EEEEE8;
+            --text-primary: #1A1A1A;
+            --text-secondary: #2D2D2D;
+            --text-muted: #5A5A5A;
+            --card-bg: #FFFFFF;
+            --card-border: rgba(0, 0, 0, 0.08);
+            --nav-bg: rgba(250, 250, 248, 0.95);
+            --border-subtle: rgba(0, 0, 0, 0.08);
+            --accent-primary: #0D3D2E;
+            --accent-secondary: #1A5C45;
+            --hero-gradient-start: #0D3D2E;
+            --hero-gradient-end: #1A5C45;
+            --section-bg-alt: #F5F4F0;
+        }
+
+        /* Theme Toggle Styles */
+        .theme-toggle {
+            position: relative;
+            width: 48px;
+            height: 48px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: transform var(--theme-transition), background-color var(--theme-transition);
+        }
+
+        .theme-toggle:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        [data-theme="light"] .theme-toggle:hover {
+            background: rgba(0, 0, 0, 0.05);
+        }
+
+        .toggle-orb {
+            position: relative;
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .toggle-icon {
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            transition: opacity var(--theme-transition), transform var(--theme-transition);
+        }
+
+        .toggle-icon.moon {
+            color: #C9A227;
+            opacity: 1;
+            transform: rotate(0deg) scale(1);
+        }
+
+        .toggle-icon.sun {
+            color: #C9A227;
+            opacity: 0;
+            transform: rotate(-90deg) scale(0.5);
+        }
+
+        [data-theme="light"] .toggle-icon.moon {
+            opacity: 0;
+            transform: rotate(90deg) scale(0.5);
+        }
+
+        [data-theme="light"] .toggle-icon.sun {
+            color: #0D3D2E;
+            opacity: 1;
+            transform: rotate(0deg) scale(1);
+        }
+
+        .toggle-stars {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .toggle-star {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: #C9A227;
+            border-radius: 50%;
+            opacity: 0.8;
+            transition: opacity var(--theme-transition), transform var(--theme-transition);
+        }
+
+        .toggle-star:nth-child(1) {
+            top: 8px;
+            left: 6px;
+            animation: twinkle 2s ease-in-out infinite;
+        }
+
+        .toggle-star:nth-child(2) {
+            top: 4px;
+            right: 10px;
+            width: 2px;
+            height: 2px;
+            animation: twinkle 2s ease-in-out infinite 0.5s;
+        }
+
+        .toggle-star:nth-child(3) {
+            bottom: 10px;
+            left: 4px;
+            width: 2px;
+            height: 2px;
+            animation: twinkle 2s ease-in-out infinite 1s;
+        }
+
+        .toggle-star:nth-child(4) {
+            bottom: 6px;
+            right: 6px;
+            animation: twinkle 2s ease-in-out infinite 1.5s;
+        }
+
+        [data-theme="light"] .toggle-star {
+            opacity: 0;
+            transform: scale(0);
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.8; transform: scale(1); }
+            50% { opacity: 0.3; transform: scale(0.8); }
+        }
+
+        .page-hero {
+            padding: 8rem 2rem 4rem;
+            background: linear-gradient(135deg, var(--green-deep) 0%, #0d2a22 100%);
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-family: 'Fraunces', serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: var(--white-ivory);
+            margin-bottom: 1rem;
+        }
+
+        .hero-text p {
+            color: rgba(250,250,248,0.8);
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-agency {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: rgba(255,255,255,0.05);
+            border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .agency-logo {
+            width: 50px;
+            height: 50px;
+            background: var(--gold-burnished);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Fraunces', serif;
+            font-weight: 700;
+            color: var(--black-obsidian);
+            font-size: 1.25rem;
+        }
+
+        .agency-name {
+            color: var(--white-ivory);
+            font-weight: 600;
+        }
+
+        .agency-full {
+            color: rgba(250,250,248,0.6);
+            font-size: 0.85rem;
+        }
+
+        .hero-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .hero-card h3 {
+            font-family: 'Fraunces', serif;
+            font-size: 1.35rem;
+            color: var(--black-obsidian);
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .quick-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .quick-link {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem;
+            background: #f8f8f6;
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--black-obsidian);
+            transition: all 0.3s ease;
+        }
+
+        .quick-link:hover {
+            background: rgba(27,77,62,0.1);
+            transform: translateX(5px);
+        }
+
+        .quick-link-info {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .quick-link-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--green-deep);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .quick-link-icon svg {
+            width: 20px;
+            height: 20px;
+            color: var(--gold-burnished);
+        }
+
+        .quick-link-text {
+            font-weight: 600;
+        }
+
+        .quick-link svg.arrow {
+            width: 18px;
+            height: 18px;
+            color: var(--green-deep);
+        }
+
+        /* Business Types */
+        .types-section {
+            padding: 4rem 2rem;
+            background: var(--white-ivory);
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 3rem;
+        }
+
+        .section-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--gold-burnished);
+            margin-bottom: 0.75rem;
+        }
+
+        .section-title {
+            font-family: 'Fraunces', serif;
+            font-size: 2.25rem;
+            color: var(--black-obsidian);
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            color: var(--gray-mid);
+            line-height: 1.6;
+        }
+
+        .types-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .type-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            border: 1px solid rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+
+        .type-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .type-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--green-deep) 0%, #2d5a4a 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .type-icon svg {
+            width: 28px;
+            height: 28px;
+            color: var(--gold-burnished);
+        }
+
+        .type-name {
+            font-family: 'Fraunces', serif;
+            font-size: 1.35rem;
+            color: var(--black-obsidian);
+            margin-bottom: 0.75rem;
+        }
+
+        .type-description {
+            color: var(--gray-mid);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .type-details {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .type-detail {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+        }
+
+        .type-detail-label {
+            color: var(--gray-mid);
+        }
+
+        .type-detail-value {
+            font-weight: 600;
+            color: var(--green-deep);
+        }
+
+        /* Requirements */
+        .requirements-section {
+            padding: 4rem 2rem;
+            background: #f5f5f0;
+        }
+
+        .requirements-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .requirements-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+        }
+
+        .requirements-card h3 {
+            font-family: 'Fraunces', serif;
+            font-size: 1.35rem;
+            color: var(--black-obsidian);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .requirements-card h3 svg {
+            width: 24px;
+            height: 24px;
+            color: var(--green-deep);
+        }
+
+        .requirements-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .requirements-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .requirements-list li:last-child {
+            border-bottom: none;
+        }
+
+        .requirements-list li svg {
+            width: 18px;
+            height: 18px;
+            color: var(--green-deep);
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .requirements-list li span {
+            color: var(--gray-mid);
+            font-size: 0.95rem;
+        }
+
+        /* Process Timeline */
+        .process-section {
+            padding: 4rem 2rem;
+            background: var(--green-deep);
+        }
+
+        .process-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .process-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .process-header h2 {
+            font-family: 'Fraunces', serif;
+            font-size: 2rem;
+            color: var(--white-ivory);
+            margin-bottom: 1rem;
+        }
+
+        .process-header p {
+            color: rgba(250,250,248,0.7);
+        }
+
+        .process-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .process-step {
+            display: flex;
+            gap: 1.5rem;
+            position: relative;
+        }
+
+        .step-line {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 50px;
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: var(--gold-burnished);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Fraunces', serif;
+            font-weight: 700;
+            color: var(--black-obsidian);
+            font-size: 1.25rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .step-connector {
+            width: 2px;
+            flex: 1;
+            background: rgba(201,162,39,0.3);
+        }
+
+        .process-step:last-child .step-connector {
+            display: none;
+        }
+
+        .step-content {
+            flex: 1;
+            padding-bottom: 2rem;
+        }
+
+        .step-title {
+            font-family: 'Fraunces', serif;
+            font-size: 1.25rem;
+            color: var(--white-ivory);
+            margin-bottom: 0.5rem;
+        }
+
+        .step-desc {
+            color: rgba(250,250,248,0.7);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Fees Table */
+        .fees-section {
+            padding: 4rem 2rem;
+            background: var(--white-ivory);
+        }
+
+        .fees-table-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+
+        .fees-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .fees-table th,
+        .fees-table td {
+            padding: 1.25rem;
+            text-align: left;
+        }
+
+        .fees-table th {
+            background: var(--green-deep);
+            color: var(--white-ivory);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .fees-table td {
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .fees-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .fees-table tr:hover td {
+            background: #f8f8f6;
+        }
+
+        .fee-amount {
+            font-family: 'Fraunces', serif;
+            font-weight: 600;
+            color: var(--green-deep);
+        }
+
+        /* CTA */
+        .cta-section {
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, var(--gold-burnished) 0%, #D4AF37 100%);
+            text-align: center;
+        }
+
+        .cta-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .cta-section h2 {
+            font-family: 'Fraunces', serif;
+            font-size: 2rem;
+            color: var(--black-obsidian);
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            color: rgba(10,10,10,0.7);
+            margin-bottom: 2rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-dark {
+            background: var(--black-obsidian);
+            color: var(--white-ivory);
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-dark:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        @media (max-width: 1024px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+            }
+
+            .requirements-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ==========================================
+           Light Mode Specific Overrides
+           ========================================== */
+
+        /* Page Hero - Light Mode */
+        [data-theme="light"] .page-hero {
+            background: linear-gradient(135deg, var(--hero-gradient-start) 0%, var(--hero-gradient-end) 100%);
+        }
+
+        [data-theme="light"] .hero-text h1 {
+            color: #FFFFFF;
+        }
+
+        [data-theme="light"] .hero-text p {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        [data-theme="light"] .hero-agency {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        [data-theme="light"] .agency-logo {
+            background: #FFFFFF;
+            color: var(--accent-primary);
+        }
+
+        [data-theme="light"] .agency-name {
+            color: #FFFFFF;
+        }
+
+        [data-theme="light"] .agency-full {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Hero Card - Light Mode */
+        [data-theme="light"] .hero-card {
+            background: var(--card-bg);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        [data-theme="light"] .hero-card h3 {
+            color: var(--text-primary);
+            border-bottom-color: var(--border-subtle);
+        }
+
+        [data-theme="light"] .quick-link {
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+        }
+
+        [data-theme="light"] .quick-link:hover {
+            background: rgba(13, 61, 46, 0.1);
+        }
+
+        [data-theme="light"] .quick-link-icon {
+            background: var(--accent-primary);
+        }
+
+        [data-theme="light"] .quick-link-icon svg {
+            color: #FFFFFF;
+        }
+
+        [data-theme="light"] .quick-link svg.arrow {
+            color: var(--accent-primary);
+        }
+
+        /* Business Types Section - Light Mode */
+        [data-theme="light"] .types-section {
+            background: var(--bg-primary);
+        }
+
+        [data-theme="light"] .section-label {
+            color: var(--accent-primary);
+        }
+
+        [data-theme="light"] .section-title {
+            color: var(--text-primary);
+        }
+
+        [data-theme="light"] .section-subtitle {
+            color: var(--text-muted);
+        }
+
+        [data-theme="light"] .type-card {
+            background: var(--card-bg);
+            border-color: var(--card-border);
+        }
+
+        [data-theme="light"] .type-card:hover {
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+        }
+
+        [data-theme="light"] .type-icon {
+            background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+        }
+
+        [data-theme="light"] .type-icon svg {
+            color: #FFFFFF;
+        }
+
+        [data-theme="light"] .type-name {
+            color: var(--text-primary);
+        }
+
+        [data-theme="light"] .type-description {
+            color: var(--text-muted);
+        }
+
+        [data-theme="light"] .type-details {
+            border-top-color: var(--border-subtle);
+        }
+
+        [data-theme="light"] .type-detail-label {
+            color: var(--text-muted);
+        }
+
+        [data-theme="light"] .type-detail-value {
+            color: var(--accent-primary);
+        }
+
+        /* Requirements Section - Light Mode */
+        [data-theme="light"] .requirements-section {
+            background: var(--bg-secondary);
+        }
+
+        [data-theme="light"] .requirements-card {
+            background: var(--card-bg);
+        }
+
+        [data-theme="light"] .requirements-card h3 {
+            color: var(--text-primary);
+        }
+
+        [data-theme="light"] .requirements-card h3 svg {
+            color: var(--accent-primary);
+        }
+
+        [data-theme="light"] .requirements-list li {
+            border-bottom-color: var(--border-subtle);
+        }
+
+        [data-theme="light"] .requirements-list li svg {
+            color: var(--accent-primary);
+        }
+
+        [data-theme="light"] .requirements-list li span {
+            color: var(--text-muted);
+        }
+
+        /* Process Section - Light Mode */
+        [data-theme="light"] .process-section {
+            background: var(--accent-primary);
+        }
+
+        [data-theme="light"] .process-header h2 {
+            color: #FFFFFF;
+        }
+
+        [data-theme="light"] .process-header p {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        [data-theme="light"] .step-number {
+            background: #FFFFFF;
+            color: var(--accent-primary);
+        }
+
+        [data-theme="light"] .step-connector {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        [data-theme="light"] .step-title {
+            color: #FFFFFF;
+        }
+
+        [data-theme="light"] .step-desc {
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        /* Fees Section - Light Mode */
+        [data-theme="light"] .fees-section {
+            background: var(--bg-primary);
+        }
+
+        [data-theme="light"] .fees-table-container {
+            background: var(--card-bg);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        [data-theme="light"] .fees-table th {
+            background: var(--accent-primary);
+            color: #FFFFFF;
+        }
+
+        [data-theme="light"] .fees-table td {
+            border-bottom-color: var(--border-subtle);
+            color: var(--text-secondary);
+        }
+
+        [data-theme="light"] .fees-table tr:hover td {
+            background: var(--bg-secondary);
+        }
+
+        [data-theme="light"] .fee-amount {
+            color: var(--accent-primary);
+        }
+
+        /* CTA Section - Light Mode */
+        [data-theme="light"] .cta-section {
+            background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+        }
+
+        [data-theme="light"] .cta-section h2 {
+            color: #FFFFFF;
+        }
+
+        [data-theme="light"] .cta-section p {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        [data-theme="light"] .btn-dark {
+            background: #FFFFFF;
+            color: var(--accent-primary);
+        }
+
+        [data-theme="light"] .btn-dark:hover {
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Footer - Light Mode */
+        [data-theme="light"] .footer {
+            background: var(--text-primary);
+        }
+
+        [data-theme="light"] .footer-logo,
+        [data-theme="light"] .footer-tagline,
+        [data-theme="light"] .footer-bottom p {
+            color: var(--bg-primary);
+        }
+
+        /* Breadcrumb - Light Mode */
+        [data-theme="light"] .breadcrumb a {
+            color: rgba(255, 255, 255, 0.8) !important;
+        }
+
+        [data-theme="light"] .breadcrumb span {
+            color: rgba(255, 255, 255, 0.5) !important;
+        }
+
+        [data-theme="light"] .breadcrumb span:last-child {
+            color: #FFFFFF !important;
+        }
+
+        /* Header/Nav - Light Mode */
+        [data-theme="light"] .header {
+            background: var(--nav-bg);
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        [data-theme="light"] .logo {
+            color: var(--text-primary);
+        }
+
+        [data-theme="light"] .logo-star {
+            color: var(--accent-primary);
+        }
+
+        [data-theme="light"] .nav-link {
+            color: var(--text-secondary);
+        }
+
+        [data-theme="light"] .nav-link:hover,
+        [data-theme="light"] .nav-link.active {
+            color: var(--accent-primary);
+        }
+
+        [data-theme="light"] .search-btn {
+            color: var(--text-secondary);
+        }
+
+        [data-theme="light"] .search-btn:hover {
+            color: var(--accent-primary);
+        }
+
+        /* Global Transitions for Theme Change */
+        body,
+        .page-hero,
+        .hero-card,
+        .types-section,
+        .type-card,
+        .requirements-section,
+        .requirements-card,
+        .process-section,
+        .fees-section,
+        .fees-table-container,
+        .cta-section,
+        .footer,
+        .header {
+            transition: background-color var(--theme-transition),
+                        border-color var(--theme-transition),
+                        color var(--theme-transition);
+        }
+
+        /* Navigation - Minimal & Elegant */
+        .nav-main {
+            background: var(--nav-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 0 3rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-subtle);
+            transition: all 0.3s ease;
+        }
+
+        .nav-main.scrolled {
+            background: var(--nav-bg-scrolled);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 80px;
+        }
+
+        .logo { display: flex; align-items: center; gap: 1rem; text-decoration: none; color: var(--text-primary); }
+        .logo-emblem { width: 48px; height: 48px; flex-shrink: 0; }
+        .logo-star { width: 100%; height: 100%; fill: var(--gold-brilliant); transition: transform 0.4s ease; }
+        .logo:hover .logo-star { transform: rotate(36deg); }
+        .logo-text { display: flex; flex-direction: column; line-height: 1.2; }
+        .logo-title { font-family: var(--font-display); font-size: 1.4rem; font-weight: 600; color: var(--text-primary); }
+        .logo-subtitle { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--text-muted); }
+
+        .nav-links { display: flex; align-items: center; gap: 2.5rem; list-style: none; }
+        .nav-links a { text-decoration: none; color: var(--text-secondary); font-size: 0.9rem; font-weight: 500; padding: 0.5rem 0; position: relative; transition: color 0.3s ease; }
+        .nav-links a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: var(--gold-brilliant); transition: width 0.3s ease; }
+        .nav-links a:hover, .nav-links a.active { color: var(--gold-brilliant); }
+        .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+
+        .nav-actions { display: flex; align-items: center; gap: 1rem; }
+        .nav-btn { background: none; border: none; cursor: pointer; padding: 0.5rem; color: var(--text-secondary); transition: color 0.3s ease; display: flex; align-items: center; justify-content: center; }
+        .nav-btn:hover { color: var(--gold-brilliant); }
+        .nav-btn svg { width: 20px; height: 20px; }
+        .nav-cta { background: var(--gold-brilliant); color: #030303; padding: 0.65rem 1.5rem; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 0.85rem; transition: all 0.3s ease; }
+        .nav-cta:hover { background: var(--gold-glow); transform: translateY(-1px); }
+
+        .mobile-menu-btn { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; color: var(--text-primary); }
+        .mobile-menu-btn svg { width: 24px; height: 24px; }
+
+        .mobile-menu { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: var(--bg-primary); z-index: 999; padding: 6rem 2rem 2rem; opacity: 0; visibility: hidden; transition: all 0.3s ease; }
+        .mobile-menu.active { opacity: 1; visibility: visible; }
+        .mobile-menu-links { display: flex; flex-direction: column; gap: 0.5rem; list-style: none; }
+        .mobile-menu-links a { display: block; padding: 1rem 0; text-decoration: none; color: var(--text-primary); font-size: 1.5rem; font-family: var(--font-display); border-bottom: 1px solid var(--border-subtle); transition: color 0.3s ease; }
+        .mobile-menu-links a:hover { color: var(--gold-brilliant); }
+        .mobile-menu-close { position: absolute; top: 1.5rem; right: 1.5rem; background: none; border: none; cursor: pointer; color: var(--text-primary); padding: 0.5rem; }
+        .mobile-menu-close svg { width: 28px; height: 28px; }
+
+        @media (max-width: 1024px) {
+            .nav-main { padding: 0 1.5rem; }
+            .nav-links, .nav-cta { display: none; }
+            .mobile-menu-btn { display: block; }
+            .mobile-menu { display: block; }
+        }
+        @media (max-width: 640px) {
+            .logo-text { display: none; }
+            .nav-container { height: 70px; }
+        }
+
+        [data-theme="light"] .nav-main { border-bottom-color: rgba(0, 0, 0, 0.08); }
+        [data-theme="light"] .nav-main.scrolled { box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); }
+        [data-theme="light"] .nav-cta { background: var(--emerald-deep); color: #fff; }
+        [data-theme="light"] .nav-cta:hover { background: var(--emerald-rich); }
+        [data-theme="light"] .nav-links a:hover, [data-theme="light"] .nav-links a.active { color: var(--emerald-deep); }
+        [data-theme="light"] .nav-links a::after { background: var(--emerald-deep); }
+    </style>
+</head>
+<body>
+    <nav class="nav-main">
+        <div class="nav-container">
+            <a href="../index.html" class="logo">
+                <div class="logo-emblem">
+                    <svg class="logo-star" viewBox="0 0 100 100">
+                        <polygon points="50,5 61,40 98,40 68,62 79,97 50,75 21,97 32,62 2,40 39,40"/>
+                    </svg>
+                </div>
+                <div class="logo-text">
+                    <span class="logo-title">Republic of Ghana</span>
+                    <span class="logo-subtitle">Official Government Portal</span>
+                </div>
+            </a>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="index.html" class="active">Services</a></li>
+                <li><a href="../government/index.html">Government</a></li>
+                <li><a href="../business/index.html">Invest</a></li>
+                <li><a href="../tourism/index.html">Visit Ghana</a></li>
+                <li><a href="../contact.html">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="nav-btn" aria-label="Search" onclick="openSearch()">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+                </button>
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <div class="toggle-orb">
+                        <svg class="toggle-icon moon" viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                        <svg class="toggle-icon sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                    </div>
+                </button>
+                <a href="index.html" class="nav-cta">Access Services</a>
+                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open menu">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close menu">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+        <ul class="mobile-menu-links">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="index.html">Services</a></li>
+            <li><a href="../government/index.html">Government</a></li>
+            <li><a href="../business/index.html">Invest</a></li>
+            <li><a href="../tourism/index.html">Visit Ghana</a></li>
+            <li><a href="../contact.html">Contact</a></li>
+        </ul>
+    </div>
+
+    <main>
+        <!-- Hero -->
+        <section class="page-hero">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <nav class="breadcrumb" style="margin-bottom: 1.5rem;">
+                        <a href="../index.html" style="color: rgba(250,250,248,0.6); text-decoration: none;">Home</a>
+                        <span style="color: rgba(250,250,248,0.4); margin: 0 0.5rem;">/</span>
+                        <a href="index.html" style="color: rgba(250,250,248,0.6); text-decoration: none;">Services</a>
+                        <span style="color: rgba(250,250,248,0.4); margin: 0 0.5rem;">/</span>
+                        <span style="color: var(--gold-burnished);">Business Registration</span>
+                    </nav>
+                    <h1>Business Registration</h1>
+                    <p>Start your business in Ghana with official registration through the Registrar General's Department. Register companies, sole proprietorships, partnerships, and more.</p>
+                    <div class="hero-agency">
+                        <div class="agency-logo">RGD</div>
+                        <div>
+                            <div class="agency-name">Registrar General's Department</div>
+                            <div class="agency-full">Ministry of Justice</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-card">
+                    <h3>Quick Actions</h3>
+                    <div class="quick-links">
+                        <a href="#" class="quick-link">
+                            <div class="quick-link-info">
+                                <div class="quick-link-icon">
+                                    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                        <path d="M12 4.5v15m7.5-7.5h-15"/>
+                                    </svg>
+                                </div>
+                                <span class="quick-link-text">Register New Business</span>
+                            </div>
+                            <svg class="arrow" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="quick-link">
+                            <div class="quick-link-info">
+                                <div class="quick-link-icon">
+                                    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                        <path d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/>
+                                    </svg>
+                                </div>
+                                <span class="quick-link-text">Search Business Names</span>
+                            </div>
+                            <svg class="arrow" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="quick-link">
+                            <div class="quick-link-info">
+                                <div class="quick-link-icon">
+                                    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                        <path d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25zM6.75 12h.008v.008H6.75V12zm0 3h.008v.008H6.75V15zm0 3h.008v.008H6.75V18z"/>
+                                    </svg>
+                                </div>
+                                <span class="quick-link-text">Check Application Status</span>
+                            </div>
+                            <svg class="arrow" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Business Types -->
+        <section class="types-section">
+            <div class="section-header">
+                <div class="section-label">Choose Your Structure</div>
+                <h2 class="section-title">Types of Business Registration</h2>
+                <p class="section-subtitle">Select the business structure that best suits your needs.</p>
+            </div>
+            <div class="types-grid">
+                <div class="type-card">
+                    <div class="type-icon">
+                        <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                            <path d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/>
+                        </svg>
+                    </div>
+                    <h3 class="type-name">Sole Proprietorship</h3>
+                    <p class="type-description">Single-owner business with simplest registration process. Owner has unlimited liability for business debts.</p>
+                    <div class="type-details">
+                        <div class="type-detail">
+                            <span class="type-detail-label">Registration Fee</span>
+                            <span class="type-detail-value">GHS 50</span>
+                        </div>
+                        <div class="type-detail">
+                            <span class="type-detail-label">Processing Time</span>
+                            <span class="type-detail-value">1-3 Days</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="type-card">
+                    <div class="type-icon">
+                        <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                            <path d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z"/>
+                        </svg>
+                    </div>
+                    <h3 class="type-name">Partnership</h3>
+                    <p class="type-description">Two or more individuals sharing profits, losses, and management responsibilities. Requires partnership agreement.</p>
+                    <div class="type-details">
+                        <div class="type-detail">
+                            <span class="type-detail-label">Registration Fee</span>
+                            <span class="type-detail-value">GHS 150</span>
+                        </div>
+                        <div class="type-detail">
+                            <span class="type-detail-label">Processing Time</span>
+                            <span class="type-detail-value">3-5 Days</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="type-card">
+                    <div class="type-icon">
+                        <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                            <path d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3.75h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008z"/>
+                        </svg>
+                    </div>
+                    <h3 class="type-name">Private Limited Company</h3>
+                    <p class="type-description">Separate legal entity with limited liability. Shares are not publicly traded. Requires at least one shareholder and one director.</p>
+                    <div class="type-details">
+                        <div class="type-detail">
+                            <span class="type-detail-label">Registration Fee</span>
+                            <span class="type-detail-value">GHS 380+</span>
+                        </div>
+                        <div class="type-detail">
+                            <span class="type-detail-label">Processing Time</span>
+                            <span class="type-detail-value">5-10 Days</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="type-card">
+                    <div class="type-icon">
+                        <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                            <path d="M12.75 3.03v.568c0 .334.148.65.405.864l1.068.89c.442.369.535 1.01.216 1.49l-.51.766a2.25 2.25 0 01-1.161.886l-.143.048a1.107 1.107 0 00-.57 1.664c.369.555.169 1.307-.427 1.605L9 13.125l.423 1.059a.956.956 0 01-1.652.928l-.679-.906a1.125 1.125 0 00-1.906.172L4.5 15.75l-.612.153M12.75 3.031a9 9 0 00-8.862 12.872M12.75 3.031a9 9 0 016.69 14.036"/>
+                        </svg>
+                    </div>
+                    <h3 class="type-name">External Company</h3>
+                    <p class="type-description">Foreign company establishing a branch or place of business in Ghana. Must register within 28 days of establishment.</p>
+                    <div class="type-details">
+                        <div class="type-detail">
+                            <span class="type-detail-label">Registration Fee</span>
+                            <span class="type-detail-value">GHS 2,500+</span>
+                        </div>
+                        <div class="type-detail">
+                            <span class="type-detail-label">Processing Time</span>
+                            <span class="type-detail-value">10-15 Days</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Requirements -->
+        <section class="requirements-section">
+            <div class="section-header">
+                <div class="section-label">What You Need</div>
+                <h2 class="section-title">Registration Requirements</h2>
+            </div>
+            <div class="requirements-grid">
+                <div class="requirements-card">
+                    <h3>
+                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/>
+                        </svg>
+                        For Individuals (Sole Proprietorship)
+                    </h3>
+                    <ul class="requirements-list">
+                        <li>
+                            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                            <span>Ghana Card or valid national ID</span>
+                        </li>
+                        <li>
+                            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                            <span>TIN (Tax Identification Number)</span>
+                        </li>
+                        <li>
+                            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                            <span>Passport-sized photograph</span>
+                        </li>
+                        <li>
+                            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                            <span>Business name (3 preferred names)</span>
+                        </li>
+                        <li>
+                            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                            <span>Business address details</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="requirements-card">
+                    <h3>
+                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3.75h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008z"/>
+                        </svg>
+                        For Companies (Limited Liability)
+                    </h3>
+                    <ul class="requirements-list">
+                        <li>
+                            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                            <span>Company Regulations (Form 4)</span>
+                        </li>
+                        <li>
+                            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                            <span>Ghana Card of all directors/shareholders</span>
+                        </li>
+                        <li>
+                            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                            <span>TIN for all directors/shareholders</span>
+                        </li>
+                        <li>
+                            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                            <span>Registered office address</span>
+                        </li>
+                        <li>
+                            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                            <span>Stated capital (min GHS 500 for private)</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Registration Process -->
+        <section class="process-section">
+            <div class="process-content">
+                <div class="process-header">
+                    <h2>Registration Process</h2>
+                    <p>Follow these steps to register your business in Ghana.</p>
+                </div>
+                <div class="process-steps">
+                    <div class="process-step">
+                        <div class="step-line">
+                            <div class="step-number">1</div>
+                            <div class="step-connector"></div>
+                        </div>
+                        <div class="step-content">
+                            <h3 class="step-title">Name Search</h3>
+                            <p class="step-desc">Search and reserve your business name online through the RGD portal. Submit 3 preferred names in order of priority.</p>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-line">
+                            <div class="step-number">2</div>
+                            <div class="step-connector"></div>
+                        </div>
+                        <div class="step-content">
+                            <h3 class="step-title">Complete Application</h3>
+                            <p class="step-desc">Fill out the online registration form with company details, directors, shareholders, and registered address information.</p>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-line">
+                            <div class="step-number">3</div>
+                            <div class="step-connector"></div>
+                        </div>
+                        <div class="step-content">
+                            <h3 class="step-title">Upload Documents</h3>
+                            <p class="step-desc">Upload required documents including ID cards, TIN certificates, and company regulations (for limited companies).</p>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-line">
+                            <div class="step-number">4</div>
+                            <div class="step-connector"></div>
+                        </div>
+                        <div class="step-content">
+                            <h3 class="step-title">Pay Fees</h3>
+                            <p class="step-desc">Pay registration fees online via mobile money, bank transfer, or at any RGD office.</p>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-line">
+                            <div class="step-number">5</div>
+                        </div>
+                        <div class="step-content">
+                            <h3 class="step-title">Receive Certificate</h3>
+                            <p class="step-desc">Upon approval, download your certificate of registration or collect from RGD office.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Fees Table -->
+        <section class="fees-section">
+            <div class="section-header">
+                <div class="section-label">Registration Costs</div>
+                <h2 class="section-title">Fee Schedule</h2>
+            </div>
+            <div class="fees-table-container">
+                <table class="fees-table">
+                    <thead>
+                        <tr>
+                            <th>Service</th>
+                            <th>Fee (GHS)</th>
+                            <th>Processing Time</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Business Name Search</td>
+                            <td class="fee-amount">15</td>
+                            <td>Same Day</td>
+                        </tr>
+                        <tr>
+                            <td>Sole Proprietorship Registration</td>
+                            <td class="fee-amount">50</td>
+                            <td>1-3 Days</td>
+                        </tr>
+                        <tr>
+                            <td>Partnership Registration</td>
+                            <td class="fee-amount">150</td>
+                            <td>3-5 Days</td>
+                        </tr>
+                        <tr>
+                            <td>Private Limited Company</td>
+                            <td class="fee-amount">380 + Stamp Duty</td>
+                            <td>5-10 Days</td>
+                        </tr>
+                        <tr>
+                            <td>Company Limited by Guarantee</td>
+                            <td class="fee-amount">480 + Stamp Duty</td>
+                            <td>7-14 Days</td>
+                        </tr>
+                        <tr>
+                            <td>External Company Registration</td>
+                            <td class="fee-amount">2,500+</td>
+                            <td>10-15 Days</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="cta-section">
+            <div class="cta-content">
+                <h2>Ready to Start Your Business?</h2>
+                <p>Begin your registration online today or visit any RGD office for assistance.</p>
+                <div class="cta-buttons">
+                    <a href="#" class="btn-dark">
+                        Register Now
+                        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-main">
+                <div class="footer-brand">
+                    <a href="../index.html" class="footer-logo">
+                        <svg viewBox="0 0 100 100" width="40" height="40">
+                            <polygon points="50,5 61,40 98,40 68,62 79,97 50,75 21,97 32,62 2,40 39,40" fill="currentColor"/>
+                        </svg>
+                        <span>Republic of Ghana</span>
+                    </a>
+                    <p class="footer-tagline">Freedom and Justice</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Republic of Ghana. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    // Theme Toggle System
+    (function() {
+        const STORAGE_KEY = 'ghana-gov-theme';
+        const DARK = 'dark';
+        const LIGHT = 'light';
+        function getSavedTheme() {
+            const saved = localStorage.getItem(STORAGE_KEY);
+            if (saved) return saved;
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) return LIGHT;
+            return DARK;
+        }
+        function applyTheme(theme) {
+            if (theme === LIGHT) document.documentElement.setAttribute('data-theme', 'light');
+            else document.documentElement.removeAttribute('data-theme');
+            localStorage.setItem(STORAGE_KEY, theme);
+        }
+        applyTheme(getSavedTheme());
+        document.addEventListener('DOMContentLoaded', function() {
+            const toggle = document.getElementById('themeToggle');
+            if (toggle) {
+                toggle.addEventListener('click', function() {
+                    const current = document.documentElement.getAttribute('data-theme');
+                    applyTheme(current === 'light' ? DARK : LIGHT);
+                    this.style.transform = 'scale(0.95)';
+                    setTimeout(() => { this.style.transform = ''; }, 150);
+                });
+            }
+        });
+    })();
+
+    // MOBILE MENU
+    (function() {
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuBtn = document.getElementById('mobileMenuBtn');
+            const menuClose = document.getElementById('mobileMenuClose');
+            const mobileMenu = document.getElementById('mobileMenu');
+            if (menuBtn && mobileMenu) {
+                menuBtn.addEventListener('click', function() { mobileMenu.classList.add('active'); document.body.style.overflow = 'hidden'; });
+                if (menuClose) { menuClose.addEventListener('click', function() { mobileMenu.classList.remove('active'); document.body.style.overflow = ''; }); }
+                mobileMenu.querySelectorAll('a').forEach(link => { link.addEventListener('click', function() { mobileMenu.classList.remove('active'); document.body.style.overflow = ''; }); });
+                document.addEventListener('keydown', function(e) { if (e.key === 'Escape' && mobileMenu.classList.contains('active')) { mobileMenu.classList.remove('active'); document.body.style.overflow = ''; } });
+            }
+        });
+    })();
+    </script>
+    <script src="../js/main.js"></script>
+</body>
+</html>

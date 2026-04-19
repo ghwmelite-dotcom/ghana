@@ -1,0 +1,1517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Judicial Service of Ghana | Ghana.Gov</title>
+    <meta name="description" content="The Judiciary of Ghana - Independent guardian of justice and constitutional rights. Learn about the court system, Supreme Court, and access to justice.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --green-deep: #1B4D3E;
+            --green-forest: #2D5A4A;
+            --gold-burnished: #C9A227;
+            --gold-light: #E8D48A;
+            --red-crimson: #8B2332;
+            --black-obsidian: #0A0A0A;
+            --white-ivory: #FAFAF8;
+            --gray-warm: #6B6B6B;
+            --gray-light: #E8E8E6;
+            --maroon-deep: #5D1A1D;
+
+            /* Theme System - Dark mode defaults */
+            --bg-primary: #0A0A0A;
+            --bg-secondary: #1A1A1A;
+            --bg-tertiary: #2A2A2A;
+            --text-primary: #FAFAF8;
+            --text-secondary: #C0C0C0;
+            --text-muted: #888888;
+            --card-bg: #1A1A1A;
+            --card-border: #333333;
+            --nav-bg: #0A0A0A;
+            --border-subtle: #333333;
+            --accent-primary: #C9A227;
+            --accent-secondary: #E8D48A;
+            --hero-gradient-start: #5D1A1D;
+            --hero-gradient-end: #3D1518;
+            --section-alt-bg: #1A1A1A;
+            --theme-transition: 0.3s ease;
+        }
+
+        /* Light Mode Theme */
+        [data-theme="light"] {
+            --bg-primary: #FAFAF8;
+            --bg-secondary: #F5F4F0;
+            --bg-tertiary: #EEEEE8;
+            --text-primary: #1A1A1A;
+            --text-secondary: #2D2D2D;
+            --text-muted: #5A5A5A;
+            --card-bg: #FFFFFF;
+            --card-border: #E8E8E6;
+            --nav-bg: #FFFFFF;
+            --border-subtle: #E0E0DC;
+            --accent-primary: #0D3D2E;
+            --accent-secondary: #1A5C45;
+            --hero-gradient-start: #0D3D2E;
+            --hero-gradient-end: #1A5C45;
+            --section-alt-bg: #F5F4F0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: var(--white-ivory);
+            color: var(--black-obsidian);
+            line-height: 1.6;
+        }
+
+        /* Header */
+        .header {
+            background: var(--white-ivory);
+            border-bottom: 1px solid var(--gray-light);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+
+        .header-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: var(--black-obsidian);
+        }
+
+        .logo-emblem {
+            width: 48px;
+            height: 48px;
+            background: var(--green-deep);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-star {
+            color: var(--gold-burnished);
+            font-size: 1.5rem;
+        }
+
+        .logo-text {
+            font-family: 'Fraunces', serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--black-obsidian);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--green-deep);
+        }
+
+        /* Hero */
+        .hero {
+            padding: 10rem 2rem 5rem;
+            background: linear-gradient(135deg, var(--maroon-deep) 0%, #3D1518 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='40' cy='40' r='30' stroke='%23C9A227' stroke-width='0.5' fill='none' opacity='0.1'/%3E%3C/svg%3E");
+            pointer-events: none;
+        }
+
+        .hero-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255,255,255,0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            color: var(--gold-light);
+            font-size: 0.875rem;
+            margin-bottom: 1.5rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .hero h1 {
+            font-family: 'Fraunces', serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            color: var(--white-ivory);
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: rgba(255,255,255,0.8);
+            max-width: 600px;
+            margin-bottom: 2rem;
+        }
+
+        .hero-quote {
+            font-family: 'Fraunces', serif;
+            font-style: italic;
+            color: var(--gold-light);
+            font-size: 1.5rem;
+            margin-top: 2rem;
+            padding-left: 1.5rem;
+            border-left: 3px solid var(--gold-burnished);
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 5rem 2rem;
+        }
+
+        .section-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-family: 'Fraunces', serif;
+            font-size: 2.5rem;
+            color: var(--green-deep);
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            color: var(--gray-warm);
+            font-size: 1.125rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Court Hierarchy */
+        .hierarchy-section {
+            background: white;
+        }
+
+        .court-pyramid {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .court-level {
+            background: white;
+            border: 2px solid var(--gray-light);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 1rem;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .court-level:hover {
+            border-color: var(--gold-burnished);
+            transform: translateX(10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .court-level.supreme {
+            background: linear-gradient(135deg, var(--maroon-deep), #4a1f22);
+            border: none;
+            color: white;
+        }
+
+        .court-level.supreme .court-name {
+            color: var(--gold-burnished);
+        }
+
+        .court-level.supreme .court-desc {
+            color: rgba(255,255,255,0.8);
+        }
+
+        .court-badge {
+            position: absolute;
+            right: 2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--gold-burnished);
+            color: var(--black-obsidian);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+
+        .court-level.supreme .court-badge {
+            background: white;
+        }
+
+        .court-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .court-name {
+            font-family: 'Fraunces', serif;
+            font-size: 1.5rem;
+            color: var(--green-deep);
+            margin-bottom: 0.25rem;
+        }
+
+        .court-desc {
+            color: var(--gray-warm);
+            max-width: 500px;
+        }
+
+        .hierarchy-connector {
+            width: 2px;
+            height: 40px;
+            background: var(--gold-burnished);
+            margin: 0 auto;
+        }
+
+        /* Functions */
+        .functions-section {
+            background: var(--white-ivory);
+        }
+
+        .functions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .function-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            border: 1px solid var(--gray-light);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .function-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--gold-burnished), var(--maroon-deep));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+
+        .function-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .function-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .function-icon {
+            width: 72px;
+            height: 72px;
+            background: linear-gradient(135deg, var(--maroon-deep), #4a1f22);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .function-card h3 {
+            font-family: 'Fraunces', serif;
+            font-size: 1.5rem;
+            color: var(--green-deep);
+            margin-bottom: 0.75rem;
+        }
+
+        .function-card p {
+            color: var(--gray-warm);
+            line-height: 1.7;
+        }
+
+        /* Chief Justice */
+        .cj-section {
+            background: linear-gradient(180deg, white 0%, var(--white-ivory) 100%);
+        }
+
+        .cj-content {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .cj-info h2 {
+            font-family: 'Fraunces', serif;
+            font-size: 2.5rem;
+            color: var(--green-deep);
+            margin-bottom: 0.5rem;
+        }
+
+        .cj-title {
+            color: var(--gold-burnished);
+            font-weight: 600;
+            font-size: 1.125rem;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .cj-bio {
+            color: var(--gray-warm);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .cj-roles {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .cj-role {
+            background: white;
+            padding: 1rem;
+            border-radius: 12px;
+            border: 1px solid var(--gray-light);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .cj-role-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--gold-burnished);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+        }
+
+        .cj-role span {
+            font-size: 0.9rem;
+            color: var(--black-obsidian);
+        }
+
+        .cj-image {
+            aspect-ratio: 4/5;
+            background: linear-gradient(135deg, var(--gray-light), #ddd);
+            border-radius: 24px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cj-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 8px;
+            height: 100%;
+            background: var(--gold-burnished);
+        }
+
+        .cj-image::after {
+            content: '⚖️';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 5rem;
+            opacity: 0.2;
+        }
+
+        /* Access to Justice */
+        .access-section {
+            background: var(--green-deep);
+            position: relative;
+        }
+
+        .access-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0L60 30L30 60L0 30z' fill='%23ffffff' fill-opacity='0.02'/%3E%3C/svg%3E");
+            pointer-events: none;
+        }
+
+        .access-section .section-title,
+        .access-section .section-subtitle {
+            color: var(--white-ivory);
+        }
+
+        .access-section .section-subtitle {
+            opacity: 0.8;
+        }
+
+        .access-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .access-card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .access-card:hover {
+            background: rgba(255,255,255,0.1);
+            transform: translateY(-4px);
+        }
+
+        .access-icon {
+            width: 56px;
+            height: 56px;
+            background: var(--gold-burnished);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .access-card h4 {
+            font-family: 'Fraunces', serif;
+            color: var(--white-ivory);
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .access-card p {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Specialized Courts */
+        .specialized-section {
+            background: var(--white-ivory);
+        }
+
+        .specialized-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .specialized-card {
+            background: white;
+            border-radius: 16px;
+            padding: 1.5rem;
+            border: 1px solid var(--gray-light);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .specialized-card:hover {
+            border-color: var(--maroon-deep);
+            box-shadow: 0 10px 30px rgba(93,26,29,0.1);
+        }
+
+        .specialized-icon {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, var(--maroon-deep), #4a1f22);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            margin: 0 auto 1rem;
+        }
+
+        .specialized-card h4 {
+            font-family: 'Fraunces', serif;
+            color: var(--green-deep);
+            font-size: 1.125rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .specialized-card p {
+            color: var(--gray-warm);
+            font-size: 0.875rem;
+        }
+
+        /* Contact */
+        .contact-section {
+            background: linear-gradient(135deg, var(--black-obsidian) 0%, #1a1a1a 100%);
+        }
+
+        .contact-section .section-title {
+            color: var(--white-ivory);
+        }
+
+        .contact-section .section-subtitle {
+            color: rgba(255,255,255,0.7);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .contact-card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gold-burnished);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin: 0 auto 1rem;
+        }
+
+        .contact-card h4 {
+            font-family: 'Fraunces', serif;
+            color: var(--white-ivory);
+            font-size: 1.125rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-card p {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+        }
+
+        .contact-card a {
+            color: var(--gold-burnished);
+            text-decoration: none;
+        }
+
+        .contact-card a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--black-obsidian);
+            color: var(--white-ivory);
+            padding: 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .footer a {
+            color: var(--gold-burnished);
+            text-decoration: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .nav-links {
+                display: none;
+            }
+
+            .cj-content {
+                grid-template-columns: 1fr;
+            }
+
+            .cj-image {
+                max-width: 350px;
+                margin: 0 auto;
+                order: -1;
+            }
+
+            .cj-roles {
+                grid-template-columns: 1fr;
+            }
+
+            .court-badge {
+                position: static;
+                transform: none;
+                display: inline-block;
+                margin-top: 0.75rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding: 8rem 1rem 3rem;
+            }
+
+            .section {
+                padding: 3rem 1rem;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-in {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        /* Theme Toggle Styles */
+        .theme-toggle {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            z-index: 1001;
+            background: linear-gradient(145deg, #1a1a2e, #16213e);
+            box-shadow:
+                0 4px 15px rgba(0, 0, 0, 0.3),
+                0 0 20px rgba(201, 162, 39, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            transition: all var(--theme-transition);
+            overflow: hidden;
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1);
+            box-shadow:
+                0 6px 20px rgba(0, 0, 0, 0.4),
+                0 0 30px rgba(201, 162, 39, 0.25),
+                inset 0 1px 0 rgba(255, 255, 255, 0.15);
+        }
+
+        .toggle-orb {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: linear-gradient(145deg, #f5f3ce, #e8d48a);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow:
+                0 0 15px rgba(232, 212, 138, 0.5),
+                inset 0 -2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .toggle-icon {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .toggle-icon.moon {
+            color: #1a1a2e;
+            opacity: 1;
+            transform: rotate(0deg) scale(1);
+        }
+
+        .toggle-icon.sun {
+            color: #1a1a2e;
+            opacity: 0;
+            transform: rotate(-90deg) scale(0.5);
+        }
+
+        .toggle-stars {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+        }
+
+        .toggle-star {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: #fff;
+            border-radius: 50%;
+            opacity: 0.8;
+            animation: twinkle 2s ease-in-out infinite;
+        }
+
+        .toggle-star:nth-child(1) { top: 20%; left: 20%; animation-delay: 0s; }
+        .toggle-star:nth-child(2) { top: 30%; right: 25%; animation-delay: 0.5s; }
+        .toggle-star:nth-child(3) { bottom: 35%; left: 28%; animation-delay: 1s; }
+        .toggle-star:nth-child(4) { bottom: 25%; right: 20%; animation-delay: 1.5s; }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+
+        /* Light mode toggle styles */
+        [data-theme="light"] .theme-toggle {
+            background: linear-gradient(145deg, #87CEEB, #B0E0E6);
+            box-shadow:
+                0 4px 15px rgba(0, 0, 0, 0.15),
+                0 0 20px rgba(135, 206, 235, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.5);
+        }
+
+        [data-theme="light"] .theme-toggle:hover {
+            box-shadow:
+                0 6px 20px rgba(0, 0, 0, 0.2),
+                0 0 30px rgba(135, 206, 235, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.6);
+        }
+
+        [data-theme="light"] .toggle-orb {
+            background: linear-gradient(145deg, #FFD700, #FFA500);
+            box-shadow:
+                0 0 20px rgba(255, 165, 0, 0.6),
+                0 0 40px rgba(255, 215, 0, 0.3),
+                inset 0 -2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        [data-theme="light"] .toggle-icon.moon {
+            opacity: 0;
+            transform: rotate(90deg) scale(0.5);
+        }
+
+        [data-theme="light"] .toggle-icon.sun {
+            opacity: 1;
+            transform: rotate(0deg) scale(1);
+            color: #8B4513;
+        }
+
+        [data-theme="light"] .toggle-star {
+            opacity: 0;
+        }
+
+        /* Light Mode Overrides for Page Elements */
+        [data-theme="light"] body {
+            background: var(--bg-primary);
+            color: var(--text-primary);
+        }
+
+        [data-theme="light"] .header {
+            background: var(--nav-bg);
+            border-bottom-color: var(--border-subtle);
+        }
+
+        [data-theme="light"] .logo {
+            color: var(--text-primary);
+        }
+
+        [data-theme="light"] .nav-links a {
+            color: var(--text-primary);
+        }
+
+        [data-theme="light"] .nav-links a:hover {
+            color: var(--accent-primary);
+        }
+
+        [data-theme="light"] .hero {
+            background: linear-gradient(135deg, var(--hero-gradient-start) 0%, var(--hero-gradient-end) 100%);
+        }
+
+        [data-theme="light"] .hero::before {
+            background: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='40' cy='40' r='30' stroke='%23ffffff' stroke-width='0.5' fill='none' opacity='0.1'/%3E%3C/svg%3E");
+        }
+
+        [data-theme="light"] .hero-badge {
+            background: rgba(255,255,255,0.2);
+            color: rgba(255,255,255,0.9);
+        }
+
+        [data-theme="light"] .hero-quote {
+            color: rgba(255,255,255,0.9);
+            border-left-color: rgba(255,255,255,0.5);
+        }
+
+        [data-theme="light"] .hierarchy-section {
+            background: var(--card-bg);
+        }
+
+        [data-theme="light"] .section-title {
+            color: var(--accent-primary);
+        }
+
+        [data-theme="light"] .section-subtitle {
+            color: var(--text-muted);
+        }
+
+        [data-theme="light"] .court-level {
+            background: var(--card-bg);
+            border-color: var(--card-border);
+        }
+
+        [data-theme="light"] .court-level:hover {
+            border-color: var(--accent-primary);
+            box-shadow: 0 10px 30px rgba(13, 61, 46, 0.1);
+        }
+
+        [data-theme="light"] .court-level.supreme {
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+        }
+
+        [data-theme="light"] .court-level.supreme .court-name {
+            color: #FFFFFF;
+        }
+
+        [data-theme="light"] .court-level.supreme .court-badge {
+            background: #FFFFFF;
+            color: var(--accent-primary);
+        }
+
+        [data-theme="light"] .court-badge {
+            background: var(--accent-primary);
+            color: #FFFFFF;
+        }
+
+        [data-theme="light"] .court-name {
+            color: var(--accent-primary);
+        }
+
+        [data-theme="light"] .court-desc {
+            color: var(--text-muted);
+        }
+
+        [data-theme="light"] .hierarchy-connector {
+            background: var(--accent-primary);
+        }
+
+        [data-theme="light"] .functions-section {
+            background: var(--bg-secondary);
+        }
+
+        [data-theme="light"] .function-card {
+            background: var(--card-bg);
+            border-color: var(--card-border);
+        }
+
+        [data-theme="light"] .function-card::before {
+            background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+        }
+
+        [data-theme="light"] .function-card:hover {
+            box-shadow: 0 20px 40px rgba(13, 61, 46, 0.1);
+        }
+
+        [data-theme="light"] .function-icon {
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+        }
+
+        [data-theme="light"] .function-card h3 {
+            color: var(--accent-primary);
+        }
+
+        [data-theme="light"] .function-card p {
+            color: var(--text-muted);
+        }
+
+        [data-theme="light"] .cj-section {
+            background: linear-gradient(180deg, var(--card-bg) 0%, var(--bg-secondary) 100%);
+        }
+
+        [data-theme="light"] .cj-info h2 {
+            color: var(--accent-primary);
+        }
+
+        [data-theme="light"] .cj-title {
+            color: var(--accent-secondary);
+        }
+
+        [data-theme="light"] .cj-bio {
+            color: var(--text-muted);
+        }
+
+        [data-theme="light"] .cj-role {
+            background: var(--card-bg);
+            border-color: var(--card-border);
+        }
+
+        [data-theme="light"] .cj-role-icon {
+            background: var(--accent-primary);
+        }
+
+        [data-theme="light"] .cj-role span {
+            color: var(--text-primary);
+        }
+
+        [data-theme="light"] .cj-image {
+            background: linear-gradient(135deg, var(--bg-tertiary), #ddd);
+        }
+
+        [data-theme="light"] .cj-image::before {
+            background: var(--accent-primary);
+        }
+
+        [data-theme="light"] .access-section {
+            background: var(--accent-primary);
+        }
+
+        [data-theme="light"] .access-section::before {
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0L60 30L30 60L0 30z' fill='%23ffffff' fill-opacity='0.02'/%3E%3C/svg%3E");
+        }
+
+        [data-theme="light"] .access-card {
+            background: rgba(255,255,255,0.1);
+            border-color: rgba(255,255,255,0.15);
+        }
+
+        [data-theme="light"] .access-card:hover {
+            background: rgba(255,255,255,0.15);
+        }
+
+        [data-theme="light"] .access-icon {
+            background: #FFFFFF;
+        }
+
+        [data-theme="light"] .specialized-section {
+            background: var(--bg-secondary);
+        }
+
+        [data-theme="light"] .specialized-card {
+            background: var(--card-bg);
+            border-color: var(--card-border);
+        }
+
+        [data-theme="light"] .specialized-card:hover {
+            border-color: var(--accent-primary);
+            box-shadow: 0 10px 30px rgba(13, 61, 46, 0.1);
+        }
+
+        [data-theme="light"] .specialized-icon {
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+        }
+
+        [data-theme="light"] .specialized-card h4 {
+            color: var(--accent-primary);
+        }
+
+        [data-theme="light"] .specialized-card p {
+            color: var(--text-muted);
+        }
+
+        [data-theme="light"] .contact-section {
+            background: linear-gradient(135deg, var(--bg-tertiary) 0%, var(--bg-secondary) 100%);
+        }
+
+        [data-theme="light"] .contact-section .section-title {
+            color: var(--accent-primary);
+        }
+
+        [data-theme="light"] .contact-section .section-subtitle {
+            color: var(--text-muted);
+        }
+
+        [data-theme="light"] .contact-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+        }
+
+        [data-theme="light"] .contact-icon {
+            background: var(--accent-primary);
+        }
+
+        [data-theme="light"] .contact-card h4 {
+            color: var(--text-primary);
+        }
+
+        [data-theme="light"] .contact-card p {
+            color: var(--text-muted);
+        }
+
+        [data-theme="light"] .contact-card a {
+            color: var(--accent-primary);
+        }
+
+        [data-theme="light"] .footer {
+            background: var(--bg-tertiary);
+            color: var(--text-primary);
+            border-top-color: var(--border-subtle);
+        }
+
+        [data-theme="light"] .footer a {
+            color: var(--accent-primary);
+        }
+
+        /* ===== MINIMAL NAVIGATION ===== */
+        .nav-main { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: var(--nav-bg); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid var(--border-subtle); transition: var(--theme-transition); }
+        .nav-container { max-width: 1400px; margin: 0 auto; padding: 1rem 2rem; display: flex; align-items: center; justify-content: space-between; }
+        .logo { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; color: var(--text-primary); }
+        .logo-emblem { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; }
+        .logo-star { width: 32px; height: 32px; fill: var(--accent-primary); }
+        .logo-text { display: flex; flex-direction: column; }
+        .logo-title { font-family: 'Fraunces', serif; font-size: 1.1rem; font-weight: 600; color: var(--text-primary); line-height: 1.2; }
+        .logo-subtitle { font-size: 0.7rem; color: var(--text-muted); }
+        .nav-links { display: flex; align-items: center; gap: 0.25rem; list-style: none; margin: 0; padding: 0; }
+        .nav-links a { display: flex; align-items: center; gap: 0.5rem; padding: 0.6rem 1rem; color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; font-weight: 500; border-radius: 8px; transition: all 0.2s ease; }
+        .nav-links a:hover { color: var(--text-primary); background: var(--bg-tertiary); }
+        .nav-links a.active { color: var(--accent-primary); background: rgba(201, 162, 39, 0.1); }
+        [data-theme="light"] .nav-links a.active { background: rgba(13, 61, 46, 0.1); }
+        .nav-links svg { width: 18px; height: 18px; opacity: 0.7; }
+        .nav-links a:hover svg, .nav-links a.active svg { opacity: 1; }
+        .nav-actions { display: flex; align-items: center; gap: 0.75rem; }
+        .nav-cta { display: inline-flex; align-items: center; padding: 0.6rem 1.25rem; background: var(--accent-primary); color: var(--bg-primary); text-decoration: none; font-size: 0.85rem; font-weight: 600; border-radius: 8px; transition: all 0.2s ease; }
+        .nav-cta:hover { opacity: 0.9; transform: translateY(-1px); }
+        [data-theme="light"] .nav-cta { background: var(--accent-primary); color: #FFFFFF; }
+        .mobile-menu-btn { display: none; width: 44px; height: 44px; align-items: center; justify-content: center; background: var(--bg-tertiary); border: 1px solid var(--border-subtle); border-radius: 8px; cursor: pointer; color: var(--text-primary); }
+        .mobile-menu-btn svg { width: 24px; height: 24px; }
+        .mobile-menu { display: none; position: fixed; top: 70px; left: 0; right: 0; background: var(--bg-primary); border-bottom: 1px solid var(--border-subtle); padding: 1rem; z-index: 999; }
+        .mobile-menu.active { display: block; }
+        .mobile-menu a { display: flex; align-items: center; gap: 0.75rem; padding: 1rem; color: var(--text-primary); text-decoration: none; font-size: 1rem; border-radius: 8px; transition: background 0.2s ease; }
+        .mobile-menu a:hover { background: var(--bg-tertiary); }
+        .mobile-menu a.active { color: var(--accent-primary); background: rgba(201, 162, 39, 0.1); }
+        [data-theme="light"] .mobile-menu a.active { background: rgba(13, 61, 46, 0.1); }
+        .mobile-menu svg { width: 20px; height: 20px; opacity: 0.7; }
+        @media (max-width: 900px) { .nav-links, .nav-cta { display: none; } .mobile-menu-btn { display: flex; } }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav-main">
+        <div class="nav-container">
+            <a href="../index.html" class="logo">
+                <div class="logo-emblem"><svg class="logo-star" viewBox="0 0 100 100"><polygon points="50,5 61,40 98,40 68,62 79,97 50,75 21,97 32,62 2,40 39,40"/></svg></div>
+                <div class="logo-text"><span class="logo-title">Republic of Ghana</span><span class="logo-subtitle">Official Government Portal</span></div>
+            </a>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../services/index.html">Services</a></li>
+                <li><a href="index.html" class="active">Government</a></li>
+                <li><a href="../business/index.html">Invest</a></li>
+                <li><a href="../tourism/index.html">Visit Ghana</a></li>
+                <li><a href="../contact.html">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme"><svg class="toggle-icon moon" viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg><svg class="toggle-icon sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button>
+                <a href="../services/index.html" class="nav-cta">Access Services</a>
+                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+            </div>
+        </div>
+    </nav>
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="../index.html">Home</a>
+        <a href="../services/index.html">Services</a>
+        <a href="index.html" class="active">Government</a>
+        <a href="../business/index.html">Invest</a>
+        <a href="../tourism/index.html">Visit Ghana</a>
+        <a href="../contact.html">Contact</a>
+        <a href="../services/index.html" class="mobile-cta">Access Services</a>
+    </div>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-inner">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span>⚖️</span>
+                    <span>Judicial Branch of Government</span>
+                </div>
+                <h1>The Judicial Service of Ghana</h1>
+                <p>The independent guardian of justice, upholding the Constitution and the rule of law. Ensuring equal access to justice for all citizens of Ghana.</p>
+                <p class="hero-quote">"Justice delayed is justice denied"</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Court Hierarchy -->
+    <section class="section hierarchy-section">
+        <div class="section-inner">
+            <div class="section-header">
+                <h2 class="section-title">Court Hierarchy</h2>
+                <p class="section-subtitle">The structure of Ghana's court system from highest to lowest</p>
+            </div>
+
+            <div class="court-pyramid">
+                <div class="court-level supreme">
+                    <div class="court-icon">🏛️</div>
+                    <h3 class="court-name">Supreme Court</h3>
+                    <p class="court-desc">Final court of appeal. Interprets the Constitution and has exclusive original jurisdiction in constitutional matters.</p>
+                    <span class="court-badge">Apex Court</span>
+                </div>
+
+                <div class="hierarchy-connector"></div>
+
+                <div class="court-level">
+                    <div class="court-icon">⚖️</div>
+                    <h3 class="court-name">Court of Appeal</h3>
+                    <p class="court-desc">Hears appeals from the High Court and other tribunals. Reviews lower court decisions on matters of law and fact.</p>
+                    <span class="court-badge">Appellate</span>
+                </div>
+
+                <div class="hierarchy-connector"></div>
+
+                <div class="court-level">
+                    <div class="court-icon">📜</div>
+                    <h3 class="court-name">High Court</h3>
+                    <p class="court-desc">Superior court of record with unlimited original jurisdiction in civil and criminal matters. Includes specialized divisions.</p>
+                    <span class="court-badge">Superior Court</span>
+                </div>
+
+                <div class="hierarchy-connector"></div>
+
+                <div class="court-level">
+                    <div class="court-icon">📋</div>
+                    <h3 class="court-name">Circuit Court</h3>
+                    <p class="court-desc">Intermediate court handling criminal cases, civil matters up to specified limits, and family cases.</p>
+                    <span class="court-badge">Intermediate</span>
+                </div>
+
+                <div class="hierarchy-connector"></div>
+
+                <div class="court-level">
+                    <div class="court-icon">🏠</div>
+                    <h3 class="court-name">District Court / Magistrate Court</h3>
+                    <p class="court-desc">Entry-level courts handling minor criminal offenses, small claims, and local matters. Most accessible to citizens.</p>
+                    <span class="court-badge">Lower Court</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Functions -->
+    <section class="section functions-section">
+        <div class="section-inner">
+            <div class="section-header">
+                <h2 class="section-title">Functions of the Judiciary</h2>
+                <p class="section-subtitle">The vital roles the judiciary plays in Ghana's democracy</p>
+            </div>
+
+            <div class="functions-grid">
+                <div class="function-card">
+                    <div class="function-icon">📖</div>
+                    <h3>Constitutional Interpretation</h3>
+                    <p>The Supreme Court has exclusive authority to interpret the Constitution, ensuring all laws and government actions comply with the supreme law of the land.</p>
+                </div>
+
+                <div class="function-card">
+                    <div class="function-icon">⚖️</div>
+                    <h3>Dispute Resolution</h3>
+                    <p>Courts resolve civil disputes between individuals, organizations, and government entities through fair and impartial adjudication based on law.</p>
+                </div>
+
+                <div class="function-card">
+                    <div class="function-icon">🛡️</div>
+                    <h3>Protection of Rights</h3>
+                    <p>The judiciary safeguards fundamental human rights and freedoms guaranteed by the Constitution, providing remedies when rights are violated.</p>
+                </div>
+
+                <div class="function-card">
+                    <div class="function-icon">🔍</div>
+                    <h3>Judicial Review</h3>
+                    <p>Courts review the constitutionality of legislation and executive actions, serving as a check on the other branches of government.</p>
+                </div>
+
+                <div class="function-card">
+                    <div class="function-icon">⚔️</div>
+                    <h3>Criminal Justice</h3>
+                    <p>The courts try criminal cases, determine guilt or innocence, and impose appropriate sentences to maintain law and order in society.</p>
+                </div>
+
+                <div class="function-card">
+                    <div class="function-icon">📝</div>
+                    <h3>Legal Precedent</h3>
+                    <p>Higher court decisions create binding precedents that guide lower courts, ensuring consistency and predictability in the application of law.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chief Justice -->
+    <section class="section cj-section">
+        <div class="section-inner">
+            <div class="cj-content">
+                <div class="cj-info">
+                    <h2>The Chief Justice</h2>
+                    <p class="cj-title">Head of the Judiciary</p>
+                    <p class="cj-bio">
+                        The Chief Justice is the head of the Judiciary and presides over the Supreme Court.
+                        Appointed by the President in consultation with the Council of State and approved by Parliament,
+                        the Chief Justice is responsible for the administration of the Judicial Service and ensuring
+                        the efficient delivery of justice throughout Ghana.
+                    </p>
+
+                    <div class="cj-roles">
+                        <div class="cj-role">
+                            <div class="cj-role-icon">🏛️</div>
+                            <span>Presides over Supreme Court</span>
+                        </div>
+                        <div class="cj-role">
+                            <div class="cj-role-icon">👥</div>
+                            <span>Chairs Judicial Council</span>
+                        </div>
+                        <div class="cj-role">
+                            <div class="cj-role-icon">📋</div>
+                            <span>Administers Judicial Service</span>
+                        </div>
+                        <div class="cj-role">
+                            <div class="cj-role-icon">⚙️</div>
+                            <span>Makes court rules</span>
+                        </div>
+                        <div class="cj-role">
+                            <div class="cj-role-icon">🎓</div>
+                            <span>Supervises judicial training</span>
+                        </div>
+                        <div class="cj-role">
+                            <div class="cj-role-icon">🌍</div>
+                            <span>Represents judiciary internationally</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="cj-image"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Access to Justice -->
+    <section class="section access-section">
+        <div class="section-inner">
+            <div class="section-header">
+                <h2 class="section-title">Access to Justice</h2>
+                <p class="section-subtitle">Services and initiatives to ensure justice is accessible to all Ghanaians</p>
+            </div>
+
+            <div class="access-grid">
+                <div class="access-card">
+                    <div class="access-icon">💼</div>
+                    <h4>Legal Aid</h4>
+                    <p>Free legal representation for persons who cannot afford lawyers, ensuring equal access to justice regardless of financial status.</p>
+                </div>
+
+                <div class="access-card">
+                    <div class="access-icon">🏘️</div>
+                    <h4>Community Courts</h4>
+                    <p>Local tribunals and alternative dispute resolution mechanisms that bring justice closer to communities.</p>
+                </div>
+
+                <div class="access-card">
+                    <div class="access-icon">💻</div>
+                    <h4>E-Justice</h4>
+                    <p>Digital court services including electronic filing, virtual hearings, and online case tracking for convenience.</p>
+                </div>
+
+                <div class="access-card">
+                    <div class="access-icon">📢</div>
+                    <h4>Public Education</h4>
+                    <p>Programs to educate citizens about their rights, court procedures, and how to access judicial services.</p>
+                </div>
+
+                <div class="access-card">
+                    <div class="access-icon">🤝</div>
+                    <h4>ADR Center</h4>
+                    <p>Alternative Dispute Resolution services including mediation and arbitration for faster, cost-effective resolution.</p>
+                </div>
+
+                <div class="access-card">
+                    <div class="access-icon">♿</div>
+                    <h4>Accessibility</h4>
+                    <p>Initiatives to make courts accessible to persons with disabilities and vulnerable groups.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Specialized Courts -->
+    <section class="section specialized-section">
+        <div class="section-inner">
+            <div class="section-header">
+                <h2 class="section-title">Specialized Courts & Divisions</h2>
+                <p class="section-subtitle">Courts dedicated to specific areas of law</p>
+            </div>
+
+            <div class="specialized-grid">
+                <div class="specialized-card">
+                    <div class="specialized-icon">💰</div>
+                    <h4>Commercial Court</h4>
+                    <p>Business disputes, contracts, and corporate matters</p>
+                </div>
+
+                <div class="specialized-card">
+                    <div class="specialized-icon">👨‍👩‍👧</div>
+                    <h4>Family Tribunal</h4>
+                    <p>Divorce, custody, maintenance, and family matters</p>
+                </div>
+
+                <div class="specialized-card">
+                    <div class="specialized-icon">👶</div>
+                    <h4>Juvenile Court</h4>
+                    <p>Cases involving minors and child protection</p>
+                </div>
+
+                <div class="specialized-card">
+                    <div class="specialized-icon">⚒️</div>
+                    <h4>Labour Court</h4>
+                    <p>Employment disputes and labor relations</p>
+                </div>
+
+                <div class="specialized-card">
+                    <div class="specialized-icon">🏠</div>
+                    <h4>Land Court</h4>
+                    <p>Land title disputes and property matters</p>
+                </div>
+
+                <div class="specialized-card">
+                    <div class="specialized-icon">💊</div>
+                    <h4>Drug Court</h4>
+                    <p>Drug-related offenses with rehabilitative focus</p>
+                </div>
+
+                <div class="specialized-card">
+                    <div class="specialized-icon">⚡</div>
+                    <h4>Fast Track Court</h4>
+                    <p>Expedited hearing of specific case types</p>
+                </div>
+
+                <div class="specialized-card">
+                    <div class="specialized-icon">🌐</div>
+                    <h4>Human Rights Division</h4>
+                    <p>Human rights violations and constitutional matters</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="section contact-section">
+        <div class="section-inner">
+            <div class="section-header">
+                <h2 class="section-title">Contact the Judicial Service</h2>
+                <p class="section-subtitle">Reach out for information about court services and procedures</p>
+            </div>
+
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <div class="contact-icon">📍</div>
+                    <h4>Headquarters</h4>
+                    <p>Judicial Service of Ghana<br>Law Court Complex, Accra</p>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-icon">📞</div>
+                    <h4>Phone</h4>
+                    <p><a href="tel:+233302664951">+233 302 664 951</a></p>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-icon">✉️</div>
+                    <h4>Email</h4>
+                    <p><a href="mailto:info@judicial.gov.gh">info@judicial.gov.gh</a></p>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-icon">🌐</div>
+                    <h4>Website</h4>
+                    <p><a href="https://judicial.gov.gh" target="_blank">judicial.gov.gh</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2025 Republic of Ghana. All rights reserved. | <a href="../index.html">Ghana.Gov</a></p>
+    </footer>
+
+    <script>
+        // Theme Toggle System
+        (function(){const STORAGE_KEY='ghana-gov-theme',DARK='dark',LIGHT='light';function getSavedTheme(){const saved=localStorage.getItem(STORAGE_KEY);if(saved)return saved;if(window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches)return LIGHT;return DARK;}function applyTheme(theme){if(theme===LIGHT)document.documentElement.setAttribute('data-theme','light');else document.documentElement.removeAttribute('data-theme');localStorage.setItem(STORAGE_KEY,theme);}applyTheme(getSavedTheme());document.addEventListener('DOMContentLoaded',function(){const toggle=document.getElementById('themeToggle');if(toggle){toggle.addEventListener('click',function(){const current=document.documentElement.getAttribute('data-theme');applyTheme(current==='light'?DARK:LIGHT);this.style.transform='scale(0.95)';setTimeout(()=>{this.style.transform='';},150);});}});})();
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.court-level, .function-card, .access-card, .specialized-card, .contact-card').forEach(el => {
+            el.style.opacity = '0';
+            observer.observe(el);
+        });
+
+        // Mobile Menu Toggle
+        (function(){document.addEventListener('DOMContentLoaded',function(){const mobileMenuBtn=document.getElementById('mobileMenuBtn');const mobileMenu=document.getElementById('mobileMenu');if(mobileMenuBtn&&mobileMenu){mobileMenuBtn.addEventListener('click',function(){mobileMenu.classList.toggle('active');});}});})();
+    </script>
+</body>
+</html>

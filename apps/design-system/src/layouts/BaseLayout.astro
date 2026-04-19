@@ -1,0 +1,62 @@
+---
+/**
+ * BaseLayout for apps/design-system. Wraps the GH-DS Header + Footer
+ * (from the design system itself) with serviceName "design.gov.gh".
+ */
+
+import '@gh/gh-ds/tokens.css';
+import '../styles/global.css';
+import SkipLink from '@gh/gh-ds/SkipLink';
+import Header from '@gh/gh-ds/Header';
+import Footer from '@gh/gh-ds/Footer';
+
+interface Props {
+  title: string;
+  description: string;
+  lang?: 'en' | 'tw';
+  noindex?: boolean;
+}
+
+const { title, description, lang = 'en', noindex = false } = Astro.props;
+const htmlTitle = `${title} — design.gov.gh`;
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#006B3F" />
+    <meta name="description" content={description} />
+    <meta property="og:title" content={htmlTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <link rel="preload" href="/fonts/noto-sans-400.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/noto-sans-700.woff2" as="font" type="font/woff2" crossorigin />
+
+    <title>{htmlTitle}</title>
+  </head>
+  <body>
+    <SkipLink />
+    <Header
+      serviceName="design.gov.gh"
+      countryLabel="Ghana Design System"
+      homeHref="/"
+      primaryNav={[
+        { href: '/', label: 'Home' },
+        { href: '/components/', label: 'Components' },
+        { href: 'https://github.com/ghwmelite-dotcom/gov-gh', label: 'GitHub' },
+      ]}
+    />
+    <main id="main" tabindex="-1">
+      <slot />
+    </main>
+    <Footer
+      parentOrganisation="Office of the Head of Civil Service"
+      parentOrganisationLong="Maintained by the <strong>gov.gh team</strong> at the <strong>Office of the Head of Civil Service</strong>. MIT-licensed. Fork and use."
+    />
+  </body>
+</html>

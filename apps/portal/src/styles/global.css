@@ -1,0 +1,122 @@
+/*
+ * Global styles — portal-wide.
+ *
+ * Depends on tokens exported by @gh/gh-ds/tokens.css, which BaseLayout imports
+ * before this file. Uses only token variables, no arbitrary values.
+ */
+
+/* ─── Reset: box-sizing, margin, image fluidity ─────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+figure,
+blockquote {
+  margin: 0;
+}
+
+html {
+  color-scheme: light;
+}
+
+body {
+  min-height: 100svh;
+  background: var(--color-surface);
+  color: var(--color-text-default);
+  font-family: var(--font-body);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img,
+picture,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Skip link is owned by `@gh/gh-ds/SkipLink`. */
+
+/* ─── Focus-visible default — applies everywhere a more specific rule does not ─── */
+:focus-visible {
+  outline: var(--border-width-focus) solid var(--color-focus-ring);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+main:focus {
+  outline: none;
+}
+
+/* ─── Landmark rhythm ────────────────────────────────────────────── */
+main {
+  display: block;
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: var(--space-8) var(--space-4) var(--space-12);
+}
+
+@media (min-width: 48rem) {
+  main {
+    padding: var(--space-16) var(--space-8) var(--space-20);
+  }
+}
+
+/* ─── Headings ───────────────────────────────────────────────────── */
+h1 {
+  font-family: var(--font-display);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-4xl);
+  line-height: var(--line-height-display);
+  letter-spacing: -0.02em;
+  margin-bottom: var(--space-4);
+}
+
+@media (min-width: 48rem) {
+  h1 {
+    font-size: var(--font-size-5xl);
+  }
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-2xl);
+  line-height: var(--line-height-heading);
+  margin-top: var(--space-12);
+  margin-bottom: var(--space-4);
+}
+
+/* ─── Links ──────────────────────────────────────────────────────── */
+a {
+  color: var(--color-link);
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+  text-decoration-thickness: 0.08em;
+}
+
+a:hover {
+  text-decoration-thickness: 0.15em;
+}
+
+a:visited {
+  color: var(--color-link-visited);
+}
+
+/* Flag-rule strip is owned by `@gh/gh-ds/Header`. */

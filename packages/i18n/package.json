@@ -1,0 +1,12 @@
+{
+  "name": "@gh/i18n",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "typecheck": "echo '@gh/i18n: no typecheck yet' && exit 0",
+    "lint": "echo '@gh/i18n: no lint yet' && exit 0",
+    "test": "echo '@gh/i18n: no test yet' && exit 0",
+    "build": "echo '@gh/i18n: no build yet' && exit 0"
+  }
+}

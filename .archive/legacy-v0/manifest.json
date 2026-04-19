@@ -1,0 +1,104 @@
+{
+  "name": "Republic of Ghana - Official Government Portal",
+  "short_name": "Ghana.Gov",
+  "description": "Your gateway to Ghana's government services, information, and resources",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#1B4D3E",
+  "theme_color": "#1B4D3E",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "en-GH",
+  "categories": ["government", "public services", "utilities"],
+  "icons": [
+    {
+      "src": "assets/icons/icon-72x72.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "assets/icons/icon-96x96.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "assets/icons/icon-128x128.png",
+      "sizes": "128x128",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "assets/icons/icon-144x144.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "assets/icons/icon-152x152.png",
+      "sizes": "152x152",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "assets/icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "assets/icons/icon-384x384.png",
+      "sizes": "384x384",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "assets/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable any"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Government Services",
+      "short_name": "Services",
+      "description": "Access all government services",
+      "url": "/services/index.html",
+      "icons": [{ "src": "assets/icons/services-icon.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "Passport Application",
+      "short_name": "Passport",
+      "description": "Apply for passport",
+      "url": "/services/passport.html",
+      "icons": [{ "src": "assets/icons/passport-icon.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "Contact Us",
+      "short_name": "Contact",
+      "description": "Get in touch",
+      "url": "/contact.html",
+      "icons": [{ "src": "assets/icons/contact-icon.png", "sizes": "96x96" }]
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "assets/screenshots/home-wide.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Ghana Government Portal Homepage"
+    },
+    {
+      "src": "assets/screenshots/home-narrow.png",
+      "sizes": "750x1334",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Ghana Government Portal Mobile"
+    }
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false
+}

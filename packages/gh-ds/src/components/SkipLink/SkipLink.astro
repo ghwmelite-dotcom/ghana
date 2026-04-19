@@ -1,0 +1,53 @@
+---
+/**
+ * <SkipLink> — Ghana Design System Tier-1 foundation component.
+ *
+ * The WCAG 2.4.1 "Bypass Blocks" skip-link. Hidden until focused via
+ * keyboard Tab, at which point it jumps into view at the top-left of the
+ * viewport and, when activated, moves focus to the target.
+ *
+ * Usage (one per page, always the first focusable element in `<body>`):
+ *   <body>
+ *     <SkipLink />     {/* defaults to href="#main", label "Skip to main content" *\/}
+ *     <Header />
+ *     <main id="main" tabindex="-1"><slot /></main>
+ *   </body>
+ */
+
+interface Props {
+  /** Target element id (without the `#`). Defaults to `main`. */
+  href?: string;
+  class?: string;
+}
+
+const { href = '#main', class: extraClass } = Astro.props;
+const classes = ['gh-skip-link', extraClass].filter(Boolean).join(' ');
+---
+
+<a href={href} class={classes}>
+  <slot>Skip to main content</slot>
+</a>
+
+<style>
+  .gh-skip-link {
+    position: absolute;
+    top: var(--space-2);
+    left: var(--space-2);
+    padding: var(--space-2) var(--space-4);
+    background: var(--color-text-default);
+    color: var(--color-surface-raised);
+    font-weight: var(--font-weight-bold);
+    text-decoration: none;
+    border-radius: var(--radius-md);
+    z-index: 100;
+    /* Off-screen until focused; transform keeps it in the layout flow for
+       assistive tech that reports static position. */
+    transform: translateY(-200%);
+  }
+
+  .gh-skip-link:focus {
+    transform: translateY(0);
+    outline: var(--border-width-focus) solid var(--color-focus-ring);
+    outline-offset: 2px;
+  }
+</style>

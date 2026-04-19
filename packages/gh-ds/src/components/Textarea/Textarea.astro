@@ -1,0 +1,220 @@
+---
+/**
+ * <Textarea> — Ghana Design System Tier-1 foundation component.
+ *
+ * Multi-line text input. Same label/hint/error composite as <TextInput>,
+ * different underlying element. Ported in intent from GOV.UK Frontend's
+ * `govuk-textarea`, per ADR-003.
+ *
+ * Use for:
+ *   - Complaint narratives
+ *   - Appeal text
+ *   - Any free-text longer than a name or phone number
+ *
+ * For character-limited inputs (e.g. "tell us in 500 characters or fewer"),
+ * the GOV.UK "character count" component is a future Tier-2/3 addition that
+ * wraps this one. Until then, use native `maxlength` for a hard cap.
+ *
+ * Usage:
+ *   <Textarea
+ *     name="complaint"
+ *     label="Describe what happened"
+ *     hint="Include dates, names, and any reference numbers you have."
+ *     rows={8}
+ *     required
+ *   />
+ */
+
+interface Props {
+  name: string;
+  label: string;
+  id?: string;
+  hint?: string;
+  error?: string;
+  value?: string;
+  placeholder?: string;
+  rows?: number;
+  required?: boolean;
+  disabled?: boolean;
+  readonly?: boolean;
+  autocomplete?: string;
+  spellcheck?: boolean;
+  autocapitalize?: 'off' | 'none' | 'on' | 'sentences' | 'words' | 'characters';
+  minlength?: number;
+  maxlength?: number;
+  class?: string;
+}
+
+const {
+  name,
+  label,
+  id: idProp,
+  hint,
+  error,
+  value,
+  placeholder,
+  rows = 5,
+  required = false,
+  disabled = false,
+  readonly = false,
+  autocomplete,
+  spellcheck,
+  autocapitalize,
+  minlength,
+  maxlength,
+  class: extraClass,
+} = Astro.props;
+
+const id = idProp ?? name;
+const hintId = hint ? `${id}-hint` : undefined;
+const errorId = error ? `${id}-error` : undefined;
+const describedBy = [hintId, errorId].filter(Boolean).join(' ') || undefined;
+
+const groupClass = ['gh-form-group', error ? 'gh-form-group--error' : null, extraClass]
+  .filter(Boolean)
+  .join(' ');
+
+const textareaClass = ['gh-textarea', error ? 'gh-textarea--error' : null]
+  .filter(Boolean)
+  .join(' ');
+---
+
+<div class={groupClass}>
+  <label class="gh-label" for={id}>
+    {label}
+    {
+      required && (
+        <span class="gh-label__required" aria-hidden="true">
+          *
+        </span>
+      )
+    }
+  </label>
+
+  {
+    hint && (
+      <p id={hintId} class="gh-hint">
+        {hint}
+      </p>
+    )
+  }
+
+  {
+    error && (
+      <p id={errorId} class="gh-error-message" role="alert">
+        <span class="gh-error-message__prefix">Error:</span> {error}
+      </p>
+    )
+  }
+
+  <textarea
+    class={textareaClass}
+    id={id}
+    name={name}
+    rows={rows}
+    placeholder={placeholder}
+    required={required}
+    disabled={disabled}
+    readonly={readonly}
+    autocomplete={autocomplete}
+    spellcheck={spellcheck}
+    autocapitalize={autocapitalize}
+    minlength={minlength}
+    maxlength={maxlength}
+    aria-describedby={describedBy}
+    aria-invalid={error ? 'true' : undefined}
+    aria-required={required ? 'true' : undefined}>{value ?? ''}</textarea
+  >
+</div>
+
+<style>
+  .gh-form-group {
+    display: block;
+    margin-bottom: var(--space-6);
+  }
+
+  .gh-form-group--error {
+    padding-left: var(--space-4);
+    border-left: 5px solid var(--color-error);
+  }
+
+  .gh-label {
+    display: block;
+    font-weight: var(--font-weight-semibold);
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-heading);
+    color: var(--color-text-default);
+    margin-bottom: var(--space-2);
+  }
+
+  .gh-label__required {
+    color: var(--color-error);
+    margin-left: 0.2em;
+  }
+
+  .gh-hint {
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-body);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-2);
+  }
+
+  .gh-error-message {
+    color: var(--color-error);
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-body);
+    margin-bottom: var(--space-2);
+  }
+
+  .gh-error-message__prefix {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .gh-textarea {
+    display: block;
+    width: 100%;
+    padding: var(--space-3) var(--space-3);
+    font-family: var(--font-body);
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-body);
+    color: var(--color-text-default);
+    background: var(--color-surface-raised);
+    border: var(--border-width-default) solid var(--color-text-default);
+    border-radius: var(--radius-md);
+    resize: vertical;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+
+  .gh-textarea:focus-visible {
+    outline: var(--border-width-focus) solid var(--color-focus-ring);
+    outline-offset: 0;
+    border-color: var(--color-text-default);
+    box-shadow: inset 0 0 0 2px var(--color-text-default);
+  }
+
+  .gh-textarea:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background: var(--ghana-ink-50);
+    resize: none;
+  }
+
+  .gh-textarea::placeholder {
+    color: var(--color-text-muted);
+    opacity: 1;
+  }
+
+  .gh-textarea--error {
+    border-color: var(--color-error);
+  }
+</style>

@@ -1,0 +1,228 @@
+---
+/**
+ * <Button> — Ghana Design System Tier-1 foundation component.
+ *
+ * Forked intent from GOV.UK Frontend Button per ADR-003. Tokens from
+ * `.claude/CLAUDE.md §6.1`. Focus pattern from §6.3 pairs the gold focus ring
+ * with an inner dark edge so it is visible against both light and dark button
+ * backgrounds (GOV.UK's composite-component pattern).
+ *
+ * Variants (choose the one that matches the action, not the one that looks
+ * best):
+ *   primary    — the single call-to-action per screen (ghana-green-600)
+ *   secondary  — a non-primary action (white with border)
+ *   warning    — destructive or irreversible action (ghana-red-700).
+ *                Always pair with a confirm step; never use for "Save".
+ *   start      — "Start now" buttons that begin a service flow. Larger,
+ *                with a chevron, matches GOV.UK's start-button pattern.
+ *
+ * Sizes:
+ *   md         — default, 44 × ≥128 px
+ *   lg         — large, for hero + start buttons
+ *
+ * Behaviour:
+ *   - Renders as <button> by default. Pass `href` to render as <a>.
+ *   - `disabled` removes the element from the tab order for <button> and
+ *     applies `aria-disabled` + removes `href` for <a> (a11y-correct disabled
+ *     link pattern — a disabled link is still focusable so screen readers
+ *     announce its state).
+ *   - `type` defaults to "button" to avoid accidental form submission.
+ *     Use `type="submit"` explicitly inside a form.
+ *   - Slot is required; aria-label on the element is optional if the slot
+ *     text is descriptive enough (WCAG 2.5.3 "Label in Name").
+ */
+
+type Variant = 'primary' | 'secondary' | 'warning' | 'start';
+type Size = 'md' | 'lg';
+
+interface Props {
+  variant?: Variant;
+  size?: Size;
+  href?: string | undefined;
+  type?: 'button' | 'submit' | 'reset';
+  disabled?: boolean;
+  name?: string;
+  value?: string;
+  'aria-label'?: string;
+  class?: string;
+  id?: string;
+}
+
+const {
+  variant = 'primary',
+  size = 'md',
+  href,
+  type = 'button',
+  disabled = false,
+  name,
+  value,
+  'aria-label': ariaLabel,
+  class: extraClass,
+  id,
+} = Astro.props;
+
+const classes = [
+  'gh-button',
+  `gh-button--${variant}`,
+  size === 'lg' ? 'gh-button--lg' : null,
+  disabled ? 'gh-button--disabled' : null,
+  extraClass,
+]
+  .filter(Boolean)
+  .join(' ');
+
+const isLink = typeof href === 'string' && href.length > 0;
+---
+
+{
+  isLink ? (
+    <a
+      class={classes}
+      href={disabled ? undefined : href}
+      role="button"
+      aria-disabled={disabled ? 'true' : undefined}
+      aria-label={ariaLabel}
+      id={id}
+      data-module="gh-button"
+    >
+      <slot />
+      {variant === 'start' && (
+        <svg
+          class="gh-button__chevron"
+          width="24"
+          height="19"
+          viewBox="0 0 33 26"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <path fill="currentColor" d="M0 0h13l20 13L13 26H0l20-13z" />
+        </svg>
+      )}
+    </a>
+  ) : (
+    <button
+      class={classes}
+      type={type}
+      disabled={disabled}
+      name={name}
+      value={value}
+      aria-label={ariaLabel}
+      id={id}
+      data-module="gh-button"
+    >
+      <slot />
+      {variant === 'start' && (
+        <svg
+          class="gh-button__chevron"
+          width="24"
+          height="19"
+          viewBox="0 0 33 26"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <path fill="currentColor" d="M0 0h13l20 13L13 26H0l20-13z" />
+        </svg>
+      )}
+    </button>
+  )
+}
+
+<style>
+  .gh-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    min-height: 2.75rem; /* 44px touch target */
+    padding: var(--space-3) var(--space-6);
+    border: var(--border-width-default) solid transparent;
+    border-radius: var(--radius-md);
+    font-family: var(--font-body);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-heading);
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: none; /* prefers-reduced-motion already handled globally */
+    -webkit-appearance: none;
+    appearance: none;
+  }
+
+  /* ─── Variants ────────────────────────────────────────── */
+  .gh-button--primary {
+    background: var(--color-action-primary);
+    border-color: var(--color-action-primary);
+    color: #ffffff;
+  }
+
+  .gh-button--primary:hover {
+    background: var(--color-action-primary-hover);
+    border-color: var(--color-action-primary-hover);
+  }
+
+  .gh-button--secondary {
+    background: var(--color-surface-raised);
+    border-color: var(--color-text-default);
+    color: var(--color-text-default);
+  }
+
+  .gh-button--secondary:hover {
+    background: var(--ghana-ink-50);
+  }
+
+  .gh-button--warning {
+    background: var(--color-action-danger);
+    border-color: var(--color-action-danger);
+    color: #ffffff;
+  }
+
+  .gh-button--warning:hover {
+    background: var(--ghana-red-900);
+    border-color: var(--ghana-red-900);
+  }
+
+  .gh-button--start {
+    background: var(--color-action-primary);
+    border-color: var(--color-action-primary);
+    color: #ffffff;
+    font-size: var(--font-size-lg);
+    padding-top: var(--space-4);
+    padding-bottom: var(--space-4);
+  }
+
+  .gh-button--start:hover {
+    background: var(--color-action-primary-hover);
+    border-color: var(--color-action-primary-hover);
+  }
+
+  .gh-button--lg {
+    font-size: var(--font-size-lg);
+    padding: var(--space-4) var(--space-8);
+  }
+
+  /* ─── Focus ring — composite (outer gold + inner dark) ── */
+  .gh-button:focus-visible {
+    outline: var(--border-width-focus) solid var(--color-focus-ring);
+    outline-offset: 2px;
+    box-shadow: inset 0 0 0 1px var(--color-text-default);
+  }
+
+  /* Secondary button already has a dark edge, so inner shadow would double. */
+  .gh-button--secondary:focus-visible {
+    box-shadow: none;
+  }
+
+  /* ─── Disabled ────────────────────────────────────────── */
+  .gh-button--disabled,
+  .gh-button[disabled] {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  .gh-button__chevron {
+    flex-shrink: 0;
+    margin-left: var(--space-1);
+  }
+</style>

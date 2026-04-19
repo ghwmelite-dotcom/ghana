@@ -1,0 +1,116 @@
+---
+/**
+ * <ConfirmationPanel> — Ghana Design System Tier-3 service-flow component.
+ *
+ * The "we got your application" page template. Ported in intent from
+ * GOV.UK Frontend's `govuk-panel` success-template, per ADR-003.
+ *
+ * Structure:
+ *   - Bright green panel at the top of a page following a successful
+ *     submission. The large, visible reference number (ARN) is the
+ *     most important thing a citizen needs right now — so it is in
+ *     display type.
+ *   - `role="status"` announces the confirmation to screen readers
+ *     without interrupting (stronger than `role="alert"` which implies
+ *     urgency; this is good news, not an emergency).
+ *   - A slot for "what happens next" copy follows the panel — authors
+ *     place a `<h2>` + next-steps list there.
+ *
+ * Usage:
+ *   <ConfirmationPanel
+ *     title="Application sent"
+ *     reference="ARN-2026-04-000123"
+ *     referenceLabel="Your reference"
+ *   />
+ *   <h2>What happens next</h2>
+ *   <p>We will text your next step within 48 hours.</p>
+ */
+
+interface Props {
+  title: string;
+  /** The reference code (ARN, payment receipt, etc.). Omit when the
+   *  confirmation itself is the complete statement. */
+  reference?: string;
+  /** Visible label for the reference, e.g. "Your reference". */
+  referenceLabel?: string;
+  /** HTML heading level for the title. Defaults to `h1` — most
+   *  confirmation pages use the panel as the page heading. */
+  headingLevel?: 'h1' | 'h2';
+  class?: string;
+}
+
+const {
+  title,
+  reference,
+  referenceLabel = 'Your reference',
+  headingLevel = 'h1',
+  class: extraClass,
+} = Astro.props;
+
+const Heading = headingLevel;
+const classes = ['gh-confirmation', extraClass].filter(Boolean).join(' ');
+---
+
+<div class={classes} role="status">
+  <Heading class="gh-confirmation__title">{title}</Heading>
+  {
+    reference && (
+      <div class="gh-confirmation__body">
+        <p class="gh-confirmation__reference-label">{referenceLabel}</p>
+        <p class="gh-confirmation__reference">{reference}</p>
+      </div>
+    )
+  }
+</div>
+
+<style>
+  .gh-confirmation {
+    margin: 0 0 var(--space-8);
+    padding: var(--space-10) var(--space-6);
+    background: var(--color-action-primary);
+    color: #ffffff;
+    text-align: center;
+    border-radius: var(--radius-md);
+  }
+
+  .gh-confirmation__title {
+    margin: 0 0 var(--space-4) 0;
+    font-family: var(--font-display);
+    font-size: var(--font-size-4xl);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-display);
+    letter-spacing: -0.02em;
+    color: #ffffff;
+  }
+
+  @media (min-width: 48rem) {
+    .gh-confirmation__title {
+      font-size: var(--font-size-5xl);
+    }
+  }
+
+  .gh-confirmation__body {
+    margin-top: var(--space-6);
+    padding-top: var(--space-6);
+    border-top: var(--border-width-hairline) solid rgba(255, 255, 255, 0.4);
+  }
+
+  .gh-confirmation__reference-label {
+    margin: 0 0 var(--space-2) 0;
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-regular);
+    color: #ffffff;
+    opacity: 0.9;
+  }
+
+  .gh-confirmation__reference {
+    margin: 0;
+    font-family: var(--font-mono);
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-bold);
+    letter-spacing: 0.05em;
+    color: #ffffff;
+    /* Wraps on narrow viewports while keeping the monospace rhythm. */
+    word-break: break-all;
+  }
+</style>

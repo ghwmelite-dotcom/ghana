@@ -1,0 +1,123 @@
+---
+/**
+ * <AccordionItem> — single expandable section inside an <Accordion>.
+ *
+ * Uses native `<details>` + `<summary>` — the simplest
+ * progressive-enhancement path. Works with keyboard, touch, screen
+ * readers, and a disabled-JavaScript environment out of the box.
+ *
+ * Accessibility:
+ *   - `<summary>` is focusable and exposes expand/collapse state to SR.
+ *   - The visible heading inside `<summary>` gives a meaningful name;
+ *     because `<summary>` is treated as a heading-like element, we do
+ *     NOT wrap the heading inside a separate <h2>/<h3> (would produce
+ *     duplicate semantics).
+ *   - Chevron is drawn via CSS pseudo-element so it scales with text.
+ *
+ * Usage — inside an <Accordion>:
+ *   <AccordionItem heading="How long does a renewal take?">
+ *     <p>Most renewals are processed within 7 working days.</p>
+ *   </AccordionItem>
+ */
+
+interface Props {
+  heading: string;
+  id?: string;
+  /** Open on initial render. */
+  open?: boolean;
+  class?: string;
+}
+
+const { heading, id, open = false, class: extraClass } = Astro.props;
+const classes = ['gh-accordion__item', extraClass].filter(Boolean).join(' ');
+---
+
+<details class={classes} id={id} open={open}>
+  <summary class="gh-accordion__summary">
+    <span class="gh-accordion__heading">{heading}</span>
+    <span class="gh-accordion__chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="gh-accordion__content">
+    <slot />
+  </div>
+</details>
+
+<style>
+  .gh-accordion__item {
+    border-top: var(--border-width-hairline) solid var(--color-border-default);
+  }
+
+  .gh-accordion__item:last-child {
+    border-bottom: var(--border-width-hairline) solid var(--color-border-default);
+  }
+
+  .gh-accordion__summary {
+    list-style: none;
+    cursor: pointer;
+    padding: var(--space-3) 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
+    min-height: 2.75rem;
+    /* Remove default native triangle marker on Safari and Firefox. */
+  }
+
+  .gh-accordion__summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .gh-accordion__summary:hover {
+    background: var(--ghana-green-50);
+  }
+
+  .gh-accordion__summary:focus-visible {
+    outline: var(--border-width-focus) solid var(--color-focus-ring);
+    outline-offset: -2px;
+  }
+
+  .gh-accordion__heading {
+    font-family: var(--font-display);
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--line-height-heading);
+    color: var(--color-link);
+  }
+
+  /* Chevron rotates when open. Drawn from two borders for sharper
+     rendering at small sizes than a box-shadow trick. */
+  .gh-accordion__chevron {
+    flex-shrink: 0;
+    width: 0.625rem;
+    height: 0.625rem;
+    border-right: 2px solid var(--color-text-default);
+    border-bottom: 2px solid var(--color-text-default);
+    transform: rotate(45deg);
+    transform-origin: 60% 60%;
+    transition: transform 200ms ease;
+  }
+
+  .gh-accordion__item[open] .gh-accordion__chevron {
+    transform: rotate(-135deg);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .gh-accordion__chevron {
+      transition: none;
+    }
+  }
+
+  .gh-accordion__content {
+    padding: 0 0 var(--space-4) 0;
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-body);
+  }
+
+  .gh-accordion__content > :first-child {
+    margin-top: 0;
+  }
+
+  .gh-accordion__content > :last-child {
+    margin-bottom: 0;
+  }
+</style>

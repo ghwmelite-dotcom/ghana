@@ -1,0 +1,96 @@
+---
+/**
+ * Hidden Tabs gallery — served at `/internal/tabs/`.
+ */
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Tabs from '@gh/gh-ds/Tabs';
+---
+
+<BaseLayout
+  title="Tabs — internal test"
+  description="Internal test page for GH-DS Tabs. Not linked from public navigation."
+  noindex
+>
+  <h1>Tabs</h1>
+  <p>
+    Not public. Exercises <code>@gh/gh-ds/Tabs</code>. v0 ships the progressive-enhancement baseline
+    — anchor jump-links over stacked sections. The ARIA-tablist hide/show enhancement is a future
+    PR.
+  </p>
+
+  <section aria-labelledby="h-passport">
+    <h2 id="h-passport">Passport services</h2>
+
+    <Tabs
+      label="Passport services"
+      tabs={[
+        { id: 'pp-renew', label: 'Renew' },
+        { id: 'pp-apply', label: 'First-time apply' },
+        { id: 'pp-lost', label: 'Lost or stolen' },
+      ]}
+    >
+      <section id="pp-renew">
+        <h3>Renew your passport</h3>
+        <p>
+          Renew online if your current passport expires within 12 months and you are over 18.
+          Typical processing: 7 working days for standard, 3 for express.
+        </p>
+      </section>
+
+      <section id="pp-apply">
+        <h3>First-time passport application</h3>
+        <p>
+          Apply in person at any Ghana Immigration Service office. Bring your Ghana Card, birth
+          certificate, and two recent passport photos on a white background.
+        </p>
+      </section>
+
+      <section id="pp-lost">
+        <h3>Lost or stolen passport</h3>
+        <p>
+          Report the loss at the nearest GIS office before applying for a replacement. Bring your
+          Ghana Card and a signed police report.
+        </p>
+      </section>
+    </Tabs>
+  </section>
+
+  <section aria-labelledby="h-twi" lang="tw">
+    <h2 id="h-twi" lang="en">Twi fixture</h2>
+    <div lang="tw">
+      <Tabs
+        label="Passport ho nsɛm"
+        tabs={[
+          { id: 'tw-renew', label: 'Foforɔ' },
+          { id: 'tw-lost', label: 'Ayera' },
+        ]}
+      >
+        <section id="tw-renew">
+          <h3>Wo passport foforɔ</h3>
+          <p>Ma wo passport foforɔ online bere biara. Bere: nna 7.</p>
+        </section>
+        <section id="tw-lost">
+          <h3>Passport a ayera</h3>
+          <p>Kɔ Ghana Immigration Service dan mu na kyerɛ wɔn.</p>
+        </section>
+      </Tabs>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  section {
+    border-top: var(--border-width-hairline) solid var(--color-border-default);
+    margin-top: var(--space-8);
+    padding-top: var(--space-4);
+  }
+
+  code {
+    font-family: var(--font-mono);
+    font-size: 0.95em;
+    background: var(--ghana-ink-50);
+    padding: 2px 6px;
+    border-radius: var(--radius-sm);
+  }
+</style>

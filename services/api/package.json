@@ -1,0 +1,12 @@
+{
+  "name": "@gh/api",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "typecheck": "echo '@gh/api: no typecheck yet' && exit 0",
+    "lint": "echo '@gh/api: no lint yet' && exit 0",
+    "test": "echo '@gh/api: no test yet' && exit 0",
+    "build": "echo '@gh/api: no build yet' && exit 0"
+  }
+}

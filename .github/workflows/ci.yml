@@ -1,0 +1,170 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  NODE_VERSION: 22
+  PNPM_VERSION: 9
+
+jobs:
+  # ───────────────────────────────────────────────────────────
+  # Verify
+  #   typecheck → lint → test → build across every workspace.
+  #   Zero-warning policy. Red on any.
+  # ───────────────────────────────────────────────────────────
+  verify:
+    name: Verify
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: ${{ env.PNPM_VERSION }}
+
+      - name: Setup Node ${{ env.NODE_VERSION }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Typecheck
+        run: pnpm typecheck
+
+      - name: Lint
+        run: pnpm lint
+
+      - name: Test
+        run: pnpm test
+
+      - name: Build
+        run: pnpm build
+
+      - name: Format check
+        run: pnpm format:check
+
+  # ───────────────────────────────────────────────────────────
+  # Portability boundary
+  #   §2.3 forbids `cloudflare:*` imports outside services/.
+  # ───────────────────────────────────────────────────────────
+  portability-boundary:
+    name: Portability boundary
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+      - name: Forbid cloudflare:* imports outside services/
+        run: |
+          set -e
+          violations=$(grep -rE "from ['\"]cloudflare:" apps/ packages/ 2>/dev/null || true)
+          if [ -n "$violations" ]; then
+            echo "::error::cloudflare:* imports are only allowed inside services/."
+            echo "$violations"
+            exit 1
+          fi
+          echo "No portability-boundary violations found."
+
+  # ───────────────────────────────────────────────────────────
+  # workerd-Docker DR build
+  #   Every Worker under workerd in Docker must build green.
+  #   §2.3 — ADR-002.
+  # ───────────────────────────────────────────────────────────
+  workerd-docker-build:
+    name: workerd-Docker DR build
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    if: github.event_name == 'pull_request' || github.ref == 'refs/heads/main'
+    steps:
+      - uses: actions/checkout@v4
+      - name: Stub — infra/workerd-docker/ not yet scaffolded
+        # Real Dockerfile + compose lands in a later PR.
+        # Until then, this job documents the gate and exits 0.
+        run: |
+          if [ -f infra/workerd-docker/Dockerfile ]; then
+            echo "Running workerd-Docker DR build..."
+            docker build -f infra/workerd-docker/Dockerfile .
+          else
+            echo "::warning::infra/workerd-docker/Dockerfile not yet present. Stub passing."
+          fi
+
+  # ───────────────────────────────────────────────────────────
+  # axe-core static audit of @gh/portal build output
+  #   Zero violations above `minor` severity per §1.
+  # ───────────────────────────────────────────────────────────
+  axe-portal:
+    name: axe-core — apps/portal
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: ${{ env.PNPM_VERSION }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm --filter @gh/portal build
+      - run: pnpm --filter @gh/portal test
+
+  # ───────────────────────────────────────────────────────────
+  # Transfer-weight budget for /
+  #   < 80 KB gzipped on the homepage per week-0.md §4 PR 3 DoD.
+  # ───────────────────────────────────────────────────────────
+  transfer-weight:
+    name: Transfer-weight budget (apps/portal /)
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: ${{ env.PNPM_VERSION }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm --filter @gh/portal build
+      - run: pnpm --filter @gh/portal measure:weight
+
+  # ───────────────────────────────────────────────────────────
+  # Lighthouse — live preview
+  #   §8 budget, Chrome via headless-browser action.
+  # ───────────────────────────────────────────────────────────
+  lighthouse:
+    name: Lighthouse budget
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: ${{ env.PNPM_VERSION }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm --filter @gh/portal build
+      - name: Install Lighthouse CI
+        run: pnpm add -g @lhci/cli@0.14.x
+      - name: Run Lighthouse CI
+        working-directory: apps/portal
+        run: lhci autorun --config=.lighthouserc.cjs

@@ -1,0 +1,153 @@
+---
+/**
+ * <Table> — Ghana Design System Tier-2 content component.
+ *
+ * Responsive styled wrapper for an ordinary semantic HTML table. Ported in
+ * intent from GOV.UK Frontend's `govuk-table`, per ADR-003.
+ *
+ * Contract:
+ *   - Every table has a `<caption>`. A table without a caption is a bug in
+ *     the consumer — the caption is announced by screen readers before the
+ *     first row and gives the table meaning.
+ *   - On narrow viewports the wrapper scrolls horizontally; the scroll
+ *     region is keyboard-focusable with `tabindex="0"` so keyboard-only
+ *     users can pan. The ARIA role `region` + aria-label references the
+ *     caption so the scroll container is announced.
+ *   - The author supplies `<thead>`, `<tbody>`, and rows in the default
+ *     slot — component is not a row/column-data wrapper, just styling +
+ *     responsive chrome + caption plumbing.
+ *
+ * Usage:
+ *   <Table caption="Fees by service" id="fees">
+ *     <thead>
+ *       <tr>
+ *         <th scope="col">Service</th>
+ *         <th scope="col" class="gh-table__cell--numeric">Fee</th>
+ *       </tr>
+ *     </thead>
+ *     <tbody>
+ *       <tr><td>Passport — standard (32 pages)</td>
+ *           <td class="gh-table__cell--numeric">GH₵ 100</td></tr>
+ *       <tr><td>Passport — executive (64 pages)</td>
+ *           <td class="gh-table__cell--numeric">GH₵ 150</td></tr>
+ *     </tbody>
+ *   </Table>
+ */
+
+interface Props {
+  /** Visible caption above the table. Always required. */
+  caption: string;
+  /**
+   * When true, the caption is visually hidden but still announced by
+   * screen readers. Use sparingly — sighted users benefit from a visible
+   * caption too.
+   */
+  captionHidden?: boolean;
+  /** DOM id for the wrapping scroll region. */
+  id?: string;
+  class?: string;
+}
+
+const { caption, captionHidden = false, id, class: extraClass } = Astro.props;
+
+const captionId = `${id ?? 'gh-table'}-caption`;
+
+const classes = ['gh-table', extraClass].filter(Boolean).join(' ');
+
+const captionClasses = ['gh-table__caption', captionHidden ? 'gh-table__caption--hidden' : null]
+  .filter(Boolean)
+  .join(' ');
+---
+
+<div class="gh-table-scroll" tabindex="0" role="region" aria-labelledby={captionId} id={id}>
+  <table class={classes}>
+    <caption class={captionClasses} id={captionId}>
+      {caption}
+    </caption>
+    <slot />
+  </table>
+</div>
+
+<style>
+  .gh-table-scroll {
+    overflow-x: auto;
+    margin: var(--space-4) 0 var(--space-8);
+    /* Visible scrollbar + focus ring on keyboard focus. */
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .gh-table-scroll:focus-visible {
+    outline: var(--border-width-focus) solid var(--color-focus-ring);
+    outline-offset: 2px;
+    border-radius: var(--radius-md);
+  }
+
+  .gh-table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-body);
+  }
+
+  .gh-table__caption {
+    caption-side: top;
+    text-align: left;
+    font-family: var(--font-display);
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-heading);
+    color: var(--color-text-default);
+    margin-bottom: var(--space-3);
+  }
+
+  .gh-table__caption--hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  /* Selectors are unscoped inside the table so slotted authored markup
+     inherits styling. */
+  .gh-table :global(thead th) {
+    text-align: left;
+    font-weight: var(--font-weight-bold);
+    vertical-align: bottom;
+    padding: var(--space-3) var(--space-4);
+    border-bottom: var(--border-width-default) solid var(--color-text-default);
+    background: var(--ghana-ink-50);
+  }
+
+  .gh-table :global(tbody td),
+  .gh-table :global(tbody th) {
+    padding: var(--space-3) var(--space-4);
+    border-bottom: var(--border-width-hairline) solid var(--color-border-default);
+    vertical-align: top;
+    text-align: left;
+  }
+
+  .gh-table :global(tbody tr:last-child td),
+  .gh-table :global(tbody tr:last-child th) {
+    border-bottom: 0;
+  }
+
+  /* Right-align utility for numeric columns. Apply to both the th and the
+     matching td so headers line up with figures. */
+  .gh-table :global(.gh-table__cell--numeric) {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+
+  /* Alternate-row striping. Optional aesthetic, improves row-tracking on
+     wide tables. */
+  .gh-table :global(tbody tr:nth-child(even)) {
+    background: var(--color-surface);
+  }
+</style>

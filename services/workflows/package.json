@@ -1,0 +1,12 @@
+{
+  "name": "@gh/workflows",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "typecheck": "echo '@gh/workflows: no typecheck yet' && exit 0",
+    "lint": "echo '@gh/workflows: no lint yet' && exit 0",
+    "test": "echo '@gh/workflows: no test yet' && exit 0",
+    "build": "echo '@gh/workflows: no build yet' && exit 0"
+  }
+}

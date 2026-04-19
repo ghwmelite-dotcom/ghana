@@ -1,0 +1,2681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Access all Ghana government services online. Passport, Ghana Card, Tax Filing, Business Registration, Health Insurance, and more.">
+    <meta name="keywords" content="Ghana government services, passport, Ghana Card, tax, business registration, DVLA, health insurance">
+    <title>Government Services | Republic of Ghana</title>
+
+    <!-- Fonts - Celestial Sovereignty -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="../assets/icons/favicon.svg">
+
+    <style>
+        /* ═══════════════════════════════════════════════════════════
+           CELESTIAL SOVEREIGNTY - Services Page
+           A dark, luminous design inspired by Ghana's starlit majesty
+           With Light/Dark Mode Support
+        ═══════════════════════════════════════════════════════════ */
+
+        :root {
+            /* ═══ DARK MODE (Default) - Obsidian Majesty ═══ */
+
+            /* Core Background Hierarchy */
+            --bg-primary: #030303;
+            --bg-secondary: #0A0A0A;
+            --bg-tertiary: #141414;
+            --bg-elevated: #1E1E1E;
+            --bg-surface: #2A2A2A;
+
+            /* Text Hierarchy */
+            --text-primary: #FAF9F6;
+            --text-secondary: #E8E6E1;
+            --text-muted: #9A9A9A;
+            --text-subtle: #666666;
+
+            /* Obsidian Night Palette */
+            --obsidian: #030303;
+            --onyx: #0A0A0A;
+            --charcoal: #141414;
+            --graphite: #1A1A1A;
+            --slate: #252525;
+
+            /* Luminous Gold Spectrum */
+            --gold-brilliant: #D4AF37;
+            --gold-glow: #F5D061;
+            --gold-pale: rgba(212, 175, 55, 0.15);
+            --gold-mist: rgba(212, 175, 55, 0.08);
+
+            /* Sovereign Emerald */
+            --emerald-deep: #0D3D2E;
+            --emerald-rich: #1A5C45;
+            --emerald-glow: rgba(26, 92, 69, 0.4);
+
+            /* Crimson Essence */
+            --crimson-deep: #6B1E28;
+            --crimson-rich: #8B2635;
+            --crimson-glow: rgba(139, 38, 53, 0.3);
+
+            /* Light Tones */
+            --ivory: #FAF9F6;
+            --pearl: #E8E6E1;
+            --silver: #9A9A9A;
+            --ash: #6B6B6B;
+
+            /* Semantic Surfaces */
+            --card-bg: rgba(255, 255, 255, 0.02);
+            --card-bg-hover: rgba(255, 255, 255, 0.05);
+            --card-border: rgba(255, 255, 255, 0.05);
+            --card-border-hover: rgba(212, 175, 55, 0.3);
+
+            /* Navigation */
+            --nav-bg: rgba(10, 10, 10, 0.85);
+            --nav-bg-scrolled: rgba(3, 3, 3, 0.95);
+            --topbar-bg: linear-gradient(90deg, #0A0A0A 0%, #141414 50%, #0A0A0A 100%);
+
+            /* Interactive Elements */
+            --border-subtle: rgba(212, 175, 55, 0.1);
+            --border-accent: rgba(212, 175, 55, 0.2);
+
+            /* Typography */
+            --font-display: 'Cormorant Garamond', serif;
+            --font-body: 'DM Sans', sans-serif;
+
+            /* Spacing */
+            --space-1: 0.25rem;
+            --space-2: 0.5rem;
+            --space-3: 0.75rem;
+            --space-4: 1rem;
+            --space-5: 1.25rem;
+            --space-6: 1.5rem;
+            --space-8: 2rem;
+            --space-10: 2.5rem;
+            --space-12: 3rem;
+            --space-16: 4rem;
+            --space-20: 5rem;
+            --space-24: 6rem;
+
+            /* Effects */
+            --glow-gold: 0 0 60px rgba(212, 175, 55, 0.4);
+            --glow-soft: 0 0 40px rgba(212, 175, 55, 0.2);
+            --shadow-deep: 0 25px 80px rgba(0, 0, 0, 0.8);
+            --shadow-float: 0 15px 50px rgba(0, 0, 0, 0.5);
+
+            /* Transitions */
+            --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-base: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-elegant: 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            --theme-transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* ═══════════════════════════════════════════════════════════
+           LIGHT MODE - Golden Dawn
+           Warm ivory with deep emerald accents
+        ═══════════════════════════════════════════════════════════ */
+        [data-theme="light"] {
+            /* Core Background Hierarchy */
+            --bg-primary: #FAFAF8;
+            --bg-secondary: #F5F4F0;
+            --bg-tertiary: #EEEEE8;
+            --bg-elevated: #FFFFFF;
+            --bg-surface: #FFFFFF;
+
+            /* Text Hierarchy - Perfect Contrast */
+            --text-primary: #1A1A1A;
+            --text-secondary: #2D2D2D;
+            --text-muted: #5A5A5A;
+            --text-subtle: #7A7A7A;
+
+            /* Legacy Variables Override */
+            --obsidian: #FAFAF8;
+            --onyx: #F5F4F0;
+            --charcoal: #EEEEE8;
+            --graphite: #E8E8E2;
+            --slate: #D8D8D0;
+            --ivory: #1A1A1A;
+            --pearl: #2D2D2D;
+            --silver: #5A5A5A;
+            --ash: #7A7A7A;
+
+            /* Ghana Colors - Light Adapted */
+            --gold-brilliant: #B8942C;
+            --gold-glow: #D4A93A;
+            --gold-pale: rgba(13, 61, 46, 0.08);
+            --gold-mist: rgba(13, 61, 46, 0.04);
+
+            /* Semantic Surfaces */
+            --card-bg: #FFFFFF;
+            --card-bg-hover: #FAFAFA;
+            --card-border: rgba(13, 61, 46, 0.1);
+            --card-border-hover: rgba(13, 61, 46, 0.25);
+
+            /* Navigation */
+            --nav-bg: rgba(250, 250, 248, 0.9);
+            --nav-bg-scrolled: rgba(255, 255, 255, 0.98);
+            --topbar-bg: linear-gradient(90deg, #0D3D2E 0%, #1A5C45 50%, #0D3D2E 100%);
+
+            /* Interactive Elements */
+            --border-subtle: rgba(13, 61, 46, 0.1);
+            --border-accent: rgba(13, 61, 46, 0.2);
+
+            /* Effects - Softer for light mode */
+            --glow-gold: 0 0 40px rgba(13, 61, 46, 0.2);
+            --glow-soft: 0 0 30px rgba(13, 61, 46, 0.1);
+            --shadow-deep: 0 25px 60px rgba(0, 0, 0, 0.12);
+            --shadow-float: 0 15px 40px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Theme Transition for all elements */
+        body,
+        .nav-main,
+        .top-bar,
+        .hero-inner,
+        .service-card,
+        .help-card,
+        .category-tab,
+        .footer,
+        .preloader {
+            transition: background var(--theme-transition),
+                        color var(--theme-transition),
+                        border-color var(--theme-transition),
+                        box-shadow var(--theme-transition);
+        }
+
+        /* Reset & Base */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--obsidian);
+            color: var(--pearl);
+            line-height: 1.6;
+            overflow-x: hidden;
+            cursor: none;
+        }
+
+        /* Custom Cursor */
+        .cursor-main {
+            width: 8px;
+            height: 8px;
+            background: var(--gold-brilliant);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 99999;
+            transition: transform 0.15s ease, opacity 0.15s ease;
+            mix-blend-mode: difference;
+        }
+
+        .cursor-trail {
+            width: 32px;
+            height: 32px;
+            border: 1px solid var(--gold-brilliant);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 99998;
+            transition: transform 0.3s ease, opacity 0.3s ease, width 0.3s ease, height 0.3s ease;
+            opacity: 0.5;
+        }
+
+        .cursor-main.hovering {
+            transform: scale(2);
+        }
+
+        .cursor-trail.hovering {
+            width: 50px;
+            height: 50px;
+            opacity: 0.3;
+        }
+
+        /* Preloader */
+        .preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--obsidian);
+            z-index: 100000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+        }
+
+        .preloader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .preloader-star {
+            width: 60px;
+            height: 60px;
+            fill: var(--gold-brilliant);
+            animation: rotateStar 3s linear infinite, pulseStar 2s ease-in-out infinite;
+        }
+
+        @keyframes rotateStar {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes pulseStar {
+            0%, 100% { filter: drop-shadow(0 0 10px var(--gold-brilliant)); }
+            50% { filter: drop-shadow(0 0 30px var(--gold-glow)); }
+        }
+
+        .preloader-text {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            color: var(--silver);
+            margin-top: var(--space-4);
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+        }
+
+        /* Noise Texture Overlay */
+        .noise-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+        }
+
+        /* Ambient Floating Orbs */
+        .ambient-orbs {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            animation: floatOrb 20s ease-in-out infinite;
+        }
+
+        .orb-1 {
+            width: 400px;
+            height: 400px;
+            background: var(--emerald-glow);
+            top: 20%;
+            left: -10%;
+            animation-delay: 0s;
+        }
+
+        .orb-2 {
+            width: 300px;
+            height: 300px;
+            background: var(--gold-pale);
+            top: 60%;
+            right: -5%;
+            animation-delay: -5s;
+        }
+
+        .orb-3 {
+            width: 250px;
+            height: 250px;
+            background: var(--crimson-glow);
+            bottom: 10%;
+            left: 30%;
+            animation-delay: -10s;
+        }
+
+        @keyframes floatOrb {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(30px, -30px) scale(1.05); }
+            50% { transform: translate(-20px, 20px) scale(0.95); }
+            75% { transform: translate(20px, 30px) scale(1.02); }
+        }
+
+        /* Floating Adinkra Symbols */
+        .adinkra-float {
+            position: fixed;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.03;
+            font-size: 120px;
+            color: var(--gold-brilliant);
+            animation: adinkraFloat 30s ease-in-out infinite;
+        }
+
+        .adinkra-1 { top: 15%; left: 5%; animation-delay: 0s; }
+        .adinkra-2 { top: 70%; right: 8%; animation-delay: -10s; }
+        .adinkra-3 { bottom: 20%; left: 70%; animation-delay: -20s; font-size: 80px; }
+
+        @keyframes adinkraFloat {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        /* Container */
+        .container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 var(--space-6);
+        }
+
+        /* Skip Link */
+        .skip-link {
+            position: absolute;
+            top: -100px;
+            left: var(--space-4);
+            background: var(--gold-brilliant);
+            color: var(--obsidian);
+            padding: var(--space-3) var(--space-6);
+            border-radius: 0 0 8px 8px;
+            font-weight: 600;
+            z-index: 10001;
+            transition: top var(--transition-fast);
+        }
+
+        .skip-link:focus {
+            top: 0;
+        }
+
+        /* Top Bar */
+        .top-bar {
+            background: linear-gradient(90deg, var(--emerald-deep) 0%, var(--charcoal) 100%);
+            padding: var(--space-2) 0;
+            font-size: 0.8rem;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        .top-bar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .emergency-link {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-2);
+            color: var(--gold-glow);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color var(--transition-fast);
+        }
+
+        .emergency-link:hover {
+            color: var(--ivory);
+        }
+
+        .language-selector {
+            display: flex;
+            align-items: center;
+            gap: var(--space-3);
+        }
+
+        .language-selector span {
+            color: var(--silver);
+        }
+
+        .language-selector button {
+            background: transparent;
+            border: none;
+            color: var(--silver);
+            font-size: 0.8rem;
+            cursor: pointer;
+            padding: var(--space-1) var(--space-2);
+            transition: all var(--transition-fast);
+            font-family: var(--font-body);
+        }
+
+        .language-selector button:hover,
+        .language-selector button.active {
+            color: var(--gold-brilliant);
+        }
+
+        /* Navigation - Minimal & Elegant */
+        .nav-main {
+            background: var(--nav-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 0 3rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-subtle);
+            transition: all 0.3s ease;
+        }
+
+        .nav-main.scrolled {
+            background: var(--nav-bg-scrolled);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 80px;
+        }
+
+        .logo { display: flex; align-items: center; gap: 1rem; text-decoration: none; color: var(--text-primary); }
+        .logo-emblem { width: 48px; height: 48px; flex-shrink: 0; }
+        .logo-star { width: 100%; height: 100%; fill: var(--gold-brilliant); transition: transform 0.4s ease; }
+        .logo:hover .logo-star { transform: rotate(36deg); }
+        .logo-text { display: flex; flex-direction: column; line-height: 1.2; }
+        .logo-title { font-family: var(--font-display); font-size: 1.4rem; font-weight: 600; color: var(--text-primary); }
+        .logo-subtitle { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--text-muted); }
+
+        .nav-links { display: flex; align-items: center; gap: 2.5rem; list-style: none; }
+        .nav-links a { text-decoration: none; color: var(--text-secondary); font-size: 0.9rem; font-weight: 500; padding: 0.5rem 0; position: relative; transition: color 0.3s ease; }
+        .nav-links a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: var(--gold-brilliant); transition: width 0.3s ease; }
+        .nav-links a:hover, .nav-links a.active { color: var(--gold-brilliant); }
+        .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+
+        .nav-actions { display: flex; align-items: center; gap: 1rem; }
+        .nav-btn { background: none; border: none; cursor: pointer; padding: 0.5rem; color: var(--text-secondary); transition: color 0.3s ease; display: flex; align-items: center; justify-content: center; }
+        .nav-btn:hover { color: var(--gold-brilliant); }
+        .nav-btn svg { width: 20px; height: 20px; }
+        .nav-cta { background: var(--gold-brilliant); color: #030303; padding: 0.65rem 1.5rem; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 0.85rem; transition: all 0.3s ease; }
+        .nav-cta:hover { background: var(--gold-glow); transform: translateY(-1px); }
+
+        .mobile-menu-btn { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; color: var(--text-primary); }
+        .mobile-menu-btn svg { width: 24px; height: 24px; }
+
+        .mobile-menu { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: var(--bg-primary); z-index: 999; padding: 6rem 2rem 2rem; opacity: 0; visibility: hidden; transition: all 0.3s ease; }
+        .mobile-menu.active { opacity: 1; visibility: visible; }
+        .mobile-menu-links { display: flex; flex-direction: column; gap: 0.5rem; list-style: none; }
+        .mobile-menu-links a { display: block; padding: 1rem 0; text-decoration: none; color: var(--text-primary); font-size: 1.5rem; font-family: var(--font-display); border-bottom: 1px solid var(--border-subtle); transition: color 0.3s ease; }
+        .mobile-menu-links a:hover { color: var(--gold-brilliant); }
+        .mobile-menu-close { position: absolute; top: 1.5rem; right: 1.5rem; background: none; border: none; cursor: pointer; color: var(--text-primary); padding: 0.5rem; }
+        .mobile-menu-close svg { width: 28px; height: 28px; }
+
+        @media (max-width: 1024px) {
+            .nav-main { padding: 0 1.5rem; }
+            .nav-links, .nav-cta { display: none; }
+            .mobile-menu-btn { display: block; }
+            .mobile-menu { display: block; }
+        }
+        @media (max-width: 640px) {
+            .logo-text { display: none; }
+            .nav-container { height: 70px; }
+        }
+
+        [data-theme="light"] .nav-main { border-bottom-color: rgba(0, 0, 0, 0.08); }
+        [data-theme="light"] .nav-main.scrolled { box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); }
+        [data-theme="light"] .nav-cta { background: var(--emerald-deep); color: #fff; }
+        [data-theme="light"] .nav-cta:hover { background: var(--emerald-rich); }
+        [data-theme="light"] .nav-links a:hover, [data-theme="light"] .nav-links a.active { color: var(--emerald-deep); }
+        [data-theme="light"] .nav-links a::after { background: var(--emerald-deep); }
+
+        /* ═══════════════════════════════════════════════════════════
+           THE GOLDEN STAR TOGGLE (Mobile Menu Button)
+           ═══════════════════════════════════════════════════════════ */
+
+        /* ═══════════════════════════════════════════════════════════
+           THE SOVEREIGN GATES - Full Screen Menu
+           ═══════════════════════════════════════════════════════════ */
+
+        /* Kente Stripe Gates - The Opening Animation */
+
+        /* Gate Content Overlay */
+
+        /* Floating Adinkra Symbols in Menu */
+
+        @keyframes float-gentle {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(20px, -10px) rotate(5deg); }
+            50% { transform: translate(-10px, 20px) rotate(-3deg); }
+            75% { transform: translate(-20px, -15px) rotate(8deg); }
+        }
+
+        /* Gate Menu Container */
+
+        /* Menu Items with Staggered Animation */
+
+        /* Quick Services Panel */
+
+        /* Gate Footer */
+
+        /* Light mode adjustments for Sovereign Gates */
+        [data-theme="light"]
+
+        [data-theme="light"]
+
+        [data-theme="light"]
+
+        [data-theme="light"]
+
+        [data-theme="light"]
+
+        [data-theme="light"] .mega-dropdown {
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, rgba(250, 250, 248, 0.98) 100%);
+            border-color: rgba(13, 61, 46, 0.15);
+        }
+
+        [data-theme="light"] .mega-dropdown-link {
+            color: var(--text-primary);
+        }
+
+        [data-theme="light"] .mega-dropdown-link:hover {
+            background: rgba(13, 61, 46, 0.08);
+            color: var(--emerald-deep);
+        }
+
+        /* ═══════════════════════════════════════════════════════════
+           THEME TOGGLE - Celestial Orb
+           ═══════════════════════════════════════════════════════════ */
+        .theme-toggle {
+            position: relative;
+            width: 56px;
+            height: 28px;
+            background: linear-gradient(135deg, var(--bg-tertiary) 0%, var(--bg-secondary) 100%);
+            border: 1px solid var(--border-subtle);
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            padding: 3px;
+        }
+
+        .theme-toggle::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, var(--emerald-deep) 0%, var(--emerald-rich) 100%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            border-radius: 50px;
+        }
+
+        [data-theme="light"] .theme-toggle::before {
+            opacity: 1;
+        }
+
+        .theme-toggle:hover {
+            border-color: var(--gold-brilliant);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+            transform: scale(1.05);
+        }
+
+        .toggle-orb {
+            position: relative;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--gold-brilliant) 0%, var(--gold-glow) 100%);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3),
+                        0 0 15px rgba(212, 175, 55, 0.4);
+            transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        [data-theme="light"] .toggle-orb {
+            transform: translateX(26px);
+            background: linear-gradient(135deg, #FFFFFF 0%, #F5F4F0 100%);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15),
+                        0 0 15px rgba(255, 255, 255, 0.5);
+        }
+
+        .toggle-icon {
+            width: 14px;
+            height: 14px;
+            transition: all 0.4s ease;
+        }
+
+        .toggle-icon.sun {
+            color: #0D3D2E;
+            opacity: 0;
+            transform: rotate(-90deg) scale(0);
+            position: absolute;
+        }
+
+        .toggle-icon.moon {
+            color: var(--emerald-deep);
+            opacity: 1;
+            transform: rotate(0deg) scale(1);
+        }
+
+        [data-theme="light"] .toggle-icon.sun {
+            opacity: 1;
+            transform: rotate(0deg) scale(1);
+        }
+
+        [data-theme="light"] .toggle-icon.moon {
+            opacity: 0;
+            transform: rotate(90deg) scale(0);
+        }
+
+        /* Star field animation in toggle */
+        .toggle-stars {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+            border-radius: 50px;
+            pointer-events: none;
+        }
+
+        .toggle-star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: var(--gold-brilliant);
+            border-radius: 50%;
+            opacity: 0.6;
+            animation: twinkle 2s ease-in-out infinite;
+        }
+
+        .toggle-star:nth-child(1) { top: 6px; left: 8px; animation-delay: 0s; }
+        .toggle-star:nth-child(2) { top: 14px; left: 15px; animation-delay: 0.5s; }
+        .toggle-star:nth-child(3) { top: 8px; left: 22px; animation-delay: 1s; }
+        .toggle-star:nth-child(4) { top: 18px; left: 10px; animation-delay: 1.5s; }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.3); }
+        }
+
+        [data-theme="light"] .toggle-star {
+            opacity: 0;
+        }
+
+        .nav-cta {
+            background: linear-gradient(135deg, var(--gold-brilliant) 0%, var(--gold-glow) 100%);
+            color: var(--obsidian);
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            letter-spacing: 0.02em;
+        }
+
+        .nav-cta::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, var(--gold-glow) 0%, var(--gold-brilliant) 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--glow-gold);
+        }
+
+        .nav-cta:hover::before {
+            opacity: 1;
+        }
+
+        .nav-cta span {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Search Modal */
+        .search-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(3, 3, 3, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 10000;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            padding-top: 15vh;
+            opacity: 0;
+            visibility: hidden;
+            transition: all var(--transition-base);
+        }
+
+        .search-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .search-close {
+            position: absolute;
+            top: var(--space-6);
+            right: var(--space-6);
+            background: transparent;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            color: var(--pearl);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all var(--transition-fast);
+        }
+
+        .search-close:hover {
+            background: rgba(212, 175, 55, 0.1);
+            border-color: var(--gold-brilliant);
+            color: var(--gold-brilliant);
+        }
+
+        .search-container {
+            width: 100%;
+            max-width: 600px;
+            padding: 0 var(--space-6);
+        }
+
+        .search-input-wrapper {
+            position: relative;
+        }
+
+        .search-icon-lg {
+            position: absolute;
+            left: var(--space-5);
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--silver);
+        }
+
+        .search-input-lg {
+            width: 100%;
+            padding: var(--space-5) var(--space-5) var(--space-5) var(--space-12);
+            background: var(--charcoal);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 60px;
+            font-size: 1.1rem;
+            color: var(--ivory);
+            font-family: var(--font-body);
+            transition: all var(--transition-fast);
+        }
+
+        .search-input-lg::placeholder {
+            color: var(--silver);
+        }
+
+        .search-input-lg:focus {
+            outline: none;
+            border-color: var(--gold-brilliant);
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.2);
+        }
+
+        .search-suggestions {
+            margin-top: var(--space-8);
+            text-align: center;
+        }
+
+        .search-suggestions h4 {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            color: var(--silver);
+            margin-bottom: var(--space-4);
+            font-weight: 400;
+        }
+
+        .search-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-3);
+            justify-content: center;
+        }
+
+        .search-tag {
+            padding: var(--space-2) var(--space-4);
+            background: var(--graphite);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 30px;
+            color: var(--pearl);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all var(--transition-fast);
+        }
+
+        .search-tag:hover {
+            background: rgba(212, 175, 55, 0.1);
+            border-color: var(--gold-brilliant);
+            color: var(--gold-brilliant);
+        }
+
+        /* Services Hero */
+        .services-hero {
+            background: linear-gradient(135deg, var(--obsidian) 0%, var(--charcoal) 50%, var(--emerald-deep) 100%);
+            padding: var(--space-20) 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .services-hero::before {
+            content: '';
+            position: absolute;
+            top: -30%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .services-hero::after {
+            content: '';
+            position: absolute;
+            bottom: -20%;
+            left: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, var(--emerald-glow) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .services-hero-content {
+            position: relative;
+            z-index: 2;
+            color: var(--ivory);
+        }
+
+        .breadcrumbs {
+            margin-bottom: var(--space-6);
+            font-size: 0.9rem;
+        }
+
+        .breadcrumbs a {
+            color: var(--silver);
+            text-decoration: none;
+            transition: color var(--transition-fast);
+        }
+
+        .breadcrumbs a:hover {
+            color: var(--gold-brilliant);
+        }
+
+        .breadcrumbs .separator {
+            color: var(--ash);
+            margin: 0 var(--space-2);
+        }
+
+        .breadcrumbs .current {
+            color: var(--gold-brilliant);
+        }
+
+        .services-hero h1 {
+            font-family: var(--font-display);
+            font-size: 3.5rem;
+            font-weight: 300;
+            color: var(--ivory);
+            margin-bottom: var(--space-4);
+            line-height: 1.1;
+        }
+
+        .services-hero h1 span {
+            color: var(--gold-brilliant);
+        }
+
+        .services-hero p {
+            font-size: 1.15rem;
+            color: var(--silver);
+            max-width: 600px;
+            margin-bottom: var(--space-8);
+            line-height: 1.7;
+        }
+
+        .services-search {
+            max-width: 500px;
+            position: relative;
+        }
+
+        .services-search input {
+            width: 100%;
+            padding: var(--space-4) var(--space-5);
+            padding-left: var(--space-12);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 50px;
+            font-size: 1rem;
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(10px);
+            color: var(--ivory);
+            font-family: var(--font-body);
+            transition: all var(--transition-fast);
+        }
+
+        .services-search input::placeholder {
+            color: var(--silver);
+        }
+
+        .services-search input:focus {
+            outline: none;
+            border-color: var(--gold-brilliant);
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.2);
+        }
+
+        .services-search svg {
+            position: absolute;
+            left: var(--space-4);
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--silver);
+        }
+
+        /* Category Tabs */
+        .category-tabs {
+            display: flex;
+            gap: var(--space-3);
+            padding: var(--space-8) 0;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+        }
+
+        .category-tabs::-webkit-scrollbar {
+            display: none;
+        }
+
+        .category-tab {
+            padding: var(--space-3) var(--space-6);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 50px;
+            background: transparent;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--pearl);
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all var(--transition-fast);
+            font-family: var(--font-body);
+        }
+
+        .category-tab:hover {
+            border-color: var(--gold-brilliant);
+            color: var(--gold-brilliant);
+            background: rgba(212, 175, 55, 0.05);
+        }
+
+        .category-tab.active {
+            background: linear-gradient(135deg, var(--gold-brilliant) 0%, var(--gold-glow) 100%);
+            border-color: transparent;
+            color: var(--obsidian);
+        }
+
+        /* Services Section */
+        .services-section {
+            padding: var(--space-8) 0 var(--space-20);
+        }
+
+        .services-category {
+            margin-bottom: var(--space-16);
+        }
+
+        .services-category:last-child {
+            margin-bottom: 0;
+        }
+
+        .category-header {
+            display: flex;
+            align-items: center;
+            gap: var(--space-4);
+            margin-bottom: var(--space-8);
+        }
+
+        .category-icon {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.15) 0%, rgba(212, 175, 55, 0.05) 100%);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold-brilliant);
+        }
+
+        .category-title {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            font-weight: 400;
+            color: var(--ivory);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-6);
+        }
+
+        .service-card {
+            background: linear-gradient(145deg, rgba(20, 20, 20, 0.8) 0%, rgba(10, 10, 10, 0.9) 100%);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            border-radius: 20px;
+            padding: var(--space-6);
+            text-decoration: none;
+            color: var(--pearl);
+            transition: all var(--transition-elegant);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 0;
+            background: linear-gradient(180deg, var(--gold-brilliant) 0%, var(--emerald-rich) 100%);
+            border-radius: 20px 0 0 20px;
+            transition: height var(--transition-elegant);
+        }
+
+        .service-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at top right, rgba(212, 175, 55, 0.1) 0%, transparent 50%);
+            opacity: 0;
+            transition: opacity var(--transition-base);
+            pointer-events: none;
+        }
+
+        .service-card:hover {
+            border-color: rgba(212, 175, 55, 0.3);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(212, 175, 55, 0.1);
+        }
+
+        .service-card:hover::before {
+            height: 100%;
+        }
+
+        .service-card:hover::after {
+            opacity: 1;
+        }
+
+        .service-icon {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, var(--emerald-deep) 0%, var(--emerald-rich) 100%);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold-brilliant);
+            margin-bottom: var(--space-5);
+            transition: all var(--transition-base);
+            position: relative;
+            z-index: 1;
+        }
+
+        .service-card:hover .service-icon {
+            transform: scale(1.1) rotate(-5deg);
+            box-shadow: 0 10px 30px rgba(13, 61, 46, 0.5);
+        }
+
+        .service-agency {
+            font-size: 0.75rem;
+            color: var(--gold-brilliant);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: var(--space-2);
+            position: relative;
+            z-index: 1;
+        }
+
+        .service-title {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: var(--ivory);
+            margin-bottom: var(--space-3);
+            position: relative;
+            z-index: 1;
+        }
+
+        .service-desc {
+            font-size: 0.9rem;
+            color: var(--silver);
+            line-height: 1.6;
+            margin-bottom: var(--space-4);
+            flex-grow: 1;
+            position: relative;
+            z-index: 1;
+        }
+
+        .service-meta {
+            display: flex;
+            gap: var(--space-4);
+            font-size: 0.8rem;
+            color: var(--ash);
+            padding-top: var(--space-4);
+            border-top: 1px solid rgba(212, 175, 55, 0.1);
+            position: relative;
+            z-index: 1;
+        }
+
+        .service-meta span {
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+        }
+
+        .service-meta svg {
+            color: var(--gold-brilliant);
+            opacity: 0.7;
+        }
+
+        .service-link {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-2);
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--gold-brilliant);
+            margin-top: var(--space-4);
+            transition: gap var(--transition-fast);
+            position: relative;
+            z-index: 1;
+        }
+
+        .service-card:hover .service-link {
+            gap: var(--space-3);
+        }
+
+        /* Quick Stats */
+        .quick-stats {
+            background: linear-gradient(135deg, var(--emerald-deep) 0%, var(--charcoal) 100%);
+            padding: var(--space-16) 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .quick-stats::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23D4AF37' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            pointer-events: none;
+        }
+
+        .quick-stats .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--space-8);
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .stat-item {
+            color: var(--ivory);
+        }
+
+        .stat-number {
+            font-family: var(--font-display);
+            font-size: 3.5rem;
+            font-weight: 300;
+            color: var(--gold-brilliant);
+            line-height: 1;
+            margin-bottom: var(--space-2);
+            text-shadow: 0 0 40px rgba(212, 175, 55, 0.3);
+        }
+
+        .stat-label {
+            font-size: 0.95rem;
+            color: var(--silver);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        /* Help Section */
+        .help-section {
+            padding: var(--space-20) 0;
+            background: var(--onyx);
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: var(--space-12);
+        }
+
+        .section-label {
+            display: inline-block;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--gold-brilliant);
+            margin-bottom: var(--space-4);
+            padding: var(--space-2) var(--space-4);
+            background: var(--gold-pale);
+            border-radius: 30px;
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            font-weight: 300;
+            color: var(--ivory);
+            margin-bottom: var(--space-4);
+        }
+
+        .section-desc {
+            font-size: 1.1rem;
+            color: var(--silver);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .help-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-6);
+        }
+
+        .help-card {
+            background: linear-gradient(145deg, var(--charcoal) 0%, var(--graphite) 100%);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            border-radius: 20px;
+            padding: var(--space-8);
+            text-align: center;
+            transition: all var(--transition-elegant);
+        }
+
+        .help-card:hover {
+            border-color: rgba(212, 175, 55, 0.3);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .help-icon {
+            width: 72px;
+            height: 72px;
+            background: linear-gradient(135deg, var(--gold-pale) 0%, rgba(212, 175, 55, 0.05) 100%);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto var(--space-5);
+            color: var(--gold-brilliant);
+        }
+
+        .help-title {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 500;
+            color: var(--ivory);
+            margin-bottom: var(--space-3);
+        }
+
+        .help-desc {
+            font-size: 0.95rem;
+            color: var(--silver);
+            margin-bottom: var(--space-5);
+            line-height: 1.6;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-2);
+            padding: var(--space-3) var(--space-6);
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all var(--transition-base);
+            font-family: var(--font-body);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid rgba(212, 175, 55, 0.4);
+            color: var(--gold-brilliant);
+        }
+
+        .btn-outline:hover {
+            background: var(--gold-brilliant);
+            border-color: var(--gold-brilliant);
+            color: var(--obsidian);
+        }
+
+        .btn-sm {
+            padding: var(--space-2) var(--space-5);
+            font-size: 0.85rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(180deg, var(--charcoal) 0%, var(--obsidian) 100%);
+            padding: var(--space-20) var(--space-6) var(--space-8);
+            border-top: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: var(--space-12);
+            max-width: 1400px;
+            margin: 0 auto var(--space-12);
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: var(--space-3);
+            margin-bottom: var(--space-5);
+        }
+
+        .footer-logo svg {
+            width: 40px;
+            height: 40px;
+            fill: var(--gold-brilliant);
+        }
+
+        .footer-logo-text {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--ivory);
+        }
+
+        .footer-desc {
+            color: var(--silver);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: var(--space-6);
+        }
+
+        .footer-social {
+            display: flex;
+            gap: var(--space-3);
+        }
+
+        .social-link {
+            width: 42px;
+            height: 42px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--pearl);
+            transition: all var(--transition-fast);
+        }
+
+        .social-link:hover {
+            background: var(--gold-brilliant);
+            border-color: var(--gold-brilliant);
+            color: var(--obsidian);
+        }
+
+        .footer-column h4 {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--gold-brilliant);
+            margin-bottom: var(--space-5);
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column li {
+            margin-bottom: var(--space-3);
+        }
+
+        .footer-column a {
+            color: var(--silver);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color var(--transition-fast);
+        }
+
+        .footer-column a:hover {
+            color: var(--gold-brilliant);
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: var(--space-8);
+            border-top: 1px solid rgba(212, 175, 55, 0.1);
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-copy {
+            color: var(--ash);
+            font-size: 0.9rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: var(--space-6);
+        }
+
+        .footer-links a {
+            color: var(--silver);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color var(--transition-fast);
+        }
+
+        .footer-links a:hover {
+            color: var(--gold-brilliant);
+        }
+
+        /* Reveal Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .quick-stats .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: var(--space-8);
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: var(--space-8);
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-toggle {
+                display: flex;
+            }
+
+            .help-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 1100px) {
+            .nav-links {
+                display: none;
+            }
+
+            
+
+            .nav-cta {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .top-bar {
+                display: none;
+            }
+
+            .top-bar .container {
+                flex-direction: column;
+                gap: var(--space-2);
+            }
+
+            .services-hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .services-grid,
+            .help-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .quick-stats .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: var(--space-6);
+            }
+
+            .stat-number {
+                font-size: 2.5rem;
+            }
+
+            .category-tabs {
+                padding: var(--space-4) 0;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: var(--space-8);
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: var(--space-4);
+                text-align: center;
+            }
+
+            .cursor-main,
+            .cursor-trail {
+                display: none;
+            }
+
+            body {
+                cursor: auto;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .services-hero {
+                padding: var(--space-12) 0;
+            }
+
+            .services-hero h1 {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .category-title {
+                font-size: 1.4rem;
+            }
+
+            .nav-cta {
+                display: none;
+            }
+        }
+
+        /* ═══════════════════════════════════════════════════════════
+           LIGHT MODE SPECIFIC OVERRIDES
+        ═══════════════════════════════════════════════════════════ */
+
+        [data-theme="light"] .ambient-orbs { opacity: 0.4; }
+        [data-theme="light"] .noise-overlay { opacity: 0.015; }
+
+        [data-theme="light"] .preloader { background: var(--bg-primary); }
+        [data-theme="light"] .preloader-star { fill: var(--emerald-deep); filter: drop-shadow(0 0 20px var(--emerald-rich)); }
+        [data-theme="light"] .preloader-text { color: var(--text-muted); }
+
+        [data-theme="light"] .nav-main { background: var(--nav-bg); border-bottom: 1px solid var(--border-subtle); }
+        [data-theme="light"] .nav-main.scrolled { background: var(--nav-bg-scrolled); box-shadow: 0 4px 30px rgba(0,0,0,0.08); }
+        [data-theme="light"] .logo-title { background: linear-gradient(135deg, var(--emerald-deep), var(--emerald-rich)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        [data-theme="light"] .logo-star { fill: var(--emerald-deep); filter: drop-shadow(0 0 10px rgba(13,61,46,0.3)); }
+        [data-theme="light"] .nav-links a { color: var(--text-secondary); }
+        [data-theme="light"] .nav-links a:hover { color: var(--emerald-deep); }
+        [data-theme="light"] .nav-links a::after { background: var(--emerald-deep); }
+        [data-theme="light"] .search-toggle { color: var(--text-secondary); border-color: rgba(13,61,46,0.15); }
+        [data-theme="light"] .search-toggle:hover { color: var(--emerald-deep); border-color: var(--emerald-deep); background: rgba(13,61,46,0.08); }
+        [data-theme="light"] .nav-cta { background: linear-gradient(135deg, var(--emerald-deep), var(--emerald-rich)); color: #FFFFFF; }
+
+        [data-theme="light"] .services-hero { background: linear-gradient(135deg, var(--emerald-deep) 0%, var(--emerald-rich) 100%); }
+        [data-theme="light"] .services-hero h1, [data-theme="light"] .services-hero p { color: #FFFFFF; }
+        [data-theme="light"] .breadcrumb, [data-theme="light"] .breadcrumb a { color: rgba(255,255,255,0.8); }
+        [data-theme="light"] .search-box { background: rgba(255,255,255,0.15); border-color: rgba(255,255,255,0.25); }
+        [data-theme="light"] .search-box input { color: #FFFFFF; }
+        [data-theme="light"] .search-box input::placeholder { color: rgba(255,255,255,0.7); }
+
+        [data-theme="light"] .services-main { background: var(--bg-primary); }
+        [data-theme="light"] .category-sidebar { background: var(--bg-secondary); border-color: var(--border-subtle); }
+        [data-theme="light"] .category-tab { color: var(--text-muted); }
+        [data-theme="light"] .category-tab:hover { background: rgba(13,61,46,0.06); color: var(--emerald-deep); }
+        [data-theme="light"] .category-tab.active { background: var(--emerald-deep); color: #FFFFFF; }
+
+        [data-theme="light"] .category-title { color: var(--text-primary); }
+        [data-theme="light"] .category-title::after { background: linear-gradient(90deg, var(--emerald-deep), transparent); }
+
+        [data-theme="light"] .service-card { background: var(--card-bg); border: 1px solid var(--card-border); box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
+        [data-theme="light"] .service-card:hover { border-color: var(--card-border-hover); box-shadow: 0 20px 60px rgba(0,0,0,0.1); }
+        [data-theme="light"] .service-icon-wrap { background: linear-gradient(135deg, var(--emerald-deep), var(--emerald-rich)); }
+        [data-theme="light"] .service-title { color: var(--text-primary); }
+        [data-theme="light"] .service-desc { color: var(--text-muted); }
+        [data-theme="light"] .service-agency { color: var(--emerald-deep); background: rgba(13,61,46,0.08); }
+        [data-theme="light"] .service-link { color: var(--emerald-deep); }
+
+        [data-theme="light"] .help-section { background: var(--bg-secondary); }
+        [data-theme="light"] .section-title { color: var(--text-primary); }
+        [data-theme="light"] .help-card { background: var(--card-bg); border: 1px solid var(--card-border); }
+        [data-theme="light"] .help-card:hover { border-color: var(--card-border-hover); }
+        [data-theme="light"] .help-icon { background: linear-gradient(135deg, var(--emerald-deep), var(--emerald-rich)); color: #FFFFFF; }
+        [data-theme="light"] .help-title { color: var(--text-primary); }
+        [data-theme="light"] .help-desc { color: var(--text-muted); }
+        [data-theme="light"] .help-link { color: var(--emerald-deep); }
+
+        [data-theme="light"] .stats-section { background: linear-gradient(135deg, var(--emerald-deep), var(--emerald-rich)); }
+        [data-theme="light"] .stat-number { color: #FFFFFF; }
+        [data-theme="light"] .stat-label { color: rgba(255,255,255,0.8); }
+
+        [data-theme="light"] .footer { background: linear-gradient(180deg, var(--bg-tertiary), var(--bg-secondary)); border-top: 1px solid var(--border-subtle); }
+        [data-theme="light"] .footer-title { color: var(--text-primary); }
+        [data-theme="light"] .footer a { color: var(--text-muted); }
+        [data-theme="light"] .footer a:hover { color: var(--emerald-deep); }
+        [data-theme="light"] .social-link { background: rgba(13,61,46,0.08); color: var(--emerald-deep); border: 1px solid rgba(13,61,46,0.15); }
+        [data-theme="light"] .social-link:hover { background: var(--emerald-deep); color: #FFFFFF; }
+
+        [data-theme="light"] .search-modal { background: rgba(250,250,248,0.98); }
+        [data-theme="light"] .search-input-lg { background: var(--bg-elevated); border: 2px solid var(--border-subtle); color: var(--text-primary); }
+        [data-theme="light"] .search-tag { background: rgba(13,61,46,0.08); color: var(--emerald-deep); border: 1px solid rgba(13,61,46,0.15); }
+        [data-theme="light"] .search-tag:hover { background: var(--emerald-deep); color: #FFFFFF; }
+
+        [data-theme="light"] .cursor-main { background: var(--emerald-deep); }
+        [data-theme="light"] .cursor-trail { border-color: var(--emerald-deep); }
+
+        [data-theme="light"] ::-webkit-scrollbar-track { background: var(--bg-secondary); }
+        [data-theme="light"] ::-webkit-scrollbar-thumb { background: var(--bg-surface); border-color: var(--bg-secondary); }
+        [data-theme="light"] ::-webkit-scrollbar-thumb:hover { background: var(--emerald-deep); }
+    </style>
+</head>
+<body>
+    <!-- Preloader -->
+    <div class="preloader" id="preloader">
+        <svg class="preloader-star" viewBox="0 0 100 100">
+            <polygon points="50,5 61,40 98,40 68,62 79,97 50,75 21,97 32,62 2,40 39,40"/>
+        </svg>
+        <span class="preloader-text">Loading</span>
+    </div>
+
+    <!-- Custom Cursor -->
+    <div class="cursor-main" id="cursorMain"></div>
+    <div class="cursor-trail" id="cursorTrail"></div>
+
+    <!-- Noise Overlay -->
+    <div class="noise-overlay"></div>
+
+    <!-- Ambient Orbs -->
+    <div class="ambient-orbs">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+
+    <!-- Floating Adinkra Symbols -->
+    <div class="adinkra-float adinkra-1">&#x2736;</div>
+    <div class="adinkra-float adinkra-2">&#x2737;</div>
+    <div class="adinkra-float adinkra-3">&#x2738;</div>
+
+    <!-- Skip Link -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <a href="tel:112" class="emergency-link">
+                <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+                </svg>
+                Emergency: 112 | COVID-19: 311
+            </a>
+            <div class="language-selector">
+                <span>Language:</span>
+                <button class="active">English</button>
+                <button>Twi</button>
+                <button>Hausa</button>
+                <button>Ewe</button>
+            </div>
+        </div>
+    </div>
+
+    <nav class="nav-main">
+        <div class="nav-container">
+            <a href="../index.html" class="logo">
+                <div class="logo-emblem">
+                    <svg class="logo-star" viewBox="0 0 100 100">
+                        <polygon points="50,5 61,40 98,40 68,62 79,97 50,75 21,97 32,62 2,40 39,40"/>
+                    </svg>
+                </div>
+                <div class="logo-text">
+                    <span class="logo-title">Republic of Ghana</span>
+                    <span class="logo-subtitle">Official Government Portal</span>
+                </div>
+            </a>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="index.html" class="active">Services</a></li>
+                <li><a href="../government/index.html">Government</a></li>
+                <li><a href="../business/index.html">Invest</a></li>
+                <li><a href="../tourism/index.html">Visit Ghana</a></li>
+                <li><a href="../contact.html">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="nav-btn" aria-label="Search" onclick="openSearch()">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+                </button>
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <div class="toggle-orb">
+                        <svg class="toggle-icon moon" viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                        <svg class="toggle-icon sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                    </div>
+                </button>
+                <a href="index.html" class="nav-cta">Access Services</a>
+                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open menu">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close menu">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+        <ul class="mobile-menu-links">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="index.html">Services</a></li>
+            <li><a href="../government/index.html">Government</a></li>
+            <li><a href="../business/index.html">Invest</a></li>
+            <li><a href="../tourism/index.html">Visit Ghana</a></li>
+            <li><a href="../contact.html">Contact</a></li>
+        </ul>
+    </div>
+
+    <!-- Search Modal -->
+    <div class="search-modal" id="searchModal">
+        <button class="search-close" onclick="closeSearch()">
+            <svg width="32" height="32" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M18 6L6 18M6 6l12 12"/>
+            </svg>
+        </button>
+        <div class="search-container">
+            <div class="search-input-wrapper">
+                <svg class="search-icon-lg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
+                </svg>
+                <input type="text" class="search-input-lg" placeholder="Search for services...">
+            </div>
+            <div id="searchResults"></div>
+            <div class="search-suggestions">
+                <h4>Popular Services</h4>
+                <div class="search-tags">
+                    <a href="passport.html" class="search-tag">Passport</a>
+                    <a href="ghana-card.html" class="search-tag">Ghana Card</a>
+                    <a href="tax.html" class="search-tag">Tax Filing</a>
+                    <a href="business.html" class="search-tag">Business Registration</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="services-hero">
+        <div class="container">
+            <div class="services-hero-content">
+                <nav class="breadcrumbs">
+                    <a href="../index.html">Home</a>
+                    <span class="separator">/</span>
+                    <span class="current">Services</span>
+                </nav>
+                <h1>Government <span>Services</span></h1>
+                <p>Access all government services from one place. From passport applications to business registration, we've made it easier for you to get things done.</p>
+                <div class="services-search">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
+                    </svg>
+                    <input type="text" placeholder="Search for a service..." id="serviceSearch">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Category Tabs -->
+    <div class="container">
+        <div class="category-tabs" role="tablist">
+            <button class="category-tab active" data-category="all">All Services</button>
+            <button class="category-tab" data-category="identity">Identity & Travel</button>
+            <button class="category-tab" data-category="business">Business & Tax</button>
+            <button class="category-tab" data-category="social">Social Services</button>
+            <button class="category-tab" data-category="transport">Transport & Vehicles</button>
+            <button class="category-tab" data-category="legal">Legal & Justice</button>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        <section class="services-section">
+            <div class="container">
+                <!-- Identity & Travel -->
+                <div class="services-category" data-category="identity">
+                    <div class="category-header reveal">
+                        <div class="category-icon">
+                            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                                <circle cx="12" cy="10" r="3"/>
+                                <path d="M7 21v-2a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v2"/>
+                            </svg>
+                        </div>
+                        <h2 class="category-title">Identity & Travel Documents</h2>
+                    </div>
+                    <div class="services-grid">
+                        <a href="passport.html" class="service-card reveal">
+                            <div class="service-icon">
+                                <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <rect x="3" y="4" width="18" height="18" rx="2"/>
+                                    <line x1="3" y1="10" x2="21" y2="10"/>
+                                    <line x1="8" y1="2" x2="8" y2="6"/>
+                                    <line x1="16" y1="2" x2="16" y2="6"/>
+                                </svg>
+                            </div>
+                            <span class="service-agency">Passport Office</span>
+                            <h3 class="service-title">Passport Services</h3>
+                            <p class="service-desc">Apply for new passport, renew existing passport, or report a lost/stolen passport.</p>
+                            <div class="service-meta">
+                                <span>
+                                    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                        <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+                                    </svg>
+                                    3-5 days
+                                </span>
+                                <span>
+                                    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                        <rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 3v4M8 3v4"/>
+                                    </svg>
+                                    GHS 100-350
+                                </span>
+                            </div>
+                            <span class="service-link">
+                                Apply Now
+                                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                                </svg>
+                            </span>
+                        </a>
+
+                        <a href="ghana-card.html" class="service-card reveal">
+                            <div class="service-icon">
+                                <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <rect x="3" y="4" width="18" height="16" rx="2"/>
+                                    <circle cx="9" cy="10" r="2"/>
+                                    <path d="M15 8h2M15 12h2M7 16h10"/>
+                                </svg>
+                            </div>
+                            <span class="service-agency">NIA</span>
+                            <h3 class="service-title">Ghana Card (National ID)</h3>
+                            <p class="service-desc">Register for your national identification card, check status, or request replacement.</p>
+                            <div class="service-meta">
+                                <span>
+                                    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                        <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+                                    </svg>
+                                    2-4 weeks
+                                </span>
+                                <span>
+                                    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                        <rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 3v4M8 3v4"/>
+                                    </svg>
+                                    Free
+                                </span>
+                            </div>
+                            <span class="service-link">
+                                Register Now
+                                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                                </svg>
+                            </span>
+                        </a>
+
+                        <a href="birth-certificate.html" class="service-card reveal">
+                            <div class="service-icon">
+                                <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                    <polyline points="14 2 14 8 20 8"/>
+                                    <line x1="16" y1="13" x2="8" y2="13"/>
+                                    <line x1="16" y1="17" x2="8" y2="17"/>
+                                </svg>
+                            </div>
+                            <span class="service-agency">Births & Deaths Registry</span>
+                            <h3 class="service-title">Birth Certificate</h3>
+                            <p class="service-desc">Register a birth, obtain certified copies of birth certificates, or make corrections.</p>
+                            <div class="service-meta">
+                                <span>
+                                    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                        <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+                                    </svg>
+                                    1-3 days
+                                </span>
+                                <span>
+                                    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                        <rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 3v4M8 3v4"/>
+                                    </svg>
+                                    GHS 20-50
+                                </span>
+                            </div>
+                            <span class="service-link">
+                                Get Certificate
+                                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                                </svg>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Business & Tax -->
+                <div class="services-category" data-category="business">
+                    <div class="category-header reveal">
+                        <div class="category-icon">
+                            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+                                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+                            </svg>
+                        </div>
+                        <h2 class="category-title">Business & Tax Services</h2>
+                    </div>
+                    <div class="services-grid">
+                        <a href="business.html" class="service-card reveal">
+                            <div class="service-icon">
+                                <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                                    <polyline points="22 4 12 14.01 9 11.01"/>
+                                </svg>
+                            </div>
+                            <span class="service-agency">Registrar General's Dept.</span>
+                            <h3 class="service-title">Business Registration</h3>
+                            <p class="service-desc">Register a new business, file annual returns, or search the business registry.</p>
+                            <div class="service-meta">
+                                <span>
+                                    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                        <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+                                    </svg>
+                                    2-5 days
+                                </span>
+                                <span>
+                                    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                        <rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 3v4M8 3v4"/>
+                                    </svg>
+                                    GHS 120-500
+                                </span>
+                            </div>
+                            <span class="service-link">
+                                Register Business
+                                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                                </svg>
+                            </span>
+                        </a>
+
+                        <a href="tax.html" class="service-card reveal">
+                            <div class="service-icon">
+                                <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <rect x="1" y="4" width="22" height="16" rx="2" ry="2"/>
+                                    <line x1="1" y1="10" x2="23" y2="10"/>
+                                </svg>
+                            </div>
+                            <span class="service-agency">GRA</span>
+                            <h3 class="service-title">Tax Filing & Payments</h3>
+                            <p class="service-desc">File your tax returns, make payments, apply for TIN, or check refund status.</p>
+                            <div class="service-meta">
+                                <span>
+                                    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                        <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+                                    </svg>
+                                    Instant
+                                </span>
+                                <span>
+                                    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                        <rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 3v4M8 3v4"/>
+                                    </svg>
+                                    Varies
+                                </span>
+                            </div>
+                            <span class="service-link">
+                                File Taxes
+                                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                                </svg>
+                            </span>
+                        </a>
+
+                        <a href="permits.html" class="service-card reveal">
+                            <div class="service-icon">
+                                <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                                </svg>
+                            </div>
+                            <span class="service-agency">Various Agencies</span>
+                            <h3 class="service-title">Permits & Licenses</h3>
+                            <p class="service-desc">Apply for business permits, import/export licenses, and regulatory approvals.</p>
+                            <div class="service-meta">
+                                <span>
+                                    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                        <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+                                    </svg>
+                                    5-15 days
+                                </span>
+                                <span>
+                                    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                        <rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 3v4M8 3v4"/>
+                                    </svg>
+                                    Varies
+                                </span>
+                            </div>
+                            <span class="service-link">
+                                View Permits
+                                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                                </svg>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Social Services -->
+                <div class="services-category" data-category="social">
+                    <div class="category-header reveal">
+                        <div class="category-icon">
+                            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                <circle cx="9" cy="7" r="4"/>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                            </svg>
+                        </div>
+                        <h2 class="category-title">Social & Health Services</h2>
+                    </div>
+                    <div class="services-grid">
+                        <a href="health.html" class="service-card reveal">
+                            <div class="service-icon">
+                                <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                                </svg>
+                            </div>
+                            <span class="service-agency">NHIA</span>
+                            <h3 class="service-title">Health Insurance (NHIS)</h3>
+                            <p class="service-desc">Register for national health insurance, renew membership, or check your status.</p>
+                            <div class="service-meta">
+                                <span>
+                                    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                        <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+                                    </svg>
+                                    Same day
+                                </span>
+                                <span>
+                                    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                        <rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 3v4M8 3v4"/>
+                                    </svg>
+                                    GHS 30/year
+                                </span>
+                            </div>
+                            <span class="service-link">
+                                Register Now
+                                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                                </svg>
+                            </span>
+                        </a>
+
+                        <a href="education.html" class="service-card reveal">
+                            <div class="service-icon">
+                                <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+                                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+                                </svg>
+                            </div>
+                            <span class="service-agency">Ministry of Education</span>
+                            <h3 class="service-title">Education Services</h3>
+                            <p class="service-desc">School placement, exam results, scholarships, and educational certifications.</p>
+                            <div class="service-meta">
+                                <span>
+                                    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                        <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+                                    </svg>
+                                    Varies
+                                </span>
+                                <span>
+                                    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                        <rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 3v4M8 3v4"/>
+                                    </svg>
+                                    Free-GHS 50
+                                </span>
+                            </div>
+                            <span class="service-link">
+                                Explore Services
+                                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                                </svg>
+                            </span>
+                        </a>
+
+                        <a href="social-welfare.html" class="service-card reveal">
+                            <div class="service-icon">
+                                <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                                </svg>
+                            </div>
+                            <span class="service-agency">Social Welfare</span>
+                            <h3 class="service-title">Social Protection</h3>
+                            <p class="service-desc">LEAP benefits, disability support, child welfare, and elderly care programs.</p>
+                            <div class="service-meta">
+                                <span>
+                                    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                        <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+                                    </svg>
+                                    2-4 weeks
+                                </span>
+                                <span>
+                                    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                        <rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 3v4M8 3v4"/>
+                                    </svg>
+                                    Free
+                                </span>
+                            </div>
+                            <span class="service-link">
+                                Learn More
+                                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                                </svg>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Transport & Vehicles -->
+                <div class="services-category" data-category="transport">
+                    <div class="category-header reveal">
+                        <div class="category-icon">
+                            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <rect x="1" y="3" width="15" height="13"/>
+                                <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/>
+                                <circle cx="5.5" cy="18.5" r="2.5"/>
+                                <circle cx="18.5" cy="18.5" r="2.5"/>
+                            </svg>
+                        </div>
+                        <h2 class="category-title">Transport & Vehicle Services</h2>
+                    </div>
+                    <div class="services-grid">
+                        <a href="drivers-license.html" class="service-card reveal">
+                            <div class="service-icon">
+                                <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/>
+                                </svg>
+                            </div>
+                            <span class="service-agency">DVLA</span>
+                            <h3 class="service-title">Driver's License</h3>
+                            <p class="service-desc">Apply for new license, renew, replace lost license, or check application status.</p>
+                            <div class="service-meta">
+                                <span>
+                                    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                        <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+                                    </svg>
+                                    5-10 days
+                                </span>
+                                <span>
+                                    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                        <rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 3v4M8 3v4"/>
+                                    </svg>
+                                    GHS 80-150
+                                </span>
+                            </div>
+                            <span class="service-link">
+                                Apply Now
+                                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                                </svg>
+                            </span>
+                        </a>
+
+                        <a href="vehicle-registration.html" class="service-card reveal">
+                            <div class="service-icon">
+                                <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <rect x="1" y="3" width="15" height="13"/>
+                                    <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/>
+                                    <circle cx="5.5" cy="18.5" r="2.5"/>
+                                    <circle cx="18.5" cy="18.5" r="2.5"/>
+                                </svg>
+                            </div>
+                            <span class="service-agency">DVLA</span>
+                            <h3 class="service-title">Vehicle Registration</h3>
+                            <p class="service-desc">Register new vehicle, transfer ownership, or obtain roadworthy certificate.</p>
+                            <div class="service-meta">
+                                <span>
+                                    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                        <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+                                    </svg>
+                                    3-7 days
+                                </span>
+                                <span>
+                                    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                        <rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 3v4M8 3v4"/>
+                                    </svg>
+                                    GHS 200-1000
+                                </span>
+                            </div>
+                            <span class="service-link">
+                                Register Vehicle
+                                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                                </svg>
+                            </span>
+                        </a>
+
+                        <a href="road-fund.html" class="service-card reveal">
+                            <div class="service-icon">
+                                <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                                    <path d="M2 17l10 5 10-5"/>
+                                    <path d="M2 12l10 5 10-5"/>
+                                </svg>
+                            </div>
+                            <span class="service-agency">Ghana Road Fund</span>
+                            <h3 class="service-title">Road Fund & Tolls</h3>
+                            <p class="service-desc">Pay road tolls, fund levies, and access road maintenance services.</p>
+                            <div class="service-meta">
+                                <span>
+                                    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                        <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+                                    </svg>
+                                    Instant
+                                </span>
+                                <span>
+                                    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                        <rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 3v4M8 3v4"/>
+                                    </svg>
+                                    Varies
+                                </span>
+                            </div>
+                            <span class="service-link">
+                                Make Payment
+                                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                                </svg>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Stats -->
+        <section class="quick-stats">
+            <div class="container">
+                <div class="stats-grid">
+                    <div class="stat-item reveal">
+                        <div class="stat-number" data-count="500" data-suffix="+">0</div>
+                        <div class="stat-label">Services Available</div>
+                    </div>
+                    <div class="stat-item reveal">
+                        <div class="stat-number" data-count="32" data-suffix="M+">0</div>
+                        <div class="stat-label">Citizens Served</div>
+                    </div>
+                    <div class="stat-item reveal">
+                        <div class="stat-number" data-count="16">0</div>
+                        <div class="stat-label">Regional Offices</div>
+                    </div>
+                    <div class="stat-item reveal">
+                        <div class="stat-number" data-count="98" data-suffix="%">0</div>
+                        <div class="stat-label">Satisfaction Rate</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Help Section -->
+        <section class="help-section">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="section-label">Need Help?</span>
+                    <h2 class="section-title">We're Here to Assist You</h2>
+                    <p class="section-desc">Can't find what you're looking for? Our support team is ready to help.</p>
+                </div>
+
+                <div class="help-grid">
+                    <div class="help-card reveal">
+                        <div class="help-icon">
+                            <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <circle cx="12" cy="12" r="10"/>
+                                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+                                <line x1="12" y1="17" x2="12.01" y2="17"/>
+                            </svg>
+                        </div>
+                        <h3 class="help-title">FAQs</h3>
+                        <p class="help-desc">Find answers to commonly asked questions about our services.</p>
+                        <a href="../faq.html" class="btn btn-outline btn-sm">View FAQs</a>
+                    </div>
+
+                    <div class="help-card reveal">
+                        <div class="help-icon">
+                            <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                            </svg>
+                        </div>
+                        <h3 class="help-title">Live Chat</h3>
+                        <p class="help-desc">Chat with our support team for immediate assistance.</p>
+                        <button class="btn btn-outline btn-sm" onclick="startChat()">Start Chat</button>
+                    </div>
+
+                    <div class="help-card reveal">
+                        <div class="help-icon">
+                            <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                            </svg>
+                        </div>
+                        <h3 class="help-title">Call Center</h3>
+                        <p class="help-desc">Speak directly with a government service representative.</p>
+                        <a href="tel:+233302000000" class="btn btn-outline btn-sm">Call Now</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <div class="footer-logo">
+                    <svg viewBox="0 0 100 100">
+                        <polygon points="50,5 61,40 98,40 68,62 79,97 50,75 21,97 32,62 2,40 39,40"/>
+                    </svg>
+                    <span class="footer-logo-text">Republic of Ghana</span>
+                </div>
+                <p class="footer-desc">The official digital gateway to Ghana's government services. Building a transparent, efficient, and citizen-centered administration.</p>
+                <div class="footer-social">
+                    <a href="#" class="social-link"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+                    <a href="#" class="social-link"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg></a>
+                    <a href="#" class="social-link"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="passport.html">Passport Services</a></li>
+                    <li><a href="ghana-card.html">Ghana Card</a></li>
+                    <li><a href="tax.html">Tax Filing</a></li>
+                    <li><a href="business.html">Business Registration</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Government</h4>
+                <ul>
+                    <li><a href="../government/president.html">The Presidency</a></li>
+                    <li><a href="../government/parliament.html">Parliament</a></li>
+                    <li><a href="../government/ministries.html">Ministries</a></li>
+                    <li><a href="../government/agencies.html">Agencies</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="../contact.html">Contact Us</a></li>
+                    <li><a href="../faq.html">FAQs</a></li>
+                    <li><a href="../accessibility.html">Accessibility</a></li>
+                    <li><a href="../sitemap.html">Sitemap</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p class="footer-copy">&copy; 2026 Republic of Ghana. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="../privacy.html">Privacy Policy</a>
+                <a href="../terms.html">Terms of Use</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // MOBILE MENU
+        (function() {
+            document.addEventListener('DOMContentLoaded', function() {
+                const menuBtn = document.getElementById('mobileMenuBtn');
+                const menuClose = document.getElementById('mobileMenuClose');
+                const mobileMenu = document.getElementById('mobileMenu');
+                if (menuBtn && mobileMenu) {
+                    menuBtn.addEventListener('click', function() { mobileMenu.classList.add('active'); document.body.style.overflow = 'hidden'; });
+                    if (menuClose) { menuClose.addEventListener('click', function() { mobileMenu.classList.remove('active'); document.body.style.overflow = ''; }); }
+                    mobileMenu.querySelectorAll('a').forEach(link => { link.addEventListener('click', function() { mobileMenu.classList.remove('active'); document.body.style.overflow = ''; }); });
+                    document.addEventListener('keydown', function(e) { if (e.key === 'Escape' && mobileMenu.classList.contains('active')) { mobileMenu.classList.remove('active'); document.body.style.overflow = ''; } });
+                }
+            });
+        })();
+
+        // ═══════════════════════════════════════════════════════════
+        // THEME SYSTEM - Celestial/Golden Dawn Toggle
+        // ═══════════════════════════════════════════════════════════
+        (function() {
+            const STORAGE_KEY = 'ghana-gov-theme';
+            const DARK = 'dark';
+            const LIGHT = 'light';
+
+            function getSavedTheme() {
+                const saved = localStorage.getItem(STORAGE_KEY);
+                if (saved) return saved;
+                if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+                    return LIGHT;
+                }
+                return DARK;
+            }
+
+            function applyTheme(theme) {
+                if (theme === LIGHT) {
+                    document.documentElement.setAttribute('data-theme', 'light');
+                } else {
+                    document.documentElement.removeAttribute('data-theme');
+                }
+                localStorage.setItem(STORAGE_KEY, theme);
+            }
+
+            applyTheme(getSavedTheme());
+
+            document.addEventListener('DOMContentLoaded', function() {
+                const toggle = document.getElementById('themeToggle');
+                if (toggle) {
+                    toggle.addEventListener('click', function() {
+                        const current = document.documentElement.getAttribute('data-theme');
+                        const newTheme = current === 'light' ? DARK : LIGHT;
+                        applyTheme(newTheme);
+                        this.style.transform = 'scale(0.95)';
+                        setTimeout(() => { this.style.transform = ''; }, 150);
+                    });
+                }
+            });
+
+            if (window.matchMedia) {
+                window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', function(e) {
+                    if (!localStorage.getItem(STORAGE_KEY)) {
+                        applyTheme(e.matches ? LIGHT : DARK);
+                    }
+                });
+            }
+        })();
+
+        // Preloader
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('preloader').classList.add('hidden');
+            }, 1000);
+        });
+
+        // Custom Cursor
+        const cursorMain = document.getElementById('cursorMain');
+        const cursorTrail = document.getElementById('cursorTrail');
+
+        if (window.matchMedia('(pointer: fine)').matches) {
+            document.addEventListener('mousemove', (e) => {
+                cursorMain.style.left = e.clientX - 4 + 'px';
+                cursorMain.style.top = e.clientY - 4 + 'px';
+
+                setTimeout(() => {
+                    cursorTrail.style.left = e.clientX - 16 + 'px';
+                    cursorTrail.style.top = e.clientY - 16 + 'px';
+                }, 80);
+            });
+
+            const interactiveElements = document.querySelectorAll('a, button, .service-card, .help-card, .category-tab');
+            interactiveElements.forEach(el => {
+                el.addEventListener('mouseenter', () => {
+                    cursorMain.classList.add('hovering');
+                    cursorTrail.classList.add('hovering');
+                });
+                el.addEventListener('mouseleave', () => {
+                    cursorMain.classList.remove('hovering');
+                    cursorTrail.classList.remove('hovering');
+                });
+            });
+        }
+
+        // Search Modal
+        function openSearch() {
+            document.getElementById('searchModal').classList.add('active');
+            document.querySelector('.search-input-lg').focus();
+        }
+
+        function closeSearch() {
+            document.getElementById('searchModal').classList.remove('active');
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeSearch();
+            if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+                e.preventDefault();
+                openSearch();
+            }
+        });
+
+        // Category filtering
+        const tabs = document.querySelectorAll('.category-tab');
+        const categories = document.querySelectorAll('.services-category');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const category = tab.dataset.category;
+
+                tabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+
+                categories.forEach(cat => {
+                    if (category === 'all' || cat.dataset.category === category) {
+                        cat.style.display = 'block';
+                    } else {
+                        cat.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Service search
+        const serviceSearch = document.getElementById('serviceSearch');
+        const serviceCards = document.querySelectorAll('.service-card');
+
+        if (serviceSearch) {
+            serviceSearch.addEventListener('input', (e) => {
+                const query = e.target.value.toLowerCase();
+
+                serviceCards.forEach(card => {
+                    const title = card.querySelector('.service-title').textContent.toLowerCase();
+                    const desc = card.querySelector('.service-desc').textContent.toLowerCase();
+                    const agency = card.querySelector('.service-agency').textContent.toLowerCase();
+
+                    if (title.includes(query) || desc.includes(query) || agency.includes(query)) {
+                        card.style.display = 'flex';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+
+                if (query) {
+                    categories.forEach(cat => cat.style.display = 'block');
+                    tabs.forEach(t => t.classList.remove('active'));
+                    tabs[0].classList.add('active');
+                }
+            });
+        }
+
+        // Scroll Reveal
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, index * 100);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        // Counter Animation
+        const statNumbers = document.querySelectorAll('.stat-number');
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const target = entry.target;
+                    const count = parseInt(target.dataset.count);
+                    const suffix = target.dataset.suffix || '';
+                    let current = 0;
+                    const increment = count / 60;
+                    const timer = setInterval(() => {
+                        current += increment;
+                        if (current >= count) {
+                            target.textContent = count + suffix;
+                            clearInterval(timer);
+                        } else {
+                            target.textContent = Math.floor(current) + suffix;
+                        }
+                    }, 30);
+                    counterObserver.unobserve(target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        statNumbers.forEach(num => counterObserver.observe(num));
+
+        // Chat function placeholder
+        function startChat() {
+            alert('Live chat feature coming soon! For immediate assistance, please call our hotline.');
+        }
+    </script>
+</body>
+</html>

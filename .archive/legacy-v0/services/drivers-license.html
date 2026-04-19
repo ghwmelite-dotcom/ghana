@@ -1,0 +1,1525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Driver's License | Government Services</title>
+    <meta name="description" content="Apply for or renew your Ghana driver's license with DVLA. Learn about requirements, categories, and the application process.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <style>
+        /* ========== Theme System Variables ========== */
+        :root {
+            /* Semantic Color Variables - Dark Mode (Default) */
+            --bg-primary: #0A0A0A;
+            --bg-secondary: #1A1A1A;
+            --bg-tertiary: #2D2D2D;
+            --text-primary: #FAFAF8;
+            --text-secondary: #E8E6E1;
+            --text-muted: #9A9890;
+            --card-bg: #1A1A1A;
+            --card-border: rgba(255, 255, 255, 0.1);
+            --nav-bg: rgba(10, 10, 10, 0.95);
+            --border-subtle: rgba(255, 255, 255, 0.1);
+            --theme-transition: 0.3s ease;
+            --accent-primary: #C9A227;
+            --accent-secondary: #E5C158;
+            --hero-gradient: linear-gradient(135deg, #1B4D3E 0%, #0d2a22 100%);
+            --section-alt-bg: #1A1A1A;
+            --table-header-bg: #1B4D3E;
+            --table-row-hover: rgba(255, 255, 255, 0.05);
+            --shadow-color: rgba(0, 0, 0, 0.3);
+        }
+
+        /* Light Mode Overrides */
+        [data-theme="light"] {
+            --bg-primary: #FAFAF8;
+            --bg-secondary: #F5F4F0;
+            --bg-tertiary: #EEEEE8;
+            --text-primary: #1A1A1A;
+            --text-secondary: #2D2D2D;
+            --text-muted: #5A5A5A;
+            --card-bg: #FFFFFF;
+            --card-border: rgba(0, 0, 0, 0.08);
+            --nav-bg: rgba(250, 250, 248, 0.95);
+            --border-subtle: rgba(0, 0, 0, 0.08);
+            --accent-primary: #0D3D2E;
+            --accent-secondary: #1A5C45;
+            --hero-gradient: linear-gradient(135deg, #0D3D2E 0%, #1A5C45 100%);
+            --section-alt-bg: #F5F4F0;
+            --table-header-bg: #0D3D2E;
+            --table-row-hover: rgba(0, 0, 0, 0.03);
+            --shadow-color: rgba(0, 0, 0, 0.1);
+        }
+
+        /* Theme Toggle Button Styles */
+        .theme-toggle {
+            position: relative;
+            width: 48px;
+            height: 48px;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            background: var(--border-subtle);
+        }
+
+        .toggle-orb {
+            position: relative;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: linear-gradient(145deg, #C9A227, #E5C158);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 0 20px rgba(201, 162, 39, 0.4);
+        }
+
+        [data-theme="light"] .toggle-orb {
+            background: linear-gradient(145deg, #0D3D2E, #1A5C45);
+            box-shadow: 0 0 20px rgba(13, 61, 46, 0.3);
+        }
+
+        .toggle-icon {
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .toggle-icon.moon {
+            color: #1A1A1A;
+            opacity: 1;
+            transform: rotate(0deg) scale(1);
+        }
+
+        .toggle-icon.sun {
+            color: #FAFAF8;
+            opacity: 0;
+            transform: rotate(-90deg) scale(0.5);
+        }
+
+        [data-theme="light"] .toggle-icon.moon {
+            opacity: 0;
+            transform: rotate(90deg) scale(0.5);
+        }
+
+        [data-theme="light"] .toggle-icon.sun {
+            opacity: 1;
+            transform: rotate(0deg) scale(1);
+        }
+
+        .toggle-stars {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .toggle-star {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #C9A227;
+            border-radius: 50%;
+            opacity: 0.8;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .toggle-star:nth-child(1) {
+            top: 8px;
+            left: 6px;
+            animation: twinkle 2s ease-in-out infinite;
+        }
+
+        .toggle-star:nth-child(2) {
+            top: 4px;
+            right: 10px;
+            width: 3px;
+            height: 3px;
+            animation: twinkle 2.5s ease-in-out infinite 0.5s;
+        }
+
+        .toggle-star:nth-child(3) {
+            bottom: 10px;
+            left: 10px;
+            width: 3px;
+            height: 3px;
+            animation: twinkle 1.8s ease-in-out infinite 1s;
+        }
+
+        .toggle-star:nth-child(4) {
+            bottom: 6px;
+            right: 6px;
+            width: 2px;
+            height: 2px;
+            animation: twinkle 2.2s ease-in-out infinite 0.3s;
+        }
+
+        [data-theme="light"] .toggle-star {
+            opacity: 0;
+            transform: scale(0);
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.4; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .page-hero {
+            padding: 8rem 2rem 4rem;
+            background: linear-gradient(135deg, var(--green-deep) 0%, #0d2a22 100%);
+            text-align: center;
+        }
+
+        .page-hero h1 {
+            font-family: 'Fraunces', serif;
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            color: var(--white-ivory);
+            margin-bottom: 1rem;
+        }
+
+        .page-hero p {
+            color: rgba(250,250,248,0.8);
+            font-size: 1.15rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        .hero-agency {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: rgba(255,255,255,0.1);
+            padding: 0.75rem 1.5rem;
+            border-radius: 100px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .hero-agency svg {
+            width: 24px;
+            height: 24px;
+            color: var(--gold-burnished);
+        }
+
+        .hero-agency span {
+            color: var(--white-ivory);
+            font-weight: 500;
+        }
+
+        /* Quick Actions */
+        .quick-actions {
+            padding: 0 2rem;
+            margin-top: -3rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .actions-grid {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1rem;
+        }
+
+        .action-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .action-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 50px rgba(0,0,0,0.15);
+        }
+
+        .action-icon {
+            width: 56px;
+            height: 56px;
+            margin: 0 auto 1rem;
+            background: linear-gradient(135deg, var(--green-deep) 0%, #2d5a4a 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .action-icon svg {
+            width: 24px;
+            height: 24px;
+            color: var(--gold-burnished);
+        }
+
+        .action-card h3 {
+            font-size: 1rem;
+            color: var(--black-obsidian);
+            margin-bottom: 0.35rem;
+        }
+
+        .action-card p {
+            font-size: 0.8rem;
+            color: var(--gray-mid);
+        }
+
+        /* License Categories */
+        .categories-section {
+            padding: 5rem 2rem;
+            background: var(--white-ivory);
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 3rem;
+        }
+
+        .section-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--gold-burnished);
+            margin-bottom: 0.75rem;
+        }
+
+        .section-title {
+            font-family: 'Fraunces', serif;
+            font-size: 2.25rem;
+            color: var(--black-obsidian);
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            color: var(--gray-mid);
+            line-height: 1.6;
+        }
+
+        .categories-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .category-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.75rem;
+            border: 1px solid rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+
+        .category-card:hover {
+            border-color: var(--green-deep);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+
+        .category-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .category-badge {
+            width: 50px;
+            height: 50px;
+            background: var(--green-deep);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Fraunces', serif;
+            font-weight: 700;
+            color: var(--gold-burnished);
+            font-size: 1.1rem;
+        }
+
+        .category-name {
+            font-family: 'Fraunces', serif;
+            font-size: 1.15rem;
+            color: var(--black-obsidian);
+        }
+
+        .category-description {
+            color: var(--gray-mid);
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+
+        .category-vehicles {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .vehicle-tag {
+            background: #f5f5f0;
+            color: var(--gray-mid);
+            padding: 0.35rem 0.75rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+        }
+
+        /* Requirements Section */
+        .requirements-section {
+            padding: 4rem 2rem;
+            background: #f5f5f0;
+        }
+
+        .requirements-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .requirements-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+        }
+
+        .requirements-card h3 {
+            font-family: 'Fraunces', serif;
+            font-size: 1.35rem;
+            color: var(--black-obsidian);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .requirements-card h3 svg {
+            width: 24px;
+            height: 24px;
+            color: var(--green-deep);
+        }
+
+        .requirements-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .requirements-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .requirements-list li:last-child {
+            border-bottom: none;
+        }
+
+        .requirements-list li svg {
+            width: 18px;
+            height: 18px;
+            color: var(--green-deep);
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .requirements-list li span {
+            color: var(--gray-mid);
+            font-size: 0.95rem;
+        }
+
+        /* Process */
+        .process-section {
+            padding: 4rem 2rem;
+            background: var(--green-deep);
+        }
+
+        .process-grid {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+        }
+
+        .process-step {
+            text-align: center;
+            position: relative;
+        }
+
+        .process-step:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            top: 30px;
+            right: -10%;
+            width: 20%;
+            height: 2px;
+            background: rgba(201,162,39,0.3);
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 1rem;
+            background: var(--gold-burnished);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Fraunces', serif;
+            font-weight: 700;
+            color: var(--black-obsidian);
+            font-size: 1.35rem;
+        }
+
+        .step-title {
+            font-family: 'Fraunces', serif;
+            font-size: 1.1rem;
+            color: var(--white-ivory);
+            margin-bottom: 0.5rem;
+        }
+
+        .step-desc {
+            color: rgba(250,250,248,0.7);
+            font-size: 0.85rem;
+            line-height: 1.5;
+        }
+
+        /* Fees Table */
+        .fees-section {
+            padding: 4rem 2rem;
+            background: var(--white-ivory);
+        }
+
+        .fees-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+
+        .fees-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .fees-table th,
+        .fees-table td {
+            padding: 1.25rem;
+            text-align: left;
+        }
+
+        .fees-table th {
+            background: var(--green-deep);
+            color: var(--white-ivory);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .fees-table td {
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .fees-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .fees-table tr:hover td {
+            background: #f8f8f6;
+        }
+
+        .fee-amount {
+            font-family: 'Fraunces', serif;
+            font-weight: 600;
+            color: var(--green-deep);
+        }
+
+        /* Offices */
+        .offices-section {
+            padding: 4rem 2rem;
+            background: #f5f5f0;
+        }
+
+        .offices-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .office-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+        }
+
+        .office-region {
+            font-family: 'Fraunces', serif;
+            font-size: 1.15rem;
+            color: var(--black-obsidian);
+            margin-bottom: 0.75rem;
+        }
+
+        .office-address {
+            color: var(--gray-mid);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .office-phone {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--green-deep);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .office-phone svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* CTA */
+        .cta-section {
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, var(--gold-burnished) 0%, #D4AF37 100%);
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-family: 'Fraunces', serif;
+            font-size: 2rem;
+            color: var(--black-obsidian);
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            color: rgba(10,10,10,0.7);
+            margin-bottom: 2rem;
+        }
+
+        .btn-dark {
+            background: var(--black-obsidian);
+            color: var(--white-ivory);
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-dark:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        @media (max-width: 1024px) {
+            .requirements-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .process-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .process-step:not(:last-child)::after {
+                display: none;
+            }
+        }
+
+        /* ========== Light Mode Specific Overrides ========== */
+
+        /* Header/Nav Light Mode */
+        [data-theme="light"] .header {
+            background: var(--nav-bg);
+            backdrop-filter: blur(20px);
+        }
+
+        [data-theme="light"] .logo span {
+            color: var(--text-primary);
+        }
+
+        [data-theme="light"] .logo-star {
+            color: var(--accent-primary);
+        }
+
+        [data-theme="light"] .nav-link {
+            color: var(--text-secondary);
+        }
+
+        [data-theme="light"] .nav-link:hover,
+        [data-theme="light"] .nav-link.active {
+            color: var(--accent-primary);
+        }
+
+        /* Hero Section Light Mode */
+        [data-theme="light"] .page-hero {
+            background: var(--hero-gradient);
+        }
+
+        [data-theme="light"] .page-hero h1 {
+            color: #FFFFFF;
+        }
+
+        [data-theme="light"] .page-hero p {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        [data-theme="light"] .hero-agency {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        [data-theme="light"] .hero-agency svg {
+            color: #E5C158;
+        }
+
+        [data-theme="light"] .hero-agency span {
+            color: #FFFFFF;
+        }
+
+        [data-theme="light"] .breadcrumb a {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        [data-theme="light"] .breadcrumb span:last-child {
+            color: #E5C158;
+        }
+
+        /* Quick Actions Cards Light Mode */
+        [data-theme="light"] .action-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+
+        [data-theme="light"] .action-card:hover {
+            box-shadow: 0 10px 40px var(--shadow-color);
+            border-color: var(--accent-primary);
+        }
+
+        [data-theme="light"] .action-icon {
+            background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+        }
+
+        [data-theme="light"] .action-icon svg {
+            color: #FFFFFF;
+        }
+
+        [data-theme="light"] .action-card h3 {
+            color: var(--text-primary);
+        }
+
+        [data-theme="light"] .action-card p {
+            color: var(--text-muted);
+        }
+
+        /* Categories Section Light Mode */
+        [data-theme="light"] .categories-section {
+            background: var(--bg-primary);
+        }
+
+        [data-theme="light"] .section-label {
+            color: var(--accent-primary);
+        }
+
+        [data-theme="light"] .section-title {
+            color: var(--text-primary);
+        }
+
+        [data-theme="light"] .section-subtitle {
+            color: var(--text-muted);
+        }
+
+        [data-theme="light"] .category-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+        }
+
+        [data-theme="light"] .category-card:hover {
+            border-color: var(--accent-primary);
+            box-shadow: 0 10px 30px var(--shadow-color);
+        }
+
+        [data-theme="light"] .category-badge {
+            background: var(--accent-primary);
+            color: #FFFFFF;
+        }
+
+        [data-theme="light"] .category-name {
+            color: var(--text-primary);
+        }
+
+        [data-theme="light"] .category-description {
+            color: var(--text-muted);
+        }
+
+        [data-theme="light"] .vehicle-tag {
+            background: var(--bg-secondary);
+            color: var(--text-muted);
+        }
+
+        /* Requirements Section Light Mode */
+        [data-theme="light"] .requirements-section {
+            background: var(--bg-secondary);
+        }
+
+        [data-theme="light"] .requirements-card {
+            background: var(--card-bg);
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+
+        [data-theme="light"] .requirements-card h3 {
+            color: var(--text-primary);
+        }
+
+        [data-theme="light"] .requirements-card h3 svg {
+            color: var(--accent-primary);
+        }
+
+        [data-theme="light"] .requirements-list li {
+            border-bottom-color: var(--border-subtle);
+        }
+
+        [data-theme="light"] .requirements-list li svg {
+            color: var(--accent-primary);
+        }
+
+        [data-theme="light"] .requirements-list li span {
+            color: var(--text-muted);
+        }
+
+        /* Process Section Light Mode */
+        [data-theme="light"] .process-section {
+            background: var(--accent-primary);
+        }
+
+        [data-theme="light"] .process-step:not(:last-child)::after {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        [data-theme="light"] .step-number {
+            background: #E5C158;
+            color: var(--accent-primary);
+        }
+
+        [data-theme="light"] .step-title {
+            color: #FFFFFF;
+        }
+
+        [data-theme="light"] .step-desc {
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        /* Fees Section Light Mode */
+        [data-theme="light"] .fees-section {
+            background: var(--bg-primary);
+        }
+
+        [data-theme="light"] .fees-container {
+            background: var(--card-bg);
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+
+        [data-theme="light"] .fees-table th {
+            background: var(--table-header-bg);
+            color: #FFFFFF;
+        }
+
+        [data-theme="light"] .fees-table td {
+            color: var(--text-secondary);
+            border-bottom-color: var(--border-subtle);
+        }
+
+        [data-theme="light"] .fees-table tr:hover td {
+            background: var(--table-row-hover);
+        }
+
+        [data-theme="light"] .fee-amount {
+            color: var(--accent-primary);
+        }
+
+        /* Offices Section Light Mode */
+        [data-theme="light"] .offices-section {
+            background: var(--bg-secondary);
+        }
+
+        [data-theme="light"] .office-card {
+            background: var(--card-bg);
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+
+        [data-theme="light"] .office-region {
+            color: var(--text-primary);
+        }
+
+        [data-theme="light"] .office-address {
+            color: var(--text-muted);
+        }
+
+        [data-theme="light"] .office-phone {
+            color: var(--accent-primary);
+        }
+
+        /* CTA Section Light Mode */
+        [data-theme="light"] .cta-section {
+            background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+        }
+
+        [data-theme="light"] .cta-section h2 {
+            color: #FFFFFF;
+        }
+
+        [data-theme="light"] .cta-section p {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        [data-theme="light"] .btn-dark {
+            background: #FFFFFF;
+            color: var(--accent-primary);
+        }
+
+        [data-theme="light"] .btn-dark:hover {
+            background: var(--bg-primary);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Footer Light Mode */
+        [data-theme="light"] .footer {
+            background: var(--accent-primary);
+        }
+
+        [data-theme="light"] .footer-content {
+            color: #FFFFFF;
+        }
+
+        [data-theme="light"] .footer-bottom {
+            border-top-color: rgba(255, 255, 255, 0.2);
+        }
+
+        [data-theme="light"] .footer-bottom p {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Global Theme Transitions */
+        body,
+        .header,
+        .page-hero,
+        .action-card,
+        .category-card,
+        .requirements-card,
+        .fees-container,
+        .office-card,
+        .footer {
+            transition: background var(--theme-transition),
+                        color var(--theme-transition),
+                        border-color var(--theme-transition),
+                        box-shadow var(--theme-transition);
+        }
+
+        /* Navigation - Minimal & Elegant */
+        .nav-main {
+            background: var(--nav-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 0 3rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-subtle);
+            transition: all 0.3s ease;
+        }
+
+        .nav-main.scrolled {
+            background: var(--nav-bg-scrolled);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 80px;
+        }
+
+        .logo { display: flex; align-items: center; gap: 1rem; text-decoration: none; color: var(--text-primary); }
+        .logo-emblem { width: 48px; height: 48px; flex-shrink: 0; }
+        .logo-star { width: 100%; height: 100%; fill: var(--gold-brilliant); transition: transform 0.4s ease; }
+        .logo:hover .logo-star { transform: rotate(36deg); }
+        .logo-text { display: flex; flex-direction: column; line-height: 1.2; }
+        .logo-title { font-family: var(--font-display); font-size: 1.4rem; font-weight: 600; color: var(--text-primary); }
+        .logo-subtitle { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--text-muted); }
+
+        .nav-links { display: flex; align-items: center; gap: 2.5rem; list-style: none; }
+        .nav-links a { text-decoration: none; color: var(--text-secondary); font-size: 0.9rem; font-weight: 500; padding: 0.5rem 0; position: relative; transition: color 0.3s ease; }
+        .nav-links a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: var(--gold-brilliant); transition: width 0.3s ease; }
+        .nav-links a:hover, .nav-links a.active { color: var(--gold-brilliant); }
+        .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+
+        .nav-actions { display: flex; align-items: center; gap: 1rem; }
+        .nav-btn { background: none; border: none; cursor: pointer; padding: 0.5rem; color: var(--text-secondary); transition: color 0.3s ease; display: flex; align-items: center; justify-content: center; }
+        .nav-btn:hover { color: var(--gold-brilliant); }
+        .nav-btn svg { width: 20px; height: 20px; }
+        .nav-cta { background: var(--gold-brilliant); color: #030303; padding: 0.65rem 1.5rem; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 0.85rem; transition: all 0.3s ease; }
+        .nav-cta:hover { background: var(--gold-glow); transform: translateY(-1px); }
+
+        .mobile-menu-btn { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; color: var(--text-primary); }
+        .mobile-menu-btn svg { width: 24px; height: 24px; }
+
+        .mobile-menu { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: var(--bg-primary); z-index: 999; padding: 6rem 2rem 2rem; opacity: 0; visibility: hidden; transition: all 0.3s ease; }
+        .mobile-menu.active { opacity: 1; visibility: visible; }
+        .mobile-menu-links { display: flex; flex-direction: column; gap: 0.5rem; list-style: none; }
+        .mobile-menu-links a { display: block; padding: 1rem 0; text-decoration: none; color: var(--text-primary); font-size: 1.5rem; font-family: var(--font-display); border-bottom: 1px solid var(--border-subtle); transition: color 0.3s ease; }
+        .mobile-menu-links a:hover { color: var(--gold-brilliant); }
+        .mobile-menu-close { position: absolute; top: 1.5rem; right: 1.5rem; background: none; border: none; cursor: pointer; color: var(--text-primary); padding: 0.5rem; }
+        .mobile-menu-close svg { width: 28px; height: 28px; }
+
+        @media (max-width: 1024px) {
+            .nav-main { padding: 0 1.5rem; }
+            .nav-links, .nav-cta { display: none; }
+            .mobile-menu-btn { display: block; }
+            .mobile-menu { display: block; }
+        }
+        @media (max-width: 640px) {
+            .logo-text { display: none; }
+            .nav-container { height: 70px; }
+        }
+
+        [data-theme="light"] .nav-main { border-bottom-color: rgba(0, 0, 0, 0.08); }
+        [data-theme="light"] .nav-main.scrolled { box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); }
+        [data-theme="light"] .nav-cta { background: var(--emerald-deep); color: #fff; }
+        [data-theme="light"] .nav-cta:hover { background: var(--emerald-rich); }
+        [data-theme="light"] .nav-links a:hover, [data-theme="light"] .nav-links a.active { color: var(--emerald-deep); }
+        [data-theme="light"] .nav-links a::after { background: var(--emerald-deep); }
+    </style>
+</head>
+<body>
+    <nav class="nav-main">
+        <div class="nav-container">
+            <a href="../index.html" class="logo">
+                <div class="logo-emblem">
+                    <svg class="logo-star" viewBox="0 0 100 100">
+                        <polygon points="50,5 61,40 98,40 68,62 79,97 50,75 21,97 32,62 2,40 39,40"/>
+                    </svg>
+                </div>
+                <div class="logo-text">
+                    <span class="logo-title">Republic of Ghana</span>
+                    <span class="logo-subtitle">Official Government Portal</span>
+                </div>
+            </a>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="index.html" class="active">Services</a></li>
+                <li><a href="../government/index.html">Government</a></li>
+                <li><a href="../business/index.html">Invest</a></li>
+                <li><a href="../tourism/index.html">Visit Ghana</a></li>
+                <li><a href="../contact.html">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="nav-btn" aria-label="Search" onclick="openSearch()">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+                </button>
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <div class="toggle-orb">
+                        <svg class="toggle-icon moon" viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                        <svg class="toggle-icon sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                    </div>
+                </button>
+                <a href="index.html" class="nav-cta">Access Services</a>
+                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open menu">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close menu">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+        <ul class="mobile-menu-links">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="index.html">Services</a></li>
+            <li><a href="../government/index.html">Government</a></li>
+            <li><a href="../business/index.html">Invest</a></li>
+            <li><a href="../tourism/index.html">Visit Ghana</a></li>
+            <li><a href="../contact.html">Contact</a></li>
+        </ul>
+    </div>
+
+    <main>
+        <!-- Hero -->
+        <section class="page-hero">
+            <nav class="breadcrumb" style="margin-bottom: 2rem;">
+                <a href="../index.html" style="color: rgba(250,250,248,0.6); text-decoration: none;">Home</a>
+                <span style="color: rgba(250,250,248,0.4); margin: 0 0.5rem;">/</span>
+                <a href="index.html" style="color: rgba(250,250,248,0.6); text-decoration: none;">Services</a>
+                <span style="color: rgba(250,250,248,0.4); margin: 0 0.5rem;">/</span>
+                <span style="color: var(--gold-burnished);">Driver's License</span>
+            </nav>
+            <h1>Driver's License</h1>
+            <p>Apply for a new driver's license or renew your existing one through the Driver and Vehicle Licensing Authority.</p>
+            <div class="hero-agency">
+                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 00-3.213-9.193 2.056 2.056 0 00-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 00-10.026 0 1.106 1.106 0 00-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12"/>
+                </svg>
+                <span>DVLA - Driver and Vehicle Licensing Authority</span>
+            </div>
+        </section>
+
+        <!-- Quick Actions -->
+        <section class="quick-actions">
+            <div class="actions-grid">
+                <a href="#" class="action-card">
+                    <div class="action-icon">
+                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M12 4.5v15m7.5-7.5h-15"/>
+                        </svg>
+                    </div>
+                    <h3>New License</h3>
+                    <p>First-time applicant</p>
+                </a>
+                <a href="#" class="action-card">
+                    <div class="action-icon">
+                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99"/>
+                        </svg>
+                    </div>
+                    <h3>Renew License</h3>
+                    <p>Extend validity</p>
+                </a>
+                <a href="#" class="action-card">
+                    <div class="action-icon">
+                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"/>
+                        </svg>
+                    </div>
+                    <h3>Replace License</h3>
+                    <p>Lost or damaged</p>
+                </a>
+                <a href="#" class="action-card">
+                    <div class="action-icon">
+                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/>
+                        </svg>
+                    </div>
+                    <h3>Check Status</h3>
+                    <p>Track application</p>
+                </a>
+            </div>
+        </section>
+
+        <!-- License Categories -->
+        <section class="categories-section">
+            <div class="section-header">
+                <div class="section-label">License Classes</div>
+                <h2 class="section-title">License Categories</h2>
+                <p class="section-subtitle">Choose the right license category based on the vehicles you intend to drive.</p>
+            </div>
+            <div class="categories-grid">
+                <div class="category-card">
+                    <div class="category-header">
+                        <div class="category-badge">A</div>
+                        <h3 class="category-name">Motorcycle</h3>
+                    </div>
+                    <p class="category-description">Two-wheeled motor vehicles including motorcycles, scooters, and tricycles.</p>
+                    <div class="category-vehicles">
+                        <span class="vehicle-tag">Motorcycles</span>
+                        <span class="vehicle-tag">Scooters</span>
+                        <span class="vehicle-tag">Motor Tricycles</span>
+                    </div>
+                </div>
+
+                <div class="category-card">
+                    <div class="category-header">
+                        <div class="category-badge">B</div>
+                        <h3 class="category-name">Light Vehicle</h3>
+                    </div>
+                    <p class="category-description">Private cars and light vehicles with maximum weight not exceeding 3,500 kg.</p>
+                    <div class="category-vehicles">
+                        <span class="vehicle-tag">Private Cars</span>
+                        <span class="vehicle-tag">SUVs</span>
+                        <span class="vehicle-tag">Minibuses (9 seats)</span>
+                    </div>
+                </div>
+
+                <div class="category-card">
+                    <div class="category-header">
+                        <div class="category-badge">C</div>
+                        <h3 class="category-name">Medium Vehicle</h3>
+                    </div>
+                    <p class="category-description">Goods vehicles and trucks with weight between 3,500 kg and 7,500 kg.</p>
+                    <div class="category-vehicles">
+                        <span class="vehicle-tag">Light Trucks</span>
+                        <span class="vehicle-tag">Delivery Vans</span>
+                        <span class="vehicle-tag">Mini Buses</span>
+                    </div>
+                </div>
+
+                <div class="category-card">
+                    <div class="category-header">
+                        <div class="category-badge">D</div>
+                        <h3 class="category-name">Heavy Vehicle</h3>
+                    </div>
+                    <p class="category-description">Heavy goods vehicles and buses exceeding 7,500 kg maximum weight.</p>
+                    <div class="category-vehicles">
+                        <span class="vehicle-tag">Trucks</span>
+                        <span class="vehicle-tag">Articulated Vehicles</span>
+                        <span class="vehicle-tag">Large Buses</span>
+                    </div>
+                </div>
+
+                <div class="category-card">
+                    <div class="category-header">
+                        <div class="category-badge">E</div>
+                        <h3 class="category-name">Articulated</h3>
+                    </div>
+                    <p class="category-description">Articulated trailers and heavy combination vehicles.</p>
+                    <div class="category-vehicles">
+                        <span class="vehicle-tag">Trailer Trucks</span>
+                        <span class="vehicle-tag">Tankers</span>
+                        <span class="vehicle-tag">Container Vehicles</span>
+                    </div>
+                </div>
+
+                <div class="category-card">
+                    <div class="category-header">
+                        <div class="category-badge">F</div>
+                        <h3 class="category-name">Special Permit</h3>
+                    </div>
+                    <p class="category-description">Agricultural tractors and other special purpose vehicles.</p>
+                    <div class="category-vehicles">
+                        <span class="vehicle-tag">Tractors</span>
+                        <span class="vehicle-tag">Construction</span>
+                        <span class="vehicle-tag">Special Equipment</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Requirements -->
+        <section class="requirements-section">
+            <div class="section-header">
+                <div class="section-label">What You Need</div>
+                <h2 class="section-title">Requirements</h2>
+            </div>
+            <div class="requirements-content">
+                <div class="requirements-card">
+                    <h3>
+                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M12 4.5v15m7.5-7.5h-15"/>
+                        </svg>
+                        New License Application
+                    </h3>
+                    <ul class="requirements-list">
+                        <li>
+                            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                            <span>Ghana Card (National ID)</span>
+                        </li>
+                        <li>
+                            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                            <span>Minimum age of 18 years</span>
+                        </li>
+                        <li>
+                            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                            <span>Driving school certificate</span>
+                        </li>
+                        <li>
+                            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                            <span>Medical fitness certificate</span>
+                        </li>
+                        <li>
+                            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                            <span>Passport-sized photographs (2)</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="requirements-card">
+                    <h3>
+                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99"/>
+                        </svg>
+                        License Renewal
+                    </h3>
+                    <ul class="requirements-list">
+                        <li>
+                            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                            <span>Existing driver's license</span>
+                        </li>
+                        <li>
+                            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                            <span>Ghana Card (National ID)</span>
+                        </li>
+                        <li>
+                            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                            <span>Medical fitness certificate (if over 50)</span>
+                        </li>
+                        <li>
+                            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                            <span>Renewal fee payment</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Process -->
+        <section class="process-section">
+            <div class="section-header" style="text-align: center; margin-bottom: 3rem;">
+                <div class="section-label" style="color: var(--gold-burnished);">How It Works</div>
+                <h2 class="section-title" style="color: var(--white-ivory);">Application Process</h2>
+            </div>
+            <div class="process-grid">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <h3 class="step-title">Driving School</h3>
+                    <p class="step-desc">Complete training at an accredited driving school.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <h3 class="step-title">Book Test</h3>
+                    <p class="step-desc">Schedule your theory and practical tests online.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <h3 class="step-title">Pass Tests</h3>
+                    <p class="step-desc">Complete written and driving examinations.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <h3 class="step-title">Receive License</h3>
+                    <p class="step-desc">Collect your license at DVLA office.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Fees -->
+        <section class="fees-section">
+            <div class="section-header">
+                <div class="section-label">Fee Schedule</div>
+                <h2 class="section-title">License Fees</h2>
+            </div>
+            <div class="fees-container">
+                <table class="fees-table">
+                    <thead>
+                        <tr>
+                            <th>Service</th>
+                            <th>Fee (GHS)</th>
+                            <th>Validity</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Learner's Permit</td>
+                            <td class="fee-amount">80</td>
+                            <td>6 Months</td>
+                        </tr>
+                        <tr>
+                            <td>Category A (Motorcycle)</td>
+                            <td class="fee-amount">150</td>
+                            <td>5 Years</td>
+                        </tr>
+                        <tr>
+                            <td>Category B (Light Vehicle)</td>
+                            <td class="fee-amount">200</td>
+                            <td>5 Years</td>
+                        </tr>
+                        <tr>
+                            <td>Category C (Medium Vehicle)</td>
+                            <td class="fee-amount">250</td>
+                            <td>5 Years</td>
+                        </tr>
+                        <tr>
+                            <td>Category D/E (Heavy Vehicle)</td>
+                            <td class="fee-amount">350</td>
+                            <td>5 Years</td>
+                        </tr>
+                        <tr>
+                            <td>License Renewal</td>
+                            <td class="fee-amount">150+</td>
+                            <td>5 Years</td>
+                        </tr>
+                        <tr>
+                            <td>Duplicate License</td>
+                            <td class="fee-amount">100</td>
+                            <td>As Original</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- DVLA Offices -->
+        <section class="offices-section">
+            <div class="section-header">
+                <div class="section-label">Find Us</div>
+                <h2 class="section-title">DVLA Offices</h2>
+            </div>
+            <div class="offices-grid">
+                <div class="office-card">
+                    <h3 class="office-region">Greater Accra</h3>
+                    <p class="office-address">DVLA Headquarters, 35 Tetteh Quarshie Ave, Accra</p>
+                    <div class="office-phone">
+                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/>
+                        </svg>
+                        0302 123 456
+                    </div>
+                </div>
+                <div class="office-card">
+                    <h3 class="office-region">Ashanti Region</h3>
+                    <p class="office-address">DVLA Kumasi Office, Harper Road</p>
+                    <div class="office-phone">
+                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/>
+                        </svg>
+                        0322 456 789
+                    </div>
+                </div>
+                <div class="office-card">
+                    <h3 class="office-region">Western Region</h3>
+                    <p class="office-address">DVLA Takoradi Office, Beach Road</p>
+                    <div class="office-phone">
+                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/>
+                        </svg>
+                        0312 789 012
+                    </div>
+                </div>
+                <div class="office-card">
+                    <h3 class="office-region">Northern Region</h3>
+                    <p class="office-address">DVLA Tamale Office, Industrial Area</p>
+                    <div class="office-phone">
+                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/>
+                        </svg>
+                        0372 345 678
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="cta-section">
+            <h2>Ready to Get Your License?</h2>
+            <p>Start your driver's license application today through the DVLA online portal.</p>
+            <a href="#" class="btn-dark">
+                Apply Now
+                <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"/>
+                </svg>
+            </a>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-bottom">
+                <p>&copy; 2025 Republic of Ghana. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Theme Toggle System
+        (function() {
+            const STORAGE_KEY = 'ghana-gov-theme';
+            const DARK = 'dark';
+            const LIGHT = 'light';
+            function getSavedTheme() {
+                const saved = localStorage.getItem(STORAGE_KEY);
+                if (saved) return saved;
+                if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) return LIGHT;
+                return DARK;
+            }
+            function applyTheme(theme) {
+                if (theme === LIGHT) document.documentElement.setAttribute('data-theme', 'light');
+                else document.documentElement.removeAttribute('data-theme');
+                localStorage.setItem(STORAGE_KEY, theme);
+            }
+            applyTheme(getSavedTheme());
+            document.addEventListener('DOMContentLoaded', function() {
+                const toggle = document.getElementById('themeToggle');
+                if (toggle) {
+                    toggle.addEventListener('click', function() {
+                        const current = document.documentElement.getAttribute('data-theme');
+                        applyTheme(current === 'light' ? DARK : LIGHT);
+                        this.style.transform = 'scale(0.95)';
+                        setTimeout(() => { this.style.transform = ''; }, 150);
+                    });
+                }
+            });
+        })();
+
+        // MOBILE MENU
+        (function() {
+            document.addEventListener('DOMContentLoaded', function() {
+                const menuBtn = document.getElementById('mobileMenuBtn');
+                const menuClose = document.getElementById('mobileMenuClose');
+                const mobileMenu = document.getElementById('mobileMenu');
+                if (menuBtn && mobileMenu) {
+                    menuBtn.addEventListener('click', function() { mobileMenu.classList.add('active'); document.body.style.overflow = 'hidden'; });
+                    if (menuClose) { menuClose.addEventListener('click', function() { mobileMenu.classList.remove('active'); document.body.style.overflow = ''; }); }
+                    mobileMenu.querySelectorAll('a').forEach(link => { link.addEventListener('click', function() { mobileMenu.classList.remove('active'); document.body.style.overflow = ''; }); });
+                    document.addEventListener('keydown', function(e) { if (e.key === 'Escape' && mobileMenu.classList.contains('active')) { mobileMenu.classList.remove('active'); document.body.style.overflow = ''; } });
+                }
+            });
+        })();
+    </script>
+    <script src="../js/main.js"></script>
+</body>
+</html>

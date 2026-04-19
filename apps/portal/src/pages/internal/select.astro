@@ -1,0 +1,158 @@
+---
+/**
+ * Hidden Select variant gallery — paired with axe-check.
+ * Served at `/internal/select/`.
+ */
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Select from '@gh/gh-ds/Select';
+import Button from '@gh/gh-ds/Button';
+
+const regions = [
+  { value: '', label: 'Choose a region' },
+  { value: 'greater-accra', label: 'Greater Accra' },
+  { value: 'ashanti', label: 'Ashanti' },
+  { value: 'central', label: 'Central' },
+  { value: 'eastern', label: 'Eastern' },
+  { value: 'northern', label: 'Northern' },
+  { value: 'savannah', label: 'Savannah' },
+  { value: 'upper-east', label: 'Upper East' },
+  { value: 'upper-west', label: 'Upper West' },
+  { value: 'volta', label: 'Volta' },
+  { value: 'western', label: 'Western' },
+  { value: 'western-north', label: 'Western North' },
+  { value: 'bono', label: 'Bono' },
+  { value: 'bono-east', label: 'Bono East' },
+  { value: 'ahafo', label: 'Ahafo' },
+  { value: 'oti', label: 'Oti' },
+  { value: 'north-east', label: 'North East' },
+];
+
+const agencies = [
+  { value: 'gra', label: 'Ghana Revenue Authority (GRA)' },
+  { value: 'nia', label: 'National Identification Authority (NIA)' },
+  { value: 'dvla', label: 'Driver and Vehicle Licensing Authority (DVLA)' },
+  { value: 'rgd', label: "Registrar General's Department (RGD)" },
+  { value: 'nhia', label: 'National Health Insurance Authority (NHIA)' },
+];
+---
+
+<BaseLayout
+  title="Select variants — internal test"
+  description="Internal test page for GH-DS Select. Not linked from public navigation."
+  noindex
+>
+  <h1>Select variants</h1>
+  <p>
+    Not public. Exercises every state of the
+    <code>@gh/gh-ds/Select</code> component.
+  </p>
+
+  <form action="#" method="post" novalidate>
+    <section aria-labelledby="h-basic">
+      <h2 id="h-basic">Basic (all 16 Ghana regions)</h2>
+      <Select name="region" label="Region" options={regions} />
+    </section>
+
+    <section aria-labelledby="h-hint">
+      <h2 id="h-hint">With hint and preselection</h2>
+      <Select
+        name="agency"
+        label="Which agency are you reporting to?"
+        hint="We use this to route your enquiry."
+        value="gra"
+        options={agencies}
+      />
+    </section>
+
+    <section aria-labelledby="h-required">
+      <h2 id="h-required">Required + width modifier</h2>
+      <Select
+        name="title"
+        label="Title"
+        width="10"
+        required
+        options={[
+          { value: '', label: 'Choose' },
+          { value: 'mr', label: 'Mr' },
+          { value: 'mrs', label: 'Mrs' },
+          { value: 'ms', label: 'Ms' },
+          { value: 'dr', label: 'Dr' },
+          { value: 'prof', label: 'Prof' },
+        ]}
+      />
+    </section>
+
+    <section aria-labelledby="h-error">
+      <h2 id="h-error">Error state</h2>
+      <Select
+        name="destination"
+        label="Destination"
+        error="Select your destination to continue"
+        options={[
+          { value: '', label: 'Choose' },
+          { value: 'accra', label: 'Accra' },
+          { value: 'kumasi', label: 'Kumasi' },
+          { value: 'tamale', label: 'Tamale' },
+        ]}
+      />
+    </section>
+
+    <section aria-labelledby="h-disabled">
+      <h2 id="h-disabled">Disabled</h2>
+      <Select
+        name="locked-region"
+        label="Region (locked from your profile)"
+        value="greater-accra"
+        disabled
+        options={regions}
+      />
+    </section>
+
+    <section aria-labelledby="h-twi" lang="tw">
+      <h2 id="h-twi" lang="en">Twi fixture</h2>
+      <div lang="tw">
+        <Select
+          name="kasa"
+          label="Kasa bɛn na wote?"
+          options={[
+            { value: '', label: 'Paw bi' },
+            { value: 'tw', label: 'Twi' },
+            { value: 'ew', label: 'Ewegbe' },
+            { value: 'ga', label: 'Ga' },
+            { value: 'dag', label: 'Dagbani' },
+            { value: 'ha', label: 'Hausa' },
+          ]}
+        />
+      </div>
+    </section>
+
+    <div class="submit-row">
+      <Button type="submit">Send demo</Button>
+    </div>
+  </form>
+</BaseLayout>
+
+<style>
+  section {
+    border-top: var(--border-width-hairline) solid var(--color-border-default);
+    margin-top: var(--space-8);
+    padding-top: var(--space-4);
+  }
+
+  .submit-row {
+    margin-top: var(--space-8);
+  }
+
+  code {
+    font-family: var(--font-mono);
+    font-size: 0.95em;
+    background: var(--ghana-ink-50);
+    padding: 2px 6px;
+    border-radius: var(--radius-sm);
+  }
+
+  form {
+    max-width: 42rem;
+  }
+</style>

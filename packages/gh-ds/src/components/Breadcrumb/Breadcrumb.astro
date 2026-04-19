@@ -1,0 +1,133 @@
+---
+/**
+ * <Breadcrumb> — Ghana Design System Tier-2 navigation component.
+ *
+ * Ported in intent from GOV.UK Frontend's `govuk-breadcrumbs`, per ADR-003.
+ *
+ * Contract:
+ *   - Wrapped in `<nav aria-label="Breadcrumb">` (WCAG 2.4.8).
+ *   - Items render as an ordered list. Every list item except the last is
+ *     a link; the last is the current page, marked with `aria-current="page"`.
+ *   - Visually, items are separated by a chevron glyph that is
+ *     `aria-hidden` so screen readers don't announce "greater than" eight
+ *     times.
+ *   - Wraps on narrow viewports instead of truncating — truncation erases
+ *     hierarchy that low-literacy users rely on.
+ *
+ * Multiple on one page: pass a unique `ariaLabel` on each instance so
+ * assistive tech can distinguish the landmarks (WCAG 2.4.6). Default is
+ * "Breadcrumb".
+ *
+ * Usage:
+ *   <Breadcrumb
+ *     items={[
+ *       { href: '/', label: 'Home' },
+ *       { href: '/services/', label: 'Services' },
+ *       { href: '/services/passport/', label: 'Passport services' },
+ *     ]}
+ *     current="Renew your passport"
+ *   />
+ */
+
+interface BreadcrumbItem {
+  href: string;
+  label: string;
+}
+
+interface Props {
+  /** Ancestor links in order, root first. */
+  items: ReadonlyArray<BreadcrumbItem>;
+  /**
+   * Label for the current page. Rendered as the last item with
+   * aria-current="page" and no link. Omit when the breadcrumb is used on
+   * an index page that is itself the last `items` entry.
+   */
+  current?: string;
+  /**
+   * Override the landmark's accessible name. Required when a page renders
+   * more than one Breadcrumb (e.g. a showcase gallery) so each landmark is
+   * uniquely nameable.
+   */
+  ariaLabel?: string;
+  class?: string;
+}
+
+const { items, current, ariaLabel = 'Breadcrumb', class: extraClass } = Astro.props;
+const classes = ['gh-breadcrumb', extraClass].filter(Boolean).join(' ');
+---
+
+<nav class={classes} aria-label={ariaLabel}>
+  <ol class="gh-breadcrumb__list">
+    {
+      items.map((item) => (
+        <li class="gh-breadcrumb__item">
+          <a class="gh-breadcrumb__link" href={item.href}>
+            {item.label}
+          </a>
+        </li>
+      ))
+    }
+    {
+      current && (
+        <li class="gh-breadcrumb__item">
+          <span class="gh-breadcrumb__current" aria-current="page">
+            {current}
+          </span>
+        </li>
+      )
+    }
+  </ol>
+</nav>
+
+<style>
+  .gh-breadcrumb {
+    margin: var(--space-4) 0 var(--space-6);
+    font-size: var(--font-size-sm);
+    line-height: var(--line-height-body);
+  }
+
+  .gh-breadcrumb__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-1) var(--space-3);
+  }
+
+  .gh-breadcrumb__item {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-3);
+    color: var(--color-text-secondary);
+  }
+
+  /* Chevron between items — hidden from AT because the list semantics
+     already convey order. */
+  .gh-breadcrumb__item + .gh-breadcrumb__item::before {
+    content: '';
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-top: 2px solid var(--color-text-secondary);
+    border-right: 2px solid var(--color-text-secondary);
+    transform: rotate(45deg);
+    margin-right: var(--space-1);
+  }
+
+  .gh-breadcrumb__link {
+    color: var(--color-link);
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
+    text-decoration-thickness: 0.06em;
+  }
+
+  .gh-breadcrumb__link:hover {
+    text-decoration-thickness: 0.12em;
+  }
+
+  .gh-breadcrumb__current {
+    color: var(--color-text-default);
+    font-weight: var(--font-weight-semibold);
+  }
+</style>

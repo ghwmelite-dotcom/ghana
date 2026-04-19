@@ -1,0 +1,189 @@
+/* ============================================
+   Ghana Government Portal - Design System
+   Version: 1.0.0
+   ============================================ */
+
+:root {
+    /* ========== Color Palette ========== */
+    /* Primary - Forest Greens */
+    --green-deep: #1B4D3E;
+    --green-forest: #2D5A4A;
+    --green-light: #3D7A5A;
+    --green-muted: #4A8B6B;
+    --green-pale: #E8F5E9;
+
+    /* Secondary - Burnished Golds */
+    --gold-burnished: #C9A227;
+    --gold-light: #E5C158;
+    --gold-pale: #F5E6B8;
+    --gold-muted: #D4B84A;
+
+    /* Accent - Warm Crimsons */
+    --red-crimson: #8B2332;
+    --red-warm: #A63D4A;
+    --red-light: #E57373;
+    --red-pale: #FFEBEE;
+
+    /* Neutrals */
+    --black-obsidian: #0A0A0A;
+    --black-soft: #1A1A1A;
+    --black-muted: #2D2D2D;
+    --gray-dark: #4A4A4A;
+    --gray-mid: #9A9890;
+    --gray-light: #C4C4C4;
+    --gray-warm: #E8E6E1;
+    --white-cream: #F5F3EF;
+    --white-ivory: #FAFAF8;
+    --white-pure: #FFFFFF;
+
+    /* Status Colors */
+    --status-success: #2E7D32;
+    --status-warning: #F9A825;
+    --status-error: #C62828;
+    --status-info: #1565C0;
+
+    /* ========== Typography ========== */
+    --font-display: 'Fraunces', Georgia, serif;
+    --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+    /* Font Sizes - Fluid Scale */
+    --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+    --text-sm: clamp(0.875rem, 0.8rem + 0.35vw, 1rem);
+    --text-base: clamp(1rem, 0.9rem + 0.5vw, 1.125rem);
+    --text-lg: clamp(1.125rem, 1rem + 0.6vw, 1.25rem);
+    --text-xl: clamp(1.25rem, 1.1rem + 0.75vw, 1.5rem);
+    --text-2xl: clamp(1.5rem, 1.25rem + 1.25vw, 2rem);
+    --text-3xl: clamp(1.875rem, 1.5rem + 1.875vw, 2.5rem);
+    --text-4xl: clamp(2.25rem, 1.75rem + 2.5vw, 3.5rem);
+    --text-5xl: clamp(3rem, 2rem + 5vw, 5rem);
+
+    /* Font Weights */
+    --weight-light: 300;
+    --weight-normal: 400;
+    --weight-medium: 500;
+    --weight-semibold: 600;
+    --weight-bold: 700;
+
+    /* Line Heights */
+    --leading-none: 1;
+    --leading-tight: 1.15;
+    --leading-snug: 1.375;
+    --leading-normal: 1.6;
+    --leading-relaxed: 1.75;
+    --leading-loose: 2;
+
+    /* Letter Spacing */
+    --tracking-tighter: -0.05em;
+    --tracking-tight: -0.025em;
+    --tracking-normal: 0;
+    --tracking-wide: 0.025em;
+    --tracking-wider: 0.05em;
+    --tracking-widest: 0.15em;
+
+    /* ========== Spacing ========== */
+    --space-1: 0.25rem;
+    --space-2: 0.5rem;
+    --space-3: 0.75rem;
+    --space-4: 1rem;
+    --space-5: 1.25rem;
+    --space-6: 1.5rem;
+    --space-8: 2rem;
+    --space-10: 2.5rem;
+    --space-12: 3rem;
+    --space-16: 4rem;
+    --space-20: 5rem;
+    --space-24: 6rem;
+    --space-32: 8rem;
+
+    /* ========== Layout ========== */
+    --max-width-xs: 20rem;
+    --max-width-sm: 24rem;
+    --max-width-md: 28rem;
+    --max-width-lg: 32rem;
+    --max-width-xl: 36rem;
+    --max-width-2xl: 42rem;
+    --max-width-3xl: 48rem;
+    --max-width-4xl: 56rem;
+    --max-width-5xl: 64rem;
+    --max-width-6xl: 72rem;
+    --max-width-7xl: 80rem;
+    --max-width-full: 100%;
+    --max-width-content: 1400px;
+
+    /* ========== Borders ========== */
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    --radius-xl: 16px;
+    --radius-2xl: 24px;
+    --radius-3xl: 32px;
+    --radius-full: 9999px;
+
+    --border-thin: 1px;
+    --border-medium: 2px;
+    --border-thick: 4px;
+
+    /* ========== Shadows ========== */
+    --shadow-xs: 0 1px 2px rgba(10, 10, 10, 0.05);
+    --shadow-sm: 0 2px 8px rgba(10, 10, 10, 0.08);
+    --shadow-md: 0 8px 30px rgba(10, 10, 10, 0.12);
+    --shadow-lg: 0 20px 60px rgba(10, 10, 10, 0.15);
+    --shadow-xl: 0 25px 80px rgba(10, 10, 10, 0.2);
+    --shadow-inner: inset 0 2px 4px rgba(10, 10, 10, 0.06);
+    --shadow-gold: 0 8px 30px rgba(201, 162, 39, 0.3);
+    --shadow-green: 0 8px 30px rgba(27, 77, 62, 0.3);
+
+    /* ========== Transitions ========== */
+    --transition-fast: 150ms ease;
+    --transition-base: 300ms ease;
+    --transition-slow: 500ms ease;
+    --transition-slower: 700ms ease;
+
+    --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+    --ease-out: cubic-bezier(0, 0, 0.2, 1);
+    --ease-in: cubic-bezier(0.4, 0, 1, 1);
+    --ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    /* ========== Z-Index Scale ========== */
+    --z-dropdown: 100;
+    --z-sticky: 200;
+    --z-fixed: 300;
+    --z-modal-backdrop: 400;
+    --z-modal: 500;
+    --z-popover: 600;
+    --z-tooltip: 700;
+    --z-toast: 800;
+    --z-max: 9999;
+
+    /* ========== Breakpoints (for reference) ========== */
+    /* sm: 640px, md: 768px, lg: 1024px, xl: 1280px, 2xl: 1536px */
+}
+
+/* ========== Dark Mode Variables ========== */
+[data-theme="dark"] {
+    --green-deep: #2D7A5A;
+    --green-forest: #3D8A6A;
+    --gold-burnished: #E5C158;
+
+    --black-obsidian: #FAFAF8;
+    --black-soft: #F5F3EF;
+    --white-ivory: #0A0A0A;
+    --white-cream: #1A1A1A;
+    --gray-warm: #2D2D2D;
+    --gray-mid: #9A9890;
+
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 8px 30px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+/* ========== Reduced Motion ========== */
+@media (prefers-reduced-motion: reduce) {
+    :root {
+        --transition-fast: 0ms;
+        --transition-base: 0ms;
+        --transition-slow: 0ms;
+        --transition-slower: 0ms;
+    }
+}

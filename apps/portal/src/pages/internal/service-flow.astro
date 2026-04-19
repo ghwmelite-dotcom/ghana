@@ -1,0 +1,195 @@
+---
+/**
+ * Hidden service-flow gallery — StepIndicator + SummaryList +
+ * ConfirmationPanel. Served at `/internal/service-flow/`.
+ */
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import StepIndicator from '@gh/gh-ds/StepIndicator';
+import SummaryList from '@gh/gh-ds/SummaryList';
+import ConfirmationPanel from '@gh/gh-ds/ConfirmationPanel';
+import Button from '@gh/gh-ds/Button';
+---
+
+<BaseLayout
+  title="Service flow — internal test"
+  description="Internal test page for GH-DS StepIndicator, SummaryList and ConfirmationPanel."
+  noindex
+>
+  <h1>Service-flow components</h1>
+  <p>
+    Not public. Exercises <code>StepIndicator</code>, <code>SummaryList</code>
+    and <code>ConfirmationPanel</code> — the three components that together shape a multi-step service
+    submission.
+  </p>
+
+  <section aria-labelledby="h-steps">
+    <h2 id="h-steps">Step indicator — in-flow</h2>
+    <StepIndicator
+      label="In-flow progress demo"
+      steps={[
+        { label: 'Identity', status: 'completed', href: '/apply/identity' },
+        { label: 'Photo', status: 'completed', href: '/apply/photo' },
+        { label: 'Fee', status: 'current' },
+        { label: 'Review', status: 'upcoming' },
+        { label: 'Submit', status: 'upcoming' },
+      ]}
+    />
+  </section>
+
+  <section aria-labelledby="h-steps-start">
+    <h2 id="h-steps-start">Step indicator — start of flow</h2>
+    <StepIndicator
+      label="Start-of-flow progress demo"
+      steps={[
+        { label: 'Identity', status: 'current' },
+        { label: 'Photo', status: 'upcoming' },
+        { label: 'Fee', status: 'upcoming' },
+        { label: 'Submit', status: 'upcoming' },
+      ]}
+    />
+  </section>
+
+  <section aria-labelledby="h-summary">
+    <h2 id="h-summary">Summary list — check your answers</h2>
+    <SummaryList
+      rows={[
+        {
+          key: 'Full name',
+          value: 'Ama Asante',
+          action: {
+            href: '/apply/identity#name',
+            label: 'Change',
+            hiddenText: 'full name',
+          },
+        },
+        {
+          key: 'Date of birth',
+          value: '27 March 1985',
+          action: {
+            href: '/apply/identity#dob',
+            label: 'Change',
+            hiddenText: 'date of birth',
+          },
+        },
+        {
+          key: 'Ghana Card number',
+          value: 'GHA-123456789-0',
+          action: {
+            href: '/apply/identity#pin',
+            label: 'Change',
+            hiddenText: 'Ghana Card number',
+          },
+        },
+        {
+          key: 'Passport type',
+          value: 'Standard (32 pages)',
+          action: {
+            href: '/apply/type',
+            label: 'Change',
+            hiddenText: 'passport type',
+          },
+        },
+        {
+          key: 'Fee',
+          value: 'GH₵ 100 · MTN Mobile Money',
+          action: {
+            href: '/apply/fee',
+            label: 'Change',
+            hiddenText: 'fee and payment method',
+          },
+        },
+        {
+          key: 'Application reference',
+          value: 'ARN-2026-04-000123',
+        },
+      ]}
+    />
+
+    <div class="submit-row">
+      <Button type="submit">Accept and send</Button>
+    </div>
+  </section>
+
+  <section aria-labelledby="h-confirmation">
+    <h2 id="h-confirmation">Confirmation panel — after submit</h2>
+    <ConfirmationPanel
+      title="Application sent"
+      reference="ARN-2026-04-000123"
+      referenceLabel="Your reference"
+      headingLevel="h2"
+    />
+
+    <h3>What happens next</h3>
+    <ol>
+      <li>We text your next step to +233 244 123 456 within 48 hours.</li>
+      <li>Present yourself at the Accra passport office on the date we confirm.</li>
+      <li>Bring your Ghana Card and the reference above.</li>
+    </ol>
+  </section>
+
+  <section aria-labelledby="h-twi" lang="tw">
+    <h2 id="h-twi" lang="en">Twi fixture</h2>
+    <div lang="tw">
+      <StepIndicator
+        label="Adwuma no dwumadie"
+        steps={[
+          { label: 'Hwehwɛ', status: 'completed', href: '/apply/identity' },
+          { label: 'Mfonini', status: 'current' },
+          { label: 'Ɛka', status: 'upcoming' },
+          { label: 'San hwɛ', status: 'upcoming' },
+        ]}
+      />
+
+      <SummaryList
+        rows={[
+          {
+            key: 'Wo din',
+            value: 'Ama Asante',
+            action: {
+              href: '/apply/identity',
+              label: 'Sesa',
+              hiddenText: 'wo din',
+            },
+          },
+          {
+            key: 'Wo awoda',
+            value: '27 March 1985',
+            action: {
+              href: '/apply/identity',
+              label: 'Sesa',
+              hiddenText: 'wo awoda',
+            },
+          },
+        ]}
+      />
+
+      <ConfirmationPanel
+        title="Wo adwuma no akɔ"
+        reference="ARN-2026-04-000123"
+        referenceLabel="Wo nɔma"
+        headingLevel="h2"
+      />
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  section {
+    border-top: var(--border-width-hairline) solid var(--color-border-default);
+    margin-top: var(--space-8);
+    padding-top: var(--space-4);
+  }
+
+  .submit-row {
+    margin-top: var(--space-8);
+  }
+
+  code {
+    font-family: var(--font-mono);
+    font-size: 0.95em;
+    background: var(--ghana-ink-50);
+    padding: 2px 6px;
+    border-radius: var(--radius-sm);
+  }
+</style>

@@ -1,0 +1,1449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact the Government of Ghana. Find regional offices, phone numbers, email addresses, and submit inquiries.">
+    <title>Contact Us | Republic of Ghana</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+
+    <style>
+        /* Theme Toggle Styles */
+        .theme-toggle {
+            position: relative;
+            width: 48px;
+            height: 48px;
+            border: none;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+            cursor: pointer;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .theme-toggle:hover {
+            background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.08) 100%);
+            transform: scale(1.05);
+        }
+
+        .toggle-stars {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+        }
+
+        .toggle-star {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: var(--gold-light, #E8D48A);
+            border-radius: 50%;
+            opacity: 0.8;
+            transition: all 0.5s ease;
+        }
+
+        .toggle-star:nth-child(1) { top: 8px; left: 12px; animation: twinkle 2s ease-in-out infinite; }
+        .toggle-star:nth-child(2) { top: 14px; right: 10px; animation: twinkle 2.5s ease-in-out infinite 0.3s; width: 2px; height: 2px; }
+        .toggle-star:nth-child(3) { bottom: 12px; left: 10px; animation: twinkle 1.8s ease-in-out infinite 0.6s; width: 2px; height: 2px; }
+        .toggle-star:nth-child(4) { bottom: 8px; right: 14px; animation: twinkle 2.2s ease-in-out infinite 0.9s; }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.4; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+
+        .toggle-orb {
+            position: relative;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow:
+                0 0 15px rgba(201, 162, 39, 0.3),
+                inset 0 0 10px rgba(0,0,0,0.3);
+        }
+
+        .toggle-icon {
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .toggle-icon.moon {
+            color: var(--gold-light, #E8D48A);
+            opacity: 1;
+            transform: rotate(0deg) scale(1);
+        }
+
+        .toggle-icon.sun {
+            color: #f59e0b;
+            opacity: 0;
+            transform: rotate(-90deg) scale(0.5);
+        }
+
+        /* Light mode toggle styles */
+        [data-theme="light"] .theme-toggle {
+            background: linear-gradient(135deg, rgba(13, 61, 46, 0.1) 0%, rgba(13, 61, 46, 0.05) 100%);
+        }
+
+        [data-theme="light"] .theme-toggle:hover {
+            background: linear-gradient(135deg, rgba(13, 61, 46, 0.15) 0%, rgba(13, 61, 46, 0.08) 100%);
+        }
+
+        [data-theme="light"] .toggle-star {
+            opacity: 0;
+            transform: scale(0);
+        }
+
+        [data-theme="light"] .toggle-orb {
+            background: linear-gradient(135deg, #87CEEB 0%, #98D8E8 100%);
+            box-shadow:
+                0 0 20px rgba(245, 158, 11, 0.4),
+                inset 0 0 10px rgba(255,255,255,0.3);
+        }
+
+        [data-theme="light"] .toggle-icon.moon {
+            opacity: 0;
+            transform: rotate(90deg) scale(0.5);
+        }
+
+        [data-theme="light"] .toggle-icon.sun {
+            opacity: 1;
+            transform: rotate(0deg) scale(1);
+        }
+
+        /* Light Mode Variables */
+        [data-theme="light"] {
+            --bg-primary: #FAFAF8;
+            --bg-secondary: #F5F4F0;
+            --bg-tertiary: #EEEEE8;
+            --bg-card: #FFFFFF;
+            --text-primary: #1A1A1A;
+            --text-secondary: #2D2D2D;
+            --text-muted: #5A5A5A;
+            --accent-primary: #0D3D2E;
+            --accent-secondary: #1A5C45;
+            --border-light: rgba(13, 61, 46, 0.1);
+            --border-medium: rgba(13, 61, 46, 0.2);
+        }
+
+        /* Light Mode - Hero Section */
+        [data-theme="light"] .contact-hero {
+            background: linear-gradient(135deg, #0D3D2E 0%, #1A5C45 100%);
+        }
+
+        [data-theme="light"] .contact-hero::before {
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%);
+        }
+
+        /* Light Mode - Quick Contact Cards */
+        [data-theme="light"] .quick-contact-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+        }
+
+        [data-theme="light"] .quick-contact-card:hover {
+            border-color: var(--accent-secondary);
+        }
+
+        [data-theme="light"] .quick-contact-icon {
+            background: rgba(13, 61, 46, 0.1);
+            color: var(--accent-primary);
+        }
+
+        [data-theme="light"] .quick-contact-card:hover .quick-contact-icon {
+            background: var(--accent-primary);
+            color: #FFFFFF;
+        }
+
+        [data-theme="light"] .quick-contact-title {
+            color: var(--text-primary);
+        }
+
+        [data-theme="light"] .quick-contact-info {
+            color: var(--text-muted);
+        }
+
+        [data-theme="light"] .quick-contact-link {
+            color: var(--accent-primary);
+        }
+
+        /* Light Mode - Contact Content Section */
+        [data-theme="light"] .contact-content {
+            background: var(--bg-secondary);
+        }
+
+        /* Light Mode - Contact Form */
+        [data-theme="light"] .contact-form-section {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+        }
+
+        [data-theme="light"] .contact-form-section h2 {
+            color: var(--text-primary);
+        }
+
+        [data-theme="light"] .contact-form-section > p {
+            color: var(--text-muted);
+        }
+
+        [data-theme="light"] .form-label {
+            color: var(--text-secondary);
+        }
+
+        [data-theme="light"] .form-input,
+        [data-theme="light"] .form-select,
+        [data-theme="light"] .form-textarea {
+            background: var(--bg-primary);
+            border-color: var(--border-medium);
+            color: var(--text-primary);
+        }
+
+        [data-theme="light"] .form-input:focus,
+        [data-theme="light"] .form-select:focus,
+        [data-theme="light"] .form-textarea:focus {
+            border-color: var(--accent-primary);
+        }
+
+        [data-theme="light"] .form-input::placeholder,
+        [data-theme="light"] .form-textarea::placeholder {
+            color: var(--text-muted);
+        }
+
+        [data-theme="light"] .form-submit {
+            background: var(--accent-primary);
+        }
+
+        [data-theme="light"] .form-submit:hover {
+            background: var(--accent-secondary);
+        }
+
+        /* Light Mode - Sidebar */
+        [data-theme="light"] .sidebar-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+        }
+
+        [data-theme="light"] .sidebar-card h4 {
+            color: var(--accent-primary);
+        }
+
+        [data-theme="light"] .office-name {
+            color: var(--text-primary);
+        }
+
+        [data-theme="light"] .office-address {
+            color: var(--text-muted);
+        }
+
+        [data-theme="light"] .hours-item .day {
+            color: var(--text-muted);
+        }
+
+        [data-theme="light"] .hours-item .time {
+            color: var(--text-primary);
+        }
+
+        [data-theme="light"] .office-item {
+            border-bottom-color: var(--border-light);
+        }
+
+        /* Light Mode - Regional Section */
+        [data-theme="light"] .regional-section {
+            background: var(--bg-primary);
+        }
+
+        [data-theme="light"] .regional-section .section-label {
+            color: var(--accent-primary);
+        }
+
+        [data-theme="light"] .regional-section .section-title {
+            color: var(--text-primary);
+        }
+
+        [data-theme="light"] .regional-section .section-desc {
+            color: var(--text-muted);
+        }
+
+        [data-theme="light"] .map-container {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-light);
+        }
+
+        [data-theme="light"] .map-placeholder {
+            color: var(--text-muted);
+        }
+
+        [data-theme="light"] .map-placeholder svg {
+            color: var(--text-muted);
+        }
+
+        [data-theme="light"] .office-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+        }
+
+        [data-theme="light"] .office-card:hover {
+            border-color: var(--accent-secondary);
+            background: var(--bg-card);
+            box-shadow: 0 4px 20px rgba(13, 61, 46, 0.1);
+        }
+
+        [data-theme="light"] .office-region {
+            color: var(--text-primary);
+        }
+
+        [data-theme="light"] .office-capital {
+            color: var(--accent-primary);
+        }
+
+        [data-theme="light"] .office-contact {
+            color: var(--text-muted);
+        }
+
+        [data-theme="light"] .office-contact a {
+            color: var(--accent-primary);
+        }
+
+        /* Light Mode - FAQ Section */
+        [data-theme="light"] .faq-section {
+            background: linear-gradient(135deg, #0D3D2E 0%, #1A5C45 100%);
+        }
+
+        [data-theme="light"] .faq-section .section-label {
+            color: #B8E0D2;
+        }
+
+        [data-theme="light"] .faq-card {
+            background: rgba(255,255,255,0.1);
+        }
+
+        [data-theme="light"] .faq-card h4 {
+            color: #B8E0D2;
+        }
+
+        /* Light Mode - Footer */
+        [data-theme="light"] .footer {
+            background: #1A1A1A;
+        }
+
+        /* Light Mode - Navigation */
+        [data-theme="light"] .nav-main {
+            background: var(--bg-card);
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        [data-theme="light"] .nav-links a {
+            color: var(--text-secondary);
+        }
+
+        [data-theme="light"] .nav-links a:hover,
+        [data-theme="light"] .nav-links a.active {
+            color: var(--accent-primary);
+        }
+
+        [data-theme="light"] .logo-title {
+            color: var(--text-primary);
+        }
+
+        [data-theme="light"] .logo-subtitle {
+            color: var(--text-muted);
+        }
+
+        [data-theme="light"] .logo-emblem {
+            background: var(--accent-primary);
+        }
+
+        [data-theme="light"] .logo-star {
+            fill: #FFFFFF;
+        }
+
+        [data-theme="light"] .nav-cta {
+            background: var(--accent-primary);
+            color: #FFFFFF;
+        }
+
+        [data-theme="light"] .nav-cta:hover {
+            background: var(--accent-secondary);
+        }
+
+        [data-theme="light"] .search-toggle {
+            color: var(--text-secondary);
+        }
+
+        [data-theme="light"] .search-toggle:hover {
+            color: var(--accent-primary);
+        }
+
+        /* Light Mode - Top Bar */
+        [data-theme="light"] .top-bar {
+            background: var(--bg-tertiary);
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        [data-theme="light"] .emergency-link {
+            color: var(--accent-primary);
+        }
+
+        [data-theme="light"] .language-selector button {
+            color: var(--text-muted);
+        }
+
+        [data-theme="light"] .language-selector button.active,
+        [data-theme="light"] .language-selector button:hover {
+            color: var(--accent-primary);
+        }
+
+        /* Light Mode - Breadcrumbs */
+        [data-theme="light"] .breadcrumbs a {
+            color: rgba(255,255,255,0.8);
+        }
+
+        [data-theme="light"] .breadcrumbs a:hover {
+            color: #FFFFFF;
+        }
+
+        /* Contact Page Styles */
+        .contact-hero {
+            background: linear-gradient(135deg, var(--green-deep) 0%, var(--black-soft) 100%);
+            padding: var(--space-16) 0 var(--space-20);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, rgba(201,162,39,0.12) 0%, transparent 60%);
+        }
+
+        .contact-hero-content {
+            position: relative;
+            z-index: 2;
+            color: var(--white-ivory);
+        }
+
+        .contact-hero .breadcrumbs {
+            margin-bottom: var(--space-6);
+            color: rgba(250,250,248,0.7);
+        }
+
+        .contact-hero h1 {
+            font-size: var(--text-4xl);
+            color: var(--white-ivory);
+            margin-bottom: var(--space-4);
+        }
+
+        .contact-hero p {
+            font-size: var(--text-lg);
+            color: rgba(250,250,248,0.85);
+            max-width: 600px;
+        }
+
+        /* Quick Contact Cards */
+        .quick-contact {
+            margin-top: calc(var(--space-16) * -1);
+            position: relative;
+            z-index: 10;
+            padding-bottom: var(--space-16);
+        }
+
+        .quick-contact-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--space-6);
+        }
+
+        .quick-contact-card {
+            background: var(--white-ivory);
+            border-radius: var(--radius-xl);
+            padding: var(--space-6);
+            text-align: center;
+            box-shadow: var(--shadow-lg);
+            transition: all var(--transition-base);
+        }
+
+        .quick-contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .quick-contact-icon {
+            width: 56px;
+            height: 56px;
+            background: var(--green-pale);
+            border-radius: var(--radius-full);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto var(--space-4);
+            color: var(--green-deep);
+        }
+
+        .quick-contact-card:hover .quick-contact-icon {
+            background: var(--green-deep);
+            color: var(--gold-burnished);
+        }
+
+        .quick-contact-title {
+            font-family: var(--font-display);
+            font-size: var(--text-lg);
+            margin-bottom: var(--space-2);
+        }
+
+        .quick-contact-info {
+            font-size: var(--text-sm);
+            color: var(--gray-mid);
+            margin-bottom: var(--space-4);
+        }
+
+        .quick-contact-link {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-2);
+            color: var(--green-deep);
+            font-weight: var(--weight-semibold);
+            font-size: var(--text-sm);
+        }
+
+        /* Main Content */
+        .contact-content {
+            padding: var(--space-16) 0;
+            background: var(--white-cream);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: var(--space-12);
+        }
+
+        /* Contact Form */
+        .contact-form-section {
+            background: var(--white-ivory);
+            border-radius: var(--radius-2xl);
+            padding: var(--space-10);
+        }
+
+        .contact-form-section h2 {
+            margin-bottom: var(--space-2);
+        }
+
+        .contact-form-section > p {
+            color: var(--gray-mid);
+            margin-bottom: var(--space-8);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-4);
+        }
+
+        .form-group {
+            margin-bottom: var(--space-5);
+        }
+
+        .form-label {
+            display: block;
+            font-size: var(--text-sm);
+            font-weight: var(--weight-medium);
+            margin-bottom: var(--space-2);
+        }
+
+        .form-label .required {
+            color: var(--red-crimson);
+        }
+
+        .form-input,
+        .form-select,
+        .form-textarea {
+            width: 100%;
+            padding: var(--space-4);
+            border: 2px solid var(--gray-warm);
+            border-radius: var(--radius-md);
+            font-family: var(--font-body);
+            font-size: var(--text-base);
+            transition: border-color var(--transition-fast);
+        }
+
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: var(--green-deep);
+        }
+
+        .form-textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .form-submit {
+            width: 100%;
+            padding: var(--space-4);
+            background: var(--green-deep);
+            color: var(--white-ivory);
+            border: none;
+            border-radius: var(--radius-md);
+            font-family: var(--font-body);
+            font-size: var(--text-base);
+            font-weight: var(--weight-semibold);
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-2);
+        }
+
+        .form-submit:hover {
+            background: var(--green-forest);
+            transform: translateY(-2px);
+        }
+
+        /* Sidebar */
+        .contact-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-6);
+        }
+
+        .sidebar-card {
+            background: var(--white-ivory);
+            border-radius: var(--radius-xl);
+            padding: var(--space-6);
+        }
+
+        .sidebar-card h4 {
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+            font-size: var(--text-base);
+            margin-bottom: var(--space-4);
+            color: var(--green-deep);
+        }
+
+        .office-list {
+            list-style: none;
+        }
+
+        .office-item {
+            padding: var(--space-4) 0;
+            border-bottom: 1px solid var(--gray-warm);
+        }
+
+        .office-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .office-name {
+            font-weight: var(--weight-semibold);
+            margin-bottom: var(--space-1);
+        }
+
+        .office-address {
+            font-size: var(--text-sm);
+            color: var(--gray-mid);
+        }
+
+        .hours-list {
+            list-style: none;
+        }
+
+        .hours-item {
+            display: flex;
+            justify-content: space-between;
+            padding: var(--space-2) 0;
+            font-size: var(--text-sm);
+        }
+
+        .hours-item .day {
+            color: var(--gray-mid);
+        }
+
+        .hours-item .time {
+            font-weight: var(--weight-medium);
+        }
+
+        .hours-item.closed .time {
+            color: var(--red-crimson);
+        }
+
+        /* Regional Offices Section */
+        .regional-section {
+            padding: var(--space-16) 0;
+            background: var(--white-ivory);
+        }
+
+        .map-container {
+            background: var(--white-cream);
+            border-radius: var(--radius-2xl);
+            overflow: hidden;
+            margin-bottom: var(--space-10);
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .map-placeholder {
+            text-align: center;
+            color: var(--gray-mid);
+        }
+
+        .map-placeholder svg {
+            width: 80px;
+            height: 80px;
+            margin-bottom: var(--space-4);
+            color: var(--gray-light);
+        }
+
+        .ghana-map {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .ghana-map svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .offices-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--space-6);
+        }
+
+        .office-card {
+            background: var(--white-cream);
+            border-radius: var(--radius-lg);
+            padding: var(--space-5);
+            transition: all var(--transition-fast);
+            border: 1px solid transparent;
+        }
+
+        .office-card:hover {
+            border-color: var(--gold-burnished);
+            background: var(--white-ivory);
+            box-shadow: var(--shadow-md);
+        }
+
+        .office-region {
+            font-family: var(--font-display);
+            font-size: var(--text-base);
+            font-weight: var(--weight-semibold);
+            margin-bottom: var(--space-2);
+        }
+
+        .office-capital {
+            font-size: var(--text-xs);
+            color: var(--gold-burnished);
+            text-transform: uppercase;
+            letter-spacing: var(--tracking-wide);
+            margin-bottom: var(--space-3);
+        }
+
+        .office-contact {
+            font-size: var(--text-sm);
+            color: var(--gray-mid);
+        }
+
+        .office-contact a {
+            color: var(--green-deep);
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: var(--space-16) 0;
+            background: var(--green-deep);
+            color: var(--white-ivory);
+        }
+
+        .faq-section .section-header {
+            color: var(--white-ivory);
+        }
+
+        .faq-section .section-label {
+            color: var(--gold-light);
+        }
+
+        .faq-section .section-title {
+            color: var(--white-ivory);
+        }
+
+        .faq-section .section-desc {
+            color: rgba(250,250,248,0.8);
+        }
+
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--space-6);
+        }
+
+        .faq-card {
+            background: rgba(255,255,255,0.08);
+            border-radius: var(--radius-xl);
+            padding: var(--space-6);
+        }
+
+        .faq-card h4 {
+            font-size: var(--text-base);
+            margin-bottom: var(--space-3);
+            color: var(--gold-light);
+        }
+
+        .faq-card p {
+            font-size: var(--text-sm);
+            color: rgba(250,250,248,0.8);
+            line-height: var(--leading-relaxed);
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .quick-contact-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .offices-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-sidebar {
+                order: -1;
+            }
+
+            .faq-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .quick-contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .offices-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .offices-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; color: var(--text-primary); }
+        .mobile-menu-btn svg { width: 24px; height: 24px; }
+        .mobile-menu { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: var(--bg-primary); z-index: 999; padding: 6rem 2rem 2rem; opacity: 0; visibility: hidden; transition: all 0.3s ease; }
+        .mobile-menu.active { opacity: 1; visibility: visible; }
+        .mobile-menu-links { display: flex; flex-direction: column; gap: 0.5rem; list-style: none; }
+        .mobile-menu-links a { display: block; padding: 1rem 0; text-decoration: none; color: var(--text-primary); font-size: 1.5rem; font-family: var(--font-display); border-bottom: 1px solid var(--border-subtle); transition: color 0.3s ease; }
+        .mobile-menu-links a:hover { color: var(--gold-brilliant); }
+        .mobile-menu-close { position: absolute; top: 1.5rem; right: 1.5rem; background: none; border: none; cursor: pointer; color: var(--text-primary); padding: 0.5rem; }
+        .mobile-menu-close svg { width: 28px; height: 28px; }
+
+        @media (max-width: 1024px) { .mobile-menu-btn { display: block; } .mobile-menu { display: block; } }
+        @media (max-width: 768px) { .logo-text { display: none; } }
+    </style>
+</head>
+<body>
+    <div class="kente-pattern"></div>
+
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <a href="tel:112" class="emergency-link">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+            </svg>
+            Emergency: 112 | COVID-19: 311
+        </a>
+        <div class="language-selector">
+            <span style="color: var(--gray-mid);">Language:</span>
+            <button class="active">English</button>
+            <button>Twi</button>
+            <button>Hausa</button>
+            <button>Ewe</button>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="nav-main">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-emblem">
+                    <svg class="logo-star" viewBox="0 0 100 100">
+                        <polygon points="50,5 61,40 98,40 68,62 79,97 50,75 21,97 32,62 2,40 39,40"/>
+                    </svg>
+                </div>
+                <div class="logo-text">
+                    <span class="logo-title">Republic of Ghana</span>
+                    <span class="logo-subtitle">Official Government Portal</span>
+                </div>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services/index.html">Services</a></li>
+                <li><a href="government/index.html">Government</a></li>
+                <li><a href="business/index.html">Invest</a></li>
+                <li><a href="tourism/index.html">Visit Ghana</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="nav-btn" aria-label="Search" onclick="openSearch()">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+                </button>
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <div class="toggle-orb">
+                        <svg class="toggle-icon moon" viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                        <svg class="toggle-icon sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/></svg>
+                    </div>
+                </button>
+                <a href="services/index.html" class="nav-cta">Access Services</a>
+                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open menu">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close menu">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+        <ul class="mobile-menu-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services/index.html">Services</a></li>
+            <li><a href="government/index.html">Government</a></li>
+            <li><a href="business/index.html">Invest</a></li>
+            <li><a href="tourism/index.html">Visit Ghana</a></li>
+            <li><a href="contact.html" class="active">Contact</a></li>
+        </ul>
+    </div>
+
+    <!-- Search Modal -->
+    <div class="search-modal" id="searchModal">
+        <button class="search-close" onclick="closeSearch()">
+            <svg width="32" height="32" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M18 6L6 18M6 6l12 12"/>
+            </svg>
+        </button>
+        <div class="search-container">
+            <div class="search-input-wrapper">
+                <svg class="search-icon-lg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
+                </svg>
+                <input type="text" class="search-input-lg" placeholder="Search...">
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero -->
+    <section class="contact-hero">
+        <div class="container">
+            <div class="contact-hero-content">
+                <nav class="breadcrumbs">
+                    <a href="index.html">Home</a>
+                    <span class="separator">/</span>
+                    <span class="current">Contact</span>
+                </nav>
+                <h1 class="reveal">Contact Us</h1>
+                <p class="reveal">We're here to help. Reach out to us through any of the channels below, or visit one of our regional offices across Ghana.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Contact -->
+    <section class="quick-contact">
+        <div class="container">
+            <div class="quick-contact-grid">
+                <div class="quick-contact-card reveal">
+                    <div class="quick-contact-icon">
+                        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                        </svg>
+                    </div>
+                    <h3 class="quick-contact-title">Call Center</h3>
+                    <p class="quick-contact-info">Mon-Fri, 8am-5pm GMT</p>
+                    <a href="tel:+233302000000" class="quick-contact-link">
+                        +233 30 200 0000
+                        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </div>
+
+                <div class="quick-contact-card reveal">
+                    <div class="quick-contact-icon">
+                        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                            <polyline points="22,6 12,13 2,6"/>
+                        </svg>
+                    </div>
+                    <h3 class="quick-contact-title">Email Us</h3>
+                    <p class="quick-contact-info">We respond within 24 hours</p>
+                    <a href="mailto:info@gov.gh" class="quick-contact-link">
+                        info@gov.gh
+                        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </div>
+
+                <div class="quick-contact-card reveal">
+                    <div class="quick-contact-icon">
+                        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+                        </svg>
+                    </div>
+                    <h3 class="quick-contact-title">Live Chat</h3>
+                    <p class="quick-contact-info">Instant support online</p>
+                    <button class="quick-contact-link" onclick="startChat()">
+                        Start Chat
+                        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="quick-contact-card reveal">
+                    <div class="quick-contact-icon">
+                        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                            <circle cx="12" cy="10" r="3"/>
+                        </svg>
+                    </div>
+                    <h3 class="quick-contact-title">Visit Us</h3>
+                    <p class="quick-contact-info">16 Regional Offices</p>
+                    <a href="#offices" class="quick-contact-link">
+                        Find Office
+                        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        <section class="contact-content">
+            <div class="container">
+                <div class="contact-grid">
+                    <!-- Contact Form -->
+                    <div class="contact-form-section reveal">
+                        <h2>Send Us a Message</h2>
+                        <p>Fill out the form below and we'll get back to you as soon as possible.</p>
+
+                        <form id="contactForm" onsubmit="handleSubmit(event)">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="form-label">First Name <span class="required">*</span></label>
+                                    <input type="text" class="form-input" required placeholder="Enter first name">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Last Name <span class="required">*</span></label>
+                                    <input type="text" class="form-input" required placeholder="Enter last name">
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="form-label">Email Address <span class="required">*</span></label>
+                                    <input type="email" class="form-input" required placeholder="Enter email">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Phone Number</label>
+                                    <input type="tel" class="form-input" placeholder="Enter phone number">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Subject <span class="required">*</span></label>
+                                <select class="form-select" required>
+                                    <option value="">Select a subject</option>
+                                    <option value="general">General Inquiry</option>
+                                    <option value="services">Government Services</option>
+                                    <option value="complaint">File a Complaint</option>
+                                    <option value="suggestion">Suggestion</option>
+                                    <option value="technical">Technical Support</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Region</label>
+                                <select class="form-select">
+                                    <option value="">Select your region</option>
+                                    <option value="greater-accra">Greater Accra</option>
+                                    <option value="ashanti">Ashanti</option>
+                                    <option value="western">Western</option>
+                                    <option value="eastern">Eastern</option>
+                                    <option value="central">Central</option>
+                                    <option value="northern">Northern</option>
+                                    <option value="volta">Volta</option>
+                                    <option value="upper-east">Upper East</option>
+                                    <option value="upper-west">Upper West</option>
+                                    <option value="bono">Bono</option>
+                                    <option value="bono-east">Bono East</option>
+                                    <option value="ahafo">Ahafo</option>
+                                    <option value="savannah">Savannah</option>
+                                    <option value="north-east">North East</option>
+                                    <option value="oti">Oti</option>
+                                    <option value="western-north">Western North</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Message <span class="required">*</span></label>
+                                <textarea class="form-textarea" required placeholder="Type your message here..."></textarea>
+                            </div>
+
+                            <button type="submit" class="form-submit">
+                                Send Message
+                                <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <line x1="22" y1="2" x2="11" y2="13"/>
+                                    <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+                                </svg>
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Sidebar -->
+                    <aside class="contact-sidebar">
+                        <div class="sidebar-card reveal">
+                            <h4>
+                                <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                    <circle cx="12" cy="10" r="3"/>
+                                </svg>
+                                Head Office
+                            </h4>
+                            <ul class="office-list">
+                                <li class="office-item">
+                                    <div class="office-name">Office of the Head of Civil Service</div>
+                                    <div class="office-address">State House, Accra</div>
+                                </li>
+                                <li class="office-item">
+                                    <div class="office-name">Ministry of Communications</div>
+                                    <div class="office-address">P.O. Box M.38, Accra</div>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="sidebar-card reveal">
+                            <h4>
+                                <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <polyline points="12 6 12 12 16 14"/>
+                                </svg>
+                                Office Hours
+                            </h4>
+                            <ul class="hours-list">
+                                <li class="hours-item">
+                                    <span class="day">Monday - Thursday</span>
+                                    <span class="time">8:00 AM - 5:00 PM</span>
+                                </li>
+                                <li class="hours-item">
+                                    <span class="day">Friday</span>
+                                    <span class="time">8:00 AM - 3:00 PM</span>
+                                </li>
+                                <li class="hours-item closed">
+                                    <span class="day">Saturday - Sunday</span>
+                                    <span class="time">Closed</span>
+                                </li>
+                                <li class="hours-item closed">
+                                    <span class="day">Public Holidays</span>
+                                    <span class="time">Closed</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="sidebar-card reveal">
+                            <h4>
+                                <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+                                    <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+                                </svg>
+                                Emergency Contacts
+                            </h4>
+                            <ul class="office-list">
+                                <li class="office-item">
+                                    <div class="office-name">National Emergency</div>
+                                    <div class="office-address"><strong style="color: var(--red-crimson);">112</strong></div>
+                                </li>
+                                <li class="office-item">
+                                    <div class="office-name">Police</div>
+                                    <div class="office-address"><strong>191</strong></div>
+                                </li>
+                                <li class="office-item">
+                                    <div class="office-name">Fire Service</div>
+                                    <div class="office-address"><strong>192</strong></div>
+                                </li>
+                                <li class="office-item">
+                                    <div class="office-name">Ambulance</div>
+                                    <div class="office-address"><strong>193</strong></div>
+                                </li>
+                            </ul>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </section>
+
+        <!-- Regional Offices -->
+        <section class="regional-section" id="offices">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="section-label">Find Us</span>
+                    <h2 class="section-title">Regional Coordinating Councils</h2>
+                    <p class="section-desc">Government services available in all 16 regions of Ghana</p>
+                </div>
+
+                <div class="map-container reveal">
+                    <div class="map-placeholder">
+                        <svg fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                            <circle cx="12" cy="10" r="3"/>
+                        </svg>
+                        <p>Interactive Map</p>
+                        <small>Click on a region to view office details</small>
+                    </div>
+                </div>
+
+                <div class="offices-grid">
+                    <div class="office-card reveal">
+                        <h4 class="office-region">Greater Accra</h4>
+                        <p class="office-capital">Capital: Accra</p>
+                        <p class="office-contact">
+                            <a href="tel:+233302123456">+233 30 212 3456</a><br>
+                            greateraccra@rcc.gov.gh
+                        </p>
+                    </div>
+                    <div class="office-card reveal">
+                        <h4 class="office-region">Ashanti</h4>
+                        <p class="office-capital">Capital: Kumasi</p>
+                        <p class="office-contact">
+                            <a href="tel:+233322123456">+233 32 212 3456</a><br>
+                            ashanti@rcc.gov.gh
+                        </p>
+                    </div>
+                    <div class="office-card reveal">
+                        <h4 class="office-region">Western</h4>
+                        <p class="office-capital">Capital: Sekondi-Takoradi</p>
+                        <p class="office-contact">
+                            <a href="tel:+233312123456">+233 31 212 3456</a><br>
+                            western@rcc.gov.gh
+                        </p>
+                    </div>
+                    <div class="office-card reveal">
+                        <h4 class="office-region">Eastern</h4>
+                        <p class="office-capital">Capital: Koforidua</p>
+                        <p class="office-contact">
+                            <a href="tel:+233342123456">+233 34 212 3456</a><br>
+                            eastern@rcc.gov.gh
+                        </p>
+                    </div>
+                    <div class="office-card reveal">
+                        <h4 class="office-region">Central</h4>
+                        <p class="office-capital">Capital: Cape Coast</p>
+                        <p class="office-contact">
+                            <a href="tel:+233332123456">+233 33 212 3456</a><br>
+                            central@rcc.gov.gh
+                        </p>
+                    </div>
+                    <div class="office-card reveal">
+                        <h4 class="office-region">Northern</h4>
+                        <p class="office-capital">Capital: Tamale</p>
+                        <p class="office-contact">
+                            <a href="tel:+233372123456">+233 37 212 3456</a><br>
+                            northern@rcc.gov.gh
+                        </p>
+                    </div>
+                    <div class="office-card reveal">
+                        <h4 class="office-region">Volta</h4>
+                        <p class="office-capital">Capital: Ho</p>
+                        <p class="office-contact">
+                            <a href="tel:+233362123456">+233 36 212 3456</a><br>
+                            volta@rcc.gov.gh
+                        </p>
+                    </div>
+                    <div class="office-card reveal">
+                        <h4 class="office-region">Upper East</h4>
+                        <p class="office-capital">Capital: Bolgatanga</p>
+                        <p class="office-contact">
+                            <a href="tel:+233382123456">+233 38 212 3456</a><br>
+                            uppereast@rcc.gov.gh
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="faq-section">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="section-label">Help</span>
+                    <h2 class="section-title">Frequently Asked Questions</h2>
+                    <p class="section-desc">Quick answers to common questions</p>
+                </div>
+
+                <div class="faq-grid">
+                    <div class="faq-card reveal">
+                        <h4>How do I track my application?</h4>
+                        <p>You can track any government service application by visiting the relevant service page and entering your application reference number in the tracking section.</p>
+                    </div>
+                    <div class="faq-card reveal">
+                        <h4>What are the office hours?</h4>
+                        <p>Most government offices are open Monday to Thursday from 8:00 AM to 5:00 PM, and Friday from 8:00 AM to 3:00 PM. Offices are closed on weekends and public holidays.</p>
+                    </div>
+                    <div class="faq-card reveal">
+                        <h4>How long does it take to get a response?</h4>
+                        <p>For email inquiries, we aim to respond within 24-48 business hours. Phone and live chat support provides immediate assistance during office hours.</p>
+                    </div>
+                    <div class="faq-card reveal">
+                        <h4>Can I submit documents online?</h4>
+                        <p>Yes, many services now accept online document submissions. Visit the specific service page to see if online submission is available for your needs.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <div class="footer-logo">
+                    <svg viewBox="0 0 100 100">
+                        <polygon points="50,5 61,40 98,40 68,62 79,97 50,75 21,97 32,62 2,40 39,40"/>
+                    </svg>
+                    <span class="footer-logo-text">Republic of Ghana</span>
+                </div>
+                <p class="footer-desc">The official digital gateway to Ghana's government services.</p>
+                <div class="footer-social">
+                    <a href="#" class="social-link"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+                    <a href="#" class="social-link"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="services/passport.html">Passport</a></li>
+                    <li><a href="services/ghana-card.html">Ghana Card</a></li>
+                    <li><a href="services/tax.html">Tax Filing</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Government</h4>
+                <ul>
+                    <li><a href="government/president.html">President</a></li>
+                    <li><a href="government/parliament.html">Parliament</a></li>
+                    <li><a href="government/ministries.html">Ministries</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="faq.html">FAQs</a></li>
+                    <li><a href="accessibility.html">Accessibility</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p class="footer-copy">&copy; 2026 Republic of Ghana. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="terms.html">Terms of Use</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        (function(){const STORAGE_KEY='ghana-gov-theme',DARK='dark',LIGHT='light';function getSavedTheme(){const saved=localStorage.getItem(STORAGE_KEY);if(saved)return saved;if(window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches)return LIGHT;return DARK;}function applyTheme(theme){if(theme===LIGHT)document.documentElement.setAttribute('data-theme','light');else document.documentElement.removeAttribute('data-theme');localStorage.setItem(STORAGE_KEY,theme);}applyTheme(getSavedTheme());document.addEventListener('DOMContentLoaded',function(){const toggle=document.getElementById('themeToggle');if(toggle){toggle.addEventListener('click',function(){const current=document.documentElement.getAttribute('data-theme');applyTheme(current==='light'?DARK:LIGHT);this.style.transform='scale(0.95)';setTimeout(()=>{this.style.transform='';},150);});}});})();
+
+        function handleSubmit(e) {
+            e.preventDefault();
+            alert('Thank you for your message! We will respond within 24-48 hours.');
+            e.target.reset();
+        }
+
+        function startChat() {
+            alert('Live chat feature coming soon! Please use email or phone for immediate assistance.');
+        }
+
+        // Mobile Menu Toggle
+        (function() {
+            document.addEventListener('DOMContentLoaded', function() {
+                const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+                const mobileMenuClose = document.getElementById('mobileMenuClose');
+                const mobileMenu = document.getElementById('mobileMenu');
+                if (mobileMenuBtn && mobileMenu) {
+                    mobileMenuBtn.addEventListener('click', function() {
+                        mobileMenu.classList.add('active');
+                        document.body.style.overflow = 'hidden';
+                    });
+                    if (mobileMenuClose) {
+                        mobileMenuClose.addEventListener('click', function() {
+                            mobileMenu.classList.remove('active');
+                            document.body.style.overflow = '';
+                        });
+                    }
+                    mobileMenu.querySelectorAll('a').forEach(link => {
+                        link.addEventListener('click', function() {
+                            mobileMenu.classList.remove('active');
+                            document.body.style.overflow = '';
+                        });
+                    });
+                    document.addEventListener('keydown', function(e) {
+                        if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
+                            mobileMenu.classList.remove('active');
+                            document.body.style.overflow = '';
+                        }
+                    });
+                }
+            });
+        })();
+    </script>
+</body>
+</html>

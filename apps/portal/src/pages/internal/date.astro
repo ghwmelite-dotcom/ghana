@@ -1,0 +1,109 @@
+---
+/**
+ * Hidden DateInput variant gallery — paired with axe-check.
+ * Served at `/internal/date/`.
+ */
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import DateInput from '@gh/gh-ds/DateInput';
+import Button from '@gh/gh-ds/Button';
+---
+
+<BaseLayout
+  title="DateInput variants — internal test"
+  description="Internal test page for GH-DS DateInput. Not linked from public navigation."
+  noindex
+>
+  <h1>DateInput variants</h1>
+  <p>
+    Not public. Exercises every state of the
+    <code>@gh/gh-ds/DateInput</code> component.
+  </p>
+
+  <form action="#" method="post" novalidate>
+    <section aria-labelledby="h-basic">
+      <h2 id="h-basic">Basic</h2>
+      <DateInput
+        name="issue-date"
+        legend="When was your Ghana Card issued?"
+        hint="For example, 27 03 2023."
+      />
+    </section>
+
+    <section aria-labelledby="h-bday">
+      <h2 id="h-bday">Date of birth with browser autofill</h2>
+      <DateInput
+        name="dob"
+        legend="What is your date of birth?"
+        hint="For example, 27 03 1985."
+        autocomplete="bday"
+        required
+      />
+    </section>
+
+    <section aria-labelledby="h-prefilled">
+      <h2 id="h-prefilled">Prefilled</h2>
+      <DateInput
+        name="passport-expiry"
+        legend="When does your current passport expire?"
+        value={{ day: '15', month: '08', year: '2026' }}
+      />
+    </section>
+
+    <section aria-labelledby="h-error">
+      <h2 id="h-error">Error state</h2>
+      <DateInput
+        name="arrival"
+        legend="When did you arrive in Ghana?"
+        hint="For example, 14 02 2024."
+        value={{ day: '32', month: '02', year: '2024' }}
+        error="Enter a valid date — day must be between 1 and 31"
+      />
+    </section>
+
+    <section aria-labelledby="h-disabled">
+      <h2 id="h-disabled">Disabled</h2>
+      <DateInput
+        name="submitted-on"
+        legend="Date submitted"
+        value={{ day: '18', month: '04', year: '2026' }}
+        disabled
+      />
+    </section>
+
+    <section aria-labelledby="h-twi" lang="tw">
+      <h2 id="h-twi" lang="en">Twi fixture</h2>
+      <div lang="tw">
+        <DateInput name="awo-da" legend="Wo awoda ne da bɛn?" hint="Nhwɛso: 27 03 1985." />
+      </div>
+    </section>
+
+    <div class="submit-row">
+      <Button type="submit">Send demo</Button>
+    </div>
+  </form>
+</BaseLayout>
+
+<style>
+  section {
+    border-top: var(--border-width-hairline) solid var(--color-border-default);
+    margin-top: var(--space-8);
+    padding-top: var(--space-4);
+  }
+
+  .submit-row {
+    margin-top: var(--space-8);
+  }
+
+  code {
+    font-family: var(--font-mono);
+    font-size: 0.95em;
+    background: var(--ghana-ink-50);
+    padding: 2px 6px;
+    border-radius: var(--radius-sm);
+  }
+
+  form {
+    max-width: 42rem;
+  }
+</style>

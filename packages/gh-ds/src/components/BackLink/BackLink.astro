@@ -1,0 +1,96 @@
+---
+/**
+ * <BackLink> — Ghana Design System Tier-1 foundation component.
+ *
+ * Sits near the top of internal pages to let the user go back one step
+ * without using the browser's back button (which many Ghanaian users avoid
+ * on low-end Android because tapping system nav accidentally closes the
+ * browser).
+ *
+ * Per `.claude/CLAUDE.md §6.3`, the allowed Adinkra mapping for this use
+ * is **Sankofa**. That symbol requires clearance from the National
+ * Commission on Culture and Folklore Board (Copyright Act 690) before
+ * shipping in production.
+ *
+ * Shipping posture:
+ *   - v0 (this PR) uses a generic left-chevron + "Back" text so no
+ *     folklore-rights are unclear.
+ *   - v1 swaps the chevron for the Sankofa motif once clearance lands.
+ *     The component contract and CSS stay the same; only the SVG changes.
+ *   - ADR-004 will document the clearance and the swap. Until then, the
+ *     chevron is the official look.
+ *
+ * Usage:
+ *   <BackLink href="/services/" />                  {/* default text: "Back" *\/}
+ *   <BackLink href="/services/passport/">Back to passport services</BackLink>
+ */
+
+interface Props {
+  /** Target URL. Required — a BackLink with nowhere to go is a bug. */
+  href: string;
+  class?: string;
+}
+
+const { href, class: extraClass } = Astro.props;
+const classes = ['gh-back-link', extraClass].filter(Boolean).join(' ');
+---
+
+<a href={href} class={classes}>
+  <svg
+    class="gh-back-link__icon"
+    width="13"
+    height="17"
+    viewBox="0 0 13 17"
+    fill="none"
+    aria-hidden="true"
+    focusable="false"
+  >
+    {
+      /* Generic left-chevron. Swap to Sankofa motif once Folklore Board
+        clearance lands — see frontmatter. */
+    }
+    <path
+      d="M11 1L3 8.5L11 16"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"></path>
+  </svg>
+  <span class="gh-back-link__label"><slot>Back</slot></span>
+</a>
+
+<style>
+  .gh-back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) 0;
+    min-height: 2.75rem;
+    color: var(--color-link);
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
+    text-decoration-thickness: 0.08em;
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-body);
+  }
+
+  .gh-back-link:hover {
+    text-decoration-thickness: 0.15em;
+  }
+
+  .gh-back-link:focus-visible {
+    outline: var(--border-width-focus) solid var(--color-focus-ring);
+    outline-offset: 2px;
+    background: var(--color-focus-ring);
+    color: var(--color-text-default);
+    text-decoration: none;
+  }
+
+  .gh-back-link__icon {
+    flex-shrink: 0;
+  }
+
+  .gh-back-link__label {
+    display: inline-block;
+  }
+</style>

@@ -1,0 +1,296 @@
+---
+/**
+ * <TextInput> — Ghana Design System Tier-1 foundation component.
+ *
+ * Implements the "Form label / hint / error composite" from
+ * `.claude/CLAUDE.md §5` Weeks 3–6 Tier-1 list, wrapping the native input.
+ * Ported in intent from GOV.UK Frontend's `govuk-form-group` + `govuk-label`
+ * + `govuk-hint` + `govuk-error-message` + `govuk-input` stack, per ADR-003.
+ *
+ * Contract:
+ *   - Every input has a visible label (§1 accessibility non-negotiable).
+ *     Placeholders are never used as labels — they violate WCAG 3.3.2.
+ *   - Hint text is rendered before the input and wired via `aria-describedby`.
+ *   - Error text is rendered before the input too, gets `role="alert"` so
+ *     assistive tech announces it on mount or change, and sets
+ *     `aria-invalid="true"` on the input itself.
+ *   - Error-state visually marks the whole group with a red left-border
+ *     (GOV.UK pattern) plus a red input border. Colour is never the only
+ *     indicator — the word "Error:" is prepended to the error copy for
+ *     screen-reader-only surfaces that may drop colour.
+ *   - 44 × ≥ N px touch target; optional width modifier for field-length
+ *     cues (GOV.UK `width-10`, `width-5`, etc.).
+ *
+ * Usage:
+ *   <TextInput
+ *     name="pin"
+ *     label="Ghana Card PIN"
+ *     hint="10 characters starting with GHA-"
+ *     width="20"
+ *     autocomplete="off"
+ *     required
+ *   />
+ *
+ *   <TextInput
+ *     name="email"
+ *     label="Email"
+ *     type="email"
+ *     autocomplete="email"
+ *     error="Enter a valid email address"
+ *   />
+ */
+
+type InputType = 'text' | 'email' | 'tel' | 'url' | 'search' | 'password' | 'number';
+
+/**
+ * Character-width classes map to the GOV.UK size system. `full` lets the
+ * input stretch to container width (default). Never express width in raw
+ * pixels — pin to this scale so the 25-component library stays coherent.
+ */
+type Width = 'full' | '30' | '20' | '10' | '5' | '4' | '3' | '2';
+
+interface Props {
+  name: string;
+  label: string;
+  /** DOM id. Defaults to `name` when unspecified. */
+  id?: string;
+  type?: InputType;
+  hint?: string;
+  /** When truthy, the group enters error mode. Renders `role="alert"`. */
+  error?: string;
+  value?: string | number;
+  placeholder?: string;
+  required?: boolean;
+  disabled?: boolean;
+  readonly?: boolean;
+  autocomplete?: string;
+  spellcheck?: boolean;
+  autocapitalize?: 'off' | 'none' | 'on' | 'sentences' | 'words' | 'characters';
+  inputmode?: 'none' | 'text' | 'decimal' | 'numeric' | 'tel' | 'search' | 'email' | 'url';
+  pattern?: string;
+  minlength?: number;
+  maxlength?: number;
+  width?: Width;
+  class?: string;
+}
+
+const {
+  name,
+  label,
+  id: idProp,
+  type = 'text',
+  hint,
+  error,
+  value,
+  placeholder,
+  required = false,
+  disabled = false,
+  readonly = false,
+  autocomplete,
+  spellcheck,
+  autocapitalize,
+  inputmode,
+  pattern,
+  minlength,
+  maxlength,
+  width = 'full',
+  class: extraClass,
+} = Astro.props;
+
+const id = idProp ?? name;
+const hintId = hint ? `${id}-hint` : undefined;
+const errorId = error ? `${id}-error` : undefined;
+const describedBy = [hintId, errorId].filter(Boolean).join(' ') || undefined;
+
+const groupClass = ['gh-form-group', error ? 'gh-form-group--error' : null, extraClass]
+  .filter(Boolean)
+  .join(' ');
+
+const inputClass = [
+  'gh-input',
+  width !== 'full' ? `gh-input--width-${width}` : null,
+  error ? 'gh-input--error' : null,
+]
+  .filter(Boolean)
+  .join(' ');
+---
+
+<div class={groupClass}>
+  <label class="gh-label" for={id}>
+    {label}
+    {
+      required && (
+        <span class="gh-label__required" aria-hidden="true">
+          *
+        </span>
+      )
+    }
+  </label>
+
+  {
+    hint && (
+      <p id={hintId} class="gh-hint">
+        {hint}
+      </p>
+    )
+  }
+
+  {
+    error && (
+      <p id={errorId} class="gh-error-message" role="alert">
+        <span class="gh-error-message__prefix">Error:</span> {error}
+      </p>
+    )
+  }
+
+  <input
+    class={inputClass}
+    id={id}
+    name={name}
+    type={type}
+    value={value}
+    placeholder={placeholder}
+    required={required}
+    disabled={disabled}
+    readonly={readonly}
+    autocomplete={autocomplete}
+    spellcheck={spellcheck}
+    autocapitalize={autocapitalize}
+    inputmode={inputmode}
+    pattern={pattern}
+    minlength={minlength}
+    maxlength={maxlength}
+    aria-describedby={describedBy}
+    aria-invalid={error ? 'true' : undefined}
+    aria-required={required ? 'true' : undefined}
+  />
+</div>
+
+<style>
+  .gh-form-group {
+    display: block;
+    margin-bottom: var(--space-6);
+  }
+
+  /* GOV.UK error pattern: red left-border on the whole group. */
+  .gh-form-group--error {
+    padding-left: var(--space-4);
+    border-left: 5px solid var(--color-error);
+  }
+
+  /* ─── Label ────────────────────────────────────────────── */
+  .gh-label {
+    display: block;
+    font-weight: var(--font-weight-semibold);
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-heading);
+    color: var(--color-text-default);
+    margin-bottom: var(--space-2);
+  }
+
+  .gh-label__required {
+    color: var(--color-error);
+    margin-left: 0.2em;
+  }
+
+  /* ─── Hint ─────────────────────────────────────────────── */
+  .gh-hint {
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-body);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-2);
+  }
+
+  /* ─── Error message ────────────────────────────────────── */
+  .gh-error-message {
+    color: var(--color-error);
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-body);
+    margin-bottom: var(--space-2);
+  }
+
+  .gh-error-message__prefix {
+    /* "Error:" is visually hidden but read by screen readers to reinforce
+       that colour is not the only indicator (WCAG 1.4.1). */
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  /* ─── Input ────────────────────────────────────────────── */
+  .gh-input {
+    display: block;
+    width: 100%;
+    min-height: 2.75rem;
+    padding: var(--space-2) var(--space-3);
+    font-family: var(--font-body);
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-body);
+    color: var(--color-text-default);
+    background: var(--color-surface-raised);
+    border: var(--border-width-default) solid var(--color-text-default);
+    border-radius: var(--radius-md);
+    /* Ensure iOS doesn't zoom on focus (requires ≥16px font-size). */
+    -webkit-appearance: none;
+    appearance: none;
+  }
+
+  .gh-input:focus-visible {
+    outline: var(--border-width-focus) solid var(--color-focus-ring);
+    outline-offset: 0;
+    border-color: var(--color-text-default);
+    box-shadow: inset 0 0 0 2px var(--color-text-default);
+  }
+
+  .gh-input:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background: var(--ghana-ink-50);
+  }
+
+  .gh-input::placeholder {
+    color: var(--color-text-muted);
+    opacity: 1;
+  }
+
+  .gh-input--error {
+    border-color: var(--color-error);
+    border-width: var(--border-width-default);
+  }
+
+  /* ─── Width modifiers (character-count based, GOV.UK scale) ─── */
+  .gh-input--width-30 {
+    max-width: 29.5em;
+  }
+
+  .gh-input--width-20 {
+    max-width: 20em;
+  }
+
+  .gh-input--width-10 {
+    max-width: 11.5em;
+  }
+
+  .gh-input--width-5 {
+    max-width: 5.5em;
+  }
+
+  .gh-input--width-4 {
+    max-width: 4.5em;
+  }
+
+  .gh-input--width-3 {
+    max-width: 3.75em;
+  }
+
+  .gh-input--width-2 {
+    max-width: 2.75em;
+  }
+</style>

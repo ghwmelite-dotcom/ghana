@@ -1,0 +1,12 @@
+{
+  "name": "@gh/cms-admin",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "typecheck": "echo '@gh/cms-admin: no typecheck yet' && exit 0",
+    "lint": "echo '@gh/cms-admin: no lint yet' && exit 0",
+    "test": "echo '@gh/cms-admin: no test yet' && exit 0",
+    "build": "echo '@gh/cms-admin: no build yet' && exit 0"
+  }
+}

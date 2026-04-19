@@ -1,0 +1,17 @@
+# Archived legacy prototype — never reformat
+.archive/
+
+# Generated
+pnpm-lock.yaml
+dist/
+build/
+.astro/
+.output/
+.turbo/
+.wrangler/
+node_modules/
+
+# Test artefacts
+coverage/
+.lighthouseci/
+playwright-report/

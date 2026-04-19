@@ -1,0 +1,12 @@
+{
+  "name": "@gh/dashboard",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "typecheck": "echo '@gh/dashboard: no typecheck yet' && exit 0",
+    "lint": "echo '@gh/dashboard: no lint yet' && exit 0",
+    "test": "echo '@gh/dashboard: no test yet' && exit 0",
+    "build": "echo '@gh/dashboard: no build yet' && exit 0"
+  }
+}

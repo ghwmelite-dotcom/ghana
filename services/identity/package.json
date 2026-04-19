@@ -1,0 +1,12 @@
+{
+  "name": "@gh/identity",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "typecheck": "echo '@gh/identity: no typecheck yet' && exit 0",
+    "lint": "echo '@gh/identity: no lint yet' && exit 0",
+    "test": "echo '@gh/identity: no test yet' && exit 0",
+    "build": "echo '@gh/identity: no build yet' && exit 0"
+  }
+}

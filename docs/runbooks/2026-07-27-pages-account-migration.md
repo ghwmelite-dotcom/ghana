@@ -85,3 +85,28 @@ If the move must be reversed: recreate `ghana-gov` in the old account
 (`POST /accounts/ea2eb3a9…/pages/projects`) after deleting it in the new one,
 then redeploy `apps/portal/dist`. Deployment history from before 2026-07-27
 is not recoverable — Cloudflare does not export it.
+
+## Purge audit — old account clean (2026-07-27, follow-up)
+
+Every resource surface in the **old** account (`ea2eb3a9…`) was enumerated
+via REST API to confirm no gov.gh artefacts remain:
+
+| Surface | Result |
+| ------- | ------ |
+| Pages projects (20, paginated) | `ghana-gov` absent — deleted during migration |
+| Workers scripts (72) | no `gov-gh-*` / `ghana-gov` matches |
+| KV namespaces (20) | no gov.gh-related namespaces |
+| D1 databases (41) | no gov.gh-related databases |
+| R2 buckets (33) | no gov.gh-related buckets |
+| Queues (1) | `krado-messages` — unrelated |
+| Vectorize (4), Hyperdrive (0), Pipelines (0), Workflows (0), Secrets Store (0) | clean |
+| Zones (12) | no gov.gh / ghana.gov domains |
+
+**Lookalikes deliberately left untouched** — they belong to other projects
+hosted in the same account, not to gov.gh: `gather-ghana-events` (Pages),
+`gather-gh-events` (Worker), `gather-ghana` (D1), `galamsey-db` (D1),
+`galamsey-uploads` (R2), and the `ohcs*` resources (those belong to the
+OHCS organisation's own apps).
+
+**Verdict: the gov.gh project is fully purged from the ghwmelite@gmail.com
+account.** Its only Cloudflare footprint was the `ghana-gov` Pages project.
